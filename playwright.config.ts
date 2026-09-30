@@ -25,6 +25,8 @@ export default defineConfig({
   },
   webServer: {
     command: 'npx vite --port 5173',
+    // Photos from cache only: a test run buys no images (server/places.ts).
+    env: { PHOTOS_OFFLINE: '1' },
     url: 'http://localhost:5173',
     reuseExistingServer: true,
     timeout: 60_000,

@@ -322,9 +322,13 @@ test('a photo that cannot be fetched leaves the stop readable', async ({ page })
   await expect(rows.first()).toContainText('Retrieved-')
 })
 
-test('a trip planned from the bundle keeps its monogram', async ({ page }) => {
-  // The bundled set was built before photos were asked for. A stop with no photo is a
-  // stop with an initial, which is what it always was.
+test('a trip planned from the bundle shows each stop\'s photo, with its credit', async ({ page }) => {
+  // The bundled places were given photo references on 2026-10-01
+  // (scripts/enrich/fetch_bundle_photos.ts). The image itself is stubbed here, so the
+  // test buys nothing and does not depend on the network.
+  await page.route('**/api/photo*', (route) =>
+    route.fulfill({ status: 200, contentType: 'image/png', body: PIXEL }),
+  )
   await page.goto(APP)
   await page.getByTestId('new-trip').click()
   await fillSetup(page)
@@ -333,6 +337,10 @@ test('a trip planned from the bundle keeps its monogram', async ({ page }) => {
   await expectPlanVersion(page, 1)
 
   await openItinerary(page, 1)
-  await expect(page.getByTestId('timeline').locator('li').first()).toBeVisible()
-  await expect(page.getByTestId('place-photo')).toHaveCount(0)
+  const stops = page.getByTestId('timeline').locator('li')
+  await expect(stops.first()).toBeVisible()
+  // Every stop on the day has its picture and its photographer's credit.
+  const count = await stops.count()
+  await expect(page.getByTestId('timeline').getByTestId('place-photo')).toHaveCount(count)
+  await expect(page.getByTestId('timeline').getByTestId('photo-credit')).toHaveCount(count)
 })

@@ -297,6 +297,27 @@ const CONTENT_TYPE_EXTENSION: Record<string, string> = {
   'image/gif': 'gif',
 }
 
+/** Identity and pictures only: Pro tier, the cheapest mask that carries photos. */
+const PHOTO_LOOKUP_FIELDS = ['places.id', 'places.displayName', 'places.location', 'places.photos'].join(',')
+
+/**
+ * Candidates for a known place's photo: a text search by its name, biased to where we
+ * already know it is. Returns raw results; the caller decides which one, if any, is
+ * the same place — a name search alone is not proof of identity.
+ *
+ * For the curated bundle, whose thirty-four places predate photos. Cached like every
+ * other search, so it is paid for once.
+ */
+export async function lookupPlacePhotos(input: {
+  name: string
+  near: { lat: number; lng: number }
+}): Promise<SearchResponse> {
+  return search(
+    { textQuery: input.name, retrieve: 3, bias: { lat: input.near.lat, lng: input.near.lng, radiusMetres: 500 } },
+    PHOTO_LOOKUP_FIELDS,
+  )
+}
+
 export interface PhotoResponse {
   body: Buffer
   contentType: string
@@ -349,6 +370,10 @@ export async function photoMedia(input: {
       return { body: readFileSync(cached), contentType, cached: true }
     }
   }
+
+  // Offline (the E2E server): what is cached is served, nothing new is bought. A test
+  // run must not spend money or depend on the network for a picture.
+  if (process.env.PHOTOS_OFFLINE === '1') return null
 
   const apiKey = envOrThrow('GOOGLE_MAPS_API_KEY', 'place photos')
   const url =

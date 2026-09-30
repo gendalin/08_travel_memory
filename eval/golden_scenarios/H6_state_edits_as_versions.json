@@ -1,0 +1,15 @@
+{
+  "suiteVersion": "core-eval-1.0",
+  "id": "H6",
+  "title": "State edits as versions",
+  "smoke": false,
+  "setup": {
+    "trip": "createTokyoTrip()",
+    "catalogue": "demo_tokyo_v1 + five synthetic Yokohama places",
+    "add": "go to Yokohama on last day",
+    "remove": "the same line",
+    "unplannable": "Make it memorable"
+  },
+  "checks": ["add_updates_plan", "remove_updates_plan", "versions_kept", "reframe", "read_as", "not_silent", "pending_untouched", "day_out_ends_with_dinner", "scoped"],
+  "implementation": "eval/scenarios/collaboration.ts"
+}

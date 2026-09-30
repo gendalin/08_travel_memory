@@ -27,6 +27,8 @@ interface Props {
   dirty: boolean
   /** Constraints the plan could not satisfy, against the row that caused them. */
   conflicts: Array<{ message: string; consideringId?: string; options?: ConflictOption[] }>
+  /** How each saved line was read, keyed `intent:<id>` / `considering:<id>`. */
+  readings?: Record<string, { text: string; readAs?: string; question?: string }>
   /** Confirmation shown when an edit committed without a preview (§7.6). */
   note: string | null
   onChange: (draft: StateDraft) => void
@@ -41,7 +43,7 @@ interface Props {
 const WEIGHTS: PriorityWeight[] = ['low', 'medium', 'high']
 
 export function StateScreen({
-  draft, busy, dirty, conflicts, note, onChange, onSave, onRevert, eventChoice, onPickEvent, onSkipEvent,
+  draft, busy, dirty, conflicts, readings, note, onChange, onSave, onRevert, eventChoice, onPickEvent, onSkipEvent,
 }: Props) {
   const editRow = (key: 'intent' | 'considering', id: string, text: string) =>
     onChange({ ...draft, [key]: draft[key].map((row) => (row.id === id ? { ...row, text } : row)) })
@@ -78,6 +80,17 @@ export function StateScreen({
                 −
               </button>
             </div>
+            {(() => {
+              // How the saved line was understood (2026-10-01) — only while its text is
+              // the saved text, so an edit in progress never shows a stale reading.
+              const read = readings?.[`${key}:${row.id}`]
+              if (!read || read.text !== row.text) return null
+              return (
+                <p className={`read-as${read.question ? ' unsure' : ''}`} data-testid="read-as">
+                  {read.question ? `Not sure how to plan this: ${read.question}` : `Read as: ${read.readAs}`}
+                </p>
+              )
+            })()}
             {conflict && (
               <div className="conflict-card" data-testid="state-conflict">
                 <div className="title">This can't be planned</div>

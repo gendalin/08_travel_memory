@@ -270,9 +270,12 @@ test('the trip can still be made with the planning service down (C2)', async ({ 
 test('a server with no key costs one attempt, not three (Gate 8)', async ({ page }) => {
   // 501 is what the API answers when it has no key for the job. Until Gate 8 the
   // server did not answer at all — it exited, taking the page with it.
-  let attempts = 0
+  // Counted per job: Stage B asks two (splitting the notes, then reading each line —
+  // 2026-10-01), and each must be tried once, not three times.
+  const attempts = new Map<string, number>()
   await page.route('**/api/**', (route) => {
-    attempts++
+    const path = new URL(route.request().url()).pathname
+    attempts.set(path, (attempts.get(path) ?? 0) + 1)
     route.fulfill({ status: 501, body: JSON.stringify({ error: 'not configured' }) })
   })
 
@@ -283,7 +286,8 @@ test('a server with no key costs one attempt, not three (Gate 8)', async ({ page
 
   await expect(page.getByTestId('degraded-notice')).toBeVisible()
   // The answer would be the same every time, so the stand-in takes over at once.
-  expect(attempts).toBe(1)
+  expect(attempts.size).toBeGreaterThan(0)
+  for (const [path, count] of attempts) expect(count, path).toBe(1)
 
   // And the trip is still made, from the places the product already has.
   await page.getByTestId('generate-itinerary').click()

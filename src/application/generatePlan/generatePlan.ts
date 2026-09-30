@@ -53,7 +53,7 @@ import type { TripFrame } from '../../domain/trip/types.ts'
 import { overBudget } from '../../domain/places/facets.ts'
 import { budgetOf, slotCategories } from '../planning/tripContext.ts'
 import { movementBudgetOf, preferWithinPace } from '../planning/movementBudget.ts'
-import { areaDaysFor, inArea, preferInArea } from '../planning/areaDays.ts'
+import { areaDaysFor, inArea, namedAreaDays, preferInArea } from '../planning/areaDays.ts'
 import { explainStop, rationaleText } from './explainStop.ts'
 import { toValidationPlaces } from '../../services/places/catalogue.ts'
 import type { ScoredPlace } from '../../domain/ranking/score.ts'
@@ -230,7 +230,9 @@ export function generateFirstPlan(input: {
   const budget = budgetOf(input.state)
   // Days spent in a neighbourhood the traveller's words or memories point at.
   const lodgingPlace = input.catalogue.get(input.frame.baseLodging.placeId)
-  const areaDays = lodgingPlace
+  // Days the traveller named a place for come first; discovered areas take the rest.
+  const named = namedAreaDays(input.state)
+  const discovered = lodgingPlace
     ? areaDaysFor({
         state: input.state,
         snapshot: input.memorySnapshot,
@@ -240,6 +242,7 @@ export function generateFirstPlan(input: {
         ...(planShape(input.memorySnapshot).daySpanMetres ? { radiusMetres: planShape(input.memorySnapshot).daySpanMetres!.value } : {}),
       })
     : []
+  const areaDays = [...named, ...discovered.filter((day) => !named.some((entry) => entry.dayIndex === day.dayIndex))]
   /** What the day's lunch can be, so an area day's main stop leaves those to it. */
   const lunchRole = roleById('lunch')
   const lunchCategories = lunchRole ? categoriesFor(lunchRole) : []
@@ -453,7 +456,9 @@ export function generateFirstPlan(input: {
 
       const areaReason =
         areaDay && role.id === 'main_destination' && inArea(chosen, areaDay.area)
-          ? `Day ${dayIndex + 1} is spent in ${areaDay.area.name}, for “${areaDay.because.text}”.`
+          ? areaDay.explicit
+            ? `Day ${dayIndex + 1} is spent in ${areaDay.area.name}, as you asked: “${areaDay.because.text}”.`
+            : `Day ${dayIndex + 1} is spent in ${areaDay.area.name}, for “${areaDay.because.text}”.`
           : undefined
 
       if (paceYielded && pace) {
@@ -499,6 +504,9 @@ export function generateFirstPlan(input: {
         id: itemId,
         placeId: chosen.placeId,
         role: role.id,
+        // How it got here, recorded rather than inferred from its wording later: a
+        // State edit that removes the pin has to find what the pin put in place.
+        placedBy: forcedIndex !== -1 ? 'must_visit' : viaMemoryId ? 'memory' : 'ranking',
         dayIndex,
         startTime: start,
         endTime: stopEnd(role, chosen, weekday),
@@ -520,7 +528,8 @@ export function generateFirstPlan(input: {
     }
 
     for (const role of required) fill(role)
-    for (const role of optional) fill(role)
+    // A day out the traveller named ends with dinner: no late "one more" back in town.
+    for (const role of optional) if (!(areaDay?.explicit && role.id === 'nightcap')) fill(role)
 
     days.push({
       dayIndex,

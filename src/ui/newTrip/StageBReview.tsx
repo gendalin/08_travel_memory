@@ -24,6 +24,8 @@ interface Props {
   activeMemoryCount: number
   /** State conflicts blocking generation (§3.6.5). */
   conflicts: Array<{ message: string; consideringId?: string; options?: ConflictOption[] }>
+  /** How each line was understood, keyed `intent:<text>` / `considering:<text>` (2026-10-01). */
+  readAs?: Record<string, { readAs: string; question?: string }>
   onChange: (draft: ReviewDraft) => void
   onAcceptPriority: (name: string | undefined) => void
   onShowMemories: () => void
@@ -35,8 +37,17 @@ const WEIGHTS: PriorityWeight[] = ['low', 'medium', 'high']
 
 export function StageBReview({
   draft, acceptedPriority, busy, tripName, dateRange, lodging, activeMemoryCount,
-  conflicts, onChange, onAcceptPriority, onShowMemories, onBack, onGenerate,
+  conflicts, readAs, onChange, onAcceptPriority, onShowMemories, onBack, onGenerate,
 }: Props) {
+  const readLine = (section: 'intent' | 'considering', text: string) => {
+    const read = readAs?.[`${section}:${text.trim()}`]
+    if (!read) return null
+    return (
+      <p className={`read-as${read.question ? ' unsure' : ''}`} data-testid="read-as">
+        {read.question ? `Not sure how to plan this: ${read.question}` : `Read as: ${read.readAs}`}
+      </p>
+    )
+  }
   const [newIntent, setNewIntent] = useState('')
   const [newConsidering, setNewConsidering] = useState('')
 
@@ -100,13 +111,16 @@ export function StageBReview({
 
       <div className="section-title">What kind of trip</div>
       {draft.intent.map((item) => (
-        <div className="editable-row" key={item.id}>
+        <div key={item.id}>
+        <div className="editable-row">
           <input
             aria-label={`Intent: ${item.text}`}
             value={item.text}
             onChange={(e) => editList('intent', item.id, e.target.value)}
           />
           <button aria-label={`Remove ${item.text}`} onClick={() => removeItem('intent', item.id)}>−</button>
+        </div>
+        {readLine('intent', item.text)}
         </div>
       ))}
       <div className="editable-row">
@@ -122,13 +136,16 @@ export function StageBReview({
       <div className="section-title">Should consider</div>
       {conflictCard(consideringConflicts, 'conflict-considering')}
       {draft.considering.map((item) => (
-        <div className="editable-row" key={item.id}>
+        <div key={item.id}>
+        <div className="editable-row">
           <input
             aria-label={`Considering: ${item.text}`}
             value={item.text}
             onChange={(e) => editList('considering', item.id, e.target.value)}
           />
           <button aria-label={`Remove ${item.text}`} onClick={() => removeItem('considering', item.id)}>−</button>
+        </div>
+        {readLine('considering', item.text)}
         </div>
       ))}
       <div className="editable-row">

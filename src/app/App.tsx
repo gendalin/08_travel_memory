@@ -144,6 +144,7 @@ export function App({ deps }: { deps: AppDeps }) {
               lodging={store.setupInput.baseLodgingName}
               activeMemoryCount={store.activeMemoryCount}
               conflicts={store.conflicts}
+              readAs={store.reviewReadAs}
               onChange={store.setDraft}
               onAcceptPriority={store.setAcceptedPriority}
               onShowMemories={() => setShowMemories(true)}
@@ -171,6 +172,10 @@ export function App({ deps }: { deps: AppDeps }) {
                 busy={store.busy}
                 dirty={store.stateDirty}
                 conflicts={store.stateConflicts}
+                readings={Object.fromEntries([
+                  ...(store.state?.intent ?? []).map((item) => [`intent:${item.id}`, { text: item.text, ...(item.readAs ? { readAs: item.readAs } : {}) }]),
+                  ...(store.state?.considering ?? []).map((item) => [`considering:${item.id}`, { text: item.text, ...(item.readAs ? { readAs: item.readAs } : {}), ...(item.question ? { question: item.question } : {}) }]),
+                ])}
                 note={store.stateNote}
                 onChange={store.setStateDraft}
                 onSave={store.saveStateDraft}

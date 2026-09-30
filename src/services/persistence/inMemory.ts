@@ -20,6 +20,8 @@ export interface InMemoryStore {
   trips: Map<ID, Trip>
   states: Map<ID, TripState>
   plans: Map<ID, Plan>
+  /** Superseded plan versions per trip, oldest first. The current one is in `plans`. */
+  planHistory: Map<ID, Plan[]>
   proposals: Map<ID, Proposal>
   receipts: Receipt[]
   memories: Map<ID, Memory>
@@ -30,6 +32,7 @@ export function createStore(): InMemoryStore {
     trips: new Map(),
     states: new Map(),
     plans: new Map(),
+    planHistory: new Map(),
     proposals: new Map(),
     receipts: [],
     memories: new Map(),
@@ -76,6 +79,10 @@ export function createRepositories(
       async save(tripId, plan) {
         store.plans.set(tripId, plan)
       },
+      async history(tripId) {
+        const current = store.plans.get(tripId)
+        return [...(store.planHistory.get(tripId) ?? []), ...(current ? [current] : [])]
+      },
     },
 
     proposals: {
@@ -120,7 +127,14 @@ export function createRepositories(
         apply.push(() => store.states.set(input.tripId, input.state))
 
         if (options.failCommitAt === 'plan') throw new Error('injected failure: plan')
-        apply.push(() => store.plans.set(input.tripId, input.plan))
+        apply.push(() => {
+          // The version being replaced joins the history, unless nothing changed it.
+          const previous = store.plans.get(input.tripId)
+          if (previous && previous.version !== input.plan.version) {
+            store.planHistory.set(input.tripId, [...(store.planHistory.get(input.tripId) ?? []), previous])
+          }
+          store.plans.set(input.tripId, input.plan)
+        })
 
         if (options.failCommitAt === 'proposal') throw new Error('injected failure: proposal')
         apply.push(() => store.proposals.set(input.proposal.id, input.proposal))

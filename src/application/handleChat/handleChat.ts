@@ -40,7 +40,8 @@ import type { LlmService } from '../../services/llm/types.ts'
 import { buildProposal } from '../planning/buildProposal.ts'
 import { buildRankingContext, geographyForItem, rankCandidates } from '../planning/rankCandidates.ts'
 import { canScheduleWith, lockedItemIds, mustVisitPlaceIds, slotCategories } from '../planning/tripContext.ts'
-import { routeMessage, type ChatOperation } from './route.ts'
+import { operationFromReading, routeMessage, type ChatOperation } from './route.ts'
+import type { MessageReading } from '../../services/llm/types.ts'
 import { movementBudgetOf, preferWithinPace } from '../planning/movementBudget.ts'
 import { preferInArea } from '../planning/areaDays.ts'
 import { isOutdoor } from '../../domain/places/outdoor.ts'
@@ -77,6 +78,8 @@ export interface HandleChatInput {
   memorySnapshot?: MemorySnapshot
   /** Id of the chat turn this message is, for the provenance of anything learnt from it. */
   turnId?: string
+  /** The model's reading of the message (2026-10-01). Absent: the rules route it. */
+  reading?: MessageReading | null
 }
 
 /** Max regeneration attempts before returning a Conflict (§8). */
@@ -419,7 +422,11 @@ function fewerStops(
   const today = timePhase(input.frame, input.now) === 'in_trip'
     ? Math.max(0, Math.floor((input.now.getTime() - dateOfDay(input.frame, 0).getTime()) / 86_400_000))
     : 0
-  const dayIndexes = input.plan.days.map((day) => day.dayIndex).filter((dayIndex) => dayIndex >= today)
+  // One day when the traveller named one ("today I'm tired"); otherwise from today on.
+  const dayIndexes =
+    operation.dayIndex !== undefined
+      ? [operation.dayIndex]
+      : input.plan.days.map((day) => day.dayIndex).filter((dayIndex) => dayIndex >= today)
 
   // Meals stay: a tired traveller still eats. What goes is the stop that costs the
   // most getting to and from — tiredness is travel, not stop count (movement.ts) —
@@ -448,7 +455,7 @@ function fewerStops(
   })
 
   const name = (placeId: string) => input.catalogue.get(placeId)?.name ?? placeId
-  const scope = today > 0 ? `from Day ${today + 1} on` : 'on each day'
+  const scope = operation.dayIndex !== undefined ? `on Day ${operation.dayIndex + 1}` : today > 0 ? `from Day ${today + 1} on` : 'on each day'
   if (result.dropped.length === 0) {
     return {
       kind: 'answer',
@@ -575,7 +582,20 @@ function statePreference(
 }
 
 export async function handleChatMessage(input: HandleChatInput): Promise<ChatOutcome> {
-  const operation = routeMessage({
+  const fromModel = input.reading
+    ? operationFromReading({
+        reading: input.reading,
+        message: input.message,
+        plan: input.plan,
+        catalogue: input.catalogue,
+        ...(input.focusDayIndex !== undefined ? { focusDayIndex: input.focusDayIndex } : {}),
+        // "Today" is the trip's day during the trip; before it, the day on screen.
+        ...(timePhase(input.frame, input.now) === 'in_trip'
+          ? { todayIndex: Math.max(0, Math.floor((input.now.getTime() - dateOfDay(input.frame, 0).getTime()) / 86_400_000)) }
+          : {}),
+      })
+    : undefined
+  const operation = fromModel ?? routeMessage({
     message: input.message,
     plan: input.plan,
     catalogue: input.catalogue,

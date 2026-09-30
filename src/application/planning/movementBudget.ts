@@ -22,7 +22,11 @@ export interface StatedMovement {
 }
 
 export function movementBudgetOf(state: TripState): StatedMovement | undefined {
-  const line = [...state.intent, ...state.considering].find((item) => SLOW_WORDS.test(item.text))
+  // The line's reading first (a model understands "悠哉地晃" as slow), then its words.
+  const line =
+    state.considering.find((item) => item.tag?.kind === 'pace' && item.tag.style === 'slow') ??
+    state.intent.find((item) => item.reading?.pace === 'slow') ??
+    [...state.intent, ...state.considering].find((item) => SLOW_WORDS.test(item.text))
   return line ? { budget: SLOW_BUDGET, source: { id: line.id, text: line.text } } : undefined
 }
 

@@ -126,3 +126,56 @@ export function areasFor(characters: readonly AreaCharacter[], near?: Coordinate
         a.area.id.localeCompare(b.area.id),
     )
 }
+
+/**
+ * Places a day can be spent in that are not neighbourhoods of the city — a day out
+ * (2026-10-01). "Go to Yokohama on the last day" names one of these; the day is then
+ * planned around its centre. Like the area table, code-owned: a model may name a
+ * place, the code decides where it is.
+ */
+export const DAY_TRIP_AREAS: readonly TokyoArea[] = [
+  { id: 'yokohama', name: 'Yokohama', center: { lat: 35.4478, lng: 139.6425 }, radiusKm: 2.2, characters: [] },
+  { id: 'kamakura', name: 'Kamakura', center: { lat: 35.3192, lng: 139.5503 }, radiusKm: 2, characters: ['traditional'] },
+  { id: 'enoshima', name: 'Enoshima', center: { lat: 35.2997, lng: 139.4806 }, radiusKm: 1.2, characters: [] },
+  { id: 'kawagoe', name: 'Kawagoe', center: { lat: 35.9223, lng: 139.4852 }, radiusKm: 1.5, characters: ['traditional', 'showa'] },
+  { id: 'nikko', name: 'Nikko', center: { lat: 36.7536, lng: 139.6035 }, radiusKm: 2.5, characters: ['traditional'] },
+  { id: 'hakone', name: 'Hakone', center: { lat: 35.2324, lng: 139.1069 }, radiusKm: 4, characters: [] },
+  { id: 'odawara', name: 'Odawara', center: { lat: 35.2564, lng: 139.1553 }, radiusKm: 1.8, characters: [] },
+]
+
+/** Other names a traveller uses for the same place. */
+const AREA_ALIASES: Record<string, readonly string[]> = {
+  yokohama: ['横浜', '橫濱', '横滨', 'minato mirai', 'minatomirai'],
+  kamakura: ['鎌倉', '镰仓'],
+  enoshima: ['江の島', '江之島', '江之岛'],
+  kawagoe: ['川越'],
+  nikko: ['日光', 'nikkō'],
+  hakone: ['箱根'],
+  odawara: ['小田原'],
+  jimbocho: ['jinbocho', 'jinbōchō', 'jimbōchō', '神保町'],
+  yanaka: ['谷中', 'yanesen'],
+  koenji: ['kōenji', '高円寺', '高圓寺'],
+  shimokitazawa: ['shimokita', '下北沢', '下北澤'],
+  nishiogikubo: ['nishiogi', '西荻窪'],
+  kichijoji: ['kichijōji', '吉祥寺'],
+  nakano: ['中野'],
+  kagurazaka: ['神楽坂', '神樂坂'],
+  kuramae: ['蔵前', '藏前'],
+  asakusa: ['浅草', '淺草'],
+  kiyosumi_shirakawa: ['kiyosumi', '清澄白河'],
+  hongo: ['hongō', '本郷', '本鄉'],
+}
+
+/**
+ * A neighbourhood or day-trip place by what the traveller called it. `exact`: only
+ * when the whole name is the area's name or an alias — "Yokohama", not "Shin-Yokohama
+ * Ramen Museum".
+ */
+export function findArea(name: string, options: { exact?: boolean } = {}): TokyoArea | undefined {
+  const wanted = name.trim().toLowerCase().normalize('NFKC').replace(/^the\s+/, '')
+  if (wanted.length < 2) return undefined
+  return [...TOKYO_AREAS, ...DAY_TRIP_AREAS].find((area) => {
+    const names = [area.id.replace(/_/g, ' '), area.name.toLowerCase(), ...(AREA_ALIASES[area.id] ?? [])].map((candidate) => candidate.toLowerCase())
+    return names.some((candidate) => wanted === candidate || (!options.exact && wanted.includes(candidate)))
+  })
+}

@@ -13,6 +13,7 @@
 
 import { allItems, type Plan } from '../../domain/plan/types.ts'
 import type { PlaceCatalogue } from '../../services/places/types.ts'
+import type { MessageReading } from '../../services/llm/types.ts'
 
 export type ChatOperation =
   /** Swap one stop for another in the same slot. */
@@ -21,8 +22,8 @@ export type ChatOperation =
   | { kind: 'clear_after'; dayIndex: number; endBy: string; reason: string }
   /** Weather from a time on: move what is outdoors after it indoors. */
   | { kind: 'weather_after'; dayIndex: number; from: string; reason: string }
-  /** Thin the trip out: fewer stops a day. */
-  | { kind: 'fewer_stops'; maxPerDay: number }
+  /** Thin the trip out: fewer stops a day — on one day when `dayIndex` is set. */
+  | { kind: 'fewer_stops'; maxPerDay: number; dayIndex?: number }
   /**
    * Something about the traveller rather than about a stop: "I never enjoy crowded
    * tourist spots". Becomes a candidate Memory, and optionally a change to this trip.
@@ -150,4 +151,67 @@ export function routeMessage(input: {
   if (statement) return statement
 
   return { kind: 'unresolved' }
+}
+
+/**
+ * A model's reading of a message → an operation the product already knows how to do
+ * (2026-10-01).
+ *
+ * The model says what KIND of request it is and which words name the stop; code finds
+ * the stop in the plan, works out the day, and checks the time. Undefined when the
+ * reading cannot be made concrete — the rules then route the message as before.
+ * `state_line` and `unclear` are handled by the caller: the first goes through a State
+ * edit, the second is a question back.
+ */
+export function operationFromReading(input: {
+  reading: MessageReading
+  message: string
+  plan: Plan
+  catalogue: PlaceCatalogue
+  focusDayIndex?: number
+  /** Today's index during the trip. */
+  todayIndex?: number
+}): ChatOperation | undefined {
+  const { reading, plan, catalogue } = input
+  const days = plan.days.length
+  const day =
+    reading.day === null ? input.focusDayIndex
+    : reading.day === 'first' ? 0
+    : reading.day === 'last' ? days - 1
+    : reading.day === 'today' ? (input.todayIndex ?? input.focusDayIndex)
+    : reading.day >= 1 && reading.day <= days ? reading.day - 1
+    : undefined
+  const time = reading.time && /^\d{2}:\d{2}$/.test(reading.time) ? reading.time : undefined
+
+  switch (reading.action) {
+    case 'replace_stop': {
+      if (!reading.stop) return undefined
+      const words = reading.stop.toLowerCase()
+      const onDay = allItems(plan).filter((item) => reading.day === null || item.dayIndex === day)
+      // By meal first ("dinner on day 2"), then by name, kind or tag.
+      const byRole = onDay.filter((item) => item.role && words.includes(item.role.replace('_', ' ')))
+      const byWords = onDay.filter((item) => {
+        const place = catalogue.get(item.placeId)
+        if (!place) return false
+        const said = [place.name.toLowerCase(), place.category.replace(/_/g, ' '), ...place.tags.map((tag) => tag.toLowerCase())]
+        return said.some((word) => word.length >= 3 && (words.includes(word) || word.includes(words)))
+      })
+      const target = (byRole.length === 1 ? byRole : byWords)[0]
+      return target ? { kind: 'replace_place', itemId: target.id, placeId: target.placeId } : undefined
+    }
+    case 'weather':
+      return day === undefined ? undefined : { kind: 'weather_after', dayIndex: day, from: time ?? '00:00', reason: input.message }
+    case 'finish_by':
+      return day === undefined || !time ? undefined : { kind: 'clear_after', dayIndex: day, endBy: time, reason: input.message }
+    case 'lighter':
+      return {
+        kind: 'fewer_stops',
+        maxPerDay: Math.max(1, busiestDayLength(plan) - 1),
+        ...(reading.day !== null && day !== undefined ? { dayIndex: day } : {}),
+      }
+    case 'preference':
+      return { kind: 'preference_statement', polarity: reading.polarity === 1 ? 1 : -1, text: input.message.trim() }
+    default:
+      return undefined
+  }
 }

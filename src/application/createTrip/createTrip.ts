@@ -6,6 +6,14 @@
  * No Decision Receipt is created — trip creation is not a change transaction.
  */
 
+import {
+  considerByRules,
+  intentByRules,
+  interpretationKey,
+  type ConsideringInterpretation,
+  type IntentInterpretation,
+  type LineInterpretation,
+} from '../decompose/interpret.ts'
 import { createMemorySnapshot } from '../../domain/memory/snapshot.ts'
 import type { CatalogueSnapshot } from '../../domain/places/catalogueSnapshot.ts'
 import type { Memory } from '../../domain/memory/types.ts'
@@ -119,6 +127,11 @@ export function confirmReview(input: {
    */
   catalogueSnapshot?: CatalogueSnapshot<{ placeId: string }>
   createdAt: string
+  /**
+   * How each line was read (2026-10-01), keyed by `interpretationKey`. A line with no
+   * reading here is read by the rules, as every line was before.
+   */
+  interpretations?: ReadonlyMap<string, LineInterpretation>
 }): { trip: Trip; state: TripState } {
   const priorities = [...input.draft.priorities]
 
@@ -131,10 +144,25 @@ export function confirmReview(input: {
     })
   }
 
+  const days = tripDays(input.frame.startDate, input.frame.endDate)
+  const context = { catalogue: input.catalogue, days }
   const state: TripState = {
     version: 1,
-    intent: input.draft.intent,
-    considering: tagAll(input.draft.considering, input.catalogue),
+    intent: input.draft.intent.map((item) => {
+      const read = (input.interpretations?.get(interpretationKey('intent', item.text)) as IntentInterpretation | undefined) ?? intentByRules(item.text)
+      return { ...item, reading: read.reading, readAs: read.readAs }
+    }),
+    considering: input.draft.considering.map((item) => {
+      const read = (input.interpretations?.get(interpretationKey('considering', item.text)) as ConsideringInterpretation | undefined) ?? considerByRules(item.text, context)
+      return {
+        id: item.id,
+        text: item.text,
+        ...(read.tag ? { tag: read.tag } : {}),
+        readAs: read.readAs,
+        readBy: read.readBy,
+        ...(read.question ? { question: read.question } : {}),
+      }
+    }),
     priorities,
   }
 

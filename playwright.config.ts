@@ -18,17 +18,19 @@ export default defineConfig({
   fullyParallel: false,
   reporter: [['list']],
   use: {
-    baseURL: 'http://localhost:5173',
+    baseURL: 'http://localhost:5174',
     channel: 'chrome',
     viewport: { width: 390, height: 844 },
     trace: 'retain-on-failure',
   },
   webServer: {
-    command: 'npx vite --port 5173',
+    // Its own port and its own server: never the developer's `npm run dev` on 5173,
+    // which is online and would buy photos for a test run.
+    command: 'npx vite --port 5174 --strictPort',
     // Photos from cache only: a test run buys no images (server/places.ts).
     env: { PHOTOS_OFFLINE: '1' },
-    url: 'http://localhost:5173',
-    reuseExistingServer: true,
+    url: 'http://localhost:5174',
+    reuseExistingServer: false,
     timeout: 60_000,
   },
 })

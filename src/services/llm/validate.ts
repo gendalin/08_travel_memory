@@ -16,7 +16,7 @@
  */
 
 import { LlmShapeError } from './errors.ts'
-import type { DecomposedState, QueryPlanResult, ReplacementChoice } from './types.ts'
+import type { DecomposedState, LineKind, LineReading, MessageAction, MessageReading, QueryPlanResult, ReplacementChoice } from './types.ts'
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value)
@@ -86,4 +86,71 @@ export function readQueryPlan(body: unknown): QueryPlanResult {
   })
 
   return { queries, alsoSearch: stringArray(body.alsoSearch) ?? [] }
+}
+
+const LINE_KINDS = new Set<LineKind>([
+  'must_visit', 'day_in_place', 'avoid', 'budget', 'pace', 'finish_by', 'half_day',
+  'free_time', 'slot_meal', 'event', 'transport', 'theme', 'unclear',
+])
+const MESSAGE_ACTIONS = new Set<MessageAction>([
+  'replace_stop', 'weather', 'finish_by', 'lighter', 'preference', 'state_line', 'unclear',
+])
+
+const oneOf = <T extends string>(value: unknown, allowed: readonly T[]): T | null =>
+  typeof value === 'string' && (allowed as readonly string[]).includes(value) ? (value as T) : null
+const stringOrNull = (value: unknown): string | null => nonEmptyString(value)?.trim() ?? null
+const dayOrNull = (value: unknown, words: readonly string[]): number | string | null =>
+  typeof value === 'number' && Number.isInteger(value) && value >= 1 ? value : oneOf(value, words)
+
+/**
+ * Line readings, entry by entry: an unreadable entry is dropped, and its line falls
+ * back to the rules rather than failing the whole save.
+ */
+export function readLineReadings(body: unknown): { readings: LineReading[] } {
+  if (!isRecord(body) || !Array.isArray(body.readings)) {
+    throw new LlmShapeError('your notes', 'readings is not a list')
+  }
+  const readings = body.readings.filter(isRecord).flatMap((entry): LineReading[] => {
+    const id = nonEmptyString(entry.id)
+    const kind = typeof entry.kind === 'string' && LINE_KINDS.has(entry.kind as LineKind) ? (entry.kind as LineKind) : undefined
+    if (!id || !kind) return []
+    return [{
+      id,
+      kind,
+      day: dayOrNull(entry.day, ['first', 'last']) as LineReading['day'],
+      place: stringOrNull(entry.place),
+      category: stringOrNull(entry.category),
+      meal: oneOf(entry.meal, ['lunch', 'dinner', 'nightcap'] as const),
+      time: typeof entry.time === 'string' && /^\d{1,2}:\d{2}$/.test(entry.time) ? entry.time.padStart(5, '0') : null,
+      minutes: typeof entry.minutes === 'number' && entry.minutes > 0 ? Math.round(entry.minutes) : null,
+      budget: oneOf(entry.budget, ['low', 'moderate', 'high'] as const),
+      avoid: stringOrNull(entry.avoid),
+      activity: stringOrNull(entry.activity),
+      pace: oneOf(entry.pace, ['slow', 'normal', 'packed'] as const),
+      characters: stringArray(entry.characters) ?? [],
+      question: stringOrNull(entry.question),
+    }]
+  })
+  return { readings }
+}
+
+/** A message reading, or null when there is none — the rules then route it. */
+export function readMessageReading(body: unknown): MessageReading | null {
+  if (!isRecord(body)) throw new LlmShapeError('your message', 'not an object')
+  if (body.reading === null) return null
+  const entry = isRecord(body.reading) ? body.reading : undefined
+  const action = entry && typeof entry.action === 'string' && MESSAGE_ACTIONS.has(entry.action as MessageAction)
+    ? (entry.action as MessageAction)
+    : undefined
+  if (!entry || !action) throw new LlmShapeError('your message', 'no action')
+  return {
+    action,
+    day: dayOrNull(entry.day, ['first', 'last', 'today']) as MessageReading['day'],
+    stop: stringOrNull(entry.stop),
+    time: typeof entry.time === 'string' && /^\d{1,2}:\d{2}$/.test(entry.time) ? entry.time.padStart(5, '0') : null,
+    polarity: entry.polarity === 1 || entry.polarity === -1 ? entry.polarity : null,
+    stateLine: stringOrNull(entry.stateLine),
+    section: oneOf(entry.section, ['intent', 'considering'] as const),
+    question: stringOrNull(entry.question),
+  }
 }

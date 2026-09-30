@@ -9,7 +9,9 @@
 import { splitClauses } from './fallbackLlm.ts'
 import type {
   DecomposedState,
+  LineReading,
   LlmService,
+  MessageReading,
   QueryPlanRequest,
   QueryPlanResult,
   ReplacementChoice,
@@ -25,6 +27,13 @@ export interface StubOptions {
   hallucinateCategory?: string
   /** Extra categories to suggest, as a real model might. */
   alsoSearch?: string[]
+  /**
+   * Readings to return for lines whose text matches a key — for tests of the model
+   * path. Absent: no readings, so rules read every line, as offline.
+   */
+  lineReadings?: Record<string, Omit<LineReading, 'id'>>
+  /** A reading to return for a matching chat message. Absent: rules route it. */
+  messageReadings?: Record<string, MessageReading>
 }
 
 export function createStubLlm(options: StubOptions = {}): LlmService {
@@ -35,6 +44,17 @@ export function createStubLlm(options: StubOptions = {}): LlmService {
         considering: splitClauses(consideringText),
         ...(options.proposedPriority ? { proposedPriority: options.proposedPriority } : {}),
       }
+    },
+
+    async interpretLines({ lines }) {
+      const known = options.lineReadings ?? {}
+      return {
+        readings: lines.flatMap((line) => (known[line.text] ? [{ ...known[line.text], id: line.id }] : [])),
+      }
+    },
+
+    async interpretMessage({ message }) {
+      return options.messageReadings?.[message] ?? null
     },
 
     async chooseReplacement({ outgoing, candidates }): Promise<ReplacementChoice> {

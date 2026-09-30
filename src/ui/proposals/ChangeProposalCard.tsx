@@ -19,12 +19,16 @@ import type { PlaceCatalogue } from '../../services/places/types.ts'
 import { ImpactStrip } from './ImpactStrip.tsx'
 import { PlanDiffList } from './PlanDiffList.tsx'
 import { StateDiffList } from './StateDiffList.tsx'
+import { VersionCompare } from './VersionCompare.tsx'
+import type { Plan } from '../../domain/plan/types.ts'
 
 interface Props {
   proposal: Proposal
   catalogue: PlaceCatalogue
   /** Stops in the committed plan, to say how many this leaves alone. */
   stopsInPlan?: number
+  /** The committed plan, compared side by side with what this proposes. */
+  currentPlan?: Plan
   busy: string | null
   /** Called with the changes the traveller chose to keep the original stop for. */
   onConfirm: (declinedUnitIds: string[]) => void
@@ -173,7 +177,8 @@ function ReplaceBody({ proposal, catalogue }: { proposal: Proposal; catalogue: P
   )
 }
 
-export function ChangeProposalCard({ proposal, catalogue, stopsInPlan, busy, onConfirm, onKeep }: Props) {
+export function ChangeProposalCard({ proposal, catalogue, stopsInPlan, currentPlan, busy, onConfirm, onKeep }: Props) {
+  const [comparing, setComparing] = useState(false)
   // Progressive disclosure (§14.4): title, short reason and key impact first;
   // the full itinerary diff is one tap away on a Reframe, where it is long.
   const [showPreview, setShowPreview] = useState(false)
@@ -229,6 +234,29 @@ export function ChangeProposalCard({ proposal, catalogue, stopsInPlan, busy, onC
             {showPreview ? 'Hide the itinerary changes' : 'Preview the itinerary changes'}
           </button>
           {showPreview && <PlanDiffList diff={proposal.planDiff} catalogue={catalogue} />}
+        </>
+      )}
+
+      {/* The two versions whole, side by side (2026-10-01). */}
+      {currentPlan && proposal.type !== 'answer' && (
+        <>
+          <button
+            className="btn-ghost"
+            data-testid="toggle-compare"
+            aria-expanded={comparing}
+            onClick={() => setComparing((open) => !open)}
+          >
+            {comparing ? 'Hide the comparison' : `Compare v${currentPlan.version} with v${currentPlan.version + 1}`}
+          </button>
+          {comparing && (
+            <VersionCompare
+              before={currentPlan}
+              after={proposal.candidatePlan}
+              catalogue={catalogue}
+              beforeLabel={`Now · v${currentPlan.version}`}
+              afterLabel={`Proposed · v${currentPlan.version + 1}`}
+            />
+          )}
         </>
       )}
 

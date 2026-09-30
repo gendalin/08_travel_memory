@@ -32,6 +32,12 @@ export interface StateRepository {
 export interface PlanRepository {
   getCurrent(tripId: ID): Promise<Plan | undefined>
   save(tripId: ID, plan: Plan): Promise<void>
+  /**
+   * Every version of a trip's plan, oldest first, ending with the current one
+   * (2026-10-01) — so any two can be compared. Versions are kept as they were
+   * committed and never rewritten.
+   */
+  history(tripId: ID): Promise<Plan[]>
 }
 
 export interface ProposalRepository {

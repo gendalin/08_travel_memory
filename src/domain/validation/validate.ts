@@ -8,6 +8,7 @@
  * Pure and synchronous: the dataset is passed in, never fetched.
  */
 
+import { kmBetween } from '../places/geo.ts'
 import { halfDayMinutes } from '../plan/dayRoles.ts'
 import { describeHours, isOpenFor, weekdayKey } from '../places/openingHours.ts'
 import { dateOfDay, isItemLocked } from '../trip/phase.ts'
@@ -21,7 +22,12 @@ export interface ValidationPlace {
   placeId: string
   /** Per-weekday spans, "11:00-15:00" or "closed". */
   openingHours?: Record<string, string>
+  lat?: number
+  lng?: number
 }
+
+/** How far past a named place's radius a stop still counts as there, km. */
+const DAY_PLACE_EDGE_KM = 0.5
 
 export interface ValidationContext {
   frame: TripFrame
@@ -223,6 +229,30 @@ export function validatePlan(plan: Plan, context: ValidationContext): Validation
               consideringId: considering.id,
             })
           }
+        }
+        break
+      }
+      case 'day_in_place': {
+        // "Go to Yokohama on the last day" is kept when at least one stop that day is
+        // there. A place never located is its own failure: nothing could satisfy it.
+        const center = tag.place.center
+        const there = center
+          ? items.filter((item) => {
+              if (item.dayIndex !== tag.dayIndex) return false
+              const place = context.places.get(item.placeId)
+              return place?.lat !== undefined && place.lng !== undefined &&
+                kmBetween(center, { lat: place.lat, lng: place.lng }) <= (tag.place.radiusKm ?? 1.5) + DAY_PLACE_EDGE_KM
+            })
+          : []
+        if (there.length === 0) {
+          errors.push({
+            code: center ? 'day_in_place_missing' : 'day_in_place_unknown',
+            message: center
+              ? `Day ${tag.dayIndex + 1} has no stop in ${tag.place.name}`
+              : `Could not locate ${tag.place.name}`,
+            dayIndex: tag.dayIndex,
+            consideringId: considering.id,
+          })
         }
         break
       }

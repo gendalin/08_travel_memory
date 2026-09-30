@@ -45,9 +45,34 @@ export interface AreaDay {
   categories: readonly string[]
   /** The State line or memory it was chosen for, for the reason a stop cites. */
   because: { text: string; stateItemIds: string[]; memoryIds: string[] }
+  /** Named by the traveller ("go to Yokohama on the last day"), not discovered. */
+  explicit?: boolean
 }
 
-export function inArea(place: Coordinates, area: AreaDay['area']): boolean {
+/**
+ * Days the traveller named a place for (`day_in_place`), as area days. They take
+ * their day over any discovered area; an unlocated place is left to the validator.
+ */
+export function namedAreaDays(state: TripState): AreaDay[] {
+  return state.considering.flatMap((item): AreaDay[] => {
+    const tag = item.tag
+    if (tag?.kind !== 'day_in_place' || !tag.place.center) return []
+    return [{
+      dayIndex: tag.dayIndex,
+      area: {
+        id: tag.place.areaId ?? `named_${tag.place.name.toLowerCase().replace(/\W+/g, '_')}`,
+        name: tag.place.name,
+        center: tag.place.center,
+        radiusKm: tag.place.radiusKm ?? 1.5,
+      },
+      categories: [],
+      because: { text: item.text, stateItemIds: [item.id], memoryIds: [] },
+      explicit: true,
+    }]
+  })
+}
+
+export function inArea(place: Coordinates, area: Pick<AreaDay['area'], 'center' | 'radiusKm'>): boolean {
   return kmBetween(place, area.center) <= area.radiusKm + AREA_EDGE_KM
 }
 
@@ -77,7 +102,10 @@ export function areaDaysFor(input: {
   if (input.days < 3) return []
 
   const lines = [...input.state.intent, ...input.state.considering]
-  const spoken = lines.flatMap((line) => charactersIn(line.text).map((character) => ({ character, line })))
+  // What each line was read as asking for, and what its words say.
+  const spoken = lines.flatMap((line) =>
+    [...new Set([...charactersIn(line.text), ...((('reading' in line && line.reading?.characters) || []) as AreaCharacter[])])].map((character) => ({ character, line })),
+  )
   const remembered = traitPreferences(input.snapshot).filter(
     (trait) => trait.trait === 'area_character' && trait.weight > 0,
   )

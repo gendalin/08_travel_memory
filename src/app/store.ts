@@ -5,7 +5,7 @@
  * and dispatch these actions; no component imports src/domain (§13.2).
  */
 
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import type { Plan } from '../domain/plan/types.ts'
 import type { Memory } from '../domain/memory/types.ts'
@@ -37,6 +37,8 @@ import {
   type StateDraft,
 } from '../application/editState/proposeStateEdit.ts'
 import { narrowProposal } from '../application/planning/narrowProposal.ts'
+import { furnishNamedPlaces, prepareStateEdit } from '../application/editState/prepareStateEdit.ts'
+import { fetchReadings, interpretationKey, resolveReadings, type RawReadings } from '../application/decompose/interpret.ts'
 import { explainValidationError, type ConflictOption } from '../application/planning/conflicts.ts'
 import { tagConsidering } from '../application/decompose/tagConsidering.ts'
 import type { EventFinder, EventSearchResult, FoundEvent } from '../services/events/types.ts'
@@ -146,6 +148,36 @@ function saying(doing: string, cause: unknown): string {
   return `Something went wrong while ${doing}. Try again.`
 }
 
+/**
+ * What a State save that moved nothing says, line by line (2026-10-01).
+ *
+ * "The itinerary still works as it stands" was said for every such save — including
+ * for a line nothing had understood. Each new or edited line now says what it was
+ * read as: a question when it could not be planned, a general wish when it only
+ * guides ranking, and plainly that nothing needed to change otherwise.
+ */
+function stateSavedNote(before: TripState, after: TripState, notes: string[]): string {
+  const fresh = after.considering.filter((item) => !before.considering.some((old) => old.id === item.id && old.text === item.text))
+  const unsure = fresh.filter((item) => item.question)
+  if (unsure.length > 0) {
+    return `Saved, but I'm not sure how to plan “${unsure[0].text}”: ${unsure[0].question}`
+  }
+  if (notes.length > 0) return `Saved, but the itinerary could not follow it. ${notes.join(' ')}`
+  const wishes = fresh.filter((item) => !item.tag)
+  if (wishes.length > 0 && wishes.length === fresh.length) {
+    return `Saved “${wishes[0].text}” as a general wish: it guides which places are chosen, and no stop needed to change for it.`
+  }
+  return 'Saved. No stop needed to change for this.'
+}
+
+/** Every line of a review or State draft, with which list it came from. */
+function draftLines(draft: { intent: Array<{ text: string }>; considering: Array<{ text: string }> }) {
+  return [
+    ...draft.intent.map((item) => ({ text: item.text.trim(), section: 'intent' as const })),
+    ...draft.considering.map((item) => ({ text: item.text.trim(), section: 'considering' as const })),
+  ].filter((line) => line.text)
+}
+
 export function useAppStore(deps: AppDeps) {
   /**
    * Storage, and what to say when there is none (Gate 8).
@@ -195,6 +227,27 @@ export function useAppStore(deps: AppDeps) {
   const [setupInput, setSetupInput] = useState<StageAInput | null>(null)
   const [conflicts, setConflicts] = useState<StateConflict[]>([])
   const [draft, setDraft] = useState<ReviewDraft | null>(null)
+  /** Model readings of the Stage B lines, keyed by `interpretationKey` (2026-10-01). */
+  const [reviewReadings, setReviewReadings] = useState<RawReadings>(new Map())
+  const saveDraftRef = useRef<((draft: StateDraft) => Promise<void>) | null>(null)
+  /** Every committed version of the plan, oldest first (2026-10-01). */
+  const [planHistory, setPlanHistory] = useState<Plan[]>([])
+  /**
+   * How each Stage B line reads, for the screen: resolved against the pre-loaded places,
+   * since the trip's own are not fetched until Generate. A line edited since it was read
+   * has no model reading, and shows the rules' reading until Generate reads it.
+   */
+  const reviewReadAs = useMemo(() => {
+    const out: Record<string, { readAs: string; question?: string }> = {}
+    if (!draft || !setupInput) return out
+    const lines = draftLines(draft)
+    const resolved = resolveReadings(lines, reviewReadings, {
+      catalogue: deps.catalogue,
+      days: tripDays(setupInput.startDate, setupInput.endDate),
+    })
+    for (const [key, read] of resolved) out[key] = { readAs: read.readAs, ...('question' in read && read.question ? { question: read.question } : {}) }
+    return out
+  }, [draft, setupInput, reviewReadings, deps.catalogue])
   const [acceptedPriority, setAcceptedPriority] = useState<string | undefined>()
 
   const [trip, setTrip] = useState<Trip | null>(null)
@@ -307,6 +360,21 @@ export function useAppStore(deps: AppDeps) {
       cancelled = true
     }
   }, [deps.bundledMemories, deps.now, repositories])
+
+  // The version history follows every commit: reloaded whenever the plan's version moves.
+  useEffect(() => {
+    let cancelled = false
+    if (!trip) {
+      setPlanHistory([])
+      return
+    }
+    void repositories.plans.history(trip.id).then((versions) => {
+      if (!cancelled) setPlanHistory(versions)
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [trip?.id, plan?.version, repositories])
 
   /**
    * The stops the last committed change put in place — marked "Updated" on the
@@ -450,6 +518,19 @@ export function useAppStore(deps: AppDeps) {
           setupInput.consideringText === input.consideringText
         const reviewDraft = unchanged && draft ? draft : await buildReviewDraft(input, llm)
 
+        // Each line read once, now, so Stage B can say how it was understood
+        // (2026-10-01). Kept raw: which places they resolve to is decided at Generate,
+        // against the places the trip actually gets.
+        setBusy('Understanding each line…')
+        const raw = await fetchReadings({
+          llm,
+          lines: draftLines(reviewDraft),
+          destination: DESTINATION,
+          startDate: input.startDate,
+          days: tripDays(input.startDate, input.endDate),
+        })
+        setReviewReadings(raw)
+
         setSetupInput(input)
         setDraft(reviewDraft)
         setScreen('review')
@@ -513,6 +594,28 @@ export function useAppStore(deps: AppDeps) {
         setBusy('Building your itinerary…')
       }
 
+      // Lines edited on Stage B were not read yet; read just those, then resolve every
+      // line against the trip's own places and furnish any day named for a place.
+      const lines = draftLines(draft)
+      const unread = lines.filter((line) => !reviewReadings.has(interpretationKey(line.section, line.text)))
+      const raw = new Map(reviewReadings)
+      if (unread.length > 0) {
+        for (const [key, reading] of await fetchReadings({ llm, lines: unread, destination: DESTINATION, startDate: frame.startDate, days })) raw.set(key, reading)
+      }
+      const interpretations = resolveReadings(lines, raw, { catalogue: tripCatalogue, days })
+      const furnished = await furnishNamedPlaces({
+        interpretations,
+        keys: lines.filter((line) => line.section === 'considering').map((line) => interpretationKey('considering', line.text)),
+        catalogue: tripCatalogue,
+        ...(snapshot ? { snapshot } : {}),
+        tripId,
+        destination: DESTINATION,
+        ...(deps.retrieval ? { retrieval: deps.retrieval } : {}),
+        at: createdAt,
+      })
+      tripCatalogue = furnished.catalogue
+      if (furnished.snapshot) snapshot = furnished.snapshot
+
       const { trip: newTrip, state: newState } = confirmReview({
         tripId,
         frame,
@@ -522,6 +625,7 @@ export function useAppStore(deps: AppDeps) {
         catalogue: tripCatalogue,
         ...(snapshot ? { catalogueSnapshot: snapshot } : {}),
         createdAt,
+        interpretations,
       })
 
       const { plan: newPlan, validation } = generateFirstPlan({
@@ -561,7 +665,7 @@ export function useAppStore(deps: AppDeps) {
     } finally {
       setBusy(null)
     }
-  }, [setupInput, draft, acceptedPriority, memories, deps, llm, repositories])
+  }, [setupInput, draft, acceptedPriority, memories, deps, llm, repositories, reviewReadings])
 
   /**
    * Chat -> proposal. The committed plan is untouched while a proposal is
@@ -583,7 +687,43 @@ export function useAppStore(deps: AppDeps) {
           setLifecycleNote('That replaces the suggestion I had open.')
         }
 
+        // The model reads the message first (2026-10-01); null means the rules route it.
+        const reading = await llm.interpretMessage({
+          message,
+          days: plan.days.length,
+          focusDay: selectedDay + 1,
+          stops: plan.days.flatMap((day) =>
+            day.items.map((item) => ({
+              day: day.dayIndex + 1,
+              time: item.startTime,
+              name: catalogue.get(item.placeId)?.name ?? item.placeId,
+              category: catalogue.get(item.placeId)?.category ?? '',
+              role: item.role ?? null,
+            })),
+          ),
+        })
+
+        if (reading?.action === 'unclear') {
+          setChat((entries) => [...entries, { id: nextId('msg'), from: 'agent', text: reading.question ?? 'Could you say that another way — which day, and what should change?' }])
+          return
+        }
+
+        // A new wish for this trip is a State edit: the same reading, locating, fetching,
+        // preview and confirmation as typing the line into State.
+        if (reading?.action === 'state_line' && reading.stateLine) {
+          const base = stateDraft ?? toStateDraft(state)
+          const line = { id: nextId(reading.section === 'intent' ? 'intent' : 'cons'), text: reading.stateLine }
+          const next: StateDraft = reading.section === 'intent'
+            ? { ...base, intent: [...base.intent, line] }
+            : { ...base, considering: [...base.considering, line] }
+          setChat((entries) => [...entries, { id: nextId('msg'), from: 'agent', text: `I'll add “${reading.stateLine}” to this trip — here is what it changes.` }])
+          setStateDraft(next)
+          await saveDraftRef.current?.(next)
+          return
+        }
+
         const outcome: ChatOutcome = await handleChatMessage({
+          reading,
           message,
           tripId: trip.id,
           frame: trip.frame,
@@ -621,7 +761,7 @@ export function useAppStore(deps: AppDeps) {
         setBusy(null)
       }
     },
-    [trip, state, plan, proposal, selectedDay, deps, repositories],
+    [trip, state, plan, proposal, selectedDay, deps, repositories, llm, catalogue, stateDraft],
   )
 
   /** Commits the pending proposal: State and Plan together, one Receipt (§9.1). */
@@ -767,17 +907,38 @@ export function useAppStore(deps: AppDeps) {
         setLifecycleNote('Your edit replaced the suggestion I had open.')
       }
 
+      // Read the new and edited lines, and fetch what a named day needs (2026-10-01).
+      setBusy('Reading your changes…')
+      const prepared = await prepareStateEdit({
+        llm,
+        draft: stateDraft,
+        state,
+        trip,
+        frame: trip.frame,
+        catalogue,
+        days: plan.days.length,
+        ...(deps.retrieval ? { retrieval: deps.retrieval } : {}),
+        at: deps.now().toISOString(),
+      })
+      let activeTrip = trip
+      if (prepared.snapshot) {
+        activeTrip = { ...trip, catalogueSnapshot: prepared.snapshot }
+        await repositories.trips.save(activeTrip)
+        setTrip(activeTrip)
+      }
+
       const outcome = proposeStateEdit({
         tripId: trip.id,
         frame: trip.frame,
         state,
         plan,
         draft: stateDraft,
-        catalogue,
+        catalogue: prepared.catalogue,
         now: deps.now(),
         proposalId: nextId('prop'),
         createdAt: deps.now().toISOString(),
         memorySnapshot: trip.memorySnapshot,
+        interpretations: prepared.interpretations,
       })
 
       if (outcome.kind === 'conflict') {
@@ -794,11 +955,7 @@ export function useAppStore(deps: AppDeps) {
         setStateDraft(toStateDraft(outcome.proposal.candidateState))
         // The itinerary did not move, so nothing on screen would otherwise
         // change — say so, rather than letting Save vanish silently.
-        setStateNote(
-          outcome.notes.length > 0
-            ? `Saved, but the itinerary could not follow it. ${outcome.notes.join(' ')}`
-            : 'Saved. The itinerary still works as it stands.',
-        )
+        setStateNote(stateSavedNote(state, outcome.proposal.candidateState, outcome.notes))
         return
       }
 
@@ -813,7 +970,10 @@ export function useAppStore(deps: AppDeps) {
     } finally {
       setBusy(null)
     }
-  }, [trip, state, plan, proposal, deps, repositories, commitPending, catalogue])
+  }, [trip, state, plan, proposal, deps, repositories, commitPending, catalogue, llm])
+
+  // Chat reaches the State save through this, since it is declared above it.
+  saveDraftRef.current = saveDraft
 
   const saveStateDraft = useCallback(async () => {
     if (stateDraft) await saveDraft(stateDraft)
@@ -948,8 +1108,8 @@ export function useAppStore(deps: AppDeps) {
     drawerOpen, openIndex, closeIndex,
     memories, activeMemoryCount, profileOpen,
     openProfile, closeProfile, confirmMemory, stopUsingMemory, forgetMemory, renameMemory,
-    draft, setDraft, acceptedPriority, setAcceptedPriority,
-    trip, state, plan, proposal, receipts, chat, catalogue,
+    draft, setDraft, acceptedPriority, setAcceptedPriority, reviewReadAs,
+    trip, state, plan, planHistory, proposal, receipts, chat, catalogue,
     selectedDay, setSelectedDay,
     selectedPlaceId, setSelectedPlaceId,
     submitSetup, generateItinerary, sendMessage, confirmChange, keepCurrent,

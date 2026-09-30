@@ -6,7 +6,7 @@ import type { Comparison } from './compare_eval_runs.ts'
 
 const TITLES: Record<string, string> = {
   M1: 'M1 Memory influence', M2: 'M2 State override', M3: 'M3 Candidate Memory',
-  H1: 'H1 Replace', H2: 'H2 Reorganize', H3: 'H3 Reframe', H4: 'H4 State edit', H5: 'H5 Conflict',
+  H1: 'H1 Replace', H2: 'H2 Reorganize', H3: 'H3 Reframe', H4: 'H4 State edit', H5: 'H5 Conflict', H6: 'H6 State edits as versions',
   R1: 'R1 Discovery/ranking', R2: 'R2 Diversity/feasibility',
 }
 
@@ -38,7 +38,7 @@ export function renderMarkdown(report: EvalReport, comparison: Comparison | null
     `P0: ${report.counts.P0}`, `P1: ${report.counts.P1}`, `P2: ${report.counts.P2}`, '',
     'Core summary:',
     `- Memory: ${summary(['M1', 'M2', 'M3'])}`,
-    `- Collaboration: ${summary(['H1', 'H2', 'H3', 'H4', 'H5'])}`,
+    `- Collaboration: ${summary(['H1', 'H2', 'H3', 'H4', 'H5', 'H6'])}`,
     `- Recommendation: ${summary(['R1', 'R2'])}`, '',
     '## 2. Scoreboard', '',
     '| Scenario | Correctness | Relevance | Explainability | Control | Efficiency | Total | Status |',

@@ -36,14 +36,14 @@ export function createPlaceCatalogue(places: DemoPlace[]): PlaceCatalogue {
   }
 }
 
-/** Validator view of the catalogue (placeId + openingHours only). */
+/** Validator view of the catalogue: id, hours, and where it is (for a day's place). */
 export function toValidationPlaces(
   catalogue: PlaceCatalogue,
-): Map<string, { placeId: string; openingHours?: Record<string, string> }> {
+): Map<string, { placeId: string; openingHours?: Record<string, string>; lat?: number; lng?: number }> {
   return new Map(
     catalogue.all().map((place) => [
       place.placeId,
-      { placeId: place.placeId, openingHours: place.openingHours },
+      { placeId: place.placeId, openingHours: place.openingHours, lat: place.lat, lng: place.lng },
     ]),
   )
 }

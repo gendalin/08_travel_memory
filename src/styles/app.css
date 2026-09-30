@@ -1413,3 +1413,22 @@ img.thumb {
 
 /* An area day (areaDays.ts): the neighbourhood the day is spent in. */
 .day-area { margin: 0 0 var(--space-2); font-size: var(--text-meta); color: var(--text-secondary, inherit); font-weight: 600; }
+
+/* How a State line was understood (2026-10-01). */
+.read-as { margin: var(--space-1) 0 0 var(--space-2); font-size: var(--text-meta); opacity: 0.75; }
+.read-as.unsure { opacity: 1; color: #8a4b00; }
+
+/* Two itinerary versions side by side (2026-10-01). Two narrow columns fit a phone. */
+.version-compare { margin-top: var(--space-3); display: grid; gap: var(--space-3); }
+.version-head, .version-day { display: grid; grid-template-columns: 3.5em 1fr 1fr; gap: var(--space-2); align-items: start; }
+.version-head { font-size: var(--text-meta); font-weight: 600; opacity: 0.7; }
+.version-day-label { font-size: var(--text-meta); font-weight: 600; padding-top: 2px; }
+.version-col { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; min-width: 0; }
+.version-stop { display: grid; grid-template-columns: 3em 1fr; gap: 4px; font-size: var(--text-meta); padding: 2px 4px; border-radius: 6px; min-width: 0; }
+.version-stop .name { overflow-wrap: anywhere; }
+.version-stop.changed { background: rgba(214, 160, 0, 0.16); }
+.version-stop.added { background: rgba(46, 150, 80, 0.16); }
+.version-stop.removed { background: rgba(200, 60, 60, 0.12); text-decoration: line-through; opacity: 0.8; }
+.version-area { font-size: var(--text-meta); font-style: italic; opacity: 0.75; }
+.version-same { font-size: var(--text-meta); opacity: 0.75; }
+.version-picker select { font: inherit; font-size: var(--text-meta); padding: 6px 8px; border-radius: 999px; border: 1px solid rgba(0,0,0,0.15); background: var(--surface); }

@@ -10,6 +10,7 @@
  * place (§14.2: "Bottom composer → expanded chat sheet").
  */
 
+import type { Plan } from '../../domain/plan/types.ts'
 import type { ChatEntry } from '../../app/store.ts'
 import type { Proposal } from '../../domain/proposals/types.ts'
 import type { Receipt } from '../../domain/receipts/types.ts'
@@ -29,6 +30,8 @@ interface Props {
   catalogue: PlaceCatalogue
   /** Stops in the committed plan, so a proposal can say how many it leaves alone. */
   stopsInPlan: number
+  /** The committed plan, for the side-by-side comparison. */
+  currentPlan?: Plan
   onSend: (message: string) => void
   onConfirm: (declinedUnitIds: string[]) => void
   onKeep: () => void
@@ -37,7 +40,7 @@ interface Props {
 }
 
 export function ChatSheet({
-  entries, proposal, receipts, conflict, lifecycleNote, busy, error, catalogue, stopsInPlan,
+  entries, proposal, receipts, conflict, lifecycleNote, busy, error, catalogue, stopsInPlan, currentPlan,
   onSend, onConfirm, onKeep, onDismissConflict, onClose,
 }: Props) {
   return (
@@ -89,6 +92,7 @@ export function ChatSheet({
             proposal={proposal}
             catalogue={catalogue}
             stopsInPlan={stopsInPlan}
+            {...(currentPlan ? { currentPlan } : {})}
             busy={busy}
             onConfirm={onConfirm}
             onKeep={onKeep}

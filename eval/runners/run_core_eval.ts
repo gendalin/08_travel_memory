@@ -15,7 +15,7 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSy
 import { join, relative } from 'node:path'
 
 import { runM1, runM2, runM3, m1Memory, m1AreaMemory } from '../scenarios/memory.ts'
-import { runH1, runH2, runH3, runH4, runH5 } from '../scenarios/collaboration.ts'
+import { runH1, runH2, runH3, runH4, runH5, runH6 } from '../scenarios/collaboration.ts'
 import { runR1, runR2, type RecommendationRun } from '../scenarios/recommendation.ts'
 import { issuesOf } from '../judges/scenario_judge.ts'
 import { judgeMemory } from '../judges/memory_judge.ts'
@@ -145,6 +145,7 @@ async function main() {
   if (want('H3')) scenarios.push(await safely('H3', runH3))
   if (want('H4')) scenarios.push(await safely('H4', runH4))
   if (want('H5')) scenarios.push(await safely('H5', runH5))
+  if (want('H6')) scenarios.push(await safely('H6', runH6))
   if (want('R1')) scenarios.push(await safely('R1', async () => (r1 = await runR1(runId)).result))
   if (want('R2')) scenarios.push(await safely('R2', async () => (r2 = await runR2(runId)).result))
   for (const scenario of scenarios) console.log(`[eval] ${scenario.id} ${scenario.total}/10 ${scenario.status}${scenario.error ? ` ERROR ${scenario.error}` : ''}`)
@@ -247,6 +248,7 @@ async function main() {
     recommendation, issues, failureCategoryCounts,
     traces: [r1?.traceDir, r2?.traceDir].filter((dir): dir is string => dir !== undefined),
     scenarioChanges: [
+      'H6 added (2026-10-01): a Considering line added or removed updates the itinerary as a previewed, versioned change; unreadable lines are said to be so.',
       ...(process.env.EVAL_R1_CATALOGUE ? [`R1 scored on a LIVE discovery run: ${process.env.EVAL_R1_CATALOGUE} (live_discovery.ts, R1 brief, code wording, lodging + area searches). R2 still uses demo_retrieved_v1.`] : []),
       'R1 (2026-09-30): adds discovered_area_planned (a stop in a discovered area, not only in the pool) and every_day_anchored (no required role unfilled).',
       'R1 slow_pace (2026-09-30, user definition): "slow" is judged by moves (> 1 km hops) ≤ 1 and walkable areas ≤ 2 per day, no longer by stops per day ≤ 4.',

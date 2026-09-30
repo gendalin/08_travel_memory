@@ -11,7 +11,7 @@
  */
 
 import { LlmRequestError, LlmShapeError, retryableStatus } from './errors.ts'
-import { readDecomposedState, readQueryPlan, readReplacementChoice } from './validate.ts'
+import { readDecomposedState, readLineReadings, readMessageReading, readQueryPlan, readReplacementChoice } from './validate.ts'
 import type { LlmService } from './types.ts'
 
 async function postJson<T>(input: {
@@ -96,5 +96,11 @@ export function createHttpLlm(baseUrl = '/api'): LlmService {
           allowedCategories: [...input.allowedCategories],
         },
       }),
+
+    interpretLines: (input) =>
+      postJson({ path: `${baseUrl}/interpret-lines`, what: 'your notes', read: readLineReadings, body: input }),
+
+    interpretMessage: (input) =>
+      postJson({ path: `${baseUrl}/interpret-message`, what: 'your message', read: readMessageReading, body: input }),
   }
 }

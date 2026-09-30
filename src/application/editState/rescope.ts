@@ -34,6 +34,7 @@ import {
   placedByOf,
   toMinutes,
   type Plan,
+  type PlanDay,
   type PlanItem,
   type SlateEntry,
 } from '../../domain/plan/types.ts'
@@ -56,7 +57,7 @@ import {
   slateFrom,
 } from '../planning/rankCandidates.ts'
 import { keepsPace, movementBudgetOf, preferWithinPace } from '../planning/movementBudget.ts'
-import { preferInArea } from '../planning/areaDays.ts'
+import { inArea, preferInArea } from '../planning/areaDays.ts'
 import { measureMovement, withinBudget } from '../../domain/plan/movement.ts'
 import { budgetOf, slotCategories } from '../planning/tripContext.ts'
 
@@ -157,6 +158,8 @@ function bestFor(
   budgetYields = false,
   /** Rank from here instead of the stop before — the venue, for a stop around an event. */
   anchorPlaceId?: string,
+  /** Somewhere the stop should no longer be — a day in a town that was taken away. */
+  awayFrom?: { center: { lat: number; lng: number }; radiusKm: number },
 ): { ranked: Array<ScoredPlace<DemoPlace>>; winner: ScoredPlace<DemoPlace> } | undefined {
   const role = item.role ? roleById(item.role) : undefined
   const weekday = weekdayOf(ctx.frame, item.dayIndex)
@@ -190,7 +193,8 @@ function bestFor(
     })
   // An area day's stop is re-chosen in that neighbourhood first (areaDays.ts).
   const area = item.role !== 'nightcap' ? plan.days.find((day) => day.dayIndex === item.dayIndex)?.area : undefined
-  const candidates = preferWithinPace(preferInArea(allowed, area), sameDay, item.startTime, movementBudgetOf(ctx.after)?.budget).candidates
+  const outside = awayFrom ? allowed.filter((place) => !inArea(place, awayFrom)) : allowed
+  const candidates = preferWithinPace(preferInArea(outside.length > 0 ? outside : allowed, area), sameDay, item.startTime, movementBudgetOf(ctx.after)?.budget).candidates
 
   const ranked = rankCandidates(candidates, ranking)
   return ranked[0] ? { ranked, winner: ranked[0] } : undefined
@@ -281,6 +285,14 @@ function unitFor(ctx: Context, before: PlanItem, after: PlanItem, reason: string
     removeItemIds: [],
     putItems: [after],
   }
+}
+
+/** Tags `before` had that `after` no longer has, compared by value (2026-10-01). */
+function removed(before: TripState, after: TripState): Array<{ tag: ConsideringTag; itemId: string; text: string }> {
+  const still = new Set(after.considering.map((item) => item.tag).filter(Boolean).map((tag) => JSON.stringify(tag)))
+  return before.considering
+    .filter((item) => item.tag && !still.has(JSON.stringify(item.tag)))
+    .map((item) => ({ tag: item.tag!, itemId: item.id, text: item.text }))
 }
 
 /** Tags in `after` that `before` did not have, compared by value. */
@@ -516,6 +528,116 @@ export function rescopePlan(input: {
     }
   }
 
+  const drop = (item: PlanItem, reason: string, required: boolean) => {
+    plan = { ...plan, days: plan.days.map((day) => ({ ...day, items: day.items.filter((entry) => entry.id !== item.id) })) }
+    touched.add(item.id)
+    units.push({
+      id: `unit_drop_${item.id}`,
+      summary: `${stopLabel(ctx, item)} → out`,
+      reason,
+      required,
+      removeItemIds: [item.id],
+      putItems: [],
+    })
+  }
+  const setArea = (dayIndex: number, area: PlanDay['area'] | undefined) => {
+    plan = {
+      ...plan,
+      days: plan.days.map((day) => {
+        if (day.dayIndex !== dayIndex) return day
+        const { area: _old, ...rest } = day
+        return area ? { ...rest, area } : rest
+      }),
+    }
+  }
+
+  // --- 0b. "Go to Yokohama on the last day" — the whole day, around the place --
+  //
+  // Every stop that day is re-chosen there, and the late "one more" goes: a day out
+  // ends with dinner. What the traveller fixed (named, booked, locked) stays. A place
+  // never located is left to the validator, which reports it against the sentence.
+  for (const { tag, itemId, text } of newTags) {
+    if (tag.kind !== 'day_in_place' || !tag.place.center) continue
+    const area = { id: tag.place.areaId ?? `named_${tag.place.name.toLowerCase().replace(/\W+/g, '_')}`, name: tag.place.name, center: tag.place.center, radiusKm: tag.place.radiusKm ?? 1.5 }
+    setArea(tag.dayIndex, area)
+    const reason = `Day ${tag.dayIndex + 1} is spent in ${area.name}, as you asked: “${text}”.`
+    const day = [...(plan.days.find((entry) => entry.dayIndex === tag.dayIndex)?.items ?? [])].sort((a, b) => a.startTime.localeCompare(b.startTime))
+    for (const item of day.filter((entry) => entry.role === 'nightcap')) {
+      if (reChoosable(item, 'violation')) drop(item, `A day in ${area.name} ends with dinner.`, true)
+    }
+    for (const item of day.filter((entry) => entry.role !== 'nightcap')) {
+      if (!reChoosable(item, 'violation')) continue
+      const found = bestFor(ctx, plan, item)
+      if (!found || !inArea(found.winner.place, area)) {
+        noReplacement(item, `nothing in ${area.name} is open then`)
+        continue
+      }
+      apply(item, swapped(ctx, plan, item, found, { text: reason, stateItemIds: [itemId], unitReason: reason }, 'ranking'), reason, true)
+    }
+  }
+
+  // --- 0c. A line taken away — what it had put in place is re-chosen --------------
+  //
+  // Loosening a constraint never makes a plan invalid, so it used to change nothing:
+  // delete "must visit Nezu" and Nezu stayed. Each removal now undoes what its line
+  // had done, as changes the traveller can decline; a removed avoid, budget or pace
+  // opens the degree pass below, which swaps only what now clearly fits better.
+  let loosened: { text: string; itemId: string } | undefined
+  // An edited line is a removal and an addition of the same thing: "must visit Nezu"
+  // becoming "must visit Nezu on Day 3" still pins Nezu, and the addition has already
+  // moved it. A removal only undoes what nothing in the new State still asks for.
+  const afterTags = input.after.considering.flatMap((item) => (item.tag ? [item.tag] : []))
+  const stillAsked = (tag: ConsideringTag) =>
+    afterTags.some((other) =>
+      (tag.kind === 'must_visit' && other.kind === 'must_visit' && other.placeId === tag.placeId) ||
+      (tag.kind === 'day_in_place' && other.kind === 'day_in_place' && other.dayIndex === tag.dayIndex) ||
+      (tag.kind === 'slot_category' && other.kind === 'slot_category' && other.dayIndex === tag.dayIndex && other.role === tag.role),
+    )
+  for (const { tag, text, itemId } of removed(input.before, input.after)) {
+    if (stillAsked(tag)) continue
+    switch (tag.kind) {
+      case 'day_in_place': {
+        setArea(tag.dayIndex, undefined)
+        const reason = `Day ${tag.dayIndex + 1} is an ordinary day again — “${text}” was removed.`
+        const away = tag.place.center ? { center: tag.place.center, radiusKm: tag.place.radiusKm ?? 1.5 } : undefined
+        const ordered = [...(plan.days.find((day) => day.dayIndex === tag.dayIndex)?.items ?? [])].sort((a, b) => a.startTime.localeCompare(b.startTime))
+        for (const item of ordered) {
+          if (!reChoosable(item, 'violation')) continue
+          const found = bestFor(ctx, plan, item, undefined, false, ctx.frame.baseLodging.placeId, away)
+          if (!found || found.winner.place.placeId === item.placeId) continue
+          apply(item, swapped(ctx, plan, item, found, { text: reason, stateItemIds: [], unitReason: reason }, 'ranking'), reason, false)
+        }
+        break
+      }
+      case 'must_visit': {
+        // The place the pin put in the plan, however the stop records it.
+        const item = allItems(plan).find((entry) => entry.placeId === tag.placeId && (placedByOf(entry) === 'must_visit' || tag.dayIndex === undefined || entry.dayIndex === tag.dayIndex))
+        if (!item || ctx.locked.has(item.id)) break
+        const name = ctx.catalogue.get(item.placeId)?.name ?? item.placeId
+        if (!item.role) {
+          drop(item, `${name} was only here because you asked for it by name.`, false)
+          break
+        }
+        const found = bestFor(ctx, plan, item)
+        if (!found) break
+        const reason = `${name} is no longer pinned, so this slot is chosen again.`
+        apply(item, swapped(ctx, plan, item, found, { text: reason, stateItemIds: [], unitReason: reason }, 'ranking'), reason, false)
+        break
+      }
+      case 'slot_category': {
+        const item = plan.days.find((day) => day.dayIndex === tag.dayIndex)?.items.find((entry) => entry.role === tag.role)
+        if (!item || !reChoosable(item, 'explicit')) break
+        const found = bestFor(ctx, plan, item)
+        if (!found || found.winner.place.placeId === item.placeId) break
+        const reason = `Day ${tag.dayIndex + 1} ${tag.role} is open again — “${text}” was removed.`
+        apply(item, swapped(ctx, plan, item, found, { text: reason, stateItemIds: [], unitReason: reason }, 'ranking'), reason, false)
+        break
+      }
+      default:
+        loosened ??= { text, itemId }
+    }
+  }
+
   // --- 1. "Day 2 dinner: sushi" — the one slot, nothing else ------------------
   for (const { tag, itemId, text } of newTags) {
     if (tag.kind !== 'slot_category') continue
@@ -650,9 +772,11 @@ export function rescopePlan(input: {
   const beforeWeights = weightOf(input.before)
   const changedPriorities = input.after.priorities.filter((priority) => beforeWeights.get(priority.name) !== priority.weight)
 
-  if (newIntent.length > 0 || removedIntent || changedPriorities.length > 0) {
+  if (newIntent.length > 0 || removedIntent || changedPriorities.length > 0 || loosened) {
     const because =
-      newIntent.length > 0
+      loosened && newIntent.length === 0 && changedPriorities.length === 0
+        ? { text: `Fits better now that “${loosened.text}” is gone`, ids: [] as string[] }
+        : newIntent.length > 0
         ? { text: `Fits “${newIntent[0].text}” better`, ids: newIntent.map((item) => item.id) }
         : changedPriorities.length > 0
           ? {

@@ -142,6 +142,7 @@ export function PlanScreen({ store, catalogue }: Props) {
       {sheet === 'itinerary' && !store.chatOpen && (
         <ItinerarySheet
           plan={plan}
+          history={store.planHistory}
           catalogue={catalogue}
           memorySnapshot={trip.memorySnapshot}
           tripName={trip.frame.name}
@@ -194,6 +195,7 @@ export function PlanScreen({ store, catalogue }: Props) {
           error={store.error}
           catalogue={catalogue}
           stopsInPlan={allItems(plan).length}
+          currentPlan={plan}
           onSend={store.sendMessage}
           onConfirm={store.confirmChange}
           onKeep={store.keepCurrent}

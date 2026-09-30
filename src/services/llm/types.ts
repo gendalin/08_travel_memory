@@ -76,7 +76,105 @@ export interface QueryPlanResult {
   alsoSearch: string[]
 }
 
+/**
+ * What one line of the traveller's own words asks of the plan (2026-10-01).
+ *
+ * The model's reading, in a closed vocabulary. It names a KIND of instruction and
+ * the words it hangs on ("Yokohama", "last"); code turns those into a day index, a
+ * place, a category — so a model can misunderstand a sentence, but cannot invent a
+ * place id or a day the trip does not have.
+ */
+export type LineKind =
+  | 'must_visit'
+  | 'day_in_place'
+  | 'avoid'
+  | 'budget'
+  | 'pace'
+  | 'finish_by'
+  | 'half_day'
+  | 'free_time'
+  | 'slot_meal'
+  | 'event'
+  | 'transport'
+  | 'theme'
+  | 'unclear'
+
+export interface LineReading {
+  id: string
+  kind: LineKind
+  /** 1-based day number, or the words "first" / "last". */
+  day: number | 'first' | 'last' | null
+  /** A place or area, as the traveller named it. */
+  place: string | null
+  /** An interest category id, for a meal or an avoid. */
+  category: string | null
+  meal: 'lunch' | 'dinner' | 'nightcap' | null
+  /** HH:MM. */
+  time: string | null
+  minutes: number | null
+  budget: 'low' | 'moderate' | 'high' | null
+  /** What to avoid: a category id, or "crowds". */
+  avoid: string | null
+  activity: string | null
+  pace: 'slow' | 'normal' | 'packed' | null
+  /** Area characters (areas.ts) an Intent line asks for. */
+  characters: string[]
+  /** For `unclear`: one short question that would settle it. */
+  question: string | null
+}
+
+export interface LinesRequest {
+  destination: string
+  days: number
+  startDate: string
+  lines: ReadonlyArray<{ id: string; text: string; section: 'intent' | 'considering' }>
+  allowedCategories: readonly string[]
+  allowedCharacters: readonly string[]
+}
+
+/** What a chat message asks for (2026-10-01). */
+export type MessageAction =
+  | 'replace_stop'
+  | 'weather'
+  | 'finish_by'
+  | 'lighter'
+  | 'preference'
+  | 'state_line'
+  | 'unclear'
+
+export interface MessageReading {
+  action: MessageAction
+  day: number | 'first' | 'last' | 'today' | null
+  /** Words that identify the stop: its name, its kind, or its meal. */
+  stop: string | null
+  time: string | null
+  /** For a preference: +1 likes, -1 dislikes. */
+  polarity: 1 | -1 | null
+  /** A line to add to State, in the traveller's words, for `state_line`. */
+  stateLine: string | null
+  section: 'intent' | 'considering' | null
+  /** For `unclear`: one short question back. */
+  question: string | null
+}
+
+export interface MessageRequest {
+  message: string
+  days: number
+  /** 1-based day the traveller is looking at. */
+  focusDay: number | null
+  stops: ReadonlyArray<{ day: number; time: string; name: string; category: string; role: string | null }>
+}
+
 export interface LlmService {
+  /**
+   * Readings for lines of Intent / Considering. May return fewer readings than lines,
+   * or none: a line without one is read by rules.
+   */
+  interpretLines(input: LinesRequest): Promise<{ readings: LineReading[] }>
+
+  /** A reading of one chat message, or null to let the rules route it. */
+  interpretMessage(input: MessageRequest): Promise<MessageReading | null>
+
   decomposeTripState(input: {
     intentText: string
     consideringText: string

@@ -1185,6 +1185,26 @@ Cost is simplified:
 
 Do not display detailed day cost ranges unless backed by reliable data.
 
+## 7.5b Reading the traveller's words (decided 2026-10-01)
+
+Every piece of free text — the Stage A notes, each Intent and Considering line, and
+every chat message — is read by the model into a closed vocabulary of instructions
+(must-visit, a day in a place, avoid, budget, pace, finish by, half day, free time, a
+meal, an event, transport, a general wish, or "unclear" with one question back). The
+model names the KIND and the words; code decides the rest: which day ("last", "禮拜三"),
+which place (the trip's own places, then the area table, then a geocode — never a place
+the model named on its own), which category (taxonomy ids only). An invalid reading is
+treated as unread. With no model (offline, stub, service down) the rules read the line.
+
+Each line shows how it was read ("Read as: Day 5 → a day in Yokohama"), or the question
+when it could not be planned. A line is read once, when added or edited.
+
+Adding OR removing a line updates the itinerary through the same path: a day named for
+a place is re-planned there (fetching places there on a live run), a removed pin or
+named day is undone, a removed limit re-ranks what now clearly fits better. Each is a
+previewed Reframe; on confirmation the plan becomes a new version, and every version
+is kept so any two can be compared side by side.
+
 ## 7.6 User direct State edit
 
 A State edit touches only the stops it affects (revised 2026-09-29), and is always

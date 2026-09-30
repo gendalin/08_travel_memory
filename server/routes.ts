@@ -6,7 +6,7 @@
 import type { IncomingMessage, ServerResponse } from 'node:http'
 
 import { MissingEnvError } from '../scripts/preprocess/env.ts'
-import { chooseReplacement, decomposeTripState, planQueries } from './openai.ts'
+import { chooseReplacement, decomposeTripState, interpretLines, interpretMessage, planQueries } from './openai.ts'
 import { geocodeLodging, photoMedia, searchMany } from './places.ts'
 import { findEvents } from './events.ts'
 
@@ -93,6 +93,16 @@ export async function handleApiRequest(
 
     if (url.startsWith('/api/replacement')) {
       sendJson(res, 200, await chooseReplacement(payload))
+      return true
+    }
+
+    if (url.startsWith('/api/interpret-lines')) {
+      sendJson(res, 200, await interpretLines(payload))
+      return true
+    }
+
+    if (url.startsWith('/api/interpret-message')) {
+      sendJson(res, 200, await interpretMessage(payload))
       return true
     }
 

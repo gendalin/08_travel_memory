@@ -13,6 +13,7 @@
 
 import type { DayRoleId } from '../../domain/plan/dayRoles.ts'
 import { CATEGORIES } from '../../domain/places/taxonomy.ts'
+import { findArea } from '../../domain/places/areas.ts'
 import type { ConsideringTag } from '../../domain/state/types.ts'
 import type { PlaceCatalogue } from '../../services/places/types.ts'
 
@@ -37,6 +38,22 @@ const BUDGET = /\bbudget\b|\bspend\b|\bcheap\b|\bsplurge\b/i
 const AVOID = /\b(?:avoid|skip|stay away from|no more)\s+(?:the\s+)?(.+)/i
 
 const DAY = /\bday\s*(\d+)/i
+const LAST_DAY = /\b(?:the\s+)?(?:last|final)\s+day\b|最後一天|最后一天|最終日/i
+const FIRST_DAY = /\b(?:the\s+)?first\s+day\b|第一天|初日/i
+const CJK_DAY = /第\s*(\d+)\s*天|(\d+)\s*日目/
+
+/**
+ * A whole day somewhere: "go to Yokohama on the last day", "Day 5: Kamakura",
+ * "最後一天去橫濱" (2026-10-01). The rules' reading, used when no model reading is
+ * available; a model reads far more ways of saying it.
+ */
+const DAY_IN_PLACE = [
+  /\b(?:go(?:ing)? to|visit|head to|spend (?:a |the )?day in|day[-\s]trip to|trip to)\s+(?:the\s+)?(.+?)\s+(?:on|for)\s+(?:the\s+)?(?:day\s*\d+|(?:last|final|first)\s+day)\b/i,
+  /^\s*day\s*\d+\s*[:：\-–]\s*(.+?)\s*$/i,
+  /(?:最後一天|最后一天|第\s*\d+\s*天|第一天)\s*(?:去|到|在)\s*(.+?)\s*$/,
+]
+
+const SLOW = /\b(?:slow|slowly|slower|slow-paced|unhurried|leisurely|relaxed|take it easy|no rush)\b|慢慢|悠閒|悠哉|ゆっくり|のんびり/i
 const NO_TAXI = /\bno (?:taxis?|cabs?)\b|\bwithout (?:a )?(?:taxi|cab)\b|\b(?:avoid|skip) (?:taxis?|cabs?)\b|不(?:搭|坐)計程車|タクシーなし/i
 
 /** The part of a day a sentence names. Meals only: they are what a traveller swaps. */
@@ -81,9 +98,15 @@ function slotCategory(text: string, dayIndex: number | undefined): ConsideringTa
   return category ? { kind: 'slot_category', dayIndex, role, category: category.id } : undefined
 }
 
-function dayIndexIn(text: string): number | undefined {
+/** The day a sentence names: "Day 3", "the last day", "第3天". `days` resolves "last". */
+export function dayIndexIn(text: string, days?: number): number | undefined {
   const match = text.match(DAY)
-  return match ? Number(match[1]) - 1 : undefined
+  if (match) return Number(match[1]) - 1
+  const cjk = text.match(CJK_DAY)
+  if (cjk) return Number(cjk[1] ?? cjk[2]) - 1
+  if (LAST_DAY.test(text) && days !== undefined) return days - 1
+  if (FIRST_DAY.test(text)) return 0
+  return undefined
 }
 
 /** "3", "3" + "pm", "15" + ":00" -> "HH:MM". */
@@ -105,7 +128,7 @@ function budgetLevel(text: string): 'low' | 'moderate' | 'high' | undefined {
 /** Strips the trailing prose a place name is usually buried in. */
 function placePhrase(raw: string): string {
   return raw
-    .replace(/\b(on|during|for)\s+day\s*\d+.*$/i, '')
+    .replace(/\b(on|during|for)\s+(?:the\s+)?(?:day\s*\d+|(?:last|final|first)\s+day).*$/i, '')
     .replace(/[.!?,;]+\s*$/, '')
     .replace(/\s+at some point$/i, '')
     .trim()
@@ -171,8 +194,37 @@ export function resolvePlaceByName(phrase: string, catalogue: PlaceCatalogue): s
   return overlapping[0]?.placeId
 }
 
-export function tagConsidering(text: string, catalogue: PlaceCatalogue): ConsideringTag | undefined {
-  const dayIndex = dayIndexIn(text)
+/**
+ * A named place for a day: the trip's own place pinned to that day, a known area or
+ * day-trip town, or — unresolved — the name, for the caller to geocode or report.
+ */
+export function placeForDay(phrase: string, dayIndex: number, catalogue: PlaceCatalogue): ConsideringTag {
+  const cleaned = placePhrase(phrase)
+  const asArea = (area: NonNullable<ReturnType<typeof findArea>>): ConsideringTag => ({
+    kind: 'day_in_place', dayIndex, place: { name: area.name, center: area.center, radiusKm: area.radiusKm, areaId: area.id },
+  })
+  // A town named outright is the town, even if a shop's name contains it.
+  const town = findArea(cleaned, { exact: true })
+  const exactPlace = catalogue.all().find((place) => normalise(place.name) === normalise(cleaned))
+  if (exactPlace) return { kind: 'must_visit', placeId: exactPlace.placeId, dayIndex }
+  if (town) return asArea(town)
+  const placeId = resolvePlaceByName(cleaned, catalogue)
+  if (placeId) return { kind: 'must_visit', placeId, dayIndex }
+  const area = findArea(cleaned)
+  return area
+    ? { kind: 'day_in_place', dayIndex, place: { name: area.name, center: area.center, radiusKm: area.radiusKm, areaId: area.id } }
+    : { kind: 'day_in_place', dayIndex, place: { name: cleaned } }
+}
+
+export function tagConsidering(text: string, catalogue: PlaceCatalogue, days?: number): ConsideringTag | undefined {
+  const dayIndex = dayIndexIn(text, days)
+
+  if (dayIndex !== undefined && !SLOT_WORDS.some(([pattern]) => pattern.test(text)) && !MUST_VISIT.test(text)) {
+    for (const pattern of DAY_IN_PLACE) {
+      const match = text.match(pattern)
+      if (match?.[1]) return placeForDay(match[1], dayIndex, catalogue)
+    }
+  }
 
   const mustVisit = text.match(MUST_VISIT)
   if (mustVisit) {
@@ -221,6 +273,8 @@ export function tagConsidering(text: string, catalogue: PlaceCatalogue): Conside
     if (value.length >= 3) return { kind: 'avoid', value }
   }
 
+  if (SLOW.test(text)) return { kind: 'pace', style: 'slow' }
+
   return undefined
 }
 
@@ -228,6 +282,7 @@ export function tagConsidering(text: string, catalogue: PlaceCatalogue): Conside
 export function tagAll<T extends { text: string; tag?: ConsideringTag }>(
   items: T[],
   catalogue: PlaceCatalogue,
+  days?: number,
 ): T[] {
-  return items.map((item) => ({ ...item, tag: tagConsidering(item.text, catalogue) }))
+  return items.map((item) => ({ ...item, tag: tagConsidering(item.text, catalogue, days) }))
 }

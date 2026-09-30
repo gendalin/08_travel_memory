@@ -202,3 +202,131 @@ ${input.searches.map((search) => `- ${search.category}${search.preferred ? ' (th
     'query_plan',
   )
 }
+
+// --- reading the traveller's own words (2026-10-01) ---------------------------------
+
+const nullable = (schema: Record<string, unknown>) => ({ anyOf: [schema, { type: 'null' }] })
+
+function linesSchema(categories: readonly string[], characters: readonly string[]) {
+  return {
+    type: 'object',
+    additionalProperties: false,
+    required: ['readings'],
+    properties: {
+      readings: {
+        type: 'array',
+        items: {
+          type: 'object',
+          additionalProperties: false,
+          required: ['id', 'kind', 'day', 'place', 'category', 'meal', 'time', 'minutes', 'budget', 'avoid', 'activity', 'pace', 'characters', 'question'],
+          properties: {
+            id: { type: 'string' },
+            kind: { type: 'string', enum: ['must_visit', 'day_in_place', 'avoid', 'budget', 'pace', 'finish_by', 'half_day', 'free_time', 'slot_meal', 'event', 'transport', 'theme', 'unclear'] },
+            day: { anyOf: [{ type: 'integer' }, { type: 'string', enum: ['first', 'last'] }, { type: 'null' }] },
+            place: nullable({ type: 'string' }),
+            category: nullable({ type: 'string', enum: [...categories] }),
+            meal: nullable({ type: 'string', enum: ['lunch', 'dinner', 'nightcap'] }),
+            time: nullable({ type: 'string' }),
+            minutes: nullable({ type: 'integer' }),
+            budget: nullable({ type: 'string', enum: ['low', 'moderate', 'high'] }),
+            avoid: nullable({ type: 'string' }),
+            activity: nullable({ type: 'string', enum: ['baseball', 'sumo', 'football', 'concert', 'kabuki', 'festival'] }),
+            pace: nullable({ type: 'string', enum: ['slow', 'normal', 'packed'] }),
+            characters: { type: 'array', items: { type: 'string', enum: [...characters] } },
+            question: nullable({ type: 'string' }),
+          },
+        },
+      },
+    },
+  }
+}
+
+export async function interpretLines(input: {
+  destination: string
+  days: number
+  startDate: string
+  lines: Array<{ id: string; text: string; section: 'intent' | 'considering' }>
+  allowedCategories: string[]
+  allowedCharacters: string[]
+}) {
+  if (!input.lines?.length) return { readings: [] }
+  return structured<{ readings: unknown[] }>(
+    `You read a traveller's notes for a ${input.days}-day trip to ${input.destination} starting ${input.startDate}.
+Each line is in any language. For EACH line return one reading with its id, saying what the line asks of the itinerary.
+
+kind:
+- must_visit: a specific place they want to go to (place = its name; day if they named one)
+- day_in_place: spend a (whole or main part of a) day in a town or neighbourhood, e.g. "go to Yokohama on the last day" (place = the town, day)
+- avoid: something to stay away from (avoid = a category id from the list, or "crowds" for busy/touristy places)
+- budget: a spending level
+- pace: how busy the days should be (pace = slow | normal | packed)
+- finish_by: be done or back by a time on a day (time HH:MM 24h, day)
+- half_day: a day that should be only half a day (day)
+- free_time: a block of free time on a day (minutes, day)
+- slot_meal: a kind of food for one meal on one day (meal, category, day)
+- event: a live event to attend (activity)
+- transport: a way of getting around they rule out (e.g. no taxis)
+- theme: a general interest or mood that does not change a specific day (use characters for neighbourhood atmosphere: showa, literary, vintage, …)
+- unclear: you cannot tell; put ONE short question in the traveller's language in question
+
+Rules:
+- day is the 1-based day number, or "first" / "last" when they said so. Never guess a day they did not give.
+- Only copy place names they wrote. Never invent or translate a place into another.
+- Intent lines are usually theme or pace. Use characters for any neighbourhood atmosphere they describe.
+- Every field not relevant to the kind is null (characters: []).`,
+    JSON.stringify({ lines: input.lines.map(({ id, text, section }) => ({ id, section, text })) }),
+    linesSchema(input.allowedCategories, input.allowedCharacters),
+    'line_readings',
+  )
+}
+
+const MESSAGE_SCHEMA = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['reading'],
+  properties: {
+    reading: {
+      type: 'object',
+      additionalProperties: false,
+      required: ['action', 'day', 'stop', 'time', 'polarity', 'stateLine', 'section', 'question'],
+      properties: {
+        action: { type: 'string', enum: ['replace_stop', 'weather', 'finish_by', 'lighter', 'preference', 'state_line', 'unclear'] },
+        day: { anyOf: [{ type: 'integer' }, { type: 'string', enum: ['first', 'last', 'today'] }, { type: 'null' }] },
+        stop: nullable({ type: 'string' }),
+        time: nullable({ type: 'string' }),
+        polarity: nullable({ type: 'integer', enum: [1, -1] }),
+        stateLine: nullable({ type: 'string' }),
+        section: nullable({ type: 'string', enum: ['intent', 'considering'] }),
+        question: nullable({ type: 'string' }),
+      },
+    },
+  },
+}
+
+export async function interpretMessage(input: {
+  message: string
+  days: number
+  focusDay: number | null
+  stops: Array<{ day: number; time: string; name: string; category: string; role: string | null }>
+}) {
+  return structured<{ reading: unknown }>(
+    `You read one chat message a traveller sends about their ${input.days}-day itinerary, in any language, and say what it asks for.
+
+action:
+- replace_stop: one stop cannot happen or they want a different one (closed, sold out, don't like it). stop = words naming it (its name, kind or meal), day if given.
+- weather: rain, snow, heat or storm from a time (time HH:MM 24h, or null for all day), day.
+- finish_by: they need to be done / back by a time (time, day).
+- lighter: they are tired or want fewer or easier stops (day if they said today / a day, else null for the whole trip).
+- preference: a statement about themselves that holds beyond this trip ("I never enjoy crowded places"). polarity 1 likes / -1 dislikes.
+- state_line: a new wish or rule for THIS trip that is not one of the above ("let's do Yokohama on the last day", "add a sento somewhere"). stateLine = the wish as a short line in their words, section = considering for concrete constraints, intent for moods/themes.
+- unclear: you cannot tell; question = ONE short question back in their language.
+
+day: 1-based number, "first", "last", or "today"; null only if no day or time of day is referred to at all.
+- "today", "今天", "今日", "this afternoon", "tonight" → "today". A weekday name → that day's number.
+- The traveller is looking at day ${input.focusDay ?? 'none'}.
+Only use stop names from the itinerary or the traveller's own words. Never invent places.`,
+    JSON.stringify({ message: input.message, itinerary: input.stops }),
+    MESSAGE_SCHEMA,
+    'message_reading',
+  )
+}

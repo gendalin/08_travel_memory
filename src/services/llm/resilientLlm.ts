@@ -27,7 +27,7 @@ import type { LlmService } from './types.ts'
 export const MAX_LLM_RETRIES = 2
 
 /** Which of the model's jobs this was, in words the UI can use. */
-export type LlmJob = 'trip setup' | 'a replacement' | 'search wording'
+export type LlmJob = 'trip setup' | 'a replacement' | 'search wording' | 'reading your notes' | 'reading your message'
 
 export interface Degradation {
   job: LlmJob
@@ -46,6 +46,10 @@ const SAID: Record<LlmJob, string> = {
     'I could not reach the planning service, so I picked the closest fit myself.',
   'search wording':
     'I could not reach the planning service, so I searched in plain terms rather than yours.',
+  'reading your notes':
+    'I could not reach the planning service, so I read your notes with simple rules — check how each line was read.',
+  'reading your message':
+    'I could not reach the planning service, so I read your message with simple rules.',
 }
 
 /** Backoff between attempts. Short: someone is watching a spinner. */
@@ -104,6 +108,12 @@ export function createResilientLlm(options: ResilientOptions): LlmService {
       attempt('a replacement', () => options.llm.chooseReplacement(input), () =>
         fallback.chooseReplacement(input),
       ),
+
+    interpretLines: (input) =>
+      attempt('reading your notes', () => options.llm.interpretLines(input), () => fallback.interpretLines(input)),
+
+    interpretMessage: (input) =>
+      attempt('reading your message', () => options.llm.interpretMessage(input), () => fallback.interpretMessage(input)),
 
     planQueries: (input) =>
       attempt('search wording', () => options.llm.planQueries(input), () =>

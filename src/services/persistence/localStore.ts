@@ -58,6 +58,8 @@ interface Persisted {
   trips: Trip[]
   states: Array<[string, TripState]>
   plans: Array<[string, Plan]>
+  /** Superseded versions per trip (2026-10-01). Absent in stores written before. */
+  planHistory?: Array<[string, Plan[]]>
   receipts: Receipt[]
   memories: Memory[]
   /**
@@ -133,6 +135,7 @@ function hydrate(store: InMemoryStore, data: Persisted): void {
   for (const trip of data.trips ?? []) store.trips.set(trip.id, refreeze(trip))
   for (const [tripId, state] of data.states ?? []) store.states.set(tripId, state)
   for (const [tripId, plan] of data.plans ?? []) store.plans.set(tripId, plan)
+  for (const [tripId, versions] of data.planHistory ?? []) store.planHistory.set(tripId, versions)
   for (const receipt of data.receipts ?? []) store.receipts.push(receipt)
   for (const memory of data.memories ?? []) store.memories.set(memory.id, memory)
 }
@@ -144,6 +147,7 @@ function snapshot(store: InMemoryStore, seededAt: string | undefined): Persisted
     trips: [...store.trips.values()],
     states: [...store.states.entries()],
     plans: [...store.plans.entries()],
+    planHistory: [...store.planHistory.entries()],
     receipts: [...store.receipts],
     memories: [...store.memories.values()],
   }
@@ -232,6 +236,7 @@ export function createPersistentRepositories(options: {
       store.trips.delete(tripId)
       store.states.delete(tripId)
       store.plans.delete(tripId)
+      store.planHistory.delete(tripId)
       for (const [id, proposal] of store.proposals) {
         if (proposal.tripId === tripId) store.proposals.delete(id)
       }
@@ -244,6 +249,7 @@ export function createPersistentRepositories(options: {
       store.trips.clear()
       store.states.clear()
       store.plans.clear()
+      store.planHistory.clear()
       store.proposals.clear()
       store.memories.clear()
       store.receipts.length = 0

@@ -15,6 +15,7 @@
  * what made the map unreadable.
  */
 
+import { VersionCompare } from '../proposals/VersionCompare.tsx'
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 import type { Plan } from '../../domain/plan/types.ts'
@@ -26,6 +27,8 @@ import { ReasonText } from '../places/ReasonText.tsx'
 
 interface Props {
   plan: Plan
+  /** Earlier committed versions and the current one, oldest first (2026-10-01). */
+  history?: Plan[]
   catalogue: PlaceCatalogue
   /** The trip's immutable snapshot, used to resolve cited memory ids. */
   memorySnapshot?: MemorySnapshot
@@ -68,9 +71,13 @@ function hiddenAt(detent: Detent, height: number): number {
 }
 
 export function ItinerarySheet({
-  plan, catalogue, memorySnapshot, tripName, selectedDay, selectedPlaceId, updatedItemIds,
+  plan, history = [], catalogue, memorySnapshot, tripName, selectedDay, selectedPlaceId, updatedItemIds,
   onSelectDay, onSelectPlace, onWhyThisDay, onInsetChange, onClose,
 }: Props) {
+  /** An earlier version picked for comparison with the current one (2026-10-01). */
+  const [compareWith, setCompareWith] = useState<number | null>(null)
+  const earlier = history.filter((version) => version.version < plan.version)
+  const older = earlier.find((version) => version.version === compareWith)
   // Opens at half: enough itinerary to read, enough map to see it on.
   const [detent, setDetent] = useState<Detent>('half')
   /** Non-null while a drag is in flight; the live offset, in px. */
@@ -266,7 +273,32 @@ export function ItinerarySheet({
           <button className="btn-ghost" data-testid="why-this-day" onClick={onWhyThisDay}>
             Why this day?
           </button>
+          {earlier.length > 0 && (
+            <label className="version-picker">
+              <span className="sr-only">Compare with an earlier version</span>
+              <select
+                data-testid="version-picker"
+                value={compareWith ?? ''}
+                onChange={(event) => setCompareWith(event.target.value ? Number(event.target.value) : null)}
+              >
+                <option value="">v{plan.version} · compare with…</option>
+                {[...earlier].reverse().map((version) => (
+                  <option key={version.version} value={version.version}>v{version.version}</option>
+                ))}
+              </select>
+            </label>
+          )}
         </div>
+
+        {older && (
+          <VersionCompare
+            before={older}
+            after={plan}
+            catalogue={catalogue}
+            beforeLabel={`v${older.version}`}
+            afterLabel={`v${plan.version} · now`}
+          />
+        )}
 
         {day.area && (
           <p className="day-area" data-testid="day-area">

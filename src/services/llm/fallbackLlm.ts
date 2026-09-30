@@ -85,5 +85,12 @@ export function createFallbackLlm(): LlmService {
     async planQueries() {
       return planQueriesWithoutModel()
     },
+    // No model: every line and message is read by the application's rules.
+    async interpretLines() {
+      return { readings: [] }
+    },
+    async interpretMessage() {
+      return null
+    },
   }
 }

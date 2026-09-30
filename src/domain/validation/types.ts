@@ -11,6 +11,8 @@ export type ValidationCode =
   | 'day_not_anchored_at_lodging'
   | 'must_visit_missing'
   | 'must_visit_wrong_day'
+  | 'day_in_place_missing'
+  | 'day_in_place_unknown'
   | 'fixed_time_violated'
   | 'time_block_missing'
   | 'half_day_exceeded'

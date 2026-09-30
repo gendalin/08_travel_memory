@@ -415,3 +415,82 @@ export async function runH5(): Promise<ScenarioResult> {
     },
   })
 }
+
+// ─────────────────────────────────────────────── H6 State edits both ways, as versions
+
+/**
+ * Added 2026-10-01. A line added to or removed from Considering updates the itinerary
+ * as a previewed, versioned change; a line nothing can plan is said to be so, never
+ * saved in silence. Runs on the bundle plus five synthetic Yokohama places (no live
+ * search in the eval).
+ */
+export async function runH6(): Promise<ScenarioResult> {
+  const OPEN = Object.fromEntries(['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'].map((day) => [day, '09:00-22:00']))
+  const yokohama = [
+    ['y_museum', 'Yokohama Museum of Art', 'museum_gallery', 0.008, -0.006],
+    ['y_park', 'Yamashita Park', 'park_garden', -0.002, 0.006],
+    ['y_ramen', 'Yoshimuraya', 'ramen', 0.001, 0.001],
+    ['y_izakaya', 'Noge Izakaya', 'izakaya', 0.002, -0.01],
+    ['y_kissa', 'Kissa Motomachi', 'cafe_kissaten', 0, 0.002],
+  ].map(([placeId, name, category, dLat, dLng]) => ({
+    placeId: placeId as string, name: name as string, category: category as string, neighborhood: 'Yokohama',
+    lat: 35.4478 + (dLat as number), lng: 139.6425 + (dLng as number), typicalDurationMin: 60, tags: [], shortDescription: '',
+    source: 'places_api' as const, priceLevel: 2 as const, openingHours: OPEN, userRatingCount: 800,
+  }))
+  const catalogue = createPlaceCatalogue([...places, ...yokohama])
+  const trip = createTokyoTrip()
+  const repositories = createRepositories()
+  await repositories.plans.save('trip_1', trip.plan)
+  const planBefore = JSON.stringify(trip.plan)
+
+  const edit = (change: (draft: ReturnType<typeof toStateDraft>) => void, state = trip.state, plan = trip.plan) => {
+    const draft = toStateDraft(state)
+    change(draft)
+    return proposeStateEdit({ tripId: 'trip_1', frame: trip.frame, state, plan, draft, catalogue, now: NOW, proposalId: 'p', createdAt: NOW.toISOString(), memorySnapshot: trip.trip.memorySnapshot })
+  }
+
+  const add = edit((draft) => draft.considering.push({ id: 'y', text: 'go to Yokohama on last day' }))
+  const added = add.kind === 'proposal' ? add.proposal : undefined
+  const addedLine = added?.candidateState.considering.find((item) => item.id === 'y')
+  const day5 = added?.candidatePlan.days[4]
+  const allThere = day5 ? day5.items.every((item) => ['y_museum', 'y_park', 'y_ramen', 'y_izakaya', 'y_kissa'].includes(item.placeId)) : false
+  const pendingUntouched = JSON.stringify(trip.plan) === planBefore
+
+  let v2: Awaited<ReturnType<typeof confirmProposal>> | undefined
+  if (added) v2 = await confirmProposal({ proposal: added, state: trip.state, plan: trip.plan, catalogue, repositories, receiptId: 'r1', timestamp: NOW.toISOString() })
+  const remove = v2 ? edit((draft) => { draft.considering = draft.considering.filter((item) => item.id !== 'y') }, v2.state, v2.plan) : undefined
+  const removed = remove?.kind === 'proposal' ? remove.proposal : undefined
+  if (removed && v2) await confirmProposal({ proposal: removed, state: v2.state, plan: v2.plan, catalogue, repositories, receiptId: 'r2', timestamp: NOW.toISOString() })
+  const history = await repositories.plans.history('trip_1')
+  const receipts = await repositories.receipts.listByTrip('trip_1')
+
+  const vague = edit((draft) => draft.considering.push({ id: 'v', text: 'Make it memorable' }))
+  const vagueLine = 'proposal' in vague ? vague.proposal.candidateState.considering.find((item) => item.id === 'v') : undefined
+
+  const checks: Check[] = [
+    check('add_updates_plan', 'correctness', 'Adding "go to Yokohama on last day" proposes a new version with Day 5 in Yokohama',
+      added !== undefined && day5?.area?.name === 'Yokohama' && allThere, { outcome: add.kind, area: day5?.area?.name, day5: day5?.items.map((item) => item.placeId) },
+      { onFail: { severity: 'P0', category: 'CONSTRAINT_FAILURE' } }),
+    check('remove_updates_plan', 'correctness', 'Removing the line proposes a version with Day 5 back to an ordinary day',
+      removed !== undefined && removed.candidatePlan.days[4].area === undefined, { outcome: remove?.kind },
+      { onFail: { severity: 'P1', category: 'CONSTRAINT_FAILURE' } }),
+    check('versions_kept', 'correctness', 'Each confirmation is a new version (v1 → v2 → v3), all kept, one Receipt each',
+      history.map((plan) => plan.version).join(',') === '1,2,3' && receipts.length === 2, { versions: history.map((plan) => plan.version), receipts: receipts.length },
+      { onFail: { severity: 'P0', category: 'CONTROL_FAILURE' } }),
+    check('reframe', 'correctness', 'Both are Reframes (State changed)', added?.type === 'reframe' && removed?.type === 'reframe', { add: added?.type, remove: removed?.type },
+      { onFail: { severity: 'P0', category: 'CLASSIFICATION_FAILURE' } }),
+    check('read_as', 'explainability', 'The line says how it was understood', addedLine?.readAs === 'Day 5 → a day in Yokohama', addedLine?.readAs,
+      { onFail: { severity: 'P1', category: 'EVIDENCE_FAILURE' } }),
+    check('not_silent', 'explainability', 'A line nothing can plan is saved as a general wish, and said to be one', vague.kind === 'commit_now' && vagueLine?.readAs?.includes('general wish') === true,
+      { outcome: vague.kind, readAs: vagueLine?.readAs }, { weight: 'partial', onFail: { severity: 'P1', category: 'EVIDENCE_FAILURE' } }),
+    check('pending_untouched', 'control', 'Nothing moves until confirmed', pendingUntouched, null, { onFail: { severity: 'P0', category: 'CONTROL_FAILURE' } }),
+    check('day_out_ends_with_dinner', 'relevance', 'A named day out has no late "one more" back in town', !(day5?.items ?? []).some((item) => item.role === 'nightcap'), day5?.items.map((item) => item.role),
+      { weight: 'partial', onFail: { severity: 'P2', category: 'RANKING_FAILURE' } }),
+    check('scoped', 'efficiency', 'Only Day 5 changes', added !== undefined && new Set([...added.planDiff.modified.map((entry) => entry.after.dayIndex), ...added.planDiff.removed.map((item) => item.dayIndex), ...added.planDiff.added.map((item) => item.dayIndex)]).size === 1,
+      added?.planDiff, { weight: 'partial', onFail: { severity: 'P1', category: 'CLASSIFICATION_FAILURE' } }),
+  ]
+  return scoreScenario({
+    id: 'H6', title: 'State edits as versions', smoke: false, checks,
+    observations: { day5: day5?.items.map((item) => `${item.startTime} ${catalogue.get(item.placeId)?.name}`), readAs: addedLine?.readAs, versions: history.map((plan) => plan.version) },
+  })
+}

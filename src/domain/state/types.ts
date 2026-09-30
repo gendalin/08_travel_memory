@@ -13,6 +13,29 @@ import type { ID } from '../trip/types.ts'
 export interface IntentItem {
   id: ID
   text: string
+  /**
+   * What the line was understood to ask of the plan (2026-10-01): a pace, kinds of
+   * neighbourhood. Read by the model where one is available, by rules otherwise, and
+   * shown back to the traveller as `readAs` so a misreading can be corrected.
+   */
+  reading?: IntentReading
+  readAs?: string
+}
+
+export interface IntentReading {
+  pace?: 'slow' | 'normal' | 'packed'
+  /** Area characters (areas.ts) — "Showa-era literary" → showa, literary. */
+  characters?: string[]
+}
+
+/** Where a day is spent when the traveller names a place for it (2026-10-01). */
+export interface DayPlace {
+  /** As the traveller wrote it. */
+  name: string
+  /** Set once resolved — from the area table, the trip's places, or a geocode. */
+  center?: { lat: number; lng: number }
+  radiusKm?: number
+  areaId?: string
 }
 
 /**
@@ -46,6 +69,13 @@ export type ConsideringTag =
   | { kind: 'event_request'; activity: string }
   /** A dated, timed activity the traveller picked from live search results. */
   | { kind: 'event'; event: TripEvent }
+  /**
+   * A whole day spent somewhere: "go to Yokohama on the last day" (2026-10-01). The
+   * day is re-planned around the place; an unresolved place is a Conflict.
+   */
+  | { kind: 'day_in_place'; dayIndex: number; place: DayPlace }
+  /** How full and how mobile the days should be: "take it slow" (movement.ts). */
+  | { kind: 'pace'; style: 'slow' | 'normal' | 'packed' }
 
 /**
  * A real event on the trip, found by live search and checked by code
@@ -79,6 +109,12 @@ export interface ConsideringItem {
   id: ID
   text: string
   tag?: ConsideringTag
+  /** How the line was understood, in words, shown under it (2026-10-01). */
+  readAs?: string
+  /** Set when the line could not be turned into anything the plan can act on. */
+  question?: string
+  /** Who read it: the model, or the rules it falls back to. */
+  readBy?: 'model' | 'rules'
 }
 
 export type PriorityWeight = 'low' | 'medium' | 'high'

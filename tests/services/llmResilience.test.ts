@@ -73,6 +73,16 @@ function flaky(failures: number, error: unknown): LlmService & { calls: number }
       if (service.calls <= failures) throw error
       return { queries: [{ category: 'ramen', textQuery: 'from the model' }], alsoSearch: [] }
     },
+    async interpretLines() {
+      service.calls++
+      if (service.calls <= failures) throw error
+      return { readings: [] }
+    },
+    async interpretMessage() {
+      service.calls++
+      if (service.calls <= failures) throw error
+      return null
+    },
   }
   return service
 }

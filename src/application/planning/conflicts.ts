@@ -145,5 +145,28 @@ export function explainValidationError(
       catalogue,
     })
   }
+  if (source && tag?.kind === 'day_in_place' && (error.code === 'day_in_place_missing' || error.code === 'day_in_place_unknown')) {
+    const days = tripDayCount(frame)
+    const other = Array.from({ length: days }, (_, index) => index).filter((index) => index !== tag.dayIndex)
+    return {
+      message:
+        error.code === 'day_in_place_unknown'
+          ? `I couldn't find where “${tag.place.name}” is. Try the town or neighbourhood's name.`
+          : `I don't have places in ${tag.place.name} to plan Day ${tag.dayIndex + 1} around yet.`,
+      consideringId: source.id,
+      options: [
+        ...(error.code === 'day_in_place_missing'
+          ? other.slice(0, 3).map((dayIndex) => ({
+              kind: 'move_day' as const,
+              dayIndex,
+              label: `Move to Day ${dayIndex + 1}`,
+              text: `Day ${dayIndex + 1}: ${tag.place.name}`,
+            }))
+          : []),
+        { kind: 'remove', label: 'Drop this requirement' },
+        { kind: 'edit', label: 'Edit it' },
+      ],
+    }
+  }
   return { message: error.message, ...(error.consideringId ? { consideringId: error.consideringId } : {}) }
 }

@@ -37,6 +37,7 @@ import {
   dayHolding,
   expectPlanVersion,
   openChat,
+  openDecisions,
   openItinerary,
   say,
 } from './helpers.ts'
@@ -70,7 +71,7 @@ test('the whole scripted demo runs through in one trip', async ({ page }) => {
   await expectPlanVersion(page, 4)
 
   // --- Receipts: one per transaction, in order, read-only -------------------
-  await openChat(page)
+  await openDecisions(page)
   await expect(page.getByTestId('receipt')).toHaveCount(3)
   // Newest first: the last thing that happened is the thing being asked about.
   await expect(page.getByTestId('receipt').first()).toHaveAttribute('data-change-type', 'reframe')
@@ -79,7 +80,7 @@ test('the whole scripted demo runs through in one trip', async ({ page }) => {
   await expect(page.getByRole('button', { name: /undo|revert/i })).toHaveCount(0)
 
   // --- Profile: confirm a memory -------------------------------------------
-  await closeChat(page)
+  // (The decisions are on the State screen, so the chat is already closed.)
   await page.getByTestId('open-index').click()
   await page.getByTestId('open-profile').click()
   await confirmMemory(page, 'mem_003')
@@ -129,7 +130,7 @@ test('the trip is still there after a reload', async ({ page }) => {
 
   // The receipt survived with it: a decision record that vanishes on reload is not a
   // record (§9.3).
-  await openChat(page)
+  await openDecisions(page)
   await expect(page.getByTestId('receipt')).toHaveCount(1)
 })
 

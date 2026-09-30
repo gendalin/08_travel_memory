@@ -11,7 +11,9 @@
  * expanded it lands you on the keyboard.
  */
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+import { releaseKeyboardStandIn } from './keyboard.ts'
 
 interface Props {
   busy: string | null
@@ -33,6 +35,14 @@ export function ChatLauncher({ onOpen }: { onOpen: () => void }) {
 
 export function ChatComposer({ busy, onSend, autoFocus }: Props) {
   const [draft, setDraft] = useState('')
+  const input = useRef<HTMLInputElement>(null)
+
+  // Take the focus from the stand-in the opening tap focused, keeping the keyboard up.
+  useEffect(() => {
+    if (!autoFocus) return
+    input.current?.focus({ preventScroll: true })
+    releaseKeyboardStandIn()
+  }, [autoFocus])
 
   return (
     <div className="composer">
@@ -48,8 +58,10 @@ export function ChatComposer({ busy, onSend, autoFocus }: Props) {
           aria-label="Message"
           data-testid="chat-input"
           placeholder="Tell me what changed…"
+          ref={input}
           value={draft}
-          autoFocus={autoFocus}
+          enterKeyHint="send"
+          autoComplete="off"
           onChange={(event) => setDraft(event.target.value)}
         />
         <button type="submit" aria-label="Send" data-testid="chat-send" disabled={busy !== null}>

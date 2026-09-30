@@ -21,6 +21,8 @@ import { StateDiffList } from '../proposals/StateDiffList.tsx'
 interface Props {
   receipts: Receipt[]
   catalogue: PlaceCatalogue
+  /** Off where the surrounding section already names the list. */
+  showTitle?: boolean
 }
 
 function ReceiptRow({ receipt, catalogue }: { receipt: Receipt; catalogue: PlaceCatalogue }) {
@@ -68,12 +70,12 @@ function ReceiptRow({ receipt, catalogue }: { receipt: Receipt; catalogue: Place
   )
 }
 
-export function ReceiptList({ receipts, catalogue }: Props) {
+export function ReceiptList({ receipts, catalogue, showTitle = true }: Props) {
   if (receipts.length === 0) return null
 
   return (
     <>
-      <div className="section-title">Decisions</div>
+      {showTitle && <div className="section-title">Decisions</div>}
       <ul className="receipts" data-testid="receipts" style={{ padding: 0, margin: 0 }}>
         {[...receipts].reverse().map((receipt) => (
           <ReceiptRow key={receipt.id} receipt={receipt} catalogue={catalogue} />

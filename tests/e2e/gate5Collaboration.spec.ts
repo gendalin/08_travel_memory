@@ -16,7 +16,8 @@ import { expect, test, type Page } from '@playwright/test'
 
 import {
   busiestDayStops, closeChat, closeItinerary, createTrip, dayHolding, expectPlanVersion,
-  openChat, openItinerary, openPoiOnMap, openStopWithSameSlotAlternative, say, unplannedPlace,
+  openChat,
+  openDecisions, openItinerary, openPoiOnMap, openStopWithSameSlotAlternative, say, unplannedPlace,
 } from './helpers.ts'
 
 /** The demo script's rain (2026-09-30): all day on Day 2, which has two outdoor stops. */
@@ -151,6 +152,7 @@ test('a direct State edit is a previewed Reframe, and never moves the plan on it
   await expectPlanVersion(page, 2)
 
   // One Receipt, of the right kind, recording both sides of the transaction.
+  await openDecisions(page)
   await expect(page.getByTestId('receipt')).toHaveCount(1)
   await expect(page.getByTestId('receipt')).toHaveAttribute('data-change-type', 'reframe')
   await page.getByTestId('receipt-toggle').click()
@@ -174,7 +176,7 @@ test('a State edit that does not move the itinerary commits straight away', asyn
 
   await page.getByTestId('view-plan').click()
   await expectPlanVersion(page, 1)
-  await openChat(page)
+  await openDecisions(page)
   await expect(page.getByTestId('receipt')).toHaveCount(1)
   await page.getByTestId('receipt-toggle').click()
   await expect(page.getByTestId('receipt-detail')).toContainText('Trip state v2')
@@ -203,7 +205,7 @@ test('a must-visit outside the dataset is a Conflict, not a silent drop', async 
   await sheet.getByTestId('cancel-state').click()
   await page.getByTestId('view-plan').click()
   await expectPlanVersion(page, 1)
-  await openChat(page)
+  await openDecisions(page)
   await expect(page.getByTestId('receipts')).toHaveCount(0)
 })
 
@@ -228,7 +230,7 @@ test('picking a same-slot alternative commits a Replace on selection', async ({ 
   await expect(page.getByTestId('proposal')).toHaveCount(0)
   await expectPlanVersion(page, 2)
 
-  await openChat(page)
+  await openDecisions(page)
   await expect(page.getByTestId('receipt')).toHaveCount(1)
   await expect(page.getByTestId('receipt')).toContainText(chosen!)
 })
@@ -249,6 +251,7 @@ test('a new request supersedes the pending proposal, and only one can be open', 
 
   await page.getByTestId('confirm-change').click()
   // The superseded proposal wrote nothing: one commit, one Receipt (§9.1).
+  await openDecisions(page)
   await expect(page.getByTestId('receipt')).toHaveCount(1)
 })
 
@@ -271,6 +274,7 @@ test('a State edit invalidates the pending proposal', async ({ page }) => {
   await openChat(page)
   // Only the State edit committed; the abandoned Reorganize left no trace.
   await expect(page.getByTestId('lifecycle-note')).toContainText('replaced')
+  await openDecisions(page)
   await expect(page.getByTestId('receipt')).toHaveCount(1)
 })
 
@@ -282,10 +286,12 @@ test('receipts accumulate as read-only history with no undo', async ({ page }) =
 
   await say(page, closedOn(day))
   await page.getByTestId('confirm-change').click()
+  await openDecisions(page)
   await expect(page.getByTestId('receipt')).toHaveCount(1)
 
   await say(page, RAIN)
   await page.getByTestId('confirm-change').click()
+  await openDecisions(page)
   await expect(page.getByTestId('receipt')).toHaveCount(2)
 
   // Newest first, each labelled with what kind of change it was.

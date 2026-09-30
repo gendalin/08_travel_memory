@@ -1432,3 +1432,9 @@ img.thumb {
 .version-area { font-size: var(--text-meta); font-style: italic; opacity: 0.75; }
 .version-same { font-size: var(--text-meta); opacity: 0.75; }
 .version-picker select { font: inherit; font-size: var(--text-meta); padding: 6px 8px; border-radius: 999px; border: 1px solid rgba(0,0,0,0.15); background: var(--surface); }
+
+/* The on-screen keyboard (keyboard.ts, 2026-10-01): a sheet rests on top of it, and
+   the chat field is 16px so iOS does not zoom the page when it takes the focus. */
+.sheet-backdrop { bottom: var(--keyboard-inset, 0px); }
+.sheet.tall { max-height: min(88vh, calc(100dvh - var(--keyboard-inset, 0px) - 24px)); }
+.composer input { font-size: 16px; }

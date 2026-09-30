@@ -9,7 +9,8 @@
 import { expect, test } from '@playwright/test'
 
 import {
-  APP, closeItinerary, dayHolding, expectPlanVersion, openChat, openItinerary, say,
+  APP, closeItinerary, dayHolding, expectPlanVersion, openChat,
+  openDecisions, openItinerary, say,
 } from './helpers.ts'
 
 /**
@@ -111,7 +112,7 @@ test('new trip through to a committed change and one receipt', async ({ page }) 
 
   // --- Exactly one Receipt ---------------------------------------------------
   // The summary is on the row; the rest of §9.2 is one tap away (§14.4).
-  await openChat(page)
+  await openDecisions(page)
   await expect(page.getByTestId('receipt')).toHaveCount(1)
   const receipt = page.getByTestId('receipt')
   await expect(receipt).toContainText('Rokurinsha')
@@ -147,7 +148,9 @@ test('keep current leaves the plan unchanged and writes no receipt', async ({ pa
   await expect(page.getByTestId('proposal')).toBeHidden()
 
   await expectPlanVersion(page, 1)
+  await openDecisions(page)
   await expect(page.getByTestId('receipt')).toHaveCount(0)
+  await page.getByTestId('view-plan').click()
 
   await openItinerary(page, ramenDay)
   await expect(page.getByTestId('timeline').locator('[data-place-id="ramen_rokurinsha"]')).toBeVisible()

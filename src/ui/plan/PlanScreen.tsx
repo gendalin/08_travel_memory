@@ -20,6 +20,7 @@ import { ItinerarySheet } from '../itinerary/ItinerarySheet.tsx'
 import { WhyThisDaySheet } from '../itinerary/WhyThisDaySheet.tsx'
 import { PoiSheet } from './PoiSheet.tsx'
 import { ChatLauncher } from '../chat/ChatComposer.tsx'
+import { primeKeyboard } from '../chat/keyboard.ts'
 import { ChatSheet } from '../chat/ChatSheet.tsx'
 
 interface Props {
@@ -82,7 +83,9 @@ export function PlanScreen({ store, catalogue }: Props) {
     void store.chooseAlternative(selectedItem.id, placeId)
   }
 
+  // Every way into the chat puts the traveller into typing, keyboard up (keyboard.ts).
   const openChat = () => {
+    primeKeyboard()
     setSheet('none')
     store.openChat()
   }
@@ -188,7 +191,6 @@ export function PlanScreen({ store, catalogue }: Props) {
         <ChatSheet
           entries={store.chat}
           proposal={proposal}
-          receipts={store.receipts}
           conflict={store.planConflict}
           lifecycleNote={store.lifecycleNote}
           busy={store.busy}

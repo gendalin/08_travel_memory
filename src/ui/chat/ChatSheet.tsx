@@ -1,10 +1,9 @@
 /**
  * Chat sheet (UI draft 02).
  *
- * The conversation, and everything that comes out of it: proposals, conflicts
- * and the Receipt each committed change leaves behind. Putting them here rather
- * than on the map keeps one thread of what was asked and what happened — and
- * keeps the Plan screen a map.
+ * The conversation and what comes out of it: proposals and conflicts. The record of
+ * confirmed decisions lives on the State screen, under Priorities (2026-10-01): the
+ * chat is for what to change next, not for the history of what changed.
  *
  * The composer stays inside the sheet, so sending and reading are the same
  * place (§14.2: "Bottom composer → expanded chat sheet").
@@ -13,16 +12,13 @@
 import type { Plan } from '../../domain/plan/types.ts'
 import type { ChatEntry } from '../../app/store.ts'
 import type { Proposal } from '../../domain/proposals/types.ts'
-import type { Receipt } from '../../domain/receipts/types.ts'
 import type { PlaceCatalogue } from '../../services/places/types.ts'
 import { ChangeProposalCard } from '../proposals/ChangeProposalCard.tsx'
-import { ReceiptList } from '../receipts/ReceiptList.tsx'
 import { ChatComposer } from './ChatComposer.tsx'
 
 interface Props {
   entries: ChatEntry[]
   proposal: Proposal | null
-  receipts: Receipt[]
   conflict: string | null
   lifecycleNote: string | null
   busy: string | null
@@ -40,7 +36,7 @@ interface Props {
 }
 
 export function ChatSheet({
-  entries, proposal, receipts, conflict, lifecycleNote, busy, error, catalogue, stopsInPlan, currentPlan,
+  entries, proposal, conflict, lifecycleNote, busy, error, catalogue, stopsInPlan, currentPlan,
   onSend, onConfirm, onKeep, onDismissConflict, onClose,
 }: Props) {
   return (
@@ -98,8 +94,6 @@ export function ChatSheet({
             onKeep={onKeep}
           />
         )}
-
-        <ReceiptList receipts={receipts} catalogue={catalogue} />
 
         <ChatComposer busy={busy} onSend={onSend} autoFocus />
       </div>

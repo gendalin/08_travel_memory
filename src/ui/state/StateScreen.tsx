@@ -13,6 +13,9 @@
  * deliberately absent.
  */
 
+import { ReceiptList } from '../receipts/ReceiptList.tsx'
+import type { Receipt } from '../../domain/receipts/types.ts'
+import type { PlaceCatalogue } from '../../services/places/types.ts'
 import type { StateDraft } from '../../application/editState/proposeStateEdit.ts'
 import type { PriorityWeight } from '../../domain/state/types.ts'
 import type { EventChoice } from '../../app/store.ts'
@@ -27,6 +30,9 @@ interface Props {
   dirty: boolean
   /** Constraints the plan could not satisfy, against the row that caused them. */
   conflicts: Array<{ message: string; consideringId?: string; options?: ConflictOption[] }>
+  /** Confirmed changes, oldest first; listed newest first under Priorities. */
+  receipts?: Receipt[]
+  catalogue?: PlaceCatalogue
   /** How each saved line was read, keyed `intent:<id>` / `considering:<id>`. */
   readings?: Record<string, { text: string; readAs?: string; question?: string }>
   /** Confirmation shown when an edit committed without a preview (§7.6). */
@@ -43,7 +49,7 @@ interface Props {
 const WEIGHTS: PriorityWeight[] = ['low', 'medium', 'high']
 
 export function StateScreen({
-  draft, busy, dirty, conflicts, readings, note, onChange, onSave, onRevert, eventChoice, onPickEvent, onSkipEvent,
+  draft, busy, dirty, conflicts, readings, receipts, catalogue, note, onChange, onSave, onRevert, eventChoice, onPickEvent, onSkipEvent,
 }: Props) {
   const editRow = (key: 'intent' | 'considering', id: string, text: string) =>
     onChange({ ...draft, [key]: draft[key].map((row) => (row.id === id ? { ...row, text } : row)) })
@@ -162,6 +168,16 @@ export function StateScreen({
             </div>
           </div>
         ))}
+      </section>
+
+      {/* Every confirmed change, newest first, to browse (2026-10-01). */}
+      <section className="state-group" data-testid="decisions">
+        <h3>Decisions</h3>
+        {receipts && receipts.length > 0 && catalogue ? (
+          <ReceiptList receipts={receipts} catalogue={catalogue} showTitle={false} />
+        ) : (
+          <p className="read-as">No confirmed changes yet.</p>
+        )}
       </section>
 
       {/* Nothing is saved as you type: the itinerary only moves on purpose. */}

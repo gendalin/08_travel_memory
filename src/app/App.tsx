@@ -16,6 +16,7 @@ import { useEffect, useState } from 'react'
 
 import { tripDays, type StageAInput } from '../application/createTrip/createTrip.ts'
 import { useAppStore, type AppDeps } from './store.ts'
+import { trackKeyboardInset } from '../ui/chat/keyboard.ts'
 import { AppChrome } from '../ui/chrome/AppChrome.tsx'
 import { IndexScreen } from '../ui/index/IndexScreen.tsx'
 import { IndexDrawer } from '../ui/index/IndexDrawer.tsx'
@@ -68,6 +69,8 @@ function DegradedNotice({ message, onDismiss }: { message: string; onDismiss: ()
 export function App({ deps }: { deps: AppDeps }) {
   const store = useAppStore(deps)
   const [showMemories, setShowMemories] = useState(false)
+  // Sheets sit above the on-screen keyboard rather than under it.
+  useEffect(() => trackKeyboardInset(), [])
   /** The Index outlives its own dismissal by one transition. */
   const [indexMounted, setIndexMounted] = useState(false)
 
@@ -172,6 +175,8 @@ export function App({ deps }: { deps: AppDeps }) {
                 busy={store.busy}
                 dirty={store.stateDirty}
                 conflicts={store.stateConflicts}
+                receipts={store.receipts}
+                catalogue={store.catalogue}
                 readings={Object.fromEntries([
                   ...(store.state?.intent ?? []).map((item) => [`intent:${item.id}`, { text: item.text, ...(item.readAs ? { readAs: item.readAs } : {}) }]),
                   ...(store.state?.considering ?? []).map((item) => [`considering:${item.id}`, { text: item.text, ...(item.readAs ? { readAs: item.readAs } : {}), ...(item.question ? { question: item.question } : {}) }]),

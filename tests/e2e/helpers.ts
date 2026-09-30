@@ -73,8 +73,20 @@ export async function confirmMemory(page: Page, memoryId: string) {
 
 export async function openChat(page: Page) {
   if (await page.getByRole('dialog', { name: 'Chat' }).isVisible()) return
+  // The chat is opened from the Plan view; the State view has no composer.
+  if (await page.getByTestId('state-screen').isVisible()) await page.getByTestId('view-plan').click()
   await page.getByTestId('open-chat').click()
   await expect(page.getByRole('dialog', { name: 'Chat' })).toBeVisible()
+}
+
+/**
+ * The record of confirmed decisions — on the State screen, under Priorities, since
+ * 2026-10-01 (it used to sit at the foot of the chat).
+ */
+export async function openDecisions(page: Page) {
+  if (await page.getByRole('dialog', { name: 'Chat' }).isVisible()) await closeChat(page)
+  if (!(await page.getByTestId('state-screen').isVisible())) await page.getByTestId('view-state').click()
+  await expect(page.getByTestId('decisions')).toBeVisible()
 }
 
 export async function closeChat(page: Page) {

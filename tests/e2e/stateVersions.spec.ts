@@ -82,3 +82,21 @@ test('adding then removing a line: two versions, each previewed and compared, an
   await expect(history).toBeVisible()
   await expect(history.getByTestId('version-before')).toContainText(wanted.name)
 })
+
+test('opening the chat puts the cursor in the field, and the chat no longer carries the decisions', async ({ page }) => {
+  await createTrip(page)
+  await page.getByTestId('open-chat').click()
+  const chat = page.getByRole('dialog', { name: 'Chat' })
+  await expect(chat).toBeVisible()
+  // Focused, so a phone raises its keyboard at once; the tap's stand-in is gone.
+  await expect(chat.getByTestId('chat-input')).toBeFocused()
+  await expect(page.locator('input[aria-hidden="true"]')).toHaveCount(0)
+  await expect(chat.getByTestId('receipts')).toHaveCount(0)
+
+  // The decisions are on the State screen, under Priorities.
+  await closeChat(page)
+  await page.getByTestId('view-state').click()
+  const decisions = page.getByTestId('decisions')
+  await expect(decisions).toBeVisible()
+  await expect(decisions).toContainText('No confirmed changes yet.')
+})

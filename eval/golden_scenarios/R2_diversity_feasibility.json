@@ -1,0 +1,25 @@
+{
+  "suiteVersion": "core-eval-1.0",
+  "id": "R2",
+  "title": "Diversity + itinerary feasibility",
+  "smoke": false,
+  "setup": {
+    "catalogue": "demo_retrieved_v1 (+kuramae_base)",
+    "intent": "R1 intent",
+    "memory": "Seeks out independent and second-hand bookstores on most travel days. (category=bookstore, strength 1)"
+  },
+  "checks": [
+    "valid",
+    "time_windows",
+    "category_saturation",
+    "bookstore_cap",
+    "relevance_kept",
+    "no_same_day_pattern",
+    "diversity_visible",
+    "unfilled_reported",
+    "route_reasonable",
+    "area_saturation",
+    "registry"
+  ],
+  "implementation": "eval/scenarios/recommendation.ts"
+}

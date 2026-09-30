@@ -1,0 +1,28 @@
+{
+  "suiteVersion": "core-eval-1.0",
+  "id": "M2",
+  "title": "State overrides conflicting Memory",
+  "smoke": true,
+  "setup": {
+    "catalogue": "demo_tokyo_v1",
+    "memory": "Prefers quiet, less crowded places. (proxy: aversion temple_shrine, strength 0.8)",
+    "intent": [
+      "This trip I want to experience iconic Tokyo landmarks even if crowded."
+    ],
+    "variants": [
+      "state+memory",
+      "memory only (Slow-paced.)",
+      "state only"
+    ]
+  },
+  "checks": [
+    "memory_representable",
+    "iconic_remain_candidates",
+    "state_over_memory",
+    "conflict_in_trace",
+    "memory_not_erased",
+    "not_hard_exclusion",
+    "override_scoped"
+  ],
+  "implementation": "eval/scenarios/memory.ts"
+}

@@ -1,0 +1,2274 @@
+{
+  "suiteVersion": "core-eval-1.0",
+  "mode": "smoke",
+  "runId": "20260930_2031_src-9deb1bc",
+  "build": "src-9deb1bc",
+  "commit": "no-git (content hash 9deb1bc)",
+  "date": "2026-09-30T12:31:46.829Z",
+  "durationSeconds": 8,
+  "overallStatus": "FAIL",
+  "counts": {
+    "P0": 4,
+    "P1": 10,
+    "P2": 2
+  },
+  "functional": {
+    "command": "vitest run (43 files) + scripts/validate_demo_data.ts",
+    "passed": 674,
+    "failed": 0,
+    "skipped": 0,
+    "byCategory": {
+      "proposal lifecycle tests": {
+        "passed": 12,
+        "failed": 0
+      },
+      "State / Plan consistency tests": {
+        "passed": 40,
+        "failed": 0
+      },
+      "Receipt tests": {
+        "passed": 16,
+        "failed": 0
+      },
+      "Memory snapshot tests": {
+        "passed": 34,
+        "failed": 0
+      },
+      "candidate Memory tests": {
+        "passed": 674,
+        "failed": 0
+      },
+      "constraint tests": {
+        "passed": 68,
+        "failed": 0
+      },
+      "locked item tests": {
+        "passed": 15,
+        "failed": 0
+      },
+      "recommendation validation tests": {
+        "passed": 227,
+        "failed": 0
+      },
+      "schema validation tests": {
+        "passed": 46,
+        "failed": 0
+      },
+      "domain tests": {
+        "passed": 269,
+        "failed": 0
+      }
+    },
+    "dataValidation": {
+      "ok": true,
+      "errors": 0,
+      "warnings": [
+        "!   nightcap: only 3 could fill it, needs 5 — short 2 even before competing with other roles"
+      ]
+    }
+  },
+  "invariants": {
+    "State / Plan consistency": {
+      "status": "PASS",
+      "evidence": "versions + pending proposals never mutate active State/Plan"
+    },
+    "atomic Reframe": {
+      "status": "PASS",
+      "evidence": "H3 commit + failure injection; H4 invariant probe (State edit → single swap)"
+    },
+    "one Receipt per commit": {
+      "status": "PASS",
+      "evidence": "receipt count after confirm = 1, after reject = 0"
+    },
+    "Memory snapshot immutability": {
+      "status": "NOT_RUN",
+      "evidence": "deep-frozen snapshot; snapshot tests 34 passed"
+    },
+    "constraint violation": {
+      "status": "FAIL",
+      "evidence": "H5 day-bound must-visit; planner validation on R1/R2"
+    },
+    "locked item protection": {
+      "status": "PASS",
+      "evidence": "deterministic locked-item tests: 15 passed, 0 failed (no Golden Scenario runs in-trip)"
+    },
+    "Candidate Registry enforcement": {
+      "status": "PASS",
+      "evidence": "hallucinated id refused; every planned id resolves"
+    }
+  },
+  "scenarios": [
+    {
+      "id": "M1",
+      "title": "Memory influence",
+      "smoke": true,
+      "checks": [
+        {
+          "id": "ranking_changes",
+          "dimension": "correctness",
+          "description": "At least one candidate ranking materially changes due to Memory (|Δrank| ≥ 3)",
+          "passed": true,
+          "weight": "critical",
+          "evidence": {
+            "materialMoves": 41,
+            "movedUp": 5,
+            "movedDown": 73,
+            "bookstoreRanks": [
+              {
+                "name": "Okuramae Shobō",
+                "withMemory": 1,
+                "without": 14
+              },
+              {
+                "name": "Tōmei Bookstore",
+                "withMemory": 2,
+                "without": 39
+              },
+              {
+                "name": "Kamifuku Books",
+                "withMemory": 3,
+                "without": 26
+              },
+              {
+                "name": "Infinity Books Japan",
+                "withMemory": 4,
+                "without": 70
+              },
+              {
+                "name": "Kumazawa Book Store",
+                "withMemory": 5,
+                "without": 78
+              }
+            ]
+          },
+          "onFail": {
+            "severity": "P1",
+            "category": "MEMORY_FAILURE"
+          }
+        },
+        {
+          "id": "memory_supported_poi",
+          "dimension": "correctness",
+          "description": "Final recommendation set contains at least one Memory-supported POI (default pace)",
+          "passed": true,
+          "weight": "critical",
+          "evidence": [
+            "Day 1 extension_2: Okuramae Shobō",
+            "Day 2 extension_2: Infinity Books Japan",
+            "Day 3 extension_2: Kumazawa Book Store",
+            "Day 4 extension_2: Kamifuku Books"
+          ],
+          "onFail": {
+            "severity": "P1",
+            "category": "MEMORY_FAILURE"
+          }
+        },
+        {
+          "id": "memory_supported_at_own_pace",
+          "dimension": "relevance",
+          "description": "Memory still reaches the plan at the traveller's own measured pace (3 stops/day)",
+          "passed": false,
+          "weight": "partial",
+          "evidence": {
+            "pacedBookstores": 0,
+            "pacedChangedItems": 0,
+            "rolesAdmittingBookstoreAt3": []
+          },
+          "onFail": {
+            "severity": "P1",
+            "category": "RANKING_FAILURE"
+          }
+        },
+        {
+          "id": "final_relevance",
+          "dimension": "relevance",
+          "description": "Final POIs mean relevance to the Showa/literary intent ≥ 1.0 (rubric)",
+          "passed": false,
+          "weight": "partial",
+          "evidence": {
+            "meanRelevance": 0.8,
+            "perItem": [
+              1,
+              1,
+              2,
+              0,
+              0,
+              1,
+              1,
+              2,
+              0,
+              0,
+              1,
+              2,
+              2,
+              0,
+              0,
+              1,
+              1,
+              2,
+              0,
+              0,
+              1,
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          "onFail": {
+            "severity": "P1",
+            "category": "RANKING_FAILURE"
+          }
+        },
+        {
+          "id": "memory_refs",
+          "dimension": "explainability",
+          "description": "Trace shows which Memory affected which candidate (memoryRefs on memory-placed stops)",
+          "passed": true,
+          "weight": "critical",
+          "evidence": [
+            {
+              "item": "item_d0_extension_2",
+              "place": "Okuramae Shobō",
+              "reasons": [
+                "Bookstore turns up 1 times in your photos and saved places.",
+                "A 2-minute walk from Kuramae Park.",
+                "Chosen over Infinity Books Japan, which is farther from Kuramae Park."
+              ]
+            },
+            {
+              "item": "item_d1_extension_2",
+              "place": "Infinity Books Japan",
+              "reasons": [
+                "Bookstore turns up 1 times in your photos and saved places.",
+                "A 4-minute walk from Tokyo Origami Museum.",
+                "Chosen over Kumazawa Book Store, which is farther from Tokyo Origami Museum."
+              ]
+            },
+            {
+              "item": "item_d2_extension_2",
+              "place": "Kumazawa Book Store",
+              "reasons": [
+                "Close to what you usually save: bookstore.",
+                "A 20-minute walk from Former Yasuda Garden.",
+                "Chosen over Ends Vintage Clothing, which is less like what you usually save."
+              ]
+            },
+            {
+              "item": "item_d3_extension_2",
+              "place": "Kamifuku Books",
+              "reasons": [
+                "Close to what you usually save: bookstore.",
+                "Chosen over WESTSIDE COFFEE KURAMAE, which is less like what you usually save."
+              ]
+            }
+          ],
+          "onFail": {
+            "severity": "P1",
+            "category": "EVIDENCE_FAILURE"
+          }
+        },
+        {
+          "id": "no_fake_rationale",
+          "dimension": "explainability",
+          "description": "No rationale cites the Memory where its score contribution is zero",
+          "passed": true,
+          "weight": "critical",
+          "evidence": [],
+          "onFail": {
+            "severity": "P1",
+            "category": "EVIDENCE_FAILURE"
+          }
+        },
+        {
+          "id": "not_hard_constraint",
+          "dimension": "control",
+          "description": "Memory is not a hard constraint: non-bookstore stops remain and bookstore claims stay within the memory bound",
+          "passed": false,
+          "weight": "critical",
+          "evidence": {
+            "bookstoresInPlan": 4,
+            "claimLimit": 2,
+            "stops": 25
+          },
+          "onFail": {
+            "severity": "P0",
+            "category": "MEMORY_FAILURE"
+          }
+        },
+        {
+          "id": "scoped_change",
+          "dimension": "efficiency",
+          "description": "Memory changes only a bounded number of stops (≤ 2 × claim limit)",
+          "passed": false,
+          "weight": "partial",
+          "evidence": {
+            "changedStops": 10,
+            "claimLimit": 2
+          },
+          "onFail": {
+            "severity": "P2",
+            "category": "RANKING_FAILURE"
+          }
+        },
+        {
+          "id": "no_taxis_represented",
+          "dimension": "efficiency",
+          "description": "\"No taxis.\" is represented as a structured constraint (not a free-text ranking term)",
+          "passed": false,
+          "weight": "partial",
+          "evidence": {
+            "tag": null,
+            "maxHopKm": 2.13,
+            "maxSpanKm": 2.13
+          },
+          "onFail": {
+            "severity": "P2",
+            "category": "CONSTRAINT_FAILURE"
+          }
+        }
+      ],
+      "scores": {
+        "correctness": 2,
+        "relevance": 1,
+        "explainability": 2,
+        "control": 0,
+        "efficiency": 1
+      },
+      "total": 6,
+      "status": "PARTIAL",
+      "observations": {
+        "memoryInfluence": {
+          "movedUp": 5,
+          "movedDown": 73,
+          "finalSelectionsChanged": 10,
+          "memoryScoreContribution": "memoryMatch = 0.8 for bookstores (weight 1.5 of Σ≈7.25 → ≈ +0.17 total); 0 elsewhere",
+          "bookstoreRanks": [
+            {
+              "name": "Okuramae Shobō",
+              "withMemory": 1,
+              "without": 14
+            },
+            {
+              "name": "Tōmei Bookstore",
+              "withMemory": 2,
+              "without": 39
+            },
+            {
+              "name": "Kamifuku Books",
+              "withMemory": 3,
+              "without": 26
+            },
+            {
+              "name": "Infinity Books Japan",
+              "withMemory": 4,
+              "without": 70
+            },
+            {
+              "name": "Kumazawa Book Store",
+              "withMemory": 5,
+              "without": 78
+            }
+          ]
+        },
+        "finalWithMemory": [
+          "D1 main_destination: Kuramae Park [park_garden]",
+          "D1 lunch: snaq.me stand Kuramae [cafe_kissaten]",
+          "D1 extension_2: Okuramae Shobō [bookstore]",
+          "D1 dinner: 鶏焼肉専門店 とり鮮 [yakiniku_grill]",
+          "D1 nightcap: Bar Boushu 蔵前 & Hotel Villa Kuramae（バー ボウシュ & ホテル ヴィラ クラマエ) Whisky & Wine & Cocktail [bar_cocktail]",
+          "D2 main_destination: Tokyo Origami Museum [museum_gallery]",
+          "D2 lunch: Sunaba [soba_udon]",
+          "D2 extension_2: Infinity Books Japan [bookstore]",
+          "D2 dinner: Gatsun [ramen]",
+          "D2 nightcap: Soba Udon Monju Asakusa Branch [bar_cocktail]",
+          "D3 main_destination: Former Yasuda Garden [park_garden]",
+          "D3 lunch: Icchome Sabou [cafe_kissaten]",
+          "D3 extension_2: Kumazawa Book Store [bookstore]",
+          "D3 dinner: Ult II House-made Noodles [ramen]",
+          "D3 nightcap: Ougiya [izakaya]",
+          "D4 main_destination: The Yogodo Hall [temple_shrine]",
+          "D4 lunch: Asakusa Udon Main Store [soba_udon]",
+          "D4 extension_2: Kamifuku Books [bookstore]",
+          "D4 dinner: Kura Sushi Global Flagship Store Asakusa [sushi]",
+          "D4 nightcap: Minatsuki [izakaya]",
+          "D5 main_destination: SKYTREE GALLERY [museum_gallery]",
+          "D5 lunch: Coffee Wrights Kuramae [cafe_kissaten]",
+          "D5 extension_2: WESTSIDE COFFEE KURAMAE [grocery_market]",
+          "D5 dinner: Okuman [izakaya]",
+          "D5 nightcap: Stage [bar_cocktail]"
+        ],
+        "finalWithoutMemory": [
+          "D1 main_destination: Kuramae Park [park_garden]",
+          "D1 lunch: snaq.me stand Kuramae [cafe_kissaten]",
+          "D1 extension_2: Koshoku [museum_gallery]",
+          "D1 dinner: 鶏焼肉専門店 とり鮮 [yakiniku_grill]",
+          "D1 nightcap: Bar Boushu 蔵前 & Hotel Villa Kuramae（バー ボウシュ & ホテル ヴィラ クラマエ) Whisky & Wine & Cocktail [bar_cocktail]",
+          "D2 main_destination: Tokyo Origami Museum [museum_gallery]",
+          "D2 lunch: Sunaba [soba_udon]",
+          "D2 extension_2: WESTSIDE COFFEE KURAMAE [grocery_market]",
+          "D2 dinner: Gatsun [ramen]",
+          "D2 nightcap: Stage [bar_cocktail]",
+          "D3 main_destination: Former Yasuda Garden [park_garden]",
+          "D3 lunch: Icchome Sabou [cafe_kissaten]",
+          "D3 extension_2: Ends Vintage Clothing [fashion_vintage]",
+          "D3 dinner: Ult II House-made Noodles [ramen]",
+          "D3 nightcap: Minatsuki [izakaya]",
+          "D4 main_destination: The Yogodo Hall [temple_shrine]",
+          "D4 lunch: Asakusa Udon Main Store [soba_udon]",
+          "D4 extension_2: Soba Udon Monju Asakusa Branch [bar_cocktail]",
+          "D4 dinner: Ougiya [izakaya]",
+          "D4 nightcap: Pub Shamrock Asakusa [bar_cocktail]",
+          "D5 main_destination: SKYTREE GALLERY [museum_gallery]",
+          "D5 lunch: Coffee Wrights Kuramae [cafe_kissaten]",
+          "D5 extension_2: Infinity Books Japan [bookstore]",
+          "D5 dinner: Okuman [izakaya]",
+          "D5 nightcap: Living Room Asakusa Cocktail Bar [bar_cocktail]"
+        ],
+        "atOwnPace": {
+          "bookstores": 0,
+          "changedStops": 0
+        }
+      },
+      "judgeNotes": []
+    },
+    {
+      "id": "M2",
+      "title": "State override",
+      "smoke": true,
+      "checks": [
+        {
+          "id": "memory_representable",
+          "dimension": "relevance",
+          "description": "\"Quiet, less crowded\" can be stored as a Memory the planner reads",
+          "passed": false,
+          "weight": "partial",
+          "evidence": "MemorySubject facets: category | price_band | time_fit | stay_length | stops_per_day | day_span_metres | start_minutes — no crowd/popularity facet; `crowd` was dropped in facets.ts",
+          "onFail": {
+            "severity": "P1",
+            "category": "MEMORY_FAILURE"
+          }
+        },
+        {
+          "id": "iconic_remain_candidates",
+          "dimension": "correctness",
+          "description": "Iconic / crowded POIs remain candidates under the conflicting Memory",
+          "passed": true,
+          "weight": "critical",
+          "evidence": {
+            "sensojiNeutralRank": 6,
+            "templeShrineCandidates": 1
+          },
+          "onFail": {
+            "severity": "P0",
+            "category": "FILTER_FAILURE"
+          }
+        },
+        {
+          "id": "state_over_memory",
+          "dimension": "correctness",
+          "description": "State > Memory is observable: Senso-ji ranks higher with the iconic Intent than with Memory alone, and reaches the plan",
+          "passed": true,
+          "weight": "critical",
+          "evidence": {
+            "sensojiRank": {
+              "stateAndMemory": 6,
+              "memoryOnly": 17,
+              "stateOnly": 1
+            },
+            "sensojiInPlan": "Day 2 main_destination"
+          },
+          "onFail": {
+            "severity": "P1",
+            "category": "RANKING_FAILURE"
+          }
+        },
+        {
+          "id": "conflict_in_trace",
+          "dimension": "explainability",
+          "description": "Trace indicates the State/Memory conflict and the current-trip override",
+          "passed": true,
+          "weight": "partial",
+          "evidence": {
+            "sensojiReasons": [
+              "For “This trip I want to experience iconic Tokyo landmarks even if crowded.”: it is a landmark.",
+              "A 17-minute walk from Kuramae.",
+              "Chosen over Tokyo National Museum, which is a weaker match for what you wrote."
+            ]
+          },
+          "onFail": {
+            "severity": "P1",
+            "category": "EVIDENCE_FAILURE"
+          }
+        },
+        {
+          "id": "memory_not_erased",
+          "dimension": "explainability",
+          "description": "The Memory is still visible as a signal (not silently dropped from the snapshot)",
+          "passed": true,
+          "weight": "critical",
+          "evidence": {
+            "snapshot": [
+              "mem_eval_m2_quiet_proxy"
+            ]
+          },
+          "onFail": {
+            "severity": "P1",
+            "category": "EVIDENCE_FAILURE"
+          }
+        },
+        {
+          "id": "not_hard_exclusion",
+          "dimension": "control",
+          "description": "Memory is not applied as a hard exclusion",
+          "passed": true,
+          "weight": "critical",
+          "evidence": {
+            "iconicInPlan": [
+              "ueno_park",
+              "ameyoko",
+              "sensoji",
+              "tokyo_national_museum"
+            ]
+          },
+          "onFail": {
+            "severity": "P0",
+            "category": "FILTER_FAILURE"
+          }
+        },
+        {
+          "id": "override_scoped",
+          "dimension": "efficiency",
+          "description": "Override is scoped: no more iconic stops than the no-Memory plan",
+          "passed": true,
+          "weight": "partial",
+          "evidence": {
+            "withMemory": 4,
+            "noMemory": 4
+          },
+          "onFail": {
+            "severity": "P2",
+            "category": "RANKING_FAILURE"
+          }
+        }
+      ],
+      "scores": {
+        "correctness": 2,
+        "relevance": 1,
+        "explainability": 2,
+        "control": 2,
+        "efficiency": 2
+      },
+      "total": 9,
+      "status": "PASS",
+      "observations": {
+        "sensojiRank": {
+          "stateAndMemory": 6,
+          "memoryOnly": 17,
+          "stateOnly": 1
+        },
+        "iconicStops": {
+          "stateAndMemory": [
+            "ueno_park",
+            "ameyoko",
+            "sensoji",
+            "tokyo_national_museum"
+          ],
+          "memoryOnly": [
+            "ueno_park",
+            "ameyoko",
+            "tokyo_national_museum",
+            "sensoji"
+          ],
+          "stateOnly": [
+            "sensoji",
+            "ueno_park",
+            "tokyo_national_museum",
+            "ameyoko"
+          ]
+        }
+      },
+      "judgeNotes": [
+        "M2 uses a documented proxy encoding (aversion: temple_shrine) because the spec memory is not representable."
+      ]
+    },
+    {
+      "id": "H1",
+      "title": "Replace",
+      "smoke": true,
+      "checks": [
+        {
+          "id": "classification",
+          "dimension": "correctness",
+          "description": "classification = Replace",
+          "passed": true,
+          "weight": "critical",
+          "evidence": "replace",
+          "onFail": {
+            "severity": "P0",
+            "category": "CLASSIFICATION_FAILURE"
+          }
+        },
+        {
+          "id": "state_diff_empty",
+          "dimension": "correctness",
+          "description": "stateDiff = empty",
+          "passed": true,
+          "weight": "critical",
+          "evidence": {
+            "intent": {
+              "added": [],
+              "removed": [],
+              "modified": []
+            },
+            "considering": {
+              "added": [],
+              "removed": [],
+              "modified": []
+            },
+            "priorities": {
+              "added": [],
+              "removed": [],
+              "modified": []
+            }
+          },
+          "onFail": {
+            "severity": "P0",
+            "category": "CLASSIFICATION_FAILURE"
+          }
+        },
+        {
+          "id": "one_item",
+          "dimension": "correctness",
+          "description": "changedPlanItemCount = 1",
+          "passed": true,
+          "weight": "critical",
+          "evidence": {
+            "changed": 1,
+            "fields": [
+              "placeId"
+            ]
+          },
+          "onFail": {
+            "severity": "P0",
+            "category": "CLASSIFICATION_FAILURE"
+          }
+        },
+        {
+          "id": "receipt_confirm",
+          "dimension": "correctness",
+          "description": "receiptCountDelta = 1 after confirm; plan v+1, state unchanged",
+          "passed": true,
+          "weight": "critical",
+          "evidence": {
+            "receipts": 1,
+            "planVersion": 2,
+            "stateVersion": 1
+          },
+          "onFail": {
+            "severity": "P0",
+            "category": "CONTROL_FAILURE"
+          }
+        },
+        {
+          "id": "receipt_reject",
+          "dimension": "correctness",
+          "description": "receiptCountDelta = 0 after reject",
+          "passed": true,
+          "weight": "critical",
+          "evidence": 0,
+          "onFail": {
+            "severity": "P0",
+            "category": "CONTROL_FAILURE"
+          }
+        },
+        {
+          "id": "registry",
+          "dimension": "correctness",
+          "description": "Replacement exists in the Candidate Registry; a hallucinated id is refused",
+          "passed": true,
+          "weight": "critical",
+          "evidence": {
+            "replacement": "ramen_afuri",
+            "hallucinatedOutcome": "conflict"
+          },
+          "onFail": {
+            "severity": "P0",
+            "category": "FILTER_FAILURE"
+          }
+        },
+        {
+          "id": "replacement_fits",
+          "dimension": "relevance",
+          "description": "Replacement fits the slot (valid plan, meal-role category, open at the time)",
+          "passed": true,
+          "weight": "critical",
+          "evidence": {
+            "replacement": "AFURI Ebisu [ramen]",
+            "errors": []
+          },
+          "onFail": {
+            "severity": "P1",
+            "category": "RANKING_FAILURE"
+          }
+        },
+        {
+          "id": "replacement_same_kind",
+          "dimension": "relevance",
+          "description": "Replacement preserves the kind of meal asked about (ramen → ramen when one is open)",
+          "passed": true,
+          "weight": "partial",
+          "evidence": "ramen",
+          "onFail": {
+            "severity": "P2",
+            "category": "RANKING_FAILURE"
+          }
+        },
+        {
+          "id": "rationale",
+          "dimension": "explainability",
+          "description": "Proposal and Receipt carry a non-empty rationale",
+          "passed": true,
+          "weight": "critical",
+          "evidence": "AFURI Ebisu is open at that time and fits the same part of the day as Rokurinsha Tokyo Ramen Street, in Ebisu.",
+          "onFail": {
+            "severity": "P1",
+            "category": "EVIDENCE_FAILURE"
+          }
+        },
+        {
+          "id": "pending_no_mutation",
+          "dimension": "control",
+          "description": "Plan remains unchanged while pending",
+          "passed": true,
+          "weight": "critical",
+          "evidence": null,
+          "onFail": {
+            "severity": "P0",
+            "category": "CONTROL_FAILURE"
+          }
+        },
+        {
+          "id": "atomic",
+          "dimension": "control",
+          "description": "A failed commit leaves State, Plan and Receipts untouched",
+          "passed": true,
+          "weight": "critical",
+          "evidence": null,
+          "onFail": {
+            "severity": "P0",
+            "category": "CONTROL_FAILURE"
+          }
+        },
+        {
+          "id": "no_other_changes",
+          "dimension": "efficiency",
+          "description": "otherScheduleChanges = 0 (identity swap only)",
+          "passed": true,
+          "weight": "critical",
+          "evidence": {
+            "fields": [
+              "placeId"
+            ]
+          },
+          "onFail": {
+            "severity": "P1",
+            "category": "CLASSIFICATION_FAILURE"
+          }
+        },
+        {
+          "id": "impact_scope",
+          "dimension": "efficiency",
+          "description": "Expected Impact itemsAffected = 1",
+          "passed": true,
+          "weight": "partial",
+          "evidence": {
+            "itemsAffected": 1,
+            "poiCountDelta": 0,
+            "walkingDistanceDeltaM": 11922,
+            "travelTimeDeltaMin": null,
+            "freeTimeDeltaMin": 0,
+            "budgetWarning": null
+          },
+          "onFail": {
+            "severity": "P2",
+            "category": "EVIDENCE_FAILURE"
+          }
+        }
+      ],
+      "scores": {
+        "correctness": 2,
+        "relevance": 2,
+        "explainability": 2,
+        "control": 2,
+        "efficiency": 2
+      },
+      "total": 10,
+      "status": "PASS",
+      "observations": {
+        "message": "The ramen place on Day 1 is closed today.",
+        "outgoing": "Rokurinsha Tokyo Ramen Street",
+        "replacement": "AFURI Ebisu",
+        "impact": {
+          "itemsAffected": 1,
+          "poiCountDelta": 0,
+          "walkingDistanceDeltaM": 11922,
+          "travelTimeDeltaMin": null,
+          "freeTimeDeltaMin": 0,
+          "budgetWarning": null
+        },
+        "rationale": "AFURI Ebisu is open at that time and fits the same part of the day as Rokurinsha Tokyo Ramen Street, in Ebisu."
+      },
+      "judgeNotes": []
+    },
+    {
+      "id": "H3",
+      "title": "Reframe",
+      "smoke": true,
+      "checks": [
+        {
+          "id": "classification",
+          "dimension": "correctness",
+          "description": "classification = Reframe",
+          "passed": true,
+          "weight": "critical",
+          "evidence": "reframe",
+          "onFail": {
+            "severity": "P0",
+            "category": "CLASSIFICATION_FAILURE"
+          }
+        },
+        {
+          "id": "state_changed",
+          "dimension": "correctness",
+          "description": "Agent proposes a State change (pace)",
+          "passed": true,
+          "weight": "critical",
+          "evidence": "Fewer stops each day — at most 2.",
+          "onFail": {
+            "severity": "P0",
+            "category": "CLASSIFICATION_FAILURE"
+          }
+        },
+        {
+          "id": "atomic_versions",
+          "dimension": "correctness",
+          "description": "State and Plan versions increment together; exactly one Receipt",
+          "passed": true,
+          "weight": "critical",
+          "evidence": {
+            "state": 2,
+            "plan": 2,
+            "receipts": 1
+          },
+          "onFail": {
+            "severity": "P0",
+            "category": "CONTROL_FAILURE"
+          }
+        },
+        {
+          "id": "valid",
+          "dimension": "correctness",
+          "description": "Candidate plan validates",
+          "passed": true,
+          "weight": "critical",
+          "evidence": [],
+          "onFail": {
+            "severity": "P0",
+            "category": "ROUTE_FAILURE"
+          }
+        },
+        {
+          "id": "fewer_spots",
+          "dimension": "relevance",
+          "description": "Result has fewer stops per day",
+          "passed": true,
+          "weight": "critical",
+          "evidence": {
+            "removed": 5
+          },
+          "onFail": {
+            "severity": "P1",
+            "category": "CLASSIFICATION_FAILURE"
+          }
+        },
+        {
+          "id": "removes_least_valuable",
+          "dimension": "relevance",
+          "description": "The dropped stop is chosen by value, not by position (last-of-day)",
+          "passed": false,
+          "weight": "partial",
+          "evidence": [
+            "D1 dinner: Rokurinsha Tokyo Ramen Street",
+            "D2 dinner: Andy's Shin Hinomoto",
+            "D3 dinner: Yakiniku Yoin Ebisu",
+            "D4 dinner: Yakitori Morimoto",
+            "D5 dinner: Hakkoku"
+          ],
+          "onFail": {
+            "severity": "P1",
+            "category": "RANKING_FAILURE"
+          }
+        },
+        {
+          "id": "rationale",
+          "dimension": "explainability",
+          "description": "Preview explains the State change and what was dropped",
+          "passed": true,
+          "weight": "critical",
+          "evidence": "I cut each day to 2 stops, dropping the last stop of the day so the evenings are yours.",
+          "onFail": {
+            "severity": "P1",
+            "category": "EVIDENCE_FAILURE"
+          }
+        },
+        {
+          "id": "pending_no_mutation",
+          "dimension": "control",
+          "description": "Before confirmation active State and Plan unchanged",
+          "passed": true,
+          "weight": "critical",
+          "evidence": null,
+          "onFail": {
+            "severity": "P0",
+            "category": "CONTROL_FAILURE"
+          }
+        },
+        {
+          "id": "reject",
+          "dimension": "control",
+          "description": "Rejection leaves active State and Plan unchanged, no Receipt",
+          "passed": true,
+          "weight": "critical",
+          "evidence": "rejected",
+          "onFail": {
+            "severity": "P0",
+            "category": "CONTROL_FAILURE"
+          }
+        },
+        {
+          "id": "atomic",
+          "dimension": "control",
+          "description": "A failed commit leaves State, Plan and Receipts untouched",
+          "passed": true,
+          "weight": "critical",
+          "evidence": null,
+          "onFail": {
+            "severity": "P0",
+            "category": "CONTROL_FAILURE"
+          }
+        },
+        {
+          "id": "minimal",
+          "dimension": "efficiency",
+          "description": "Minimal reduction: at most one stop removed per day",
+          "passed": true,
+          "weight": "partial",
+          "evidence": {
+            "removed": 5,
+            "days": 5
+          },
+          "onFail": {
+            "severity": "P2",
+            "category": "CLASSIFICATION_FAILURE"
+          }
+        },
+        {
+          "id": "scope_asked",
+          "dimension": "efficiency",
+          "description": "\"I feel tired\" is scoped (today / next days) or the scope is asked, not applied to the whole trip silently",
+          "passed": false,
+          "weight": "partial",
+          "evidence": {
+            "daysTouched": 5,
+            "days": 5
+          },
+          "onFail": {
+            "severity": "P1",
+            "category": "CLASSIFICATION_FAILURE"
+          }
+        }
+      ],
+      "scores": {
+        "correctness": 2,
+        "relevance": 1,
+        "explainability": 2,
+        "control": 2,
+        "efficiency": 1
+      },
+      "total": 8,
+      "status": "PASS",
+      "observations": {
+        "stateAdded": "Fewer stops each day — at most 2.",
+        "removed": [
+          "D1 dinner: Rokurinsha Tokyo Ramen Street",
+          "D2 dinner: Andy's Shin Hinomoto",
+          "D3 dinner: Yakiniku Yoin Ebisu",
+          "D4 dinner: Yakitori Morimoto",
+          "D5 dinner: Hakkoku"
+        ],
+        "rationale": "I cut each day to 2 stops, dropping the last stop of the day so the evenings are yours."
+      },
+      "judgeNotes": []
+    },
+    {
+      "id": "H5",
+      "title": "Conflict",
+      "smoke": true,
+      "checks": [
+        {
+          "id": "tag_keeps_day",
+          "dimension": "correctness",
+          "description": "The Considering tag keeps \"Day 4\" (must_visit carries a day)",
+          "passed": false,
+          "weight": "critical",
+          "evidence": {
+            "tag": {
+              "kind": "must_visit",
+              "placeId": "nezu_museum"
+            }
+          },
+          "onFail": {
+            "severity": "P0",
+            "category": "CONSTRAINT_FAILURE"
+          }
+        },
+        {
+          "id": "conflict_returned",
+          "dimension": "correctness",
+          "description": "State edit returns a Conflict (Day 4 closed)",
+          "passed": false,
+          "weight": "critical",
+          "evidence": {
+            "outcome": "proposal",
+            "nezuPlacedOn": "Day 2"
+          },
+          "onFail": {
+            "severity": "P0",
+            "category": "CONSTRAINT_FAILURE"
+          }
+        },
+        {
+          "id": "not_silently_dropped",
+          "dimension": "correctness",
+          "description": "Constraint is never silently dropped or weakened (create and edit paths)",
+          "passed": false,
+          "weight": "critical",
+          "evidence": {
+            "create": {
+              "valid": true,
+              "nezuOn": "Day 2"
+            },
+            "edit": {
+              "outcome": "proposal",
+              "nezuOn": "Day 2"
+            }
+          },
+          "onFail": {
+            "severity": "P0",
+            "category": "CONSTRAINT_FAILURE"
+          }
+        },
+        {
+          "id": "control_conflict_works",
+          "dimension": "relevance",
+          "description": "Control: must-visit closed on every trip day → Conflict",
+          "passed": true,
+          "weight": "partial",
+          "evidence": {
+            "outcome": "conflict",
+            "message": [
+              "I know “Nezu Museum”, but I couldn't fit it into any day as this trip stands."
+            ]
+          },
+          "onFail": {
+            "severity": "P1",
+            "category": "CONSTRAINT_FAILURE"
+          }
+        },
+        {
+          "id": "concrete_reason",
+          "dimension": "explainability",
+          "description": "Conflict reason is concrete (names the place and the day)",
+          "passed": false,
+          "weight": "critical",
+          "evidence": null,
+          "onFail": {
+            "severity": "P1",
+            "category": "EVIDENCE_FAILURE"
+          }
+        },
+        {
+          "id": "resolution_options",
+          "dimension": "explainability",
+          "description": "Structured resolution options (move day / remove / edit requirement)",
+          "passed": false,
+          "weight": "partial",
+          "evidence": "StateConflictDetail = { message, consideringId } — no options field in the outcome type",
+          "onFail": {
+            "severity": "P1",
+            "category": "EVIDENCE_FAILURE"
+          }
+        },
+        {
+          "id": "invalid_never_shown",
+          "dimension": "control",
+          "description": "Invalid Plan is never displayed (any returned candidate validates)",
+          "passed": true,
+          "weight": "critical",
+          "evidence": [],
+          "onFail": {
+            "severity": "P0",
+            "category": "CONTROL_FAILURE"
+          }
+        },
+        {
+          "id": "active_untouched",
+          "dimension": "control",
+          "description": "Active plan untouched",
+          "passed": true,
+          "weight": "critical",
+          "evidence": null,
+          "onFail": {
+            "severity": "P0",
+            "category": "CONTROL_FAILURE"
+          }
+        },
+        {
+          "id": "no_side_changes",
+          "dimension": "efficiency",
+          "description": "Conflict path proposes no other changes",
+          "passed": true,
+          "weight": "partial",
+          "evidence": {
+            "added": [
+              {
+                "id": "item_d1_nezu_museum",
+                "placeId": "nezu_museum",
+                "dayIndex": 1,
+                "startTime": "14:15",
+                "endTime": "15:45",
+                "rationale": "You asked for this one: “Must visit Nezu Museum on Day 4.”.",
+                "placedBy": "must_visit",
+                "reasons": [
+                  {
+                    "text": "You asked for this one: “Must visit Nezu Museum on Day 4.”.",
+                    "strength": "primary"
+                  }
+                ],
+                "rationaleRefs": {
+                  "stateItemIds": [
+                    "cons_nezu"
+                  ],
+                  "priorityIds": [],
+                  "memoryIds": []
+                }
+              }
+            ],
+            "removed": [],
+            "modified": []
+          },
+          "onFail": {
+            "severity": "P2",
+            "category": "CLASSIFICATION_FAILURE"
+          }
+        }
+      ],
+      "scores": {
+        "correctness": 0,
+        "relevance": 2,
+        "explainability": 0,
+        "control": 2,
+        "efficiency": 2
+      },
+      "total": 6,
+      "status": "FAIL",
+      "observations": {
+        "tag": {
+          "kind": "must_visit",
+          "placeId": "nezu_museum"
+        },
+        "createPath": {
+          "valid": true,
+          "nezuOn": "Day 2",
+          "errors": []
+        },
+        "editPath": {
+          "outcome": "proposal",
+          "nezuOn": "Day 2",
+          "type": "reorganize"
+        },
+        "control": "conflict"
+      },
+      "judgeNotes": []
+    },
+    {
+      "id": "R1",
+      "title": "Discovery/ranking",
+      "smoke": true,
+      "checks": [
+        {
+          "id": "valid_plan",
+          "dimension": "correctness",
+          "description": "Final plan validates (hours, overlaps, anchors)",
+          "passed": true,
+          "weight": "critical",
+          "evidence": [],
+          "onFail": {
+            "severity": "P0",
+            "category": "ROUTE_FAILURE"
+          }
+        },
+        {
+          "id": "registry",
+          "dimension": "control",
+          "description": "No POI outside the Candidate Registry",
+          "passed": true,
+          "weight": "critical",
+          "evidence": [],
+          "onFail": {
+            "severity": "P0",
+            "category": "FILTER_FAILURE"
+          }
+        },
+        {
+          "id": "recall",
+          "dimension": "relevance",
+          "description": "Candidate recall proxy ≥ 1 (obvious types entered the pool)",
+          "passed": true,
+          "weight": "critical",
+          "evidence": "bookstores=5, kissaten=9, strong-relevance POIs=9, expected literary areas present=Kanda Jinbōchō, Sotokanda",
+          "onFail": {
+            "severity": "P1",
+            "category": "DISCOVERY_FAILURE"
+          }
+        },
+        {
+          "id": "recall_areas",
+          "dimension": "relevance",
+          "description": "Candidate recall proxy = 2 (literary areas such as Jimbocho / Shimokitazawa / Koenji reached)",
+          "passed": true,
+          "weight": "partial",
+          "evidence": {
+            "bookstores": 5,
+            "kissaten": 9,
+            "strong": 9,
+            "expectedAreaHits": [
+              "Kanda Jinbōchō",
+              "Sotokanda"
+            ]
+          },
+          "onFail": {
+            "severity": "P1",
+            "category": "DISCOVERY_FAILURE"
+          }
+        },
+        {
+          "id": "top10",
+          "dimension": "relevance",
+          "description": "Top-10 mean relevance ≥ 1.2",
+          "passed": true,
+          "weight": "partial",
+          "evidence": {
+            "top10Mean": 1.5,
+            "bookstoresInTop10": 3
+          },
+          "onFail": {
+            "severity": "P1",
+            "category": "RANKING_FAILURE"
+          }
+        },
+        {
+          "id": "final_relevance",
+          "dimension": "relevance",
+          "description": "Final POIs mean relevance ≥ 1.0",
+          "passed": false,
+          "weight": "partial",
+          "evidence": {
+            "finalMean": 0.84
+          },
+          "onFail": {
+            "severity": "P1",
+            "category": "RANKING_FAILURE"
+          }
+        },
+        {
+          "id": "term_match",
+          "dimension": "relevance",
+          "description": "Intent word \"bookstores\" matches bookstore places (stateMatch)",
+          "passed": true,
+          "weight": "partial",
+          "evidence": {
+            "stateTerms": [
+              "showa",
+              "literary",
+              "cultural",
+              "atmosphere",
+              "slow",
+              "neighborhood",
+              "exploration",
+              "bookstores",
+              "kissaten",
+              "small",
+              "independent",
+              "places"
+            ],
+            "note": "termMatchesWord(\"bookstores\",\"book\") needs ≥70% overlap → no match; places are tagged \"book store\""
+          },
+          "onFail": {
+            "severity": "P1",
+            "category": "RANKING_FAILURE"
+          }
+        },
+        {
+          "id": "audit",
+          "dimension": "explainability",
+          "description": "≥3 selected and ≥3 rejected POIs have a structured why-won / why-lost",
+          "passed": true,
+          "weight": "critical",
+          "evidence": {
+            "selected": [
+              {
+                "placeId": "ChIJWQSdSLaOGGARk7qGNVyECxI",
+                "name": "Kuramae Park",
+                "slot": "Day 1 main_destination",
+                "neutralRank": 3,
+                "whyWon": {
+                  "placedBy": "ranking",
+                  "reasons": [
+                    "For “small independent cultural places”: its description mentions “small”.",
+                    "A 1-minute walk from Kuramae.",
+                    "Chosen over The Yogodo Hall, which is farther from Kuramae."
+                  ],
+                  "beat": "The Yogodo Hall (0.466), which lost most on convenience"
+                }
+              },
+              {
+                "placeId": "ChIJjZFyLquPGGARgPO6dprcE9M",
+                "name": "snaq.me stand Kuramae",
+                "slot": "Day 1 lunch",
+                "neutralRank": 1,
+                "whyWon": {
+                  "placedBy": "ranking",
+                  "reasons": [
+                    "For “kissaten”: it is a cafe or kissaten.",
+                    "A 2-minute walk from Kuramae Park.",
+                    "Chosen over SUNDAE APART, which is pricier."
+                  ],
+                  "beat": "SUNDAE APART (0.569), which lost most on cost"
+                }
+              },
+              {
+                "placeId": "ChIJkX42vLeOGGARszgelkFQv9g",
+                "name": "Okuramae Shobō",
+                "slot": "Day 1 extension_2",
+                "neutralRank": 2,
+                "whyWon": {
+                  "placedBy": "ranking",
+                  "reasons": [
+                    "For “old bookstores”: its description mentions “bookstore”.",
+                    "A 2-minute walk from Kuramae Park.",
+                    "Chosen over Square Cafe, which is better known."
+                  ],
+                  "beat": "Square Cafe (0.57), which lost most on novelty"
+                }
+              }
+            ],
+            "rejected": [
+              {
+                "placeId": "ChIJjbNYOACPGGARHjKCX5UPco4",
+                "name": "SUNDAE APART",
+                "category": "cafe_kissaten",
+                "neutralRank": 5,
+                "neutralScore": 0.573,
+                "whyLost": "RANKING: runner-up for Day 1 lunch, lost to snaq.me stand Kuramae on cost (0.569 vs winner)"
+              },
+              {
+                "placeId": "ChIJxyK9lrGOGGARg15egohj6PI",
+                "name": "Kamifuku Books",
+                "category": "bookstore",
+                "neutralRank": 8,
+                "neutralScore": 0.553,
+                "whyLost": "RANKING: runner-up for Day 4 extension_2, lost to Ryōgoku Edo NOREN on convenience (0.488 vs winner)"
+              },
+              {
+                "placeId": "ChIJ3RqD4zSPGGARkgV-WNO_sYA",
+                "name": "Tōmei Bookstore",
+                "category": "bookstore",
+                "neutralRank": 9,
+                "neutralScore": 0.545,
+                "whyLost": "RANKING/CONTEXT: eligible for extension_2 but never in a slot's top 6 once day geography, hours and used places applied"
+              }
+            ]
+          },
+          "onFail": {
+            "severity": "P1",
+            "category": "EVIDENCE_FAILURE"
+          }
+        },
+        {
+          "id": "reasons_cite_intent",
+          "dimension": "explainability",
+          "description": "At least a third of stop reasons cite the Intent they served",
+          "passed": true,
+          "weight": "partial",
+          "evidence": {
+            "citing": 12,
+            "of": 25,
+            "sample": [
+              [
+                "For “small independent cultural places”: its description mentions “small”.",
+                "A 1-minute walk from Kuramae.",
+                "Chosen over The Yogodo Hall, which is farther from Kuramae."
+              ],
+              [
+                "For “kissaten”: it is a cafe or kissaten.",
+                "A 2-minute walk from Kuramae Park.",
+                "Chosen over SUNDAE APART, which is pricier."
+              ],
+              [
+                "For “old bookstores”: its description mentions “bookstore”.",
+                "A 2-minute walk from Kuramae Park.",
+                "Chosen over Square Cafe, which is better known."
+              ],
+              [
+                "A 3-minute walk from snaq.me stand Kuramae.",
+                "Keeps Day 1 close together.",
+                "Chosen over Yello, which is better known."
+              ]
+            ]
+          },
+          "onFail": {
+            "severity": "P1",
+            "category": "EVIDENCE_FAILURE"
+          }
+        },
+        {
+          "id": "expansion",
+          "dimension": "efficiency",
+          "description": "Semantic expansion carries ≥ 50% of Intent terms into discovery queries",
+          "passed": false,
+          "weight": "partial",
+          "evidence": {
+            "reached": [
+              "kissaten"
+            ],
+            "lost": [
+              "showa",
+              "literary",
+              "cultural",
+              "atmosphere",
+              "slow",
+              "neighborhood",
+              "exploration",
+              "bookstores",
+              "small",
+              "independent",
+              "places"
+            ]
+          },
+          "onFail": {
+            "severity": "P1",
+            "category": "DISCOVERY_FAILURE"
+          }
+        },
+        {
+          "id": "bookstore_searched",
+          "dimension": "efficiency",
+          "description": "Discovery searches the bookstore category when Intent names it",
+          "passed": true,
+          "weight": "partial",
+          "evidence": [
+            "bar_cocktail",
+            "izakaya",
+            "yakiniku_grill",
+            "architecture_design",
+            "bakery_sweets",
+            "bookstore",
+            "cafe_kissaten",
+            "exhibition_event",
+            "fashion_vintage",
+            "lifestyle_homeware",
+            "museum_gallery",
+            "park_garden",
+            "ramen",
+            "soba_udon",
+            "sushi",
+            "teishoku",
+            "temple_shrine",
+            "tempura_tonkatsu",
+            "viewpoint_scenic"
+          ],
+          "onFail": {
+            "severity": "P1",
+            "category": "DISCOVERY_FAILURE"
+          }
+        },
+        {
+          "id": "area_stage",
+          "dimension": "efficiency",
+          "description": "An area-candidate stage exists before POI retrieval",
+          "passed": false,
+          "weight": "partial",
+          "evidence": {
+            "stageExists": false,
+            "note": "No area-level retrieval: searches are \"<lodging> <category>\" around the base lodging. Neighbourhoods below are what the pool happens to contain.",
+            "neighborhoodsInPool": {
+              "Kuramae": 37,
+              "Kamezawa": 1,
+              "Torigoe": 1,
+              "Asakusa": 12,
+              "Kitanomarukōen": 1,
+              "Kanda Jinbōchō": 1,
+              "Yokoami": 2,
+              "Honjo": 3,
+              "Yanagibashi": 4,
+              "Sotokanda": 1,
+              "Kotobuki": 5,
+              "Marunouchi": 2,
+              "Asakusabashi": 4,
+              "Higashishinagawa": 1,
+              "Roppongi": 1,
+              "Misuji": 5,
+              "Nishiasakusa": 2,
+              "Azumabashi": 1,
+              "Toyosu": 1,
+              "Komagata": 1,
+              "Kaminarimon": 3,
+              "Midori": 1,
+              "Ueno": 1,
+              "Motoasakusa": 1,
+              "Hanakawado": 2,
+              "Kuramahonmachi": 1,
+              "Uenokōen": 1,
+              "Miyoshi": 1,
+              "Oshiage": 1,
+              "Akasaka": 1,
+              "Ginza": 1,
+              "Toranomon": 2,
+              "Jingūmae": 1,
+              "Nihonbashikodenmachō": 1
+            }
+          },
+          "onFail": {
+            "severity": "P1",
+            "category": "DISCOVERY_FAILURE"
+          }
+        }
+      ],
+      "scores": {
+        "correctness": 2,
+        "relevance": 1,
+        "explainability": 2,
+        "control": 2,
+        "efficiency": 1
+      },
+      "total": 8,
+      "status": "PASS",
+      "observations": {
+        "traceDir": "artifacts/recommendation_runs/20260930_2031_src-9deb1bc_R1",
+        "candidateRecall": {
+          "score": 2,
+          "status": "strong",
+          "reason": "bookstores=5, kissaten=9, strong-relevance POIs=9, expected literary areas present=Kanda Jinbōchō, Sotokanda",
+          "evidenceRefs": [
+            "ChIJxUP_Y-iJGGAR1Mm00ouCVUM",
+            "ChIJ8UvpbOCPGGARiHO0jyfGqvU",
+            "ChIJ3RqD4zSPGGARkgV-WNO_sYA",
+            "ChIJxyK9lrGOGGARg15egohj6PI",
+            "ChIJnakmQs-OGGARv8OIIEav9rM",
+            "ChIJkX42vLeOGGARszgelkFQv9g",
+            "ChIJA6ObqMaOGGARNzoD87obfJI",
+            "ChIJjaQ7sUqJGGARU9pvfDpBLWA",
+            "ChIJbdCh6LaOGGAR66AikEbVY7g"
+          ],
+          "detail": {
+            "bookstores": 5,
+            "kissaten": 9,
+            "strong": 9,
+            "expectedAreaHits": [
+              "Kanda Jinbōchō",
+              "Sotokanda"
+            ]
+          }
+        },
+        "top10": [
+          {
+            "rank": 1,
+            "name": "snaq.me stand Kuramae",
+            "category": "cafe_kissaten",
+            "total": 0.613,
+            "stateMatch": 0.7,
+            "relevance": 1
+          },
+          {
+            "rank": 2,
+            "name": "Okuramae Shobō",
+            "category": "bookstore",
+            "total": 0.58,
+            "stateMatch": 0.7,
+            "relevance": 2
+          },
+          {
+            "rank": 3,
+            "name": "Kuramae Park",
+            "category": "park_garden",
+            "total": 0.576,
+            "stateMatch": 0.7,
+            "relevance": 1
+          },
+          {
+            "rank": 4,
+            "name": "Coffee Wrights Kuramae",
+            "category": "cafe_kissaten",
+            "total": 0.573,
+            "stateMatch": 0.7,
+            "relevance": 1
+          },
+          {
+            "rank": 5,
+            "name": "SUNDAE APART",
+            "category": "cafe_kissaten",
+            "total": 0.573,
+            "stateMatch": 0.7,
+            "relevance": 1
+          },
+          {
+            "rank": 6,
+            "name": "KURAMAE CANNELE",
+            "category": "cafe_kissaten",
+            "total": 0.572,
+            "stateMatch": 0.7,
+            "relevance": 1
+          },
+          {
+            "rank": 7,
+            "name": "Square Cafe",
+            "category": "cafe_kissaten",
+            "total": 0.572,
+            "stateMatch": 0.7,
+            "relevance": 2
+          },
+          {
+            "rank": 8,
+            "name": "Kamifuku Books",
+            "category": "bookstore",
+            "total": 0.553,
+            "stateMatch": 0.7,
+            "relevance": 2
+          },
+          {
+            "rank": 9,
+            "name": "Tōmei Bookstore",
+            "category": "bookstore",
+            "total": 0.545,
+            "stateMatch": 0.7,
+            "relevance": 2
+          },
+          {
+            "rank": 10,
+            "name": "Kissa Hangetsu",
+            "category": "cafe_kissaten",
+            "total": 0.538,
+            "stateMatch": 0.7,
+            "relevance": 2
+          }
+        ],
+        "top10Mean": 1.5,
+        "final": [
+          "D1 main_destination: Kuramae Park [park_garden] rel=1",
+          "D1 lunch: snaq.me stand Kuramae [cafe_kissaten] rel=1",
+          "D1 extension_2: Okuramae Shobō [bookstore] rel=2",
+          "D1 dinner: 鶏焼肉専門店 とり鮮 [yakiniku_grill] rel=0",
+          "D1 nightcap: Bar Boushu 蔵前 & Hotel Villa Kuramae（バー ボウシュ & ホテル ヴィラ クラマエ) Whisky & Wine & Cocktail [bar_cocktail] rel=0",
+          "D2 main_destination: The Yogodo Hall [temple_shrine] rel=1",
+          "D2 lunch: Square Cafe [cafe_kissaten] rel=2",
+          "D2 extension_2: KURAMAE CANNELE [cafe_kissaten] rel=1",
+          "D2 dinner: Yello [izakaya] rel=0",
+          "D2 nightcap: Stage [bar_cocktail] rel=0",
+          "D3 main_destination: Tokyo Origami Museum [museum_gallery] rel=1",
+          "D3 lunch: Coffee Wrights Kuramae [cafe_kissaten] rel=1",
+          "D3 extension_2: Infinity Books Japan [bookstore] rel=2",
+          "D3 dinner: Minatsuki [izakaya] rel=0",
+          "D3 nightcap: Soba Udon Monju Asakusa Branch [bar_cocktail] rel=0",
+          "D4 main_destination: Former Yasuda Garden [park_garden] rel=1",
+          "D4 lunch: Icchome Sabou [cafe_kissaten] rel=2",
+          "D4 extension_2: Ryōgoku Edo NOREN [cafe_kissaten] rel=2",
+          "D4 dinner: Ult II House-made Noodles [ramen] rel=0",
+          "D4 nightcap: Okuman [izakaya] rel=0",
+          "D5 main_destination: SKYTREE GALLERY [museum_gallery] rel=1",
+          "D5 lunch: En [cafe_kissaten] rel=1",
+          "D5 extension_2: Kumazawa Book Store [bookstore] rel=2",
+          "D5 dinner: Sushi Kikumasa [sushi] rel=0",
+          "D5 nightcap: Ougiya [izakaya] rel=0"
+        ],
+        "finalMean": 0.84
+      },
+      "judgeNotes": []
+    }
+  ],
+  "memory": {
+    "scores": [
+      {
+        "id": "mem_001",
+        "text": "Repeatedly drawn to sushi — 18 items (9 saved screenshots, 5 saved places, 4 photos)",
+        "status": "candidate",
+        "accuracy": 2,
+        "specificity": 2,
+        "stability": 2,
+        "provenance": 2,
+        "actionability": 2,
+        "total": 10,
+        "issue": "—"
+      },
+      {
+        "id": "mem_002",
+        "text": "Repeatedly drawn to izakaya — 10 items (7 saved screenshots, 3 photos)",
+        "status": "candidate",
+        "accuracy": 2,
+        "specificity": 2,
+        "stability": 2,
+        "provenance": 2,
+        "actionability": 2,
+        "total": 10,
+        "issue": "—"
+      },
+      {
+        "id": "mem_003",
+        "text": "Repeatedly drawn to market / grocery — 6 items (3 photos, 3 saved screenshots)",
+        "status": "candidate",
+        "accuracy": 1,
+        "specificity": 2,
+        "stability": 2,
+        "provenance": 2,
+        "actionability": 1,
+        "total": 8,
+        "issue": "confidence 0.53 on 6 refs; no role at the evaluated pace admits this category — cannot claim a slot"
+      },
+      {
+        "id": "mem_004",
+        "text": "Repeatedly drawn to discount / variety store — 3 items (2 photos, 1 saved place)",
+        "status": "candidate",
+        "accuracy": 1,
+        "specificity": 2,
+        "stability": 2,
+        "provenance": 2,
+        "actionability": 1,
+        "total": 8,
+        "issue": "confidence 0.52 on 3 refs; no role at the evaluated pace admits this category — cannot claim a slot"
+      },
+      {
+        "id": "mem_005",
+        "text": "Repeatedly drawn to ramen — 3 items (3 photos)",
+        "status": "candidate",
+        "accuracy": 1,
+        "specificity": 2,
+        "stability": 2,
+        "provenance": 2,
+        "actionability": 2,
+        "total": 9,
+        "issue": "confidence 0.51 on 3 refs"
+      },
+      {
+        "id": "mem_006",
+        "text": "Ranges across the city within a day — median 5.6 km between the furthest points of a day",
+        "status": "candidate",
+        "accuracy": 1,
+        "specificity": 2,
+        "stability": 1,
+        "provenance": 2,
+        "actionability": 2,
+        "total": 8,
+        "issue": "confidence 0.38 on 26 refs; cross-trip stability uncertain (low-confidence behaviour)"
+      },
+      {
+        "id": "mem_007",
+        "text": "Moves at an unhurried pace — around 3 distinct stops on a typical day",
+        "status": "candidate",
+        "accuracy": 1,
+        "specificity": 2,
+        "stability": 2,
+        "provenance": 2,
+        "actionability": 2,
+        "total": 9,
+        "issue": "active in every H-scenario fixture (3 stops/day); confidence 0.53 on 3 refs"
+      },
+      {
+        "id": "mem_eval_m1_bookstores",
+        "text": "Prefers independent bookstores and literary neighborhoods.",
+        "status": "active",
+        "accuracy": 2,
+        "specificity": 2,
+        "stability": 2,
+        "provenance": 2,
+        "actionability": 1,
+        "total": 9,
+        "issue": "\"literary neighborhoods\" half dropped — only category=bookstore stored; no role at the evaluated pace admits this category — cannot claim a slot"
+      },
+      {
+        "id": "mem_eval_m2_quiet",
+        "text": "Prefers quiet, less crowded places.",
+        "status": "active",
+        "accuracy": 1,
+        "specificity": 1,
+        "stability": 1,
+        "provenance": 2,
+        "actionability": 0,
+        "total": 5,
+        "issue": "No MemorySubject facet can express it (no crowd/quiet or neighbourhood facet); the planner cannot read it"
+      },
+      {
+        "id": "(none created)",
+        "text": "M3: \"I never enjoy crowded tourist spots.\" → no candidate Memory",
+        "status": "candidate",
+        "accuracy": 1,
+        "specificity": 1,
+        "stability": 1,
+        "provenance": 0,
+        "actionability": 0,
+        "total": 3,
+        "issue": "chat path never creates Memory candidates; No MemorySubject facet can express it (no crowd/quiet or neighbourhood facet); the planner cannot read it"
+      }
+    ],
+    "influence": {
+      "memoryInfluence": {
+        "movedUp": 5,
+        "movedDown": 73,
+        "finalSelectionsChanged": 10,
+        "memoryScoreContribution": "memoryMatch = 0.8 for bookstores (weight 1.5 of Σ≈7.25 → ≈ +0.17 total); 0 elsewhere",
+        "bookstoreRanks": [
+          {
+            "name": "Okuramae Shobō",
+            "withMemory": 1,
+            "without": 14
+          },
+          {
+            "name": "Tōmei Bookstore",
+            "withMemory": 2,
+            "without": 39
+          },
+          {
+            "name": "Kamifuku Books",
+            "withMemory": 3,
+            "without": 26
+          },
+          {
+            "name": "Infinity Books Japan",
+            "withMemory": 4,
+            "without": 70
+          },
+          {
+            "name": "Kumazawa Book Store",
+            "withMemory": 5,
+            "without": 78
+          }
+        ]
+      },
+      "finalWithMemory": [
+        "D1 main_destination: Kuramae Park [park_garden]",
+        "D1 lunch: snaq.me stand Kuramae [cafe_kissaten]",
+        "D1 extension_2: Okuramae Shobō [bookstore]",
+        "D1 dinner: 鶏焼肉専門店 とり鮮 [yakiniku_grill]",
+        "D1 nightcap: Bar Boushu 蔵前 & Hotel Villa Kuramae（バー ボウシュ & ホテル ヴィラ クラマエ) Whisky & Wine & Cocktail [bar_cocktail]",
+        "D2 main_destination: Tokyo Origami Museum [museum_gallery]",
+        "D2 lunch: Sunaba [soba_udon]",
+        "D2 extension_2: Infinity Books Japan [bookstore]",
+        "D2 dinner: Gatsun [ramen]",
+        "D2 nightcap: Soba Udon Monju Asakusa Branch [bar_cocktail]",
+        "D3 main_destination: Former Yasuda Garden [park_garden]",
+        "D3 lunch: Icchome Sabou [cafe_kissaten]",
+        "D3 extension_2: Kumazawa Book Store [bookstore]",
+        "D3 dinner: Ult II House-made Noodles [ramen]",
+        "D3 nightcap: Ougiya [izakaya]",
+        "D4 main_destination: The Yogodo Hall [temple_shrine]",
+        "D4 lunch: Asakusa Udon Main Store [soba_udon]",
+        "D4 extension_2: Kamifuku Books [bookstore]",
+        "D4 dinner: Kura Sushi Global Flagship Store Asakusa [sushi]",
+        "D4 nightcap: Minatsuki [izakaya]",
+        "D5 main_destination: SKYTREE GALLERY [museum_gallery]",
+        "D5 lunch: Coffee Wrights Kuramae [cafe_kissaten]",
+        "D5 extension_2: WESTSIDE COFFEE KURAMAE [grocery_market]",
+        "D5 dinner: Okuman [izakaya]",
+        "D5 nightcap: Stage [bar_cocktail]"
+      ],
+      "finalWithoutMemory": [
+        "D1 main_destination: Kuramae Park [park_garden]",
+        "D1 lunch: snaq.me stand Kuramae [cafe_kissaten]",
+        "D1 extension_2: Koshoku [museum_gallery]",
+        "D1 dinner: 鶏焼肉専門店 とり鮮 [yakiniku_grill]",
+        "D1 nightcap: Bar Boushu 蔵前 & Hotel Villa Kuramae（バー ボウシュ & ホテル ヴィラ クラマエ) Whisky & Wine & Cocktail [bar_cocktail]",
+        "D2 main_destination: Tokyo Origami Museum [museum_gallery]",
+        "D2 lunch: Sunaba [soba_udon]",
+        "D2 extension_2: WESTSIDE COFFEE KURAMAE [grocery_market]",
+        "D2 dinner: Gatsun [ramen]",
+        "D2 nightcap: Stage [bar_cocktail]",
+        "D3 main_destination: Former Yasuda Garden [park_garden]",
+        "D3 lunch: Icchome Sabou [cafe_kissaten]",
+        "D3 extension_2: Ends Vintage Clothing [fashion_vintage]",
+        "D3 dinner: Ult II House-made Noodles [ramen]",
+        "D3 nightcap: Minatsuki [izakaya]",
+        "D4 main_destination: The Yogodo Hall [temple_shrine]",
+        "D4 lunch: Asakusa Udon Main Store [soba_udon]",
+        "D4 extension_2: Soba Udon Monju Asakusa Branch [bar_cocktail]",
+        "D4 dinner: Ougiya [izakaya]",
+        "D4 nightcap: Pub Shamrock Asakusa [bar_cocktail]",
+        "D5 main_destination: SKYTREE GALLERY [museum_gallery]",
+        "D5 lunch: Coffee Wrights Kuramae [cafe_kissaten]",
+        "D5 extension_2: Infinity Books Japan [bookstore]",
+        "D5 dinner: Okuman [izakaya]",
+        "D5 nightcap: Living Room Asakusa Cocktail Bar [bar_cocktail]"
+      ],
+      "atOwnPace": {
+        "bookstores": 0,
+        "changedStops": 0
+      }
+    }
+  },
+  "recommendation": {
+    "candidateRecallProxy": 2,
+    "top10MeanRelevance": 1.5,
+    "finalMeanRelevanceR1": 0.84,
+    "memoryInfluence": {
+      "movedUp": 5,
+      "movedDown": 73,
+      "finalSelectionsChanged": 10,
+      "memoryScoreContribution": "memoryMatch = 0.8 for bookstores (weight 1.5 of Σ≈7.25 → ≈ +0.17 total); 0 elsewhere",
+      "bookstoreRanks": [
+        {
+          "name": "Okuramae Shobō",
+          "withMemory": 1,
+          "without": 14
+        },
+        {
+          "name": "Tōmei Bookstore",
+          "withMemory": 2,
+          "without": 39
+        },
+        {
+          "name": "Kamifuku Books",
+          "withMemory": 3,
+          "without": 26
+        },
+        {
+          "name": "Infinity Books Japan",
+          "withMemory": 4,
+          "without": 70
+        },
+        {
+          "name": "Kumazawa Book Store",
+          "withMemory": 5,
+          "without": 78
+        }
+      ]
+    },
+    "constraintViolationRate": "non-zero (H5)",
+    "diversity": null,
+    "routeTimeFeasibility": null,
+    "audit": {
+      "selected": [
+        {
+          "placeId": "ChIJWQSdSLaOGGARk7qGNVyECxI",
+          "name": "Kuramae Park",
+          "slot": "Day 1 main_destination",
+          "neutralRank": 3,
+          "whyWon": {
+            "placedBy": "ranking",
+            "reasons": [
+              "For “small independent cultural places”: its description mentions “small”.",
+              "A 1-minute walk from Kuramae.",
+              "Chosen over The Yogodo Hall, which is farther from Kuramae."
+            ],
+            "beat": "The Yogodo Hall (0.466), which lost most on convenience"
+          }
+        },
+        {
+          "placeId": "ChIJjZFyLquPGGARgPO6dprcE9M",
+          "name": "snaq.me stand Kuramae",
+          "slot": "Day 1 lunch",
+          "neutralRank": 1,
+          "whyWon": {
+            "placedBy": "ranking",
+            "reasons": [
+              "For “kissaten”: it is a cafe or kissaten.",
+              "A 2-minute walk from Kuramae Park.",
+              "Chosen over SUNDAE APART, which is pricier."
+            ],
+            "beat": "SUNDAE APART (0.569), which lost most on cost"
+          }
+        },
+        {
+          "placeId": "ChIJkX42vLeOGGARszgelkFQv9g",
+          "name": "Okuramae Shobō",
+          "slot": "Day 1 extension_2",
+          "neutralRank": 2,
+          "whyWon": {
+            "placedBy": "ranking",
+            "reasons": [
+              "For “old bookstores”: its description mentions “bookstore”.",
+              "A 2-minute walk from Kuramae Park.",
+              "Chosen over Square Cafe, which is better known."
+            ],
+            "beat": "Square Cafe (0.57), which lost most on novelty"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "placeId": "ChIJjbNYOACPGGARHjKCX5UPco4",
+          "name": "SUNDAE APART",
+          "category": "cafe_kissaten",
+          "neutralRank": 5,
+          "neutralScore": 0.573,
+          "whyLost": "RANKING: runner-up for Day 1 lunch, lost to snaq.me stand Kuramae on cost (0.569 vs winner)"
+        },
+        {
+          "placeId": "ChIJxyK9lrGOGGARg15egohj6PI",
+          "name": "Kamifuku Books",
+          "category": "bookstore",
+          "neutralRank": 8,
+          "neutralScore": 0.553,
+          "whyLost": "RANKING: runner-up for Day 4 extension_2, lost to Ryōgoku Edo NOREN on convenience (0.488 vs winner)"
+        },
+        {
+          "placeId": "ChIJ3RqD4zSPGGARkgV-WNO_sYA",
+          "name": "Tōmei Bookstore",
+          "category": "bookstore",
+          "neutralRank": 9,
+          "neutralScore": 0.545,
+          "whyLost": "RANKING/CONTEXT: eligible for extension_2 but never in a slot's top 6 once day geography, hours and used places applied"
+        }
+      ]
+    },
+    "top10": [
+      {
+        "rank": 1,
+        "name": "snaq.me stand Kuramae",
+        "category": "cafe_kissaten",
+        "total": 0.613,
+        "stateMatch": 0.7,
+        "relevance": 1
+      },
+      {
+        "rank": 2,
+        "name": "Okuramae Shobō",
+        "category": "bookstore",
+        "total": 0.58,
+        "stateMatch": 0.7,
+        "relevance": 2
+      },
+      {
+        "rank": 3,
+        "name": "Kuramae Park",
+        "category": "park_garden",
+        "total": 0.576,
+        "stateMatch": 0.7,
+        "relevance": 1
+      },
+      {
+        "rank": 4,
+        "name": "Coffee Wrights Kuramae",
+        "category": "cafe_kissaten",
+        "total": 0.573,
+        "stateMatch": 0.7,
+        "relevance": 1
+      },
+      {
+        "rank": 5,
+        "name": "SUNDAE APART",
+        "category": "cafe_kissaten",
+        "total": 0.573,
+        "stateMatch": 0.7,
+        "relevance": 1
+      },
+      {
+        "rank": 6,
+        "name": "KURAMAE CANNELE",
+        "category": "cafe_kissaten",
+        "total": 0.572,
+        "stateMatch": 0.7,
+        "relevance": 1
+      },
+      {
+        "rank": 7,
+        "name": "Square Cafe",
+        "category": "cafe_kissaten",
+        "total": 0.572,
+        "stateMatch": 0.7,
+        "relevance": 2
+      },
+      {
+        "rank": 8,
+        "name": "Kamifuku Books",
+        "category": "bookstore",
+        "total": 0.553,
+        "stateMatch": 0.7,
+        "relevance": 2
+      },
+      {
+        "rank": 9,
+        "name": "Tōmei Bookstore",
+        "category": "bookstore",
+        "total": 0.545,
+        "stateMatch": 0.7,
+        "relevance": 2
+      },
+      {
+        "rank": 10,
+        "name": "Kissa Hangetsu",
+        "category": "cafe_kissaten",
+        "total": 0.538,
+        "stateMatch": 0.7,
+        "relevance": 2
+      }
+    ]
+  },
+  "issues": [
+    {
+      "id": "H5.tag_keeps_day",
+      "scenario": "H5",
+      "severity": "P0",
+      "category": "CONSTRAINT_FAILURE",
+      "title": "The Considering tag keeps \"Day 4\" (must_visit carries a day)",
+      "evidence": "{\"tag\":{\"kind\":\"must_visit\",\"placeId\":\"nezu_museum\"}}"
+    },
+    {
+      "id": "H5.conflict_returned",
+      "scenario": "H5",
+      "severity": "P0",
+      "category": "CONSTRAINT_FAILURE",
+      "title": "State edit returns a Conflict (Day 4 closed)",
+      "evidence": "{\"outcome\":\"proposal\",\"nezuPlacedOn\":\"Day 2\"}"
+    },
+    {
+      "id": "H5.not_silently_dropped",
+      "scenario": "H5",
+      "severity": "P0",
+      "category": "CONSTRAINT_FAILURE",
+      "title": "Constraint is never silently dropped or weakened (create and edit paths)",
+      "evidence": "{\"create\":{\"valid\":true,\"nezuOn\":\"Day 2\"},\"edit\":{\"outcome\":\"proposal\",\"nezuOn\":\"Day 2\"}}"
+    },
+    {
+      "id": "M1.not_hard_constraint",
+      "scenario": "M1",
+      "severity": "P0",
+      "category": "MEMORY_FAILURE",
+      "title": "Memory is not a hard constraint: non-bookstore stops remain and bookstore claims stay within the memory bound",
+      "evidence": "{\"bookstoresInPlan\":4,\"claimLimit\":2,\"stops\":25}"
+    },
+    {
+      "id": "H3.removes_least_valuable",
+      "scenario": "H3",
+      "severity": "P1",
+      "category": "RANKING_FAILURE",
+      "title": "The dropped stop is chosen by value, not by position (last-of-day)",
+      "evidence": "[\"D1 dinner: Rokurinsha Tokyo Ramen Street\",\"D2 dinner: Andy's Shin Hinomoto\",\"D3 dinner: Yakiniku Yoin Ebisu\",\"D4 dinner: Yakitori Morimoto\",\"D5 dinner: Hakkoku\"]"
+    },
+    {
+      "id": "H3.scope_asked",
+      "scenario": "H3",
+      "severity": "P1",
+      "category": "CLASSIFICATION_FAILURE",
+      "title": "\"I feel tired\" is scoped (today / next days) or the scope is asked, not applied to the whole trip silently",
+      "evidence": "{\"daysTouched\":5,\"days\":5}"
+    },
+    {
+      "id": "H5.concrete_reason",
+      "scenario": "H5",
+      "severity": "P1",
+      "category": "EVIDENCE_FAILURE",
+      "title": "Conflict reason is concrete (names the place and the day)",
+      "evidence": "null"
+    },
+    {
+      "id": "H5.resolution_options",
+      "scenario": "H5",
+      "severity": "P1",
+      "category": "EVIDENCE_FAILURE",
+      "title": "Structured resolution options (move day / remove / edit requirement)",
+      "evidence": "StateConflictDetail = { message, consideringId } — no options field in the outcome type"
+    },
+    {
+      "id": "M1.memory_supported_at_own_pace",
+      "scenario": "M1",
+      "severity": "P1",
+      "category": "RANKING_FAILURE",
+      "title": "Memory still reaches the plan at the traveller's own measured pace (3 stops/day)",
+      "evidence": "{\"pacedBookstores\":0,\"pacedChangedItems\":0,\"rolesAdmittingBookstoreAt3\":[]}"
+    },
+    {
+      "id": "M1.final_relevance",
+      "scenario": "M1",
+      "severity": "P1",
+      "category": "RANKING_FAILURE",
+      "title": "Final POIs mean relevance to the Showa/literary intent ≥ 1.0 (rubric)",
+      "evidence": "{\"meanRelevance\":0.8,\"perItem\":[1,1,2,0,0,1,1,2,0,0,1,2,2,0,0,1,1,2,0,0,1,1,1,0,0]}"
+    },
+    {
+      "id": "M2.memory_representable",
+      "scenario": "M2",
+      "severity": "P1",
+      "category": "MEMORY_FAILURE",
+      "title": "\"Quiet, less crowded\" can be stored as a Memory the planner reads",
+      "evidence": "MemorySubject facets: category | price_band | time_fit | stay_length | stops_per_day | day_span_metres | start_minutes — no crowd/popularity facet; `crowd` was dropped in facets.ts"
+    },
+    {
+      "id": "R1.final_relevance",
+      "scenario": "R1",
+      "severity": "P1",
+      "category": "RANKING_FAILURE",
+      "title": "Final POIs mean relevance ≥ 1.0",
+      "evidence": "{\"finalMean\":0.84}"
+    },
+    {
+      "id": "R1.expansion",
+      "scenario": "R1",
+      "severity": "P1",
+      "category": "DISCOVERY_FAILURE",
+      "title": "Semantic expansion carries ≥ 50% of Intent terms into discovery queries",
+      "evidence": "{\"reached\":[\"kissaten\"],\"lost\":[\"showa\",\"literary\",\"cultural\",\"atmosphere\",\"slow\",\"neighborhood\",\"exploration\",\"bookstores\",\"small\",\"independent\",\"places\"]}"
+    },
+    {
+      "id": "R1.area_stage",
+      "scenario": "R1",
+      "severity": "P1",
+      "category": "DISCOVERY_FAILURE",
+      "title": "An area-candidate stage exists before POI retrieval",
+      "evidence": "{\"stageExists\":false,\"note\":\"No area-level retrieval: searches are \\\"<lodging> <category>\\\" around the base lodging. Neighbourhoods below are what the pool happens to contain.\",\"neighborhoodsInPool\":{\"Kuramae\":37,\"Kamezawa\":1,\"Torigoe\":1,\"Asakusa\":12,\"Kitanomarukōen\":1,\"Kanda Jinbōchō\":1,\"Yokoami\":2,\"Honjo\":3,\"Yanagibashi\":4,\"Sotokanda\":1,\"Kotobuki\":5,\"Marunouchi\":2,\"Asakusabashi\":4,\"Higashishinagawa\":1,\"Roppongi\":1,\"Misuji\":5,\"Nishiasakusa\":2,\"Azumabashi\":1,\"Toyosu\":1,\"Komagata\":1,\"Kaminarimon\":3,\"Midori\":1,\"Ueno\":1,\"Motoasakusa\":1,\"Hanakawado\":2,\"Kuramahonmachi\":1,\"Uenokōen\":1,\"Miyoshi\":1,\"Oshiage\":1,\"Akasaka\":1,\"Ginza\":1,\"Toranomon\":2,\"Jingūmae\":1,\"Nihonbashikodenmachō\":1}}"
+    },
+    {
+      "id": "M1.scoped_change",
+      "scenario": "M1",
+      "severity": "P2",
+      "category": "RANKING_FAILURE",
+      "title": "Memory changes only a bounded number of stops (≤ 2 × claim limit)",
+      "evidence": "{\"changedStops\":10,\"claimLimit\":2}"
+    },
+    {
+      "id": "M1.no_taxis_represented",
+      "scenario": "M1",
+      "severity": "P2",
+      "category": "CONSTRAINT_FAILURE",
+      "title": "\"No taxis.\" is represented as a structured constraint (not a free-text ranking term)",
+      "evidence": "{\"tag\":null,\"maxHopKm\":2.13,\"maxSpanKm\":2.13}"
+    }
+  ],
+  "failureCategoryCounts": {
+    "CONSTRAINT_FAILURE": 4,
+    "MEMORY_FAILURE": 2,
+    "RANKING_FAILURE": 5,
+    "CLASSIFICATION_FAILURE": 1,
+    "EVIDENCE_FAILURE": 2,
+    "DISCOVERY_FAILURE": 2
+  },
+  "traces": [
+    "artifacts/recommendation_runs/20260930_2031_src-9deb1bc_R1"
+  ],
+  "scenarioChanges": [
+    "First run of suite core-eval-1.0 — no prior definitions to diverge from.",
+    "M2: the spec Memory is not representable; a documented proxy (aversion: temple_shrine) is used for the State>Memory ranking checks.",
+    "H4: adds an invariant probe (State edit \"Day 2 dinner: ramen\") alongside the Convenience edit.",
+    "H5: test data sets Nezu Museum closed on Thursdays (Day 4 = 2026-10-08) in an eval-local catalogue copy.",
+    "R1/R2: run on data/demo_retrieved_v1 (104 places retrieved around Kuramae) — no live Places calls."
+  ],
+  "comparison": null
+}

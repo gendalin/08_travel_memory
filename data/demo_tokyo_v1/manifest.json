@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "1.0",
+  "bundleId": "demo_tokyo_v1",
+  "destination": "Tokyo",
+  "generatedAt": "2026-09-21T12:30:17.370Z",
+  "sourceCounts": {
+    "photos": 33,
+    "mapLinks": 14,
+    "screenshots": 27
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "suiteVersion": "core-eval-1.0",
+  "id": "H3",
+  "title": "Reframe",
+  "smoke": true,
+  "setup": {
+    "trip": "createTokyoTrip()",
+    "chat": "I feel tired. Fewer spots."
+  },
+  "checks": [
+    "classification",
+    "state_changed",
+    "atomic_versions",
+    "valid",
+    "fewer_spots",
+    "removes_least_valuable",
+    "rationale",
+    "pending_no_mutation",
+    "reject",
+    "atomic",
+    "minimal",
+    "scope_asked"
+  ],
+  "implementation": "eval/scenarios/collaboration.ts"
+}

@@ -1,0 +1,2357 @@
+[
+  {
+    "placeId": "ChIJRVCX302PGGARyTajhNHlUmY",
+    "name": "Living Room Asakusa Cocktail Bar",
+    "lat": 35.712129,
+    "lng": 139.797644,
+    "category": "bar_cocktail",
+    "neighborhood": "Asakusa",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "18:00-23:59",
+      "tue": "18:00-23:59",
+      "wed": "19:00-23:59",
+      "thu": "18:00-23:59",
+      "fri": "18:00-23:59",
+      "sat": "16:00-23:59",
+      "sun": "16:00-23:59"
+    },
+    "typicalDurationMin": 75,
+    "tags": [
+      "cocktail bar",
+      "bar"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 214,
+    "photo": {
+      "name": "places/ChIJRVCX302PGGARyTajhNHlUmY/photos/Aa-ngMbdTvXXQeB2z2HHmC1uSYI9kLGhr8BrvGre4eMIzCDyxOTvtLJBYU1ecL7yG-OQM7FcdVdlFLau3z_kipzHg7Evo_b-lvXRxsHpC7y9ipYkJVK3xwXYZmz3DTdberu3I_OgV5G3l8yEKFLku5JRfcRN8ANc-hfxk7337woy6tmwxtV03fv1TmWpgipXY67Bzmg2Ng8JVGwN637IJ6iiZfWOjeFD0PWW-6q-TI5o7EDCJRPPTey0PS_YBGeQhCnY91YPNPm82PkYWygJ3jTEr5HwLs-1l0sqYasJNQpz2ANg0q_CUdIhNJmTi-wSuTg6bmGK6gJiooSIqFOfLLQ5uafGXluN8pUIjH0pZZCnll9MVI2NyinyWWCzEHVydyoopxjLmgN82-esWhjAdUmWYRYCR1A",
+      "attribution": {
+        "name": "Living Room Asakusa Cocktail Bar",
+        "uri": "https://maps.google.com/maps/contrib/100608033918072576548"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJmx42NBuPGGARy2nxJRtD90Q",
+    "name": "Bar Boushu 蔵前 & Hotel Villa Kuramae（バー ボウシュ & ホテル ヴィラ クラマエ) Whisky & Wine & Cocktail",
+    "lat": 35.705047,
+    "lng": 139.79159,
+    "category": "bar_cocktail",
+    "neighborhood": "Kuramae",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "19:00-23:59",
+      "tue": "19:00-23:59",
+      "wed": "19:00-23:59",
+      "thu": "19:00-23:59",
+      "fri": "19:00-23:59",
+      "sat": "19:00-23:59",
+      "sun": "19:00-23:59"
+    },
+    "typicalDurationMin": 75,
+    "tags": [
+      "bar",
+      "budget japanese inn",
+      "hotel",
+      "cafe",
+      "lodging"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 109,
+    "photo": {
+      "name": "places/ChIJmx42NBuPGGARy2nxJRtD90Q/photos/Aa-ngMbsHVvu01JHXLBfDxHtxDsaOu-M73GVRBh70YVK6E2-77tSOReIOPY65WTRWLo152uZSwzKgkOK0FDUgVQAgNhgaQg3b3VmfB5lB2qXDNTKofHvvkcUG7cPZDQcMWORphJtyiXLASSTYGgtNxmav0VozNjZwK8AmSLLnKCy0AC5OrEDBcZiJ7O7Cf94T9JO7TPytjMAd2rlH3G1Lf7uP7itL02PlI5TG4fTmERDLxTZMqvChB_lBrwfSryE8e6jzmFyFFjPEbaw6SwP9Qchhp3Gbl21JNN6dsh6fR97Jynox-piE7ydk1hJ9h4ABRq48Mp9CuSHGJDe3i2MrxG_PWHi3tv3JFI_4rTjbd_atb3g7i5qTjaeMAN-6nvTzDwonkF2gad11vadc1iiYqeDC8yAqyYbyQu5ioG1fK6BndHhYu0",
+      "attribution": {
+        "name": "Bar Boushu 蔵前 & Hotel Villa Kuramae（バー ボウシュ & ホテル ヴィラ クラマエ) Whisky & Wine & Cocktail",
+        "uri": "https://maps.google.com/maps/contrib/110558359805279108885"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJVVUJ8LCOGGARIwkWM-2bZlk",
+    "name": "The Bridge Bar & Lounge",
+    "lat": 35.701575,
+    "lng": 139.786247,
+    "category": "bar_cocktail",
+    "neighborhood": "Asakusabashi",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "closed",
+      "tue": "19:00-23:59",
+      "wed": "19:00-23:59",
+      "thu": "19:00-23:59",
+      "fri": "19:00-23:59",
+      "sat": "19:00-23:59",
+      "sun": "19:00-23:59"
+    },
+    "typicalDurationMin": 75,
+    "tags": [
+      "bar",
+      "wine bar"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 81,
+    "photo": {
+      "name": "places/ChIJVVUJ8LCOGGARIwkWM-2bZlk/photos/Aa-ngMZ0XqQmHeCIQfDkOcNo6wbU2gd2wVhKQc_mQPLPjrAteaq785CEnlvpoySSPNa2f7rRZQsDHuJwKo0idlk4-DtsISc6NfBixUFgo_w9RBdNRVjRhJSHH0xIwOK3NIaeQZ76wvgjln3dS4iqs2YYZJej8cQnsdTWwSo9n3OC7kaePAN8um68Irao8D7AnwHcittbzril3o8qxVnFJmTZx8TAfB6Zb-stLA0xrJ0uH-7XWc8AobOi0Abn79qP6eC8Ct-QNDm4vx-peo945fFWy2UrXnh9gqgl8CJqD3w_WRXRUlRPa1jMBiHWOchAOQ-MCF5zEQehJZOPdtVaac9nNDufYlSsvWRfOTQ7LeURrA6YzI3udAEMr9oevF3WV-Q1J6o2SEIo6bwc71QlANgtFj9z2ttZv9Y",
+      "attribution": {
+        "name": "The Bridge Bar&Lounge",
+        "uri": "https://maps.google.com/maps/contrib/105750300800886776039"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJGW7xTZaPGGAR8a7GG5Bayx0",
+    "name": "Stage",
+    "lat": 35.70468,
+    "lng": 139.790645,
+    "category": "bar_cocktail",
+    "neighborhood": "Kuramae",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "closed",
+      "tue": "18:00-23:00",
+      "wed": "18:00-23:00",
+      "thu": "18:00-23:00",
+      "fri": "18:00-23:00",
+      "sat": "18:00-23:00",
+      "sun": "closed"
+    },
+    "typicalDurationMin": 75,
+    "tags": [
+      "bar"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 118,
+    "photo": {
+      "name": "places/ChIJGW7xTZaPGGAR8a7GG5Bayx0/photos/Aa-ngMbwCgd6I9v8TebdSjY6nJv-J-7KKxLaPxDan59nG1xiDBMH-MzfhAQOF0uAwwi2SAWadjAyF2YrsZjs6bSl0fCuC8KiU8AgsaqI9Bp6RVvgif9R3CvBecjvXgMwocTzWlCie5dsecTUUK3Jvd1hBq4uTTotmdcfXfX-gWSOnJjp67m_jODnNpBK-98k62DIDMzMHVgbmTlRstpZRujs7jlYkRZNkelQf9ua0RXFssb_lkaEuCfR8xnAYe_NR2svYbT7cXrjzoO6ua4rHFYsq0C8GqrKoOTE18cS1dglnHnZiuO-AE_xQb8LsuB3wKcgrX8j5xgz4-FlnFWYCZ0fjvsI2Dd2sxEdMMENniH96Ry4zcwpBcKa4MPZpo957R1FCBWJUsYtnMaNhocNQMu66jRsY0z-3fY",
+      "attribution": {
+        "name": "Stage by Ethical Spirits",
+        "uri": "https://maps.google.com/maps/contrib/105850838470152295049"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJjeGjWi6JGGARxybY98zrgoE",
+    "name": "Music & Cocktail Bar Offin'",
+    "lat": 35.695632,
+    "lng": 139.799867,
+    "category": "bar_cocktail",
+    "neighborhood": "Midori",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "19:00-23:59",
+      "tue": "19:00-23:59",
+      "wed": "19:00-23:59",
+      "thu": "19:00-23:59",
+      "fri": "19:00-23:59",
+      "sat": "19:00-23:59",
+      "sun": "closed"
+    },
+    "typicalDurationMin": 75,
+    "tags": [
+      "bar"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 93,
+    "photo": {
+      "name": "places/ChIJjeGjWi6JGGARxybY98zrgoE/photos/Aa-ngMavTzaeXfpyeRt5IhUvzqmGoNIQ8XPkmpPWpKwBYX7sCEduGHuKj5vJnEnDltZy7ks-fAP28XMr6FdL-7u5b58w6ZWDib_g1cQpiYxLKh47LxuwP4L2vq0pOBHts2DztlECHzJtDhUf3Mx5p8a5eRNKScM43iR6wQCut9lofoVlaudW4m7xKMh9kj9FHxhzeVOSFaudCshnSWC3mI9--wWG98byXIpoldZzutFAQ41RlHJVv1c_rJZxJlhfDQSfK_dXnBEJ8uGO3ruaylw4Aycz5Iv2ZwIFD8K1w6S9bcUbdUo5nLwecubiUD7vqC9Y4bLx_yn__zEXFTnSmRiMASv8Wnjg6o3dNez1oYujJacSMj0_11t8B90q6IClMfWcePRwOJ-XU6hWjO33PbvOe8KKh4s0vpmtiOz_t8HvIZjVHg",
+      "attribution": {
+        "name": "Music & Cocktail Bar Offin'",
+        "uri": "https://maps.google.com/maps/contrib/101438177158171015261"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJZbQXayGPGGARZtpyTGzys_o",
+    "name": "The Tavern in Asakusa",
+    "lat": 35.713132,
+    "lng": 139.792107,
+    "category": "bar_cocktail",
+    "neighborhood": "Nishiasakusa",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "19:00-23:59",
+      "tue": "closed",
+      "wed": "19:00-23:59",
+      "thu": "19:00-23:59",
+      "fri": "19:00-23:59",
+      "sat": "19:00-23:59",
+      "sun": "19:00-23:59"
+    },
+    "typicalDurationMin": 75,
+    "tags": [
+      "bar",
+      "pub"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 293,
+    "photo": {
+      "name": "places/ChIJZbQXayGPGGARZtpyTGzys_o/photos/Aa-ngMYoP7vs0_z0Ss6tP0avg0XNMIXv76BLhdZEJ4ECTUnNlQd6DPLV3bcuw7j1Mh6JGQYQZOIZGzZgMixNBa0cBd0Gc-JzX6vwgFUIPvmOCtSTMNXrJdYYnVxWAAlZvUHci1F1Mu0fMT2H7JF9kB9K3_5cAMCyY2MzAr5PwRYYm7hNegFnuXTkoSxi5xSkY9EGNJQU5eWoKx80FQBczX0KLmGet2q3cgonfNu7MLd5rKfTnfqE8y-2UIM-WO-08a2nH68UA4h80MRHmiUu83ukRswDcpBWUhu7scYlMhRXTGaW35jRy-MumtxVAtXSKLsNJjng8ZXMfTm9qzZCnzhAA6kROIqqJPEK7ZWDx3ezN5OZWqcpPngeH8cFmtvM6YpgyMF1EXukQO6y9QpGhJiuhWLdbbrrnEleYaUEjigNMn8Xpw",
+      "attribution": {
+        "name": "The Tavern in Asakusa",
+        "uri": "https://maps.google.com/maps/contrib/100980083175651582550"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJmwPWxbeOGGARR85ktv868QU",
+    "name": "Okuman",
+    "lat": 35.704156,
+    "lng": 139.792293,
+    "category": "izakaya",
+    "neighborhood": "Kuramae",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "17:00-23:59",
+      "tue": "17:00-23:59",
+      "wed": "17:00-23:59",
+      "thu": "17:00-23:59",
+      "fri": "17:00-23:59",
+      "sat": "17:00-23:59",
+      "sun": "17:00-23:59"
+    },
+    "typicalDurationMin": 105,
+    "tags": [
+      "japanese izakaya restaurant"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 447,
+    "photo": {
+      "name": "places/ChIJmwPWxbeOGGARR85ktv868QU/photos/Aa-ngMa1K3tbzwCfjzFJd7IUcmUN4IcLJ4hsMDw2ItsBxdf-mXdyIz_iCikQDNXhQWJuI0zdLguchxK4sNHddaODWgfs7qkiIv17rLkpBQEOhHo3F8wrqESEyKi9mgK9a72clmMvS12dWYNrrjTLN57Re1D8pS7UxoJclCGpeEWHo7TD5xDjwZx5Bzcm-Fr7iEZQbBxwRGS7IqHWZ2Iic0hNWS_OEVm8qvrB1qvYeZKmuRjLb0cQBMssTDM-ZOcvaThPkQTWCukNvw3pPdcOMgTc3zILijIv4JeGKUgwcNh9fsOHuSJu_n5aieqhU6weze6myjdN_g9iJN8UL5_6amf-4DoJagLJHmt0_IikreI94xs_MTazELTMPCJAN5aPYZjI-ru6sLY2KpViNG_4WiuOnPg5HtqcboKZSg7_AyQD4DyQ3Se3RkTjQgMj_T4pZjKu",
+      "attribution": {
+        "name": "김떵",
+        "uri": "https://maps.google.com/maps/contrib/111825635360666023212"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJ3zGtHTqPGGARHWUaT80fqGA",
+    "name": "Kuramae Eishichi Sakaba",
+    "lat": 35.705035,
+    "lng": 139.794166,
+    "category": "izakaya",
+    "neighborhood": "Komagata",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "18:00-23:59",
+      "tue": "18:00-23:59",
+      "wed": "18:00-23:59",
+      "thu": "18:00-23:59",
+      "fri": "18:00-23:59",
+      "sat": "19:00-23:00",
+      "sun": "closed"
+    },
+    "typicalDurationMin": 105,
+    "tags": [
+      "japanese izakaya restaurant"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 13,
+    "photo": {
+      "name": "places/ChIJ3zGtHTqPGGARHWUaT80fqGA/photos/Aa-ngMaolWr1XYFpvTydvQbuCzNhPbIQ0Q2sUMOL52Lt5SF1w2aC1yGIVz1DoV_Iik2LRNoI7tfBjiu63BXbSmUVL08mV1r5ZgwRu12Em-Cn5RKAZ8MoZlT_O9KfiZH7dDpx1EigbVsd9jYlU8Im6JL_BgXuz7SkIkEAraGwUAVF2WYR-618RQT-vggdUzkGa9wy9STxKy-glb-IQsvEUqzfVjuo2tj2XfQnxSN3rNiqhYyf-JtD-1-KFssCVXp9vK-hyClFpeaeLJKnrtQD4ydixRwIoLMku1naEe545AMmHAN-Nfy4ugmLsTYvEehVLPkoYhiwNW8vV11bNOo1LceMeyqLQ1kws_MXjrss5mr9pKqXa1wvCur7TMeev7M4h6uWmw8q7IyHSUVMioHdJCY_QHWbFw3scPMhZK4Z2Dc4c-M8FOzAfI7MyRBx8zy2gSvg",
+      "attribution": {
+        "name": "yasu",
+        "uri": "https://maps.google.com/maps/contrib/110546293738884088187"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJeYWAcpWPGGAR39e1fBG_HFY",
+    "name": "The Kakeru Kuramae",
+    "lat": 35.702684,
+    "lng": 139.787461,
+    "category": "izakaya",
+    "neighborhood": "Torigoe",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "11:30-14:00,17:00-23:59",
+      "tue": "11:30-14:00,17:00-23:59",
+      "wed": "11:30-14:00,17:00-23:59",
+      "thu": "11:30-14:00,17:00-23:59",
+      "fri": "11:30-14:00,17:00-23:59",
+      "sat": "11:30-23:59",
+      "sun": "11:30-23:59"
+    },
+    "typicalDurationMin": 105,
+    "tags": [],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "search",
+    "userRatingCount": 188,
+    "photo": {
+      "name": "places/ChIJeYWAcpWPGGAR39e1fBG_HFY/photos/Aa-ngMap2Tobsy81vSbIVXHvFvW-yN4aTOk2mV8qU16K5QnGr3kOGLjie56xzqFNdn8K5-6T-CNEV2m4tBWu0Kdtw9aoBXuVdY8ZZ7Nzjwi5qDxW1KWlIcPy8PJhnRkCGnhDUK9lco4b082-0L3e6zPPYagXhsjC4ALzVrvBvTcN4YyxZfvxRrW4JMToTNn06koNV5mwkj2byWERpKD_ta45WapTIxTlCxkUmNGLg3XDZ9w8BZVMD5zJ00GoTz-M6bsxZ4Zjcg4ZPl18W96atnkfl6FRGfLbfQ6aAydZiMycCvo4U4LFn7fgkuwh8V94qxV5s5D0sY0AdivfBg_tiD-K7aAHF0ydWpwcpRcXJ4J7jFITiNo2TQThaEDcnQJProVLjahqDrCcP9Tuva-GuDb0YtdXwg",
+      "attribution": {
+        "name": "The 架 蔵前",
+        "uri": "https://maps.google.com/maps/contrib/116421817364795817491"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJ5-4YKQCPGGARIl3TPBAdU0M",
+    "name": "Izakaya Tomi Asakusabashi Branch",
+    "lat": 35.696965,
+    "lng": 139.78627,
+    "category": "izakaya",
+    "neighborhood": "Yanagibashi",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "17:00-23:59",
+      "tue": "17:00-23:59",
+      "wed": "17:00-23:59",
+      "thu": "17:00-23:59",
+      "fri": "17:00-23:59",
+      "sat": "17:00-23:59",
+      "sun": "17:00-23:59"
+    },
+    "typicalDurationMin": 105,
+    "tags": [
+      "japanese izakaya restaurant"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 374,
+    "photo": {
+      "name": "places/ChIJ5-4YKQCPGGARIl3TPBAdU0M/photos/Aa-ngMaJTtLoerc6e33PaAmK8a15466F0bSswilC7ED8dVOesM3PmSyc7qyj8iSqs7tOV6-z89Rz1XqP_ZqHV7f6f4R_7OkXndHHWuZNp79uSYi5fn151U45xbYKWOmcLZB4iIaKNTK83Hzdr1SS0WkKqsY5K-Hr2C2GcPl6j97nPcvD3kgaqt34kTd0VxezPHCfAjqs-JxzExKAnr-UxgFP1EalEqsIc1yCBa1B3SaWhPOoAuS7V8Mop3m2LJ9RpvbZKGjas_x-6tUUU8pnH7SVkiLBERvRYJUMyK3B9Xuudx-OqdZI3jZke2nNloCGY3zWp6_oKsjeiIl_piQyNte4NVYzbFWpNX4WiqxbXedjILbeW51nNr5wQAj9FKWtLE7nHnzZMhXs1DcMqRhk9q9okNFjNIcXDdDK8PhP4hcaQsBcODSPcJJ9vBt55QDJIQ",
+      "attribution": {
+        "name": "居酒屋とみ 浅草橋店",
+        "uri": "https://maps.google.com/maps/contrib/114559472050358187198"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJ8y520gmPGGAR2CSeVSdo_Rs",
+    "name": "スパイス&創作酒場 MAD CHEFs 浅草蔵前店",
+    "lat": 35.705976,
+    "lng": 139.79207,
+    "category": "izakaya",
+    "neighborhood": "Kotobuki",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "11:00-23:59",
+      "tue": "11:00-23:59",
+      "wed": "11:00-23:59",
+      "thu": "11:00-23:59",
+      "fri": "11:00-23:59",
+      "sat": "11:00-23:59",
+      "sun": "11:00-23:59"
+    },
+    "typicalDurationMin": 105,
+    "tags": [
+      "bistro",
+      "japanese curry restaurant"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "search",
+    "userRatingCount": 108,
+    "photo": {
+      "name": "places/ChIJ8y520gmPGGAR2CSeVSdo_Rs/photos/Aa-ngMYcpGiftlIrUTvHWGgpSSmX8OGgw-5V9yW9kj0WvSHLlKjG3KrA3og18_sFrCZPa9ZuhUCP1mMS9NMQwLQQsChLMTWwzjNuRqocLaPn1MC4IZBJKxFbT_-sVZtYLE_GkysRunJjeY1NV2OGpegicrnKoxVBDeOcpkabn68HkCc_lrkoNXFS-J4dd-6byh14KJFgLVV_Dwjdl14WTop3UsOS-J7yC3wDh7o-VhGF9ijx8M8dNJhxa5CUEORGQjpBtKo6zCzIq2pKzsaDmakG9KaEnbAsby9TeRtGvY-3BE8b9gytiZ8MSxfkyjGncJdDDbo6S3osnvSHdlSu7pXENuw7ZApqBPoaHV70srSljedH4AyAMqhJkF97jFt1VsTc0wtM06MJNMlAtan3AYaTi0wSIQnKu_frx7KpNByiLRVfMH-yeBWvDOZbKAHA4A",
+      "attribution": {
+        "name": "スパイス&創作酒場 MAD CHEFs 浅草蔵前店",
+        "uri": "https://maps.google.com/maps/contrib/102154263224857797161"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJD4ces_WPGGARmvEnfnK45aM",
+    "name": "Yello",
+    "lat": 35.702924,
+    "lng": 139.78928,
+    "category": "izakaya",
+    "neighborhood": "Kuramae",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "16:00-23:00",
+      "tue": "16:00-23:00",
+      "wed": "16:00-23:00",
+      "thu": "16:00-23:00",
+      "fri": "16:00-23:59",
+      "sat": "13:00-23:59",
+      "sun": "13:00-23:00"
+    },
+    "typicalDurationMin": 105,
+    "tags": [
+      "japanese izakaya restaurant",
+      "bar"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 179,
+    "photo": {
+      "name": "places/ChIJD4ces_WPGGARmvEnfnK45aM/photos/Aa-ngMbXBNu0b6mL5FBeTFEaOd90XknSHq2JahwtgQZd0C_jAJNsWG8yI1M8Y4mmkE3MIGKREmGn2Wsr5jxK0ivuSMOi8sl01tLoVBLP09I6c9mSSe5404ck8vEgtPA_p0qnH_vDprOpHX_VI5qEDeAF1iQd9CM37-HpysZZAWm9oL-YE7kH4O39Q9uMMbe90k4j5KsfvzaP2ufLHB7A9sPImicIdRYYp3JFnhbR4qlMYuYkm4dzLLfj0ud4rN7tJWG6rUm14VBnypsGzXdWwDu1rlgEOxuDgHo9aU-fAcHMg_v8sqO7F9ybD7Qhlq6GbCa68MeP22RhNb7HHIvmhFbydMl4tinYtw8bH09cXTIu4ZTG9XkErxg0MQLMARAMp7TrjiGwjTiW9I_bqeleBs1i9maQEqeEeYh6WWRVUHcFQaUEnIEiUA7QpVOIQzGQGSM3",
+      "attribution": {
+        "name": "T Oo",
+        "uri": "https://maps.google.com/maps/contrib/100473992512254030333"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJ3Sp3_oiPGGARFpojTes2U9w",
+    "name": "Yakiniku BEAST Kuramae",
+    "lat": 35.701339,
+    "lng": 139.787541,
+    "category": "yakiniku_grill",
+    "neighborhood": "Asakusabashi",
+    "priceLevel": 3,
+    "openingHours": {
+      "mon": "closed",
+      "tue": "17:00-23:00",
+      "wed": "17:00-23:00",
+      "thu": "17:00-23:00",
+      "fri": "17:00-23:00",
+      "sat": "17:00-23:00",
+      "sun": "17:00-23:00"
+    },
+    "typicalDurationMin": 105,
+    "tags": [
+      "yakiniku restaurant"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 17,
+    "photo": {
+      "name": "places/ChIJ3Sp3_oiPGGARFpojTes2U9w/photos/Aa-ngMado9NGbdD7NRwkEVw1L7aiJwkz_czOI5WA7PVlzWqn94SeFIPPWvxhYs9ErXfpHlZT3kYnRlOkXqboJPr0Eb-T1_nN-6LedcvMjfXwXLzlYmEFZuLWkXPPZQNLcdmBY6JcbQ9Prcq0bVZZEhOMFg7w10jmSnfuTIUioR3VI7GXCTjcfR0lf0H9pw-BTK8WREzKU1CFSec6QAwvSPD4jh7hkQk0NLBXlgSN78VJm1QXg13p-yeCgmLFH3FzKlJwAKjLITd_fR6ivj5t1zJbgpdK57Lj4eRplxQzXmCrNsflmu2xJ9x8F006kMIjOTk82aQ_Jo8_iJyewGgl86zX9WwGAKrlZ4vg3OUnE66bCfQEzxgCRLXZleyF4kc8XDKL9BEvJj2VTkFauch5Vdfa6DglqjOMb3q2oApz0YCAuFGpw5Acqkpu78IGDcnm9pOs",
+      "attribution": {
+        "name": "焼肉BEAST 蔵前店",
+        "uri": "https://maps.google.com/maps/contrib/113262567716335558527"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJY81wKbePGGARTY2Gp8B7Xcg",
+    "name": "Kakeru Yakiniku Base",
+    "lat": 35.697006,
+    "lng": 139.786312,
+    "category": "yakiniku_grill",
+    "neighborhood": "Yanagibashi",
+    "openingHours": {
+      "mon": "17:00-23:59",
+      "tue": "17:00-23:59",
+      "wed": "17:00-23:59",
+      "thu": "17:00-23:59",
+      "fri": "17:00-23:59",
+      "sat": "15:00-23:59",
+      "sun": "15:00-23:59"
+    },
+    "typicalDurationMin": 105,
+    "tags": [
+      "yakiniku restaurant"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 776,
+    "photo": {
+      "name": "places/ChIJY81wKbePGGARTY2Gp8B7Xcg/photos/Aa-ngMYnk9m9PYEPgcDc_RgtMS20uN9OZPKgQjqfF82M8FthPC-ToVla1GkIrdh3UwFIW0VGc7nJ9H_1WNg4WdTdeiD8c1ZlTFyybiUooTv1pQxcjfusxt2N0DKn4-tuuU-SIVIab9JA_A9XhJnEHMJ9q9pwb_aPJzTGYTM9VzInI9C_G3Hl1_okWiz44JoNY5l-e1ODPkcKOZP3MO0dw_r-pfSKQp8uQ7OyX0x_BMH3i2o-_9t1BGr6N54jP8klQjNKP0-PzuOgENQDv0_9tZwYU3gTKgBnZw21mKsqF30NlytzqOUTTIupt95_qjP_GouQF3pyVQHKW9IkCfrbnbo_PbbtAImlLI0eh_f3JCU_snaZjBVtbVhK7SFDdMvBRI-mPcEim25znouXVQRsAcnJUdRvi0IIz2Zfa2mkB4LOZNo-",
+      "attribution": {
+        "name": "2000 gabee",
+        "uri": "https://maps.google.com/maps/contrib/112759144789051389801"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJcXoNsFaPGGARlrC5lOewtUs",
+    "name": "焼肉じゅらく",
+    "lat": 35.697515,
+    "lng": 139.785325,
+    "category": "yakiniku_grill",
+    "neighborhood": "Asakusabashi",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "17:00-23:59",
+      "tue": "17:00-23:59",
+      "wed": "17:00-23:59",
+      "thu": "17:00-23:59",
+      "fri": "17:00-23:59",
+      "sat": "17:00-23:59",
+      "sun": "17:00-23:00"
+    },
+    "typicalDurationMin": 105,
+    "tags": [
+      "yakiniku restaurant",
+      "japanese izakaya restaurant"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 270,
+    "photo": {
+      "name": "places/ChIJcXoNsFaPGGARlrC5lOewtUs/photos/Aa-ngMYN35t91loxlHuJO7PAPttbN6TYmkGjn6hIbQlneKMIqwYFwM7Co5iO9U6kMlTFP0oQ7-P7eUUhLvxdRaz8YNYjJwkAO4qGtlnV8XRR3F6BxknOiwvHNCgN1hi4yaHOYeq4J6zEn03L83cWyoZqXvAA_dTXZmDYIpzgQwaekd4cUt_V-NcA49rXvCE0zMVc0Ib0G1PCAApO9xagmezoIKAQPc8HYsor9SV70oyUcQIU7McECL0z4m_H2L_dI4uU1KY2zChVMDTi9NhooF4YztCTeCm7F1W13JLag_rpRU7GdpNlojhz0hBB0-MzH07lxP1rJjLKOjO28VW2ci8QmSsjovkQyVa2DseOr8N1Vjg69toDTnjr2MlzYZ6y9jjYoY9kfBjQVvZKsKeIqj5-RwqZlm6SiBYg_IA78Nm6Ay2Lww",
+      "attribution": {
+        "name": "焼肉じゅらく",
+        "uri": "https://maps.google.com/maps/contrib/111199359738595219173"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJvwsEfrmPGGARVDMIsU3QATI",
+    "name": "Futago Asakusabashi Store",
+    "lat": 35.697631,
+    "lng": 139.78505,
+    "category": "yakiniku_grill",
+    "neighborhood": "Asakusabashi",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "17:00-23:59",
+      "tue": "17:00-23:59",
+      "wed": "17:00-23:59",
+      "thu": "17:00-23:59",
+      "fri": "17:00-23:59",
+      "sat": "17:00-23:59",
+      "sun": "17:00-23:30"
+    },
+    "typicalDurationMin": 105,
+    "tags": [
+      "yakiniku restaurant"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 985,
+    "photo": {
+      "name": "places/ChIJvwsEfrmPGGARVDMIsU3QATI/photos/Aa-ngMbW0ewtpEVSteRucqYiumHf_nqlgjF-EH83iSQu5XbU-Duwmnwq6vqCUGmjrkwVjT6eFDaaPVMiasfhy3oQnxC7AjdfVH0R3THOnmP_2lS6On24vjXXEUrt5ASEQ0yC8xBp4wj_kkBRLTkxOszmMnicxTx9EKVMe6Y3EPFYzoX2z9QPybjOMISy56_7ztP1ot-G_VnnIjLZa38k8v93J53xz1Qjm4oHlLrXID_kBk6F2zFcCArr7LmND2y7Bvel0m4ycxc82b13VkcF2BzScTqJU_mJjC8nThuzCaU8J82NHbr4i5M3sSZeJbUaa8wWzrWxnsONtf_0toNhYENLlmoqnfrMllubw1_KGTXQ02Q0j-bqZ5vzhXs2gOlQihbWb2iA6qzxH9PXQHYs48EBK6oXGlEvaQai0TB0ZPvDoOI",
+      "attribution": {
+        "name": "大阪焼肉・ホルモン ふたご 浅草橋店",
+        "uri": "https://maps.google.com/maps/contrib/105468979009894529350"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJlbLC7QWPGGARkOP4XUG8IQo",
+    "name": "Ninja Yakiniku Halal Wagyu Restaurant Asakusa",
+    "lat": 35.711696,
+    "lng": 139.794653,
+    "category": "yakiniku_grill",
+    "neighborhood": "Asakusa",
+    "priceLevel": 4,
+    "openingHours": {
+      "mon": "11:00-23:00",
+      "tue": "11:00-23:00",
+      "wed": "11:00-23:00",
+      "thu": "11:00-23:00",
+      "fri": "11:00-23:00",
+      "sat": "11:00-23:00",
+      "sun": "11:00-23:00"
+    },
+    "typicalDurationMin": 105,
+    "tags": [
+      "yakiniku restaurant",
+      "halal restaurant",
+      "steak house",
+      "hamburger restaurant",
+      "korean barbecue restaurant",
+      "american restaurant"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 4447,
+    "photo": {
+      "name": "places/ChIJlbLC7QWPGGARkOP4XUG8IQo/photos/Aa-ngMa56J-xwlHM9-kTsXz8NSEXRW0fQSmq2PEzjkwj9oPBryIGNgt2X3EFHqo8ppuzOxnc6rvAU1okcixWNq0y3xA7SPlXvUAGaozfx9b0-bmUQtNW23jD4z0y8nnKubb_g42fqZsvoYepT_zgWnnrLll8vf-fWxAQ0xJAAVPSlFlF0vGN4thaS1wPHjGut8rvVK6B8ojZTvk7z9f_G9bHeH0IAnLWIjwn25KZdhwanNipNPKKImNRTGsuny2Zm_WjNKDF03OAZXpsBgPocATIGss2GkNQqmsaPVB4JnsrzdXEgo8vC38wMA_lp0UFPr4pBS3JS83dg6NezpP7dRPrvl8PjqJcJh3MEIE7q4ZWq4Hc8DgCjhDKFZvJGYm6S_beiVZlXsY8zY1PT_H0ZS_3gc7v5xFHCEA",
+      "attribution": {
+        "name": "Ninja Yakiniku Wagyu Asakusa Halal Restaurant |忍者焼肉浅草支店",
+        "uri": "https://maps.google.com/maps/contrib/114460518896456297745"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJpcasIMOPGGARb6DVoCJdfAM",
+    "name": "Yakiniku Jiryu Asakusa",
+    "lat": 35.711189,
+    "lng": 139.792619,
+    "category": "yakiniku_grill",
+    "neighborhood": "Kaminarimon",
+    "openingHours": {
+      "mon": "12:00-16:00,17:00-23:00",
+      "tue": "12:00-16:00,17:00-23:00",
+      "wed": "12:00-16:00,17:00-23:00",
+      "thu": "12:00-16:00,17:00-23:00",
+      "fri": "12:00-16:00,17:00-23:00",
+      "sat": "12:00-16:00,17:00-23:00",
+      "sun": "12:00-16:00,17:00-23:00"
+    },
+    "typicalDurationMin": 105,
+    "tags": [
+      "yakiniku restaurant",
+      "japanese izakaya restaurant",
+      "korean barbecue restaurant",
+      "korean restaurant"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 449,
+    "photo": {
+      "name": "places/ChIJpcasIMOPGGARb6DVoCJdfAM/photos/Aa-ngMaL3gteXC-i3KHI3eDgswRUgRQSb2fFdlOFxFR-QNQ7ZbEy8sBuRdYJM9v3sRyUl2Y4_EI7NkeosK_GCPoruJ-jcYqvazucwtTTD3ujKBrA-xCcw0tmBw3-wCPA7Qb3j8FjjC9cSQF0PJ5XIGXecDj-q9uU3E7jKzQFHLE1shOOuMwd8xginq0ghmTNTJ7MfbnB7FP3_MXef3nAmE71pN3rh4-N-vDoq0ieJmnf8-8_O-0HqoSUcmVlAecv1T4bFNmgt7pU0UO9OWoqYfrJVeVwjuEqRgRoBKBS6TTgW_Q_pRUVFlk2dgD-iZX6QCGvSpgPlqf2gnjBk234TYVXzVJIS9sEr71UsZzS0IW2lKCF8UMMeMFIgOG_S-x279LIuJszGHoujHnYXDIGNuVHsCnr_055xWJ0univDnGKTodjeg",
+      "attribution": {
+        "name": "和牛焼肉 浅草時流",
+        "uri": "https://maps.google.com/maps/contrib/107342235343430882253"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJGwEWybmOGGARgh4NvSxlOj0",
+    "name": "T's Bakery",
+    "lat": 35.705685,
+    "lng": 139.790307,
+    "category": "bakery_sweets",
+    "neighborhood": "Kuramae",
+    "priceLevel": 1,
+    "openingHours": {
+      "mon": "10:00-17:30",
+      "tue": "10:00-17:30",
+      "wed": "10:00-17:30",
+      "thu": "10:00-17:30",
+      "fri": "10:00-17:30",
+      "sat": "closed",
+      "sun": "closed"
+    },
+    "typicalDurationMin": 30,
+    "tags": [
+      "bakery",
+      "food store"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 131,
+    "photo": {
+      "name": "places/ChIJGwEWybmOGGARgh4NvSxlOj0/photos/Aa-ngMbwqxJOR23-OlJN8eEkbwfS4CQHNoad1_Y-JpxpWD81sWCF7ON__xEKI-YfIjksG4QNgd40l7AM5DjzImz_XQFXn1X5XzrZEU4QW5egUcaHRB3A5adN5DRyeBfxYM7Hm39gCZuIm23HAym9QQo7jNp2rY7NDMTnjnHS9DxUON1YWZ7gUjMt-ii89xjRW42EjMln0_5WNU-E-RWwyryP-XHJCsytkmv6KT1zo1Z_dUnNBB5HBpJDPU6iIVGETlSFwwAsZGBrztdRo3kxRKoVu1OTD9hgsVFrqzoNCGQjM1GHN1qIbjQQjXxUD57WpP1HFDcjz0pQO1MLi41ksMM-c9QMOxc739j7Qo7ECkHZ9aTyc7V_UQPNAS-e1G1aKkEdFpe72YBuNFwbR9ct2Xnz7iZusfGlBrXP45s52LT2zriN2Pv1",
+      "attribution": {
+        "name": "mitsuaki tominaga",
+        "uri": "https://maps.google.com/maps/contrib/108845181208745025898"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJw2LyHwCPGGAR46EZo4cAqjQ",
+    "name": "Trois Doigts",
+    "lat": 35.705875,
+    "lng": 139.786247,
+    "category": "bakery_sweets",
+    "neighborhood": "Misuji",
+    "openingHours": {
+      "mon": "closed",
+      "tue": "closed",
+      "wed": "14:00-23:00",
+      "thu": "14:00-23:00",
+      "fri": "14:00-23:00",
+      "sat": "11:00-23:00",
+      "sun": "11:00-23:00"
+    },
+    "typicalDurationMin": 30,
+    "tags": [
+      "pastry shop",
+      "dessert shop",
+      "bakery",
+      "confectionery",
+      "food store"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 11,
+    "photo": {
+      "name": "places/ChIJw2LyHwCPGGAR46EZo4cAqjQ/photos/Aa-ngManjAOSrs0bA_C4uFc3zatAXPzwO8Q_UAaTC_bC9bFS3fYqEOaQYHdqQFGD2PlNPrSKU2ZbFYPiO00rokpTpZQ-bKUHE4MDGHNrt5-01JF97JyJ8gUNT68xUlnE6VnJvCKUrDv3MxAvSwQMr43U3edzT03cOVIF4vM0fq3NMzhnDpB8mpxDQAVoUkg8JLpI1DdKR6RIDUY0VbV3H9Q9ZuFabWg3N5WM-oUd-2O5dcczepyQqi4jT8kclQLFUk0g1ECyhjUh1ET3-WoZxXTpa3zE2SeYgcOL6eL0mSY7TsqmJBR0tp0aJhACSwv6qrv5T69mCKKUXmRKhOrP2XM2NVJk0ZNW48B5nAkSYMYI2WCfZozwSZvCBgWhuU4gQv_Ra0cBuZ6Wo7ZUCdrzuT5fa56hZ7nkTSQT5GGTOG3IfYl0",
+      "attribution": {
+        "name": "うえののぱんだ",
+        "uri": "https://maps.google.com/maps/contrib/116650268473914704187"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJu23OUQCPGGARM1VHNox-zB4",
+    "name": "chigaya kuramae",
+    "lat": 35.705127,
+    "lng": 139.789483,
+    "category": "bakery_sweets",
+    "neighborhood": "Kuramae",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "08:00-18:30",
+      "tue": "08:00-18:30",
+      "wed": "08:00-18:30",
+      "thu": "08:00-18:30",
+      "fri": "08:00-18:30",
+      "sat": "08:00-18:30",
+      "sun": "08:00-18:30"
+    },
+    "typicalDurationMin": 30,
+    "tags": [
+      "bakery",
+      "food store"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 95,
+    "photo": {
+      "name": "places/ChIJu23OUQCPGGARM1VHNox-zB4/photos/Aa-ngMbI6Jf3v7_nttu3lii9nlvl6dfVBKNkupp9O367jikeas8LCUeItBW_-BAVeLu2tqozeFSyqU8Kg_NZrDqQ1cXth4YOQrNhRRRqgZu3ifoChK2xir-0_MjGck_hwiQjlGqB-n-4mtj7YXv8qXZEZQ2J0kBCSSMM_VJWTO0vW06eDMCAYkETtf1dbNatlEzXOQ0KNDm0ayWICV7AbXPwrclYlLw-xfQ6RKSjMFg4kxhpmuX780TnEAeUu1dAndx5JSrrBbJX5cZVsu6A__p2RdWh1tSc6S6WIKhzu5eb3BOfrFzQbix1gJbqUUANdaNykTZk246dnqnjUEEbqZ3PBhURw2HGv3wxidV-q8x_iLz1lomeiYnhw4c40KoZopCYQ9zagMcRKouhaoN5w2YGRo_dZnaqAldaF83mixK0GFWdRSLnX9pL6dhLrH7QjXgv",
+      "attribution": {
+        "name": "チェリー・キャミュキャミュ",
+        "uri": "https://maps.google.com/maps/contrib/107091271599943448260"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJ3RqD4zSPGGARkgV-WNO_sYA",
+    "name": "Tōmei Bookstore",
+    "lat": 35.706429,
+    "lng": 139.792599,
+    "category": "bookstore",
+    "neighborhood": "Kotobuki",
+    "openingHours": {
+      "mon": "closed",
+      "tue": "closed",
+      "wed": "closed",
+      "thu": "closed",
+      "fri": "closed",
+      "sat": "closed",
+      "sun": "00:00-23:59"
+    },
+    "typicalDurationMin": 60,
+    "tags": [
+      "book store",
+      "cafe"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 92,
+    "photo": {
+      "name": "places/ChIJ3RqD4zSPGGARkgV-WNO_sYA/photos/Aa-ngMa7f5-JVd1mCD9XYWOeDJTOztiTtxYtdb16X3dD412uhnB4N5W2OBbVgOpOQjIz9NFzjCD96L3PhsMRirA60x6v91TLf9wJXypr7mb6c4y_4UFQBSOiscQ4Jnd2KXvsmtb17emg8i_iAy4oRmOmIuqOeuHpoibgLioxuuXQa9yT0TnT4Xwa2YjgjNDeuB0q7pcT_cDygRWBew8FhESljxXliRPPk5jjPHqtoqNQPnK4ocWUqhvSkQukRiejO-6jSflpLiUmH2dOetA9xl6e-XHw2g5FV4y_3u93e9W8sKP8WmMsLxsKpnJSCjUfWGO_2w1ziXza-_wSumiHlQ-dqWIv2FyZFwEHAauvPclsNQeguin7zZMxbFXVZiN7miwV_evpgwYImNPe9B76nrpj0yf8sM6e",
+      "attribution": {
+        "name": "透明書店",
+        "uri": "https://maps.google.com/maps/contrib/105701443254926598867"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJkX42vLeOGGARszgelkFQv9g",
+    "name": "Okuramae Shobō",
+    "lat": 35.704068,
+    "lng": 139.791722,
+    "category": "bookstore",
+    "neighborhood": "Kuramae",
+    "openingHours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-18:00",
+      "sun": "closed"
+    },
+    "typicalDurationMin": 60,
+    "tags": [
+      "book store"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 53,
+    "photo": {
+      "name": "places/ChIJkX42vLeOGGARszgelkFQv9g/photos/Aa-ngMZAePqgGFPuuXamFVGdbhpaIwWSqqrThktEzSD-Xd3yCL9I3_-0xhQU63LCQ5V3ht-qaaHszBUMh0AKugrd_a57ucUfXhW_UbIfWdochciyZQhCJs_z_X7znqalcgoqeG-HrfNQW0yGP3yGB5yEF-uQRQA99uMWWAr_RdUDBqJ4uLgLjBRLfOX9QTESJBLUSEcFwvqAC3NPZvPT__RjD97xdMxTo3mcEqnIE4Sta2oXa0SvA161NS1uFPnMSEKP8iZwiQgGgx-jMkYloB0p-aAATDfA6zsST-vEubZoD2AKLyzjwFOS4y0HXmUwZsDAhsXkhnegVs_4jzjWl_1O6KpguzOW2nNmpWkalg3LHvLrQ5p3351xtIiZ3rPHzEBbnilI5XX4_vGhCB_GJRBXk7HTUos",
+      "attribution": {
+        "name": "Atushi Iizuka",
+        "uri": "https://maps.google.com/maps/contrib/100611383680649773072"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJA6ObqMaOGGARNzoD87obfJI",
+    "name": "Kumazawa Book Store",
+    "lat": 35.712047,
+    "lng": 139.798586,
+    "category": "bookstore",
+    "neighborhood": "Hanakawado",
+    "openingHours": {
+      "mon": "10:00-20:00",
+      "tue": "10:00-20:00",
+      "wed": "10:00-20:00",
+      "thu": "10:00-20:00",
+      "fri": "10:00-20:00",
+      "sat": "10:00-20:00",
+      "sun": "10:00-20:00"
+    },
+    "typicalDurationMin": 60,
+    "tags": [
+      "book store"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 285,
+    "photo": {
+      "name": "places/ChIJA6ObqMaOGGARNzoD87obfJI/photos/Aa-ngMaW1w-ZqpJs7X2tBrmWQWlQDfGY81m4t2cQASTA-HSHbk0fSzRV7zBriyE3lyHCb9XJukUBqLtIJIB2J6_Kr3PDQWpYuRnq6BvGNjcpvvpmhKGqUlXaNzeY8F_AWiNdVJ1NSEBKNyQvgyG8u3aZMjgVQ93UmF6DS1-abuCJ_gGt2W6Zq43cSOyGhSpfjXMF2ymz4JQQm9CW-nBp1ZrqVFsKHexBuRETLbs-HbSJCMsO00hXJjvWk5S3oaaQDYbUHBYu-gQ-gx5MD5Lu52KaASijYFIAfQ0ggIkxOEfoqWnKb7XZR9B4l9Q9QjuYkj-b_7BlEnWJC3pCFInE_PURafrLmpXN_QBht7YsyFMjKLTZ6_uGXDg0mhkxRPo4J3GffbNi0gpDTmZA-AB-F9F6F6Rwj6v4cBsW2mi4SDcfT-067A",
+      "attribution": {
+        "name": "k k",
+        "uri": "https://maps.google.com/maps/contrib/102950445414417259794"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJRz1ogZWOGGARdNMxRKTz8qY",
+    "name": "Kissaten Cisz",
+    "lat": 35.714013,
+    "lng": 139.790994,
+    "category": "cafe_kissaten",
+    "neighborhood": "Nishiasakusa",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "closed",
+      "tue": "18:00-21:00",
+      "wed": "11:00-21:00",
+      "thu": "11:00-21:00",
+      "fri": "11:00-21:00",
+      "sat": "11:00-21:00",
+      "sun": "11:00-21:00"
+    },
+    "typicalDurationMin": 45,
+    "tags": [
+      "coffee shop",
+      "cafe",
+      "food store"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 209,
+    "photo": {
+      "name": "places/ChIJRz1ogZWOGGARdNMxRKTz8qY/photos/Aa-ngMZXqXW6Of1XEBAuxgA2eUelMmL8K_yTiF5q3YvJdxLRKtcP6NrVXHeTiLlWG_sIHNaK3on4xPCIWwxl9VxOCvAG11zPlQSpu3LLl7Yfgtsi9LQRyoAI79mabhWqGfvO0FqRb_t-xZlV8jgHwuZmRje4gHjKoGiQTHDvp883FVIZlD4tKPLHPlvawQpwxs4rB4jugWfsmQ8mcYDx4Yny4a2hD0tNMKU8irdYm0ZsmmRITZgQgAO1Z-hTryCS4f4KbPdnA1b7DYA7xPyakZsml3M7tPHwCfqBuNtnpRilsqgBmQr0xRGieiLUvuJW0Qqj91fgQZHJYnTocx8xOCQU0F3hx7n4iBdNhf754YJCxMinLT5Riv5-HUqRoKRVIFbizyMuI8FgGJexqlK-d8MY1mCuRJo",
+      "attribution": {
+        "name": "喫茶店 CisZ",
+        "uri": "https://maps.google.com/maps/contrib/107022234521568296560"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJq6pWibeOGGARpfMbbmRwQjo",
+    "name": "COFFEE NOVA",
+    "lat": 35.705167,
+    "lng": 139.79171,
+    "category": "cafe_kissaten",
+    "neighborhood": "Kuramae",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "11:00-18:00",
+      "tue": "11:00-18:00",
+      "wed": "11:00-18:00",
+      "thu": "closed",
+      "fri": "11:00-18:00",
+      "sat": "11:00-18:00",
+      "sun": "11:00-18:00"
+    },
+    "typicalDurationMin": 45,
+    "tags": [
+      "coffee shop",
+      "cafe",
+      "food store"
+    ],
+    "shortDescription": "Casual choice serving specialty coffee with house-roasted beans, plus sweet treats & light fare.",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 540,
+    "photo": {
+      "name": "places/ChIJq6pWibeOGGARpfMbbmRwQjo/photos/Aa-ngMZsJ-8tMqd63hkPoaZXXVo0IGCo-42y9O2dZD-w34aOxVK-CSBKvtIo3krzzgpVxDsIXowWZHxlyXFZnH8NPub3OlsmDOkcLGTc_-HV7uy7OfPnKpoWEasQxl4AdL03G-n0-T6_FvHD_gWCYN3g3-gMww-pa4ykraXJ3IzYMqDSOdzUgfvv9r2_cVUQdSNHAZnR0Iu5SbMuCOU-ZDgGrNE3r3_LLPRtz9m3jhaGsfsCL3vYeTiJEYOuuwFECiy-iCmv-H-YCIR6pGw5MJulqZGdrkWc9wuSsbVD4Whm13t6-LrWPZKAoguCRyK6tbydt3mYEXUq6rOZXaKQbIwzOpZmmj4VJN1k4XNTKNfhE9AQTWVBbOy7AKFj6ux2SOT4MdZkThQhTi4FS-6b-axrJsRCDugXVS8d39h479IVLYgg",
+      "attribution": {
+        "name": "コフィノワ",
+        "uri": "https://maps.google.com/maps/contrib/113403223387096992542"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJ8UvpbOCPGGARiHO0jyfGqvU",
+    "name": "Kissa Hangetsu",
+    "lat": 35.703761,
+    "lng": 139.78995,
+    "category": "cafe_kissaten",
+    "neighborhood": "Kuramae",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "09:00-18:30",
+      "tue": "09:00-18:30",
+      "wed": "09:00-18:30",
+      "thu": "09:00-18:30",
+      "fri": "09:00-18:30",
+      "sat": "09:00-18:30",
+      "sun": "09:00-18:30"
+    },
+    "typicalDurationMin": 45,
+    "tags": [
+      "cafe"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 503,
+    "photo": {
+      "name": "places/ChIJ8UvpbOCPGGARiHO0jyfGqvU/photos/Aa-ngMagdqlA3oJbi9LF2zG40h9BLQeVaQaDLRi_yn5JiYF4fDQ3hOX6MfJqGCxEo9-8207bqXajUS8XYaAQMmC5h8yy6Y8ZdRCZGY05_Euq1yz3XnpeniMO3oVqMoZaN1_PTrS3YMNzbFeZt_gMNg9k9lPKnNwSFOW5a67Y_lvC_riSVuY2F37FE-J3aWtjDcFdysDz5YWkKCM2-dVxqWOmEplom11jx8Zp4Vbzbj-pR1AwXNHjEcLgS_SBu57znbWEAJIfzfBu5q1J38Qp0Ll3dtHnqN_tkkqfyPPQcw3I9tNsPe0reSTY_WNKN5YtuJZlT4pDQ3E3Ya6V-X-q8KuWYR4yZx6j_deFUi0JACsNqrQKcdGGaLEEznB9DPZ8qMs4A1ZOCxYS3P4_E3AmSNOy5azTnaGzB0Df-uKuaQHF9PV08mCO8A5ozdbImjdkgw",
+      "attribution": {
+        "name": "喫茶 半月",
+        "uri": "https://maps.google.com/maps/contrib/107048118237897442698"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJVUOYSyuPGGARAAaS3nA8Wao",
+    "name": "NEOTENY",
+    "lat": 35.702308,
+    "lng": 139.790137,
+    "category": "fashion_vintage",
+    "neighborhood": "Kuramae",
+    "openingHours": {
+      "mon": "13:00-21:00",
+      "tue": "13:00-21:00",
+      "wed": "13:00-21:00",
+      "thu": "13:00-21:00",
+      "fri": "13:00-21:00",
+      "sat": "12:00-20:00",
+      "sun": "12:00-20:00"
+    },
+    "typicalDurationMin": 45,
+    "tags": [
+      "clothing store"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 594,
+    "photo": {
+      "name": "places/ChIJVUOYSyuPGGARAAaS3nA8Wao/photos/Aa-ngMaJ3MjV1iLbkHojsVp44sqN5PQfz-rsbiDoMWVBsoWf5P7hUUi34CCuubVj5ORR5y7osr_OtL7-gg-tFRnv6_mxecG50In_rGj7kjX8vYXShImRDnDu8KZXM4DU683CUwzP-EHWDmRhVi8qi5A0xRRNZaSkiQcppP3RszKau5W7Sx0bHkddOUlLob8jnG8iBQnx4PwxSpKr-CzHmGbUY5PnTVzSap4VYIOpd2J0r0pQ2L-AhBJLgBvO1g0lpS89PcsNfctndqSfydbRBp86BN54LzbNpQCqfvHkVIqzhZMMgVFmcr1O0IEQD95_PVMpW54-QEf8mVGuQLc99ovYqZbOsUI5mMBnOqyMzdF1VRfQZXJk1f92NwZ3lPIyh39ilrLwvg6DrI30XpJaaWJla8iaq3ZDA18MEQyN2OKhca-sHQ",
+      "attribution": {
+        "name": "·",
+        "uri": "https://maps.google.com/maps/contrib/117780714437812857562"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJReiuB1mPGGARZ52VKFL4hgw",
+    "name": "Black Ribbit",
+    "lat": 35.702678,
+    "lng": 139.788927,
+    "category": "fashion_vintage",
+    "neighborhood": "Kuramae",
+    "openingHours": {
+      "mon": "11:30-18:30",
+      "tue": "11:30-18:30",
+      "wed": "closed",
+      "thu": "11:30-18:30",
+      "fri": "11:30-18:30",
+      "sat": "11:30-18:30",
+      "sun": "11:30-18:30"
+    },
+    "typicalDurationMin": 45,
+    "tags": [
+      "clothing store"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 16,
+    "photo": {
+      "name": "places/ChIJReiuB1mPGGARZ52VKFL4hgw/photos/Aa-ngMaDenVXr238UBJUpdDycF5Wmu5le71EWZ8Qe3VWYwm4t319ayCxNWouVc5PHKXZxIX9FnUq2fF_2b6wn5kWJp5xvtezP00eAAZ7OJNpfsWlyO1vHv0yR4fAvkt2hKZNI8A8XmKUMsxaAHc5jtlQ1xWrMLhGIIx4e4-UnN4DAi9krCgt6CuyoEEAwrKF-H2AUN2UMQVzm0thLf78R_H5PkEF76m3219wUZ7hco6iNnc5Jsd38mS0cnwS3wu9iYERiQHmGuGHglnpI3Q5yI1CutALOvB00yoo0N7fpit-_Zb39xRNg5Oo_uF7C3Rz9LXPYt8_Enaqq9sTDIYADHPh_LUxZDF25XwIkIgcDiOuWelcvb6wUNqjLNh8JmE58VaLRY4fbXdB8924RfG0-HdZoonIxUpKX7rkOIkXZFivcDsYpg0Ybi2R35GXoaJfeQ",
+      "attribution": {
+        "name": "·",
+        "uri": "https://maps.google.com/maps/contrib/117780714437812857562"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJPYYShTSPGGARGU9DV-iab5s",
+    "name": "Ends Vintage Clothing",
+    "lat": 35.702027,
+    "lng": 139.788183,
+    "category": "fashion_vintage",
+    "neighborhood": "Kuramae",
+    "openingHours": {
+      "mon": "12:00-20:00",
+      "tue": "closed",
+      "wed": "12:00-20:00",
+      "thu": "12:00-20:00",
+      "fri": "12:00-20:00",
+      "sat": "12:00-20:00",
+      "sun": "12:00-20:00"
+    },
+    "typicalDurationMin": 45,
+    "tags": [
+      "clothing store"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 6,
+    "photo": {
+      "name": "places/ChIJPYYShTSPGGARGU9DV-iab5s/photos/Aa-ngMZPaO23JKuaW_CbecyoiE3Ro0-t1zIeIObiFLB3OSy77F9eWufg4hU9dJTmKnhtn3N3lt_Cmz-Lo86pJJ6Jh_VaTzC4_9ppNCOkVibGl6pcQihIiP_jCSK_fJPADtsGRwmN9SC05WKMyYtwL0xoa-sptwwwAX95lO7FBpdueyc8Ho8hsaQnbQrbz-fFVk_WSd8Xny1QdrgbLAMUUg2Jkz5VBMUsRzcIsdN2m8HyODj81j5KjeRMIhLVK2fYXrFpMmhBUNJ37IVsYWLQrAXTrdl0kav-8JbWBXBHvFoJ1aFLxRzk67cybvqhc6fiXdKe95J7QdOw-n3PZBSBkiK99_OVHFRQ2zg8ANvBUwObosXT0BvGyMge_1-_Ruoxw4djxiMn-mO9-PGVzrz6VQbjIMBcBD8MRo654pMiuFLloqEhGw",
+      "attribution": {
+        "name": "Ends Vintage Clothing",
+        "uri": "https://maps.google.com/maps/contrib/107534207190019979712"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJPXdpEdCPGGARx3P_0mzLSYI",
+    "name": "Howmore Living",
+    "lat": 35.705552,
+    "lng": 139.791954,
+    "category": "grocery_market",
+    "neighborhood": "Kuramae",
+    "openingHours": {
+      "mon": "11:00-19:00",
+      "tue": "11:00-19:00",
+      "wed": "11:00-19:00",
+      "thu": "11:00-19:00",
+      "fri": "11:00-19:00",
+      "sat": "11:00-19:00",
+      "sun": "11:00-19:00"
+    },
+    "typicalDurationMin": 60,
+    "tags": [
+      "general store",
+      "food store"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 31,
+    "photo": {
+      "name": "places/ChIJPXdpEdCPGGARx3P_0mzLSYI/photos/Aa-ngMZtPHsx0CBS5H14UC43D7i079lqjnrnV5Cgkffzb0eEZ2OaDaRCEkf1ahjZ98LumPFcgxuJABwZfSyZxbhqvJZaBzcj1orOyuq_hGXz9ZVlsnIQEityhfHnvnbKLqGwI_mg5DJQkrtsw0gfrKH4lEMJ3dlsAHVzcAC0a0yDtH9yw7rd1HWvwWq9zwUWHLUsI_mupojN7r7o3NXv_XyDD7xG9IjQjyC4Dl27GUZ0kq2CW006UjzgReGsK8e4fxC5lCf5P_p0sJwoMNZ9-ziKQfUvlSpf93h2fX70HDOpC9YBhJf2Ax9rSqyC5QuLmyXtjiDolxHZfviIG3I6AGeqGdPG89jxhMFXqlSqv43KGt9D0wlF_CyH0fdcjRgoHV1eq-g-BJ4KFxGH8Hg9gAh4LlHU4zwhM70pMVaev4DkIm09u28",
+      "attribution": {
+        "name": "M",
+        "uri": "https://maps.google.com/maps/contrib/113268922999464528377"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJF0jdhWePGGARWvQ3EcWrIVY",
+    "name": "自由丁/JIYUCHO",
+    "lat": 35.702937,
+    "lng": 139.788583,
+    "category": "bookstore",
+    "neighborhood": "Kuramae",
+    "openingHours": {
+      "mon": "closed",
+      "tue": "closed",
+      "wed": "13:00-18:00",
+      "thu": "13:00-18:00",
+      "fri": "13:00-18:00",
+      "sat": "10:00-20:00",
+      "sun": "10:00-20:00"
+    },
+    "typicalDurationMin": 60,
+    "tags": [
+      "gift shop",
+      "general store",
+      "book store",
+      "food store"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 63,
+    "photo": {
+      "name": "places/ChIJF0jdhWePGGARWvQ3EcWrIVY/photos/Aa-ngMYvXYe5V6Lhs6S_lk8vQ_RpCS3CqsAjBcWjVJNNfeWMS5FIPLTNoW6e2TEDeFDz1oqVodixJHbfSJLUf2yR6vnQIO2wBG63_5sjjdoUPNU9waNNHMiDER69wxoM-Tqwj-T7GtaqCWr3CQjHnpuhKkg2f4Hm9EBuF1aNycXqpvphbCHtgZ37zEq-n8YGOvyVmsULR41DSsNYDxjbCNpu0T7KaPtCVUka960w9O71cVCX01c8ySOnSA_pZeMOImHKt0Jfnqp7AlWq-RnH6b1RGqDo2aMqFwimFEvcwoYPZEG_VzcjV0GEX72tp1c7-2KBmCgqva_g8SP3OcGcMLxaC7PRu7E1pqJjN1N7frgWfm_C6WEQwGOozsNG4Z7R0-UlZGJ6maxHj2mjhNDw7OUpMnyqQsvhRfA",
+      "attribution": {
+        "name": "ma sa",
+        "uri": "https://maps.google.com/maps/contrib/111045693558135445223"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJr3J1agCPGGARzeMx10B1j9A",
+    "name": "Dill Pickle Club",
+    "lat": 35.701961,
+    "lng": 139.785162,
+    "category": "lifestyle_homeware",
+    "neighborhood": "Torigoe",
+    "openingHours": {
+      "mon": "12:00-19:00",
+      "tue": "12:00-19:00",
+      "wed": "12:00-19:00",
+      "thu": "12:00-19:00",
+      "fri": "12:00-19:00",
+      "sat": "12:00-19:00",
+      "sun": "12:00-19:00"
+    },
+    "typicalDurationMin": 45,
+    "tags": [
+      "home goods store",
+      "gift shop",
+      "furniture store",
+      "home improvement store",
+      "general contractor",
+      "service"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 27,
+    "photo": {
+      "name": "places/ChIJr3J1agCPGGARzeMx10B1j9A/photos/Aa-ngMakwxM6FViBO71dZ6Klz43yfB-7DNmjUP8AMD_UvIYaqQu1p1a0E89hhfHGWk6S1s8BuNzNNKDu_uTJ01QW8yw4cGzqFb6q-cWUnmuvj6Xu_GtftVapAr_d9SU-jNL-eM-eGxEfS2fNovQcE9gX8N5L2byc5-3u-zcVb5dPQUo8naW41uGWiCwkMUdSH8ZvJKFwCONDUPnU4KwhDPfTb6Sdnsy3fClmxD3FFYXmG8lTz7Oxu2bOtpn2iqlu6VshkeMSA7Nqg6QJ88XnCG0JMVSixFOfMEm8CI5COdJn3EX1mM7sqTos6-VCKpfIiN29QNkhoffU6D1UjyQYuSIwXUIjFgdUaCGTQWuf-3yV-dukCYWSDd0js2kv4-RDBzvmFf-I-QPSwixEtcMjBlp9tXDWJorEqX4",
+      "attribution": {
+        "name": "Naresh Deora",
+        "uri": "https://maps.google.com/maps/contrib/115269924277310938466"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJJxQPXQCPGGAR_Fe2FsIkE1c",
+    "name": "無相ギャラリー（MUSOU Gallery）",
+    "lat": 35.704496,
+    "lng": 139.792157,
+    "category": "museum_gallery",
+    "neighborhood": "Kuramae",
+    "openingHours": {
+      "mon": "closed",
+      "tue": "11:00-12:00,13:00-19:00",
+      "wed": "11:00-12:00,13:00-19:00",
+      "thu": "11:00-12:00,13:00-19:00",
+      "fri": "11:00-12:00,13:00-19:00",
+      "sat": "11:00-12:00,13:00-19:00",
+      "sun": "11:00-12:00,13:00-19:00"
+    },
+    "typicalDurationMin": 90,
+    "tags": [
+      "art gallery"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 3,
+    "photo": {
+      "name": "places/ChIJJxQPXQCPGGAR_Fe2FsIkE1c/photos/Aa-ngMbpUIeOC-DAVzrjQd1F4RCLT38pmQ-_jiOKo8WKDsPN7MV89s_KJalJ3iC6SDdQXqgfOymYvwRSPi8XTwJuVbcBAYZNB9Km0hMVv_QAoLAxy0zbwhOLCtvQAuV2h3Y9KGn47hJwZDbkAO-JW76XkHyNTjtLxuuF4uEmAXpfpWakMn8NnYchSLbUMSXyM7ICseIyewas0h36LqTWVnwdRnLeULVI3YnlptJyT5LSOpEU-feObSK28cmO1Vlk6pwE9_nAMmoX3jBmv6qaPKyYJOq640Z2wScI8SStsXF8SITlbBYhdBBfzJqPO0EW7kmrhAIyKPg3i7O7sESr30OsppKuGCU2gfxCECVCaAKHq_0uuVbF5sY8kxjU63tojLU6_W6QD3SefVUJjxs1rYPD_mQsmnw9xAemW_tP18IAwTwzXHQWfU0OuOwhKUtfZg",
+      "attribution": {
+        "name": "anya zhang",
+        "uri": "https://maps.google.com/maps/contrib/108579324467500805511"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJAQDZRLeOGGARx7o7aPHM48A",
+    "name": "Seika Park",
+    "lat": 35.703736,
+    "lng": 139.789305,
+    "category": "park_garden",
+    "neighborhood": "Kuramae",
+    "openingHours": {
+      "mon": "closed",
+      "tue": "closed",
+      "wed": "closed",
+      "thu": "closed",
+      "fri": "closed",
+      "sat": "closed",
+      "sun": "00:00-23:59"
+    },
+    "typicalDurationMin": 60,
+    "tags": [
+      "park"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 210,
+    "photo": {
+      "name": "places/ChIJAQDZRLeOGGARx7o7aPHM48A/photos/Aa-ngMYIZX-j6c-LN5fe9goq0EwI7ciF9G_shiZMWzM5DPTq2K73U6mllrI0TMQm2TP9J1i2vkrerF-ZoMQy4Djq7thu6ulgQxJLC8JxGuzDlk-Yuw3Pyfrz9ZXv0F8YpFOsy97TbJbp6U1P-bNuH2L-0ce0CUmkBr0N8vLyM52ubYaK4Ye1EidLHuJe_329us6PyLmmCz3cLE6sBlW9K7R8ACOUwGkTyXtvGLwGMXAmGZeBjP59r7Z7Rf4sp0t-jr5Ek2px3Yq5FS_FTgc-Ev4rtT_9JWQy8RXeq3hTFSLKAJviyMwEcnxTDH_tCf0fhthDO3yuVJqcC6aW9W13V24P-bRE2_O2XkcsN7p3aIPZs56p9c0RpZSNzhhFGova7dtN6KOzW-aqEf9DXEcXLkL5Pzsm4Pw",
+      "attribution": {
+        "name": "KEI",
+        "uri": "https://maps.google.com/maps/contrib/106822957984755146935"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJZeLCusqOGGARuV76qbNiFkY",
+    "name": "Former Yasuda Garden",
+    "lat": 35.698351,
+    "lng": 139.793757,
+    "category": "park_garden",
+    "neighborhood": "Yokoami",
+    "openingHours": {
+      "mon": "09:00-19:30",
+      "tue": "09:00-19:30",
+      "wed": "09:00-19:30",
+      "thu": "09:00-19:30",
+      "fri": "09:00-19:30",
+      "sat": "09:00-19:30",
+      "sun": "09:00-19:30"
+    },
+    "typicalDurationMin": 60,
+    "tags": [
+      "garden"
+    ],
+    "shortDescription": "Tranquil, compact Japanese-style park with quaint bridges & a koi pond also home to turtles.",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 2065,
+    "photo": {
+      "name": "places/ChIJZeLCusqOGGARuV76qbNiFkY/photos/Aa-ngMYYBmlfw3NUut8rQdYl03wXZd_2eOJXIrWPZL6CFN10Iqs382JbIMsyk2FaFdutsMxtz7sKAh49KOUlLvTOX_t_chddztFxV7UJQbBjhwXI-Go2Q44uVKFAnUyoblKdLFSrfAxUnqqlnvYHzZ6LhojgfS79BVR5S9ybaHRrA7_JhgBAkD60LqzUe7AAw1NLrquhip6b7ldHKWi3VERYs4wxQDfZG9hkMblTa0E_vG-e9hNJoNky1kBBVMrgZtlQF7BtrZvhdNfZZgF84tHwutIQkq9dXZ21oJJe26KZD8JMfl64Rcg0bbLGbLqoDgvS1iARCOZQvMsIxWzL9RkW9eTHn9SBCP3XearvXniHAnxbCkBU72c0cRWKFUuWXTHHHqIVYeAZsGc5j52Kdt1SXBV1mpi4bCLknj34gdgzDrDX0_PB",
+      "attribution": {
+        "name": "宮脇洋",
+        "uri": "https://maps.google.com/maps/contrib/117011354891680333347"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJWQSdSLaOGGARk7qGNVyECxI",
+    "name": "Kuramae Park",
+    "lat": 35.702821,
+    "lng": 139.791808,
+    "category": "park_garden",
+    "neighborhood": "Kuramae",
+    "openingHours": {
+      "mon": "09:00-17:00",
+      "tue": "09:00-17:00",
+      "wed": "09:00-17:00",
+      "thu": "09:00-17:00",
+      "fri": "09:00-17:00",
+      "sat": "09:00-17:00",
+      "sun": "12:00-17:00"
+    },
+    "typicalDurationMin": 60,
+    "tags": [
+      "park"
+    ],
+    "shortDescription": "Small, straightforward garden square with shade trees, benches & a hanging bar for exercise.",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 85,
+    "photo": {
+      "name": "places/ChIJWQSdSLaOGGARk7qGNVyECxI/photos/Aa-ngMZS4AFJJa2pjVA9e_55um4IDwaICY_j9d7QDGdif2lC8aZrFcSRCtUQspSJ7F9sqS1uxA15lzaRecCHJxR85fRDrW1MFDrDax1NMAziORu7m6cuUrGxvA9Pvk5DWmO7z6f0PUZbmz1Xzok_vHuvI9RiJgmazLadV4Qun4ge9RZNK3MeTvW6qJK-tMiStiZa9Angj5R_aZFk5ZPLi38RZQBGwbog453eFd41hyO9XoyEmHs-q0AWYL7wmbdT1Ot7w1ABr_9HQMGGs9OVQbNrh42wY02fjU5zopJ_ftoscWuP_COI7QsC9y1AKum685qQ72UAj5gxPIhiKsn481bNEmfyfEztdwgMu1jcnlTIzxuBrNUpUmFHiXsA_ifLnU7S4O1EIoZIW6LCIklk9QD72Z1dZAw7r20",
+      "attribution": {
+        "name": "いしてつ",
+        "uri": "https://maps.google.com/maps/contrib/100426070936699441383"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJraD-W8mOGGARb2MR7BAaKng",
+    "name": "Gatsun",
+    "lat": 35.70352,
+    "lng": 139.797446,
+    "category": "ramen",
+    "neighborhood": "Honjo",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "11:30-23:59",
+      "tue": "11:30-23:59",
+      "wed": "11:30-23:59",
+      "thu": "11:30-23:59",
+      "fri": "11:30-23:59",
+      "sat": "11:30-23:59",
+      "sun": "11:30-22:00"
+    },
+    "typicalDurationMin": 45,
+    "tags": [
+      "ramen restaurant"
+    ],
+    "shortDescription": "Intimate, old-school ramen shop serving up homemade noodle soups with customizable toppings.",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 1117,
+    "photo": {
+      "name": "places/ChIJraD-W8mOGGARb2MR7BAaKng/photos/Aa-ngMYyQbh1B347WqZ9_uP-VFDGbpepjJbVudPGvLPfUTREmT9DqiUEXky3O1AqOZo3lUckwnEuSr8tHjP8pvReCUPUdLt0PLEhlIT8tlE8dlyKrd9A1V4Gn-DXwBBrNZ3_ZKby8ylGqCi4Cy9O_EcN60BoNxUn6yHpejZ4_-c0j8HvSLUUnSCFrxZ3EQmoN25Z3WjdMHOib3cZPWFsmJBDHPRtFxNXHEX5YiHjidfDKFyS8uZj4k66YWb826ZYUdUct-pt0NOg5Sx0Jy7eFHb9YYbt3hWKkpekiRwbYzLmNA49fy6btzUqmYVgMa3kgV7RexBOuWL9sFZmFH_YcJ339lqBLEOWd4xGWr0J9_6kr17rrpflx82asZZT3wayhfEc7Stqh7VqWj9q8xs_PtR0KJXZ-4QeSulICUkFeCQX7bjZ-A",
+      "attribution": {
+        "name": "博多ラーメン ガツン 蔵前店",
+        "uri": "https://maps.google.com/maps/contrib/112108298224779280307"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJUTFxChGPGGARNusZUl5P_4M",
+    "name": "Menya Jojo",
+    "lat": 35.705624,
+    "lng": 139.790855,
+    "category": "ramen",
+    "neighborhood": "Kuramae",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "11:00-14:30,18:00-21:00",
+      "tue": "11:00-14:30,18:00-21:00",
+      "wed": "11:00-14:30,18:00-21:00",
+      "thu": "11:00-14:30,18:00-21:00",
+      "fri": "11:00-14:30,18:00-21:00",
+      "sat": "11:00-14:30,18:00-21:00",
+      "sun": "closed"
+    },
+    "typicalDurationMin": 45,
+    "tags": [
+      "ramen restaurant"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 593,
+    "photo": {
+      "name": "places/ChIJUTFxChGPGGARNusZUl5P_4M/photos/Aa-ngMb5nt9nJ66qNVpc7kYUh6pnC7XLERWxE5QOkuxOy9UCE7xcewEHpR7FWRnSy2xvp-JK8tIJ5B8vmcpBfU-c04XGPsYJRnDsnl4ireX3qXoGPP4MKr6iadFZWpK8ukCikNJcj_Qxf05gY3XA0Lcd1yjpiKJKG1ayJCMDsVScU4_vdBXb2Z13fYq4PN4vUGACJ9VS3cB0ruaZD2W_is3di-16IwkzyyNFEYl3uKahOYrA6aMEEcTxVJLDpgU_wpJNZz5ZsIlcbWJNgBwMnhZppzeZ2Kn0AVE29xKcttJIvf5Nw0jM1NS-wv_0E-VrJe3aeEVZgZC1rvwRcFV2OepwNpzcdnpIk2JCBiVkzt801pYjjq-5VcinYuSD_laaJyXtuXHqznXq_l6hanNav6ni7QTQKjf6KWLgqUwW6-38kYcGiA",
+      "attribution": {
+        "name": "グルメ食人8989",
+        "uri": "https://maps.google.com/maps/contrib/100590829066247543884"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJ32U8zUOPGGARrEFlWPsFJlI",
+    "name": "Ichiryu",
+    "lat": 35.71356,
+    "lng": 139.797889,
+    "category": "ramen",
+    "neighborhood": "Asakusa",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "09:30-23:59",
+      "tue": "09:30-23:59",
+      "wed": "09:30-23:59",
+      "thu": "09:30-23:59",
+      "fri": "09:30-23:59",
+      "sat": "09:30-23:59",
+      "sun": "09:30-23:59"
+    },
+    "typicalDurationMin": 45,
+    "tags": [
+      "ramen restaurant"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 4144,
+    "photo": {
+      "name": "places/ChIJ32U8zUOPGGARrEFlWPsFJlI/photos/Aa-ngMbOdH8y24QWIb9nOSd5gAmNfZLCm3GWruBnYHA9gX3iGdajy46JNUq0X8Blhizo3QVEPzRvcpZBp49_KPdt5DYaZOTD3m_HqCl5DsNulB6KBoByfNAVNMWFPGQQgSpNekJFnnQ9kW9rYl2fZ4BmUF5MJLLnHtI-aR8Iaxc34OJfiALcM0CsZogtQmcqUsLieySvhiSSQ8-NGg3TZ-RQ1DeXiNqbkQhf9iLaYdn8M_GyieUtve6qjnHC6fr5eKd95H3LMYorkYkJoAKhSqEnc-JZN5oDUiNeQ_Gzus73kh-Tj7aNRM2aU7WFGvfA25yaaEsjKh-Viw5GsPX_xPazH-iqrMCth_c5TxaXx0_s5u1rJeXtQcdr3IKFRe0msiIiircpmu2Xu7nZbJTokI-88P_AMUc",
+      "attribution": {
+        "name": "Ken-ichi Matsumoto",
+        "uri": "https://maps.google.com/maps/contrib/114396105906216929277"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJ01gyQQCPGGARJgCZ5sh2wW4",
+    "name": "Asakusa Udon Main Store",
+    "lat": 35.715939,
+    "lng": 139.795769,
+    "category": "soba_udon",
+    "neighborhood": "Asakusa",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "07:00-21:00",
+      "tue": "07:00-21:00",
+      "wed": "07:00-21:00",
+      "thu": "07:00-21:00",
+      "fri": "07:00-21:00",
+      "sat": "07:00-21:00",
+      "sun": "07:00-21:00"
+    },
+    "typicalDurationMin": 45,
+    "tags": [],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 436,
+    "photo": {
+      "name": "places/ChIJ01gyQQCPGGARJgCZ5sh2wW4/photos/Aa-ngMbZW84HrnC5rKg-I2RBbtYuOA2JZyOvUMKneBdtmeGeiN43C5zfPxbTXM49KPmKP8aT8gc6agQACoSCdRJEobP8w94gOaebAeRIcXOykvby-4-0v3LfEeeUwUApI_g83h681KHHWoPO2Ldb2bOKdO0KlkCw59kdzSLIgGWZJsNEiV-GmmL-Ok7hOdX5Lg5GIP3Qr4DUwsPl9XCyeRVTmPevYc2UVMrbNpHi1TpFatyTacD_mWYPO9GadjRXZsfCkMoN8sQTrVykERTGQrqjCIOFVSIjE6H9_ZzWRdPxTGXzGdkM1oIp9i1szuB3Gj5Fe8CNZ4coz1_pD6H6aQ4vFx7ozkeRVv05BdklAmzwX5bb-cop9E-pizbnktljRxIa5TK5QzVe-NRPVJJhJDG5TX2ZLqOBNhYdy0YmDhyi-SOAtw",
+      "attribution": {
+        "name": "浅草うどん 東京本店",
+        "uri": "https://maps.google.com/maps/contrib/115417500773924369753"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJXQN4ucaOGGARhxf9DhcXAZ0",
+    "name": "Soba Udon Monju Asakusa Branch",
+    "lat": 35.711213,
+    "lng": 139.797881,
+    "category": "soba_udon",
+    "neighborhood": "Asakusa",
+    "priceLevel": 1,
+    "openingHours": {
+      "mon": "06:00-23:00",
+      "tue": "06:00-23:00",
+      "wed": "06:00-23:00",
+      "thu": "06:00-23:00",
+      "fri": "06:00-23:00",
+      "sat": "07:00-21:00",
+      "sun": "07:00-21:00"
+    },
+    "typicalDurationMin": 45,
+    "tags": [
+      "bar"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 708,
+    "photo": {
+      "name": "places/ChIJXQN4ucaOGGARhxf9DhcXAZ0/photos/Aa-ngMYjZvE8tPpZdRp1FIqWUqznWAFbaf7VR_zmGbVLvypTyo_WcGBgXpI7c1cLDyWFcLX0GOVnvdz7N97Yw4dgRs69vu2UIJfYAJyWguS7a1LyO1Td5LAqnrcROs-g5wh8Lcch9kjx1GiYO_lYBicYD2qI5DNMUWym1J4zIPLmXjc5QhtKCbHUP0Tlm7MGZoWOW8vyUR_uQ2YtDzEWgVdi5O-jkO4pXCTYDr2fAMJKFtjb9VbbGBxuBCDZ8-2H58Fvgr51HD6frpeq7NduS3FcJyZ6fud9lmgt71fWEeEVrtjx58L6GzF82zQqNlPj4YslwPE0_C-MJUX_xLpAxPMcBo5iTucb_MQxPjFIx3xK81303Gq1kQMg3qS5pZ4Q78sAecXKaqNfknUMC3SiSfyecLaiPOBtGoHa3m9lcn19qJ2jrpFp",
+      "attribution": {
+        "name": "Duc C. Nguyên",
+        "uri": "https://maps.google.com/maps/contrib/105132606869252480414"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJn4HcNL-OGGAR9zpyaiTqbp4",
+    "name": "Nishihara Soba",
+    "lat": 35.710195,
+    "lng": 139.791795,
+    "category": "soba_udon",
+    "neighborhood": "Kaminarimon",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "11:30-23:59",
+      "tue": "11:30-23:59",
+      "wed": "11:30-23:59",
+      "thu": "11:30-23:59",
+      "fri": "11:30-23:59",
+      "sat": "11:30-23:00",
+      "sun": "11:30-23:00"
+    },
+    "typicalDurationMin": 45,
+    "tags": [],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 91,
+    "photo": {
+      "name": "places/ChIJn4HcNL-OGGAR9zpyaiTqbp4/photos/Aa-ngMbeCAcsDtxZL8phg25dboiy9uwodJqtyHB2pVaTZ-ffTjRkVipLIdUE5xkLc_i2uS1D9kS1BUgX1KGF2DZVidAeovR95M457ym6LPg2V7d6_0NmTDaL1TjkuIh8YDNGblr4rVMnJEOMPQuy2EVL1tFaNkaKe_YG-Q-X7fjDwZaivdNq7oaeALQXtAfgtOgO8vb4gpkAO3ZwN0EhYSjwqEsXdz8arwJpleH8tFMsRUkgBcHoU1fiKGiZcyMd15vAnFz269-o_51PpTPEc7h4d5Zjuo86IQ7ghiPXvrEwFqVrIYCzTqu1ZEZR3zZj9knwNRELS27qqLkhV-_UhoGu36tR1yjCiLE4gaE6pwW7Jun1KhmMeNZlmxr1VhnrOzoPNP93R9yEmmJ9kfHu6vXBtn05Ww4",
+      "attribution": {
+        "name": "西原蕎麦(にしはらそば)",
+        "uri": "https://maps.google.com/maps/contrib/111447910439597687442"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJrbVk2baOGGARq3K1Twk44T4",
+    "name": "Sushi Kikumasa",
+    "lat": 35.703263,
+    "lng": 139.792714,
+    "category": "sushi",
+    "neighborhood": "Kuramae",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "11:50-14:30,17:30-22:30",
+      "tue": "11:50-14:30,17:30-22:30",
+      "wed": "11:50-14:30,17:30-22:30",
+      "thu": "11:50-14:30,17:30-22:30",
+      "fri": "11:50-14:30,17:30-22:30",
+      "sat": "11:50-14:30,17:30-22:30",
+      "sun": "closed"
+    },
+    "typicalDurationMin": 90,
+    "tags": [
+      "sushi restaurant"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 392,
+    "photo": {
+      "name": "places/ChIJrbVk2baOGGARq3K1Twk44T4/photos/Aa-ngMY8F5kKIx58YrOm7LCOnQCtMUmygK7X5QZo70z4HU995cOSE7R9PsbDVXAkGSt-pzJlfzPjtZ7EEKSKW9a6Ca9BXBmvtNQvkqQSMsg_kjrHQbEjGa9q61wXnwSuIiRhhzQFfeGM8BfMwQrWIjqKM_XM6nUuR9z813JAIm-NG70BtKnH57RfjD36CAT8IR1VgRb3ywr6ELptUFubGK2iMNLeI8PX_txp6BkctJujsIxd0IerFGXFIbBRbl-vX35A9cQ71pItv9AUvKj1GQi7EsY1ZxjJY0xG2gkmghGjMYzUCrrk9A55wcjuWs70CTfejy1Q4UsUNkJa-1aRi8dxncfjW6BTfpQAblfrImy2men9_uu6LGk9CgVEmyJKS7DdEyEtiOUMxwjCEVhx3Fjdb3DdfzXigt1aTUn5anM6uvw",
+      "attribution": {
+        "name": "寿司菊正",
+        "uri": "https://maps.google.com/maps/contrib/111598801190078391786"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJ7wtZWceOGGAR75HOMOvtm6c",
+    "name": "Sushi Nohachi",
+    "lat": 35.710122,
+    "lng": 139.79352,
+    "category": "sushi",
+    "neighborhood": "Kaminarimon",
+    "openingHours": {
+      "mon": "17:00-23:59",
+      "tue": "17:00-23:59",
+      "wed": "17:00-23:59",
+      "thu": "17:00-23:59",
+      "fri": "17:00-23:59",
+      "sat": "17:00-23:00",
+      "sun": "closed"
+    },
+    "typicalDurationMin": 90,
+    "tags": [
+      "sushi restaurant"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 363,
+    "photo": {
+      "name": "places/ChIJ7wtZWceOGGAR75HOMOvtm6c/photos/Aa-ngMbSRbGWCoaKfN1TS_-WHwHwpPMQ7iyeqRtnHGkKLG2bSh2uOUq47iAHT-XQZz1TlsHxZESPzGfx_8rtGRIB8lZEI5FPEEenVdUiVxIhbwemrbV49NNGVB4HEqyHVcv0UotBtyB0NHF7jc4h5t3y9ppFtVWZUvtBp-CC4BKr7cNpimEfefWF9PAwgFOYcP8Bm2S9FTiS7jsN0M6T4cb3KQX2lVj5mW4zaJiQYMURI54hs-GaxUpsu0ts_qW5zZWbjEpa947T782j9XBDsORzuQrdMW4gYR3YH00jT3BmC9Vie3Wb-k9Qj22WX3DM-h1mIs7xC1wO9LK1A51TtFez264yTYYt8VIR-71MIrZqzIh3zxPRlwo9yKkKa1rxTsPeZbz-OdTihZmZAp359ytin47uHWGUrWLqd5y0Ee3iZ41XRLyd9DXZOB2PHQjPxOFK",
+      "attribution": {
+        "name": "すし屋の野八(のはち)",
+        "uri": "https://maps.google.com/maps/contrib/110251305964127312817"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJO_PjSFCPGGARG_pnO-G93Co",
+    "name": "Sushi no Wa",
+    "lat": 35.71039,
+    "lng": 139.79189,
+    "category": "sushi",
+    "neighborhood": "Kaminarimon",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "11:30-14:30,16:00-23:00",
+      "tue": "11:30-14:30,16:00-23:00",
+      "wed": "11:30-14:30,16:00-23:00",
+      "thu": "11:30-14:30,16:00-23:00",
+      "fri": "11:30-14:30,16:00-23:00",
+      "sat": "11:30-23:00",
+      "sun": "11:30-23:00"
+    },
+    "typicalDurationMin": 90,
+    "tags": [
+      "sushi restaurant",
+      "japanese izakaya restaurant"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 739,
+    "photo": {
+      "name": "places/ChIJO_PjSFCPGGARG_pnO-G93Co/photos/Aa-ngMapoSpQ1iqTbltSogHMeCHkKRQmJiejLveCrn4k7AklJldYWabPb955EG9z27_xXi1BR5sGQZOHGxIcYLZWuu2WpFW6z2D07mU8zXEp1WNfC5COesesTUOVSNYb2-R3bn9aXK1oViMUxG8tRhe778O2svXsGEdRRNlOH-vLzv54mSVmfgZK2FGIk7Uglcuhlntc-NqsonBSNT_kBRigxd00zTbemkr0SSsRwscM1H01Gw-u94kyoVsTxryGZpB0ICZvqbB7Syt9tFlIiwAa7C0I1vnrrrdR58fq-oFSSnD9SLN4iOKPLrYlTLBJr6xd2b40LiIBWOGrVYiOtvplIK_UeOmheexUgDSJ04xPe0De-eOaKp2t44v418jOwCyHmt_wVTfAWhGJnZnahWjOBjHN2kUCk8Smwhojb0X7IoOTRA",
+      "attribution": {
+        "name": "寿司・焼鳥・酒肴 すしの和 浅草田原町本店",
+        "uri": "https://maps.google.com/maps/contrib/111274985253666086354"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJQ7omt7eOGGAR4g5ptG_ZvXw",
+    "name": "Yayoiken Kuramae",
+    "lat": 35.703638,
+    "lng": 139.791754,
+    "category": "teishoku",
+    "neighborhood": "Kuramae",
+    "priceLevel": 1,
+    "openingHours": {
+      "mon": "07:00-23:00",
+      "tue": "07:00-23:00",
+      "wed": "07:00-23:00",
+      "thu": "07:00-23:00",
+      "fri": "07:00-23:00",
+      "sat": "07:00-23:00",
+      "sun": "07:00-23:00"
+    },
+    "typicalDurationMin": 60,
+    "tags": [
+      "chicken restaurant",
+      "breakfast restaurant",
+      "family restaurant",
+      "western restaurant",
+      "meal takeaway",
+      "korean restaurant"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "search",
+    "userRatingCount": 526,
+    "photo": {
+      "name": "places/ChIJQ7omt7eOGGAR4g5ptG_ZvXw/photos/Aa-ngMb78SVnxjwYMVCHKYRVxKqDkxQrwP1fOd1KfStq-KVzYccQh-z2DBAspx00wXann5cOdnIKczDnYR7b6oW4GZQ4EiQTtKD8jNliUsJWTSw_3R4JmJuzeX_8w95hw72rINGRUQfUjg5e-TW2TnbjflpPyTie6DZIrT-6in0qN2VJWsGsA5pZ2bVRek8DE0wgU3seX4qvO_TLHsylBgYTFLQsbVM8YDfpB2NROi3G6PaAWHxWYcCZr2__-BK0db38kR9Es2lDldott9gv9lw9lzt26FDfWHMdHsrdbszjKlOmPQk6WkC6G9TO654im3iRKuamY2gH8n4y8pXKg8eWh--aFmaKIzvmsGLS0r_y6Aka4eQ57qRn6gnNup2KM7Fj5yKA4Quc77zaH0s4US8qYQNm-SNZzvoIhZUxoa4905NSW5hdryj7I3KNlktmSFlX",
+      "attribution": {
+        "name": "やよい軒 蔵前店",
+        "uri": "https://maps.google.com/maps/contrib/110421435006167353177"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJYbeX0MeOGGARu4AHHNKxQSg",
+    "name": "Ashi Teishoku & Diner",
+    "lat": 35.707235,
+    "lng": 139.795293,
+    "category": "teishoku",
+    "neighborhood": "Komagata",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "08:00-23:59",
+      "tue": "08:00-23:59",
+      "wed": "08:00-23:59",
+      "thu": "08:00-23:59",
+      "fri": "08:00-23:59",
+      "sat": "08:00-23:59",
+      "sun": "08:00-23:59"
+    },
+    "typicalDurationMin": 60,
+    "tags": [],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "search",
+    "userRatingCount": 370,
+    "photo": {
+      "name": "places/ChIJYbeX0MeOGGARu4AHHNKxQSg/photos/Aa-ngMYAAeFBX45cVMZEhLi-y1tquevN14dt8ORFitEQHaZ43yr5p3UmGcFS36gpV233x2_KlO9IW1dZ5eDm-qYKm6VajFCB7UhfGEaaf64LI8JXJ21Q25-10QFItYpR477bNDpTqMpwOE3xTcme4-U-l_LBewjItZK8cyyqgoBMULuTZCvmqQFrSXT4JDdfr96nNFPMePFEAjCDoqtrThCmJaWN1FpHU9h86V_8oW39sf7-7yYcyQRwmuOBfnBDxFXNxXfvLe7RiwLXWf00qDCuPPqZV8LCOgLlsuk_f52FHFLZD3ZH1oSgY0oUoCpIKHoEpDY0sJgWzu8iSuolUx1j4EmkDZxcUZRjSYyI6y3ClNcbm5jdRUK0D9PSxgVm0EQNtGdtyPGoRmKghtoXBN2Pj8y3r16QZTEoqLNKPksRRL3wUA",
+      "attribution": {
+        "name": "Ashi Teishoku & Diner",
+        "uri": "https://maps.google.com/maps/contrib/101108436012975170340"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJSTJDw7iOGGARU2DQDGH2GF4",
+    "name": "Yayoiken Asakusa Tawaramachi",
+    "lat": 35.708871,
+    "lng": 139.791472,
+    "category": "teishoku",
+    "neighborhood": "Kotobuki",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "07:00-23:00",
+      "tue": "07:00-23:00",
+      "wed": "07:00-23:00",
+      "thu": "07:00-23:00",
+      "fri": "07:00-23:00",
+      "sat": "07:00-23:00",
+      "sun": "07:00-23:00"
+    },
+    "typicalDurationMin": 60,
+    "tags": [
+      "chicken restaurant",
+      "breakfast restaurant",
+      "family restaurant",
+      "western restaurant",
+      "meal takeaway",
+      "korean restaurant"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "search",
+    "userRatingCount": 1173,
+    "photo": {
+      "name": "places/ChIJSTJDw7iOGGARU2DQDGH2GF4/photos/Aa-ngMaXSt2k2jY_pTxPVCnrfUqpp_6b0meq7kJA1sqP10sy5UvavT_n5hbfgZDEgj1-3OhW1QyLN96u08KJv7r1VTgp2qwp_yzP2jHeGug3xMR-AgOzKmn5QSbcUwoiipxpn06sbTl-9hsM-Qh-2NWcajPW5HHfeAXdFrYfKMQUXB44PqcPYk_IKDkpVBdevEYydEGTzk_BqD_beQz29MFoua8FlAv3E1BPfuAV8Ry4bn_2J7Gtd4XLqvEMh4ejnJV7L8GBct6CSZ3y4oQ-wIZm_NMgwsYcsnARAf5fqrAgbV3415tOxYdQVmVd1OAjBCbrEde_vuKSF_ITPX8018apCamF_PEopCoU9GmGDCw_C7L9gTXUyh4Aavcr0UEGofRxLH_lfH7iblqb3NcvRQTLQaM_cwqJFqEr9qBSAoDlijkYeLrpHY5hVMPDLs_7ETT2",
+      "attribution": {
+        "name": "やよい軒 浅草田原町店",
+        "uri": "https://maps.google.com/maps/contrib/116767929817948527601"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJnSJkkreOGGARyDX_3LuR2MI",
+    "name": "Kuramae Shrine",
+    "lat": 35.704852,
+    "lng": 139.791909,
+    "category": "temple_shrine",
+    "neighborhood": "Kuramae",
+    "openingHours": {
+      "mon": "closed",
+      "tue": "closed",
+      "wed": "closed",
+      "thu": "closed",
+      "fri": "closed",
+      "sat": "closed",
+      "sun": "00:00-23:59"
+    },
+    "typicalDurationMin": 60,
+    "tags": [
+      "shinto shrine",
+      "place of worship",
+      "association or organization"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 1235,
+    "photo": {
+      "name": "places/ChIJnSJkkreOGGARyDX_3LuR2MI/photos/Aa-ngMa1a0ELz_NFvnc284MIWMobtGWwDgPvM3FXbUCPf1M1YjMOKNUKbEHUH-55fk7ZlHEVQ00II78ijGAGUqo53A-UlG0TbT9Lkx9UsmNb6yCZO8mWFpw5rJw5gjsnyC7J3HPIUXRHZk3PHfyUiQrH5mToBGmE8tIelBaJlAY02jIwNT42mMyTYZwyvhDA3sn93inPHqME86mBREjeHIDBo29LCxibtq8SiCxMPv3FDzjaJa4f6vyX9btdV35fgBBBkU0RZd4ib9DPPcY08aun0z3Q3vTjmBD86zTWewDIWAyj5Bzl-MxKTAGTZnEqcQbHyMMbDteprPl3S2aTRXaVNuDil-8yvy77TQh-UO9RQ730KyuXTyvyC6X-SHgfmPhvDF_f20mccIO9ZmbBPiKxvB-TNcpIlm7hVQxKwzas3vmWGA",
+      "attribution": {
+        "name": "Nocti-LUX",
+        "uri": "https://maps.google.com/maps/contrib/113822911841529492177"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJj22YYbCOGGARKeCpknTJmTU",
+    "name": "Torikoe Shrine",
+    "lat": 35.702022,
+    "lng": 139.785665,
+    "category": "temple_shrine",
+    "neighborhood": "Torigoe",
+    "openingHours": {
+      "mon": "closed",
+      "tue": "closed",
+      "wed": "closed",
+      "thu": "closed",
+      "fri": "closed",
+      "sat": "closed",
+      "sun": "00:00-23:59"
+    },
+    "typicalDurationMin": 60,
+    "tags": [
+      "shinto shrine",
+      "place of worship",
+      "association or organization"
+    ],
+    "shortDescription": "Centuries-old temple & gardens with lion statues, site of a major summer festival & parade.",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 1667,
+    "photo": {
+      "name": "places/ChIJj22YYbCOGGARKeCpknTJmTU/photos/Aa-ngMYeSmVQpFoL3lJDHKsag7kxE0tsHg-gApY9oUSn6F7zUljQqGFdtplL2lwlC7bdEHGVcheq0ZoA1oCJR5jARlNeAoLMEqmht5VDxFkXCQlK4B5p8oYrnbFRf1Q_C2g17-nnvROd2O_f4gxA2EoE6ixH2Ck1JD2KwsfcAncL2HTupXI8xejVBe65Ufqrkp_s1neSMX5L5aiSmnwGTFYRkQnClPpm17AjEjHDj2H5KJ5bAmAFgDn4ojZ62IUFR4dM5JEYx6aVAKB0JKWvD0QUfLmRva9lPmyxEe6ykO7r50xdUTouFXgdoAiPK1ngiE97LeLpj6k67vfNx4YORiolc27VJt1hGKKqsHci-fC1PpMdd36Hmvxuraunjq-tAR6LhGtsqPeKi30ibEBRjZ-AEdN8CmpRb1EhIrFCKPsEVpQi2EvA",
+      "attribution": {
+        "name": "DAVID",
+        "uri": "https://maps.google.com/maps/contrib/108633888401148530610"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJx62FmcGOGGARDxQTl8Zx6U4",
+    "name": "Asakusa Shrine",
+    "lat": 35.715166,
+    "lng": 139.797439,
+    "category": "temple_shrine",
+    "neighborhood": "Asakusa",
+    "openingHours": {
+      "mon": "closed",
+      "tue": "closed",
+      "wed": "closed",
+      "thu": "closed",
+      "fri": "closed",
+      "sat": "closed",
+      "sun": "00:00-23:59"
+    },
+    "typicalDurationMin": 60,
+    "tags": [
+      "shinto shrine",
+      "place of worship",
+      "association or organization"
+    ],
+    "shortDescription": "Prominent 1649 Shinto shrine set in a temple complex & hosting the Sanja Matsuri festival in May.",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 5300,
+    "photo": {
+      "name": "places/ChIJx62FmcGOGGARDxQTl8Zx6U4/photos/Aa-ngMY9v0taRjIEwK4LCjPmYPlzOiRrAvcnx496u-rkYtWjcWGENE3eCA1_gZfVfuN2E_vYLTeCTqGOO4_V6Mwy4PKTZu6YMSIEZmDrAgt35UzUaFm8KN9gowNCND83X0h1H3up7vWyG9VzisfV3gA1QTTG3OVonDz2RQw-sVOf-6KPoSj53-v-sNLNsLDt72TU2ajk8uUXql9EmVUOk1cNvyzxWhX6O8RNeVo3T7gSWVDTfznlYJTirvI-WgewMRawKuN9W713_U7LA574KU4lcXTl7hZVn4A1wuicafu7vPXXRa_zFlxqF7FyR2RwbK-nYAnehNGuBQ9XCDjRwM6DpKCsPvPwnPAn32gGfUGqMr2Jr715CujCFqstiKRNUhxQQj8b5Pmmr8va5lKqzRimJP3r0Q",
+      "attribution": {
+        "name": "Brian Free",
+        "uri": "https://maps.google.com/maps/contrib/102075498882397074547"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJL_znpNCPGGARJlQGo3sPDSk",
+    "name": "Tencha",
+    "lat": 35.714858,
+    "lng": 139.794436,
+    "category": "izakaya",
+    "neighborhood": "Asakusa",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "08:30-15:30",
+      "tue": "08:30-15:30",
+      "wed": "closed",
+      "thu": "closed",
+      "fri": "08:30-15:30",
+      "sat": "08:30-15:30",
+      "sun": "08:30-15:30"
+    },
+    "typicalDurationMin": 105,
+    "tags": [
+      "japanese izakaya restaurant",
+      "bar and grill",
+      "breakfast restaurant",
+      "asian grocery store",
+      "snack bar",
+      "seafood restaurant"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 499,
+    "photo": {
+      "name": "places/ChIJL_znpNCPGGARJlQGo3sPDSk/photos/Aa-ngMYe7jpj82DXzm0g9R3P6jSuatpgYlIJSCPxWIVLsBdz2W9rqZjlck-YrxClpKLSMYPdRBiGgwb1JLM_5S1CveOjxCJ7gkgtYvGjfuvRXUIuI8Xs9sJMlr4Y6UhDt6v26CqIMV4PHpUeMS35GN_ze51LLhccsUaiSxQfHBRb8JX4-ZpM5NmEk55Q4MzOaFBKfia3aH4f8O2-ri5OZaqPIqr1E-hhSRGr6aasZ9hXm3UWR2GoAn8Siwc1HkmqIMtcpcYfgOwK7vKxmFO5R68FYT1pML86A3fuzyhhWcRkPM8h389QTsIVCI69OHR6iCZDLL-aIDg-H5dcWbBI8sNm6JLsAXQbAIbBknsjNx_WkjAF3abHOn3MYGTQ1Rwcb_SMB9iSIg0Qu7nI0ru-_GyjpaDNgj2xUO0uLly_FAg3lpOT8wqn",
+      "attribution": {
+        "name": "浅草天ちゃ Tempra Asakusa Tencha",
+        "uri": "https://maps.google.com/maps/contrib/106266962625043284750"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJ-WPWJriOGGARUeetJ_JS6v0",
+    "name": "Takao",
+    "lat": 35.705586,
+    "lng": 139.791706,
+    "category": "tempura_tonkatsu",
+    "neighborhood": "Kuramae",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "11:30-13:30,17:00-21:00",
+      "tue": "11:30-13:30,17:00-21:00",
+      "wed": "11:30-13:30,17:00-21:00",
+      "thu": "11:30-13:30,17:00-21:00",
+      "fri": "11:30-13:30,17:00-21:00",
+      "sat": "closed",
+      "sun": "closed"
+    },
+    "typicalDurationMin": 75,
+    "tags": [],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "search",
+    "userRatingCount": 98,
+    "photo": {
+      "name": "places/ChIJ-WPWJriOGGARUeetJ_JS6v0/photos/Aa-ngMZY4xYM6c0Ou2BBEIAC758NorKzzaYGKoZzFXVOgm47hUZvP7VMYcXjJ0xrdjjsCm_f_EAbHj2LOkTnDrs_Aubu1g3FC7IgPR1CzFscrZYP2iKekG2zOa5OerzNIjd-0PjTRWdRh27IHQksV8LoWk0jG5oeK_pMUp9W1mfHnEQrVZlk9LgLs-LFHzjfFcejkpeB38vIO8f1zZ2EulK_iZQDjNS3I_trzXqDeQpJoh7MNe6wOPPnEMR5mhuphIU3E09MGT67iqVnGxlj39lhtGQjRXvS9kf7StT8gViEdHhKqGgHxi3PrfX4YUVxoJE0qBKw-DWT5kfEvY0bS0cXCS4tO6Eju_7IoY5m6xLeW5Juh-pY0wqbeXPWRAzV68Ui9AIOgtoz8vVbhuDW-MrXhPSpAD0",
+      "attribution": {
+        "name": "Jack Matsumoto",
+        "uri": "https://maps.google.com/maps/contrib/103760752172098526335"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJKf07XL-OGGARRGhexDJw5TQ",
+    "name": "Tendon Tenya",
+    "lat": 35.711485,
+    "lng": 139.792801,
+    "category": "tempura_tonkatsu",
+    "neighborhood": "Asakusa",
+    "priceLevel": 1,
+    "openingHours": {
+      "mon": "10:30-22:00",
+      "tue": "10:30-22:00",
+      "wed": "10:30-22:00",
+      "thu": "10:30-22:00",
+      "fri": "10:30-22:00",
+      "sat": "10:00-22:00",
+      "sun": "10:00-22:00"
+    },
+    "typicalDurationMin": 75,
+    "tags": [
+      "meal takeaway"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "search",
+    "userRatingCount": 1968,
+    "photo": {
+      "name": "places/ChIJKf07XL-OGGARRGhexDJw5TQ/photos/Aa-ngMZzul2glUi6TsvCfoAbeOWHYZlCOwXtY_sqPBbjSsCWsPyledxG5gYnVbg2_e1NxYJSSY28bEnEEdlhCkVtB4dfJvM4miF7MTSATTi37S89gef1RbwyYnjgBjZy04Hrdw22qA2TKHz6KHpll3LlVUpcgO6qgjsWdE9Uc6MQTMRnaJAJoyPzmaXsp1yeuyd7blf3VeGQBsITislPUpoo5BAgeRoVcssd7W3G6ok_9yzKoD6_vouiZ47t1HoSc76TrQeTnwaWLzrts_ksaZv_3WpdhiKqRhPP5G-3n7KV_9qIMTWKrZnNJe0vpeqLmQKhtxXrTRY-bjGsgGaNci8XDSKn3l3co753A4JYeJ0nF04_tB2vJl1UOOYQn1VNuMlHaJEScP8-Ertk4YiUXpxB8zCqrcOXN6BAN989qSH9aAnbjV4",
+      "attribution": {
+        "name": "天丼てんや 浅草店",
+        "uri": "https://maps.google.com/maps/contrib/117123287161183646992"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJaRkFc1iPGGARyblzxFEFOeM",
+    "name": "Asakusa Culture Tourist Center Observation Terrace",
+    "lat": 35.710645,
+    "lng": 139.796564,
+    "category": "viewpoint_scenic",
+    "neighborhood": "Kaminarimon",
+    "openingHours": {
+      "mon": "09:00-22:00",
+      "tue": "09:00-22:00",
+      "wed": "09:00-22:00",
+      "thu": "09:00-22:00",
+      "fri": "09:00-22:00",
+      "sat": "09:00-22:00",
+      "sun": "09:00-22:00"
+    },
+    "typicalDurationMin": 45,
+    "tags": [
+      "observation deck"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "search",
+    "userRatingCount": 210,
+    "photo": {
+      "name": "places/ChIJaRkFc1iPGGARyblzxFEFOeM/photos/Aa-ngMY7jHJPuIxOUiuMQHpmFvBY6maDr8D3Kjt6Pe3L8dvqn32IM-JzTixscD-kr50mxqgSKARh2sks9HhmpHsWKFvO5Glvt25YHHcEhcSDjYGS5PplHIz3NLGkZ8yKsg_QC9rghHSDrkUwZajxgKBfsa9zFDbSCVsZVP7DFZ077D7k2H8G_ujjdYCSwEoLSg49r8XmBIRjRD_fW1psEDnpw5fpvgxYqyWzuD3Zsa1c9hHIeSTRsLoX-XHj39m_e1sqVrmzZrPycmljMjkVfNz4jHiEcwmT_Hf7u-pX7Qw1zBaYb--dk2Lq3nQS6ZSDULIPtc0vh0xZE8FfaPJ3_TayAe02yAIMwZq5q70YYZK-dWPg2wulSg9ve09KkdSNzlh7Xgfz3bn-1hsr6OFCS7ZTOidWlVMf1laEovk_i9myOwEykekr",
+      "attribution": {
+        "name": "Ys waiz",
+        "uri": "https://maps.google.com/maps/contrib/103128139291396332360"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJ7TkQRbOOGGARNrJRvDQpCKQ",
+    "name": "Yanagi Bridge",
+    "lat": 35.695206,
+    "lng": 139.787469,
+    "category": "viewpoint_scenic",
+    "neighborhood": "Higashinihonbashi",
+    "openingHours": {
+      "mon": "closed",
+      "tue": "closed",
+      "wed": "closed",
+      "thu": "closed",
+      "fri": "closed",
+      "sat": "closed",
+      "sun": "00:00-23:59"
+    },
+    "typicalDurationMin": 45,
+    "tags": [
+      "bridge",
+      "transportation service"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "search",
+    "userRatingCount": 315,
+    "photo": {
+      "name": "places/ChIJ7TkQRbOOGGARNrJRvDQpCKQ/photos/Aa-ngMaZPABOGW-ODqGZh2YjOlFLKaG6PKJwj53bDpMbN6km9HO3LNinPj6WfKTVUUxY3whFYZbCJBhRHDljN9IDV7fCeo1-uKWuv3c3wyUWiWZK3VWwAVEfZIpEHIIM-liYRkJTKq76cgcmKBfwcao-eUdb4Zo1YCHMPz1srjY_dJrYvLMzmNdqbtp2Ucx8cizYR7k2ZCfXGhjvfMglfU2jdTLsmkyl3FKcNiK7Aa_mIgtV5mm8M1kLgIm9mQiTPbYMm2SncEqJ25b-lT-rQfX5ygsSbB8ycOndV9UCT4GJGS4Im9u_QofpnfqiJfjHtSkXiyAZOErHZAEffqQ__y6w6e-ch4wYoVTPad_I6GnKel1q727ChTFZ2hay_vMleZ3oJXr7_AlXfZ3oZNf2qPz1mOcCKGRU1ioOawJD69dYyl5dgwmRGJop4gvYXk358NEu",
+      "attribution": {
+        "name": "吳承祐",
+        "uri": "https://maps.google.com/maps/contrib/101975480571855556372"
+      }
+    }
+  },
+  {
+    "placeId": "ChIJebJT_ROMGGARV_jAAmMVIFY",
+    "name": "Jimbocho Book Center",
+    "lat": 35.695749,
+    "lng": 139.757555,
+    "category": "bookstore",
+    "neighborhood": "Kanda Jinbōchō",
+    "openingHours": {
+      "mon": "09:00-19:00",
+      "tue": "09:00-19:00",
+      "wed": "09:00-19:00",
+      "thu": "09:00-19:00",
+      "fri": "09:00-19:00",
+      "sat": "10:00-19:00",
+      "sun": "10:00-19:00"
+    },
+    "typicalDurationMin": 60,
+    "tags": [
+      "coworking space",
+      "book store",
+      "cafe",
+      "event venue",
+      "service"
+    ],
+    "shortDescription": "Stylish facility featuring well-rounded bookshop with cafe, rental office & work lounge, & events.",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 552,
+    "photo": {
+      "name": "places/ChIJebJT_ROMGGARV_jAAmMVIFY/photos/Aa-ngMYvKuyLEK253M0o_SuZrAlwp7UgObPpDLezmlxg1AIrgC6wwRJZ7KAqxM95_6Un7PZ_HeG__1_kkSjGPAfHrVPk_PyhX-Y38Gl9JJ-AkN10yK-PkYepRwnLyfeQJeZX-7bIXDHQIXbw4JWPs_9KsjO_xTtZBq9Ndb_MkoI-FJXrV6bLCjD19plz8q1wxtQN_VkxWoMHNcjlhAdGeBv7pQ2y2GCdIe-Lzzfv1vnNSXTy-oSjJx1aKWzOJdGZaRZqIVhhXj266054WyRRfUgXWLHeDkfvHYpginYIXyYpVmJu8Y1x5p559ABTCGMb_ht3fqvwPcbBDKSHY4FoseHt2Np1TsXNV4ix-DBRpJw3uIXd4Sr8FYRIKqMHAAt-AOY_sQrjKXiHpu5lmrAlNWEpS7ixHXqUBy0X7_Ca_A",
+      "attribution": {
+        "name": "神保町ブックセンター",
+        "uri": "https://maps.google.com/maps/contrib/108053975813985413383"
+      }
+    },
+    "foundFor": [
+      "literary",
+      "bookstores",
+      "kissaten",
+      "Showa",
+      "independent"
+    ]
+  },
+  {
+    "placeId": "ChIJzbPpAxGMGGARXqdEiHAFay8",
+    "name": "Books Tokyodo Kanda Jinbocho",
+    "lat": 35.695297,
+    "lng": 139.759959,
+    "category": "bookstore",
+    "neighborhood": "Kanda Jinbōchō",
+    "openingHours": {
+      "mon": "11:00-20:00",
+      "tue": "11:00-20:00",
+      "wed": "11:00-20:00",
+      "thu": "11:00-20:00",
+      "fri": "11:00-20:00",
+      "sat": "11:00-19:00",
+      "sun": "11:00-19:00"
+    },
+    "typicalDurationMin": 60,
+    "tags": [
+      "book store"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 917,
+    "photo": {
+      "name": "places/ChIJzbPpAxGMGGARXqdEiHAFay8/photos/Aa-ngMZvjR5RL1b1RjYlPbajYJAxciUjYwGeNdvE3-rqDLxq9-Lyp32-fG2PLLJ82XAHEEVlCBpjA865NowCIcTNO4ArOAygK_pSU0JaCTWt4_rWURoohBKPKleuEO-oeEHGjqHF4HkM7ZEzMcfThr-dV_a-W9XVdu2LuhEWH0HPk2gdlt0KYVq1dPww7N2o4it9ZjKFVYSkAkT8EGoQtNwaQzYYcMqNiPTWWTQ3haVRc5nuFVzilYVXuEPb4ARqNj16gTeKQ-GVQSFLkScqJlv46dXoF6d3saU_eej6dd0WS3QIHJT-opzxwZS2yIiF0tOniChKF-Yt5m65-bpaYrnk335j4r7wIZAGK5ZJXF72QqnWNwfMXhlPK7l5hlZQdjPCoE3soHu7Yc2ZgqcjLKIxIT1Zos8",
+      "attribution": {
+        "name": "一樹",
+        "uri": "https://maps.google.com/maps/contrib/113874199206115976344"
+      }
+    },
+    "foundFor": [
+      "literary",
+      "bookstores",
+      "kissaten",
+      "Showa",
+      "independent"
+    ]
+  },
+  {
+    "placeId": "ChIJFRiGKgWNGGARKpZMjnXpMys",
+    "name": "cafe chiso",
+    "lat": 35.695508,
+    "lng": 139.760691,
+    "category": "cafe_kissaten",
+    "neighborhood": "Kanda Jinbōchō",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "10:00-20:00",
+      "tue": "10:00-20:00",
+      "wed": "10:00-20:00",
+      "thu": "10:00-20:00",
+      "fri": "10:00-20:00",
+      "sat": "10:00-20:00",
+      "sun": "10:00-20:00"
+    },
+    "typicalDurationMin": 45,
+    "tags": [
+      "cafe"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 56,
+    "photo": {
+      "name": "places/ChIJFRiGKgWNGGARKpZMjnXpMys/photos/Aa-ngMZ02D_GZIkF4yYAM15Xaa0ryvSngk9clCRWwwB9ivKgJfHWTAaJQxoeYYoNi_a7_CSVb6xtfu4bE7-25-tJ3HppZSODp6HGm6KXyLzBwMu18dWfeWXZdXcEYV0DLJhZu2-IHtikvUyAwW_BH3F2cm9dhkBA1_iNZG0VNRrotuSrKR4ztUGXTO5S3MWdnugEfGtzOJuLv7vuIbtUIaNECZ-u_HQU0GRN9Bwv8B-YbY_QT2-Ms3QTns9zB6QD3aTKN3ev2FeTQa2KETY21sFXR5nFU5msTvkD7XyE3096LsToEbhcof7IiOqJNDqRts7R1sy6UT2eRoSbr-N_itSGJ762sR0AAb69GLH8v2HCgXkLfeKz0n7dlsi7AdwVu45lW7BoqzHmPP91MgBUD91hpWglh6yjrZosb-FJ_jcLYabeiy6JaKN_3XGSl7iu28FF",
+      "attribution": {
+        "name": "シンイチ",
+        "uri": "https://maps.google.com/maps/contrib/106085752527916870720"
+      }
+    },
+    "foundFor": [
+      "literary",
+      "bookstores",
+      "kissaten",
+      "Showa",
+      "independent"
+    ]
+  },
+  {
+    "placeId": "ChIJ93J8IxSMGGARFrVeeNZYq-g",
+    "name": "Kissako",
+    "lat": 35.697517,
+    "lng": 139.756995,
+    "category": "cafe_kissaten",
+    "neighborhood": "Kanda Jinbōchō",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "closed",
+      "tue": "12:00-17:00",
+      "wed": "12:00-17:00",
+      "thu": "12:00-17:00",
+      "fri": "12:00-17:00",
+      "sat": "12:00-18:00",
+      "sun": "12:00-18:00"
+    },
+    "typicalDurationMin": 45,
+    "tags": [
+      "coffee shop",
+      "cafe",
+      "food store"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 195,
+    "photo": {
+      "name": "places/ChIJ93J8IxSMGGARFrVeeNZYq-g/photos/Aa-ngMYTWjHDE9bxEZ5SKvbgbSDT0Bw0FShsrwbAd6GZFLnVTJ9pyH3dRacZQcVvAyFwikP5sTIYf9Yyuz_Ea67M7qdvp7b_GfPmU270qlNzSXzlo_fg4Skmdz15M2o0TQOMFR2uIoCQcf6UqdtSW3fJ3eI9ToUyQIe_oq0cagtiHQiN83IpKsiPHQ4LoWigDsj_QO2rPSAIAQfSaP7-CVpHIGcT_PtJyb3s7tCqUMy_pQoT042gRouT1koE3IcxT7kmqIBc2Iy4wr1yUNU7gszsyubRIG3Kac328UF9U6nhPAo36CGW6yTMIIgvXP4T88Z-DG-A0NJTknpfWHQz05Vdegx7Sg8QcdqinEK-Os52rIEL9gKUAWZvOoQT29rgAO93RVnl2egN2QElojUYUB6I3XeieqM",
+      "attribution": {
+        "name": "PilotFish",
+        "uri": "https://maps.google.com/maps/contrib/114776292725039775463"
+      }
+    },
+    "foundFor": [
+      "literary",
+      "bookstores",
+      "kissaten",
+      "Showa",
+      "independent"
+    ]
+  },
+  {
+    "placeId": "ChIJY0YY_hSMGGARn8jebiB_KKM",
+    "name": "Kanda Coffee",
+    "lat": 35.697472,
+    "lng": 139.754739,
+    "category": "cafe_kissaten",
+    "neighborhood": "Kanda Jinbōchō",
+    "priceLevel": 1,
+    "openingHours": {
+      "mon": "07:00-17:00",
+      "tue": "07:00-17:00",
+      "wed": "07:00-17:00",
+      "thu": "07:00-17:00",
+      "fri": "07:00-17:00",
+      "sat": "12:00-18:00",
+      "sun": "12:00-18:00"
+    },
+    "typicalDurationMin": 45,
+    "tags": [
+      "coffee shop",
+      "cafe",
+      "food store"
+    ],
+    "shortDescription": "Snug, traditional cafe with a choice of premium beans for pour over & drip coffees.",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 520,
+    "photo": {
+      "name": "places/ChIJY0YY_hSMGGARn8jebiB_KKM/photos/Aa-ngMZW8cRfXRytHsh4MW2A8uXJ1BuVIxy2pQEtneYIJPIsT2n5orpvJJS6BEbkQPHBnUuDCvCIavKtcniNePVgl4gFeHJXdSl-wc3XcuVu07R7BMZtCn5xnBGo7NWy89km2avjaRHovC7yyr_NlOykkJWjKh40zt0sQJqWWaFGEgdO2J4WPGA-oEFyYviHDvlfAwNiBA3ZM2ehjosNgy_HGZAfZuonVrcn0_pUxDC0PUvHjC4YhoQqOTe_Vb1nfK-ICGbfat6722Pz6gaW9jQM4jOH4biBaz0sHkAt-Gfz81LjSfaUqWnqonqwMi4pzSx3WEy1xGN0C9eoaoKSDNTeQk3S1Ri_W5gLOEjT-AoOfm_lBtKt59Ru5jsMEA2N6dj5aBuoMUbpmQPHZG1uj39NM33wXLIHO4j0pvi-C-p3aLY9Lg",
+      "attribution": {
+        "name": "Lee wenyu",
+        "uri": "https://maps.google.com/maps/contrib/104504247443547779927"
+      }
+    },
+    "foundFor": [
+      "literary",
+      "bookstores",
+      "kissaten",
+      "Showa",
+      "independent"
+    ]
+  },
+  {
+    "placeId": "ChIJWfAYfYfyGGARpyWtAw8OARc",
+    "name": "Books Ōtori",
+    "lat": 35.706619,
+    "lng": 139.650491,
+    "category": "bookstore",
+    "neighborhood": "Kōenjikita",
+    "openingHours": {
+      "mon": "10:00-21:00",
+      "tue": "10:00-21:00",
+      "wed": "10:00-21:00",
+      "thu": "10:00-21:00",
+      "fri": "10:00-21:00",
+      "sat": "10:00-21:00",
+      "sun": "10:00-21:00"
+    },
+    "typicalDurationMin": 60,
+    "tags": [
+      "book store"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 66,
+    "photo": {
+      "name": "places/ChIJWfAYfYfyGGARpyWtAw8OARc/photos/Aa-ngMbU7eBrDvgnvkdCmP4c08-Epe_AflRdhX2KXYjpJM__DvRTqCg17h-Zvx1JDzUjNiN0lLtiE5wYr5_e5qCTqiXWmcq5XYS03GEhmp__hUJzMcKrZOu--KRmSk7SLY2iVplDhVxl5vSOBoEal1MIIf7viCDXWHMSqsiXvYk1aGyz4x8QajY0f98t1Q3Oi2dWn_1Cxolwq8gZ0cXsRVzBgW1mhlxx9St595R1QT5HlpkGDLMNXAxMrLdmRcYT5-BBGHYuXF_V62Ccn_Gl5uijee8B91tpQ-Ndx6xvABR4WiWGR1Zv2RDtGempoZpMMQY1ID-FwBeKNuAm3qayDQ7rTtnkYcYkCszSS-cU80HN_kzWGA5vWfe5ovlhwFQ2Ch_SubXBFwSBA8hwmKymdvOw1-57tmk",
+      "attribution": {
+        "name": "鍋嶋聡",
+        "uri": "https://maps.google.com/maps/contrib/104919277582805071033"
+      }
+    },
+    "foundFor": [
+      "bookstores",
+      "kissaten",
+      "Showa",
+      "independent"
+    ]
+  },
+  {
+    "placeId": "ChIJvbMl62HyGGARDcuMpoHc-wo",
+    "name": "Ayumi Books",
+    "lat": 35.697726,
+    "lng": 139.649073,
+    "category": "bookstore",
+    "neighborhood": "Umezato",
+    "openingHours": {
+      "mon": "closed",
+      "tue": "closed",
+      "wed": "closed",
+      "thu": "closed",
+      "fri": "closed",
+      "sat": "closed",
+      "sun": "00:00-23:59"
+    },
+    "typicalDurationMin": 60,
+    "tags": [
+      "book store"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 186,
+    "photo": {
+      "name": "places/ChIJvbMl62HyGGARDcuMpoHc-wo/photos/Aa-ngMb7I2p_U2qBfDeMtzXTEX8gYz0gEbSZnd7LFjYPYY3RJAg32d8DXTgWcyFQI_qkH9EwZWa9e_fLnlhPFBYsc5Khg2S_9ugfHlArPMI8UCZgDzdD6XfUtQ6QiS1UsuSxKzSwWsVq2bq5OgwgVShVju-j9vzSaPXVfhEXFcTdzhCYvKAflhjbUnqIpy21-6019iEJfajiHfbwYiUKMZ70BrsnfoadGeRplkK-49DVa75UQpMv1HT0cHzegOrCVjyUXVSZIysBLSOkn3jW35jwOHvpiFpr6DsQr6-XvqB1Jm2YydYPg4matvwllL_t-kpSIRHMRnVt8F1ZKScRNaBHWTZ-wZgiKQXdED-JM8VXRpLHD6wXl_oLszvZCx5P-ItSn8jeyGaRyAnbG4rMSCReQEpdUfny1vtaEe-U685rYBX6z0vI",
+      "attribution": {
+        "name": "Bunny Evans",
+        "uri": "https://maps.google.com/maps/contrib/116623934444469978956"
+      }
+    },
+    "foundFor": [
+      "bookstores",
+      "kissaten",
+      "Showa",
+      "independent"
+    ]
+  },
+  {
+    "placeId": "ChIJn65kVlbzGGARmluUtyUEmMM",
+    "name": "本店・本屋の実験室",
+    "lat": 35.70659,
+    "lng": 139.646625,
+    "category": "bookstore",
+    "neighborhood": "Kōenjikita",
+    "openingHours": {
+      "mon": "closed",
+      "tue": "12:00-20:00",
+      "wed": "12:00-20:00",
+      "thu": "12:00-20:00",
+      "fri": "12:00-20:00",
+      "sat": "12:00-20:00",
+      "sun": "12:00-20:00"
+    },
+    "typicalDurationMin": 60,
+    "tags": [
+      "book store"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "place_type",
+    "userRatingCount": 11,
+    "photo": {
+      "name": "places/ChIJn65kVlbzGGARmluUtyUEmMM/photos/Aa-ngMb0HC8BL2t-IAFbJW614LCp-ou81tjvLS_o-tV3uvHqd7MMovcE0z61Zrcd7L_xii8f3T0_bwPFGlwnp49QJlu9GaXE-ucCkrGFBhrRg6Fpn1kWBHk9i3ZxTNMKaeuWAmdo5NdFFV_7y16stRDEcFLGjxHAxFPqWIMxCyx-2_tgGpmi_pQbZC0T9hUgwFgGerGeIzhW8bLbfr_2Kn4-fSjC-guCAEf_m6Ng583yO-oXGj2NGLLC3l3TfxwhIX_dK7Fyko1YYeWcFRBUXO1c9NL063Yf9wUG2CbPust52sESpn4_YFMKRSgGBsPAlKpbzoi4mE7s5eHNsMgozReaqhVfa7ivvFdfA-NAV8P0LZB-ncA189gFl6mYroy5-xLNTlKVnuCD9v_3_4z2JFSq0z7l_hytfCD0Ddt-JSDPgDw",
+      "attribution": {
+        "name": "本店・本屋の実験室",
+        "uri": "https://maps.google.com/maps/contrib/117014344959969818361"
+      }
+    },
+    "foundFor": [
+      "bookstores",
+      "kissaten",
+      "Showa",
+      "independent"
+    ]
+  },
+  {
+    "placeId": "ChIJAz_NBX7yGGARCIzByemG5tU",
+    "name": "COFFEE Coral",
+    "lat": 35.708348,
+    "lng": 139.649818,
+    "category": "cafe_kissaten",
+    "neighborhood": "Kōenjikita",
+    "priceLevel": 1,
+    "openingHours": {
+      "mon": "11:00-22:00",
+      "tue": "11:00-22:00",
+      "wed": "11:00-22:00",
+      "thu": "11:00-22:00",
+      "fri": "11:00-22:00",
+      "sat": "11:00-22:00",
+      "sun": "11:00-22:00"
+    },
+    "typicalDurationMin": 45,
+    "tags": [
+      "coffee shop",
+      "cafe",
+      "food store"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 142,
+    "photo": {
+      "name": "places/ChIJAz_NBX7yGGARCIzByemG5tU/photos/Aa-ngMYDkU1FU-r4Xzxsq3f2NOcIhP6Prx_OqDxBrejyoCtNdUjdvut7mXVGw8kFAB88I_zqu13UbG2H4b8D8KHRnX5SEPsh_8b3_WzhStQZxB5bZYyHyP7P-JVeLNT0i0PKh7ipkDGHexlFvbMFYdp1s55uh6jox6dbteUZ7Do4ZECJouJ7eWcLwvsMwilrMrJB-PenDPDHE0Eh-e34phHPF413zBjuiNW8dwdm7ffAdRxbcBRVfOMb2Hha1tB-dyDsizS-s0_d0OczbM4heyaqH_Q4cE-4tA7T3MqpFRa0NlYDJUpOKoPOlHbqdKdI1R5S-koyBPb5OKhnXHbCjP6dKTGUva6a0PloaRYLJI_IyCcPPkU7AAi7ogjKKsXw5DPAmNO26E9e361Es6_fj8BReGU6y9lRtWVh-Sxc0wCjEl4C0Q",
+      "attribution": {
+        "name": "Yasunori NAKAMURA",
+        "uri": "https://maps.google.com/maps/contrib/105892031905471918411"
+      }
+    },
+    "foundFor": [
+      "bookstores",
+      "kissaten",
+      "Showa",
+      "independent"
+    ]
+  },
+  {
+    "placeId": "ChIJObhy9n3yGGARtk9CRvdDOdc",
+    "name": "珈琲 高円寺茶房",
+    "lat": 35.707411,
+    "lng": 139.650244,
+    "category": "cafe_kissaten",
+    "neighborhood": "Kōenjikita",
+    "priceLevel": 1,
+    "openingHours": {
+      "mon": "09:00-18:00",
+      "tue": "09:00-18:00",
+      "wed": "09:00-18:00",
+      "thu": "09:00-18:00",
+      "fri": "09:00-18:00",
+      "sat": "09:00-17:30",
+      "sun": "closed"
+    },
+    "typicalDurationMin": 45,
+    "tags": [
+      "coffee shop",
+      "cafe",
+      "food store"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 91,
+    "photo": {
+      "name": "places/ChIJObhy9n3yGGARtk9CRvdDOdc/photos/Aa-ngMYTHroPIgROY1tUh5bsDNfEBnA49jj3c52isx1b8cYmSm_J5-kpr3kJq0k40CbWAfH_89OTKybwi7ubW80q69SDM3-Erj9KMjDWsjDOF0i3ihDqXGHm8Y3bE0ei79Y7dSGh0o5nYpGZF2CpWrNxfqP3J1oAobqR8QT5mrvjBHdVvu3dBohAw9GxeWTj-uyrgEVIVgxyBGsKXRJ3dJy_eh2wea6X-RqZjKScbUsd5od26sabGZ1X8p7GhplEEzY-Bz0HaKE8E3iERj3C49lNnktDizOWjKfUkDEtfB4jwmGIN3SVGTrSnywXTbSSUXByBLqDlyl-mdRRpQ7FPc9V4tEe9F1Bn1Ad9_01WpXkK1nZ_KNuu2Mub5HLVEp8tBKk79kylSs9FkQUTeBi8yRFrndVdb_w_i-qudjoLHCXlQZSlLvN",
+      "attribution": {
+        "name": "やすくん",
+        "uri": "https://maps.google.com/maps/contrib/117300042858848728224"
+      }
+    },
+    "foundFor": [
+      "bookstores",
+      "kissaten",
+      "Showa",
+      "independent"
+    ]
+  },
+  {
+    "placeId": "ChIJFddtAmjzGGAROgC21itpzhA",
+    "name": "Tabisuru Kissa",
+    "lat": 35.704837,
+    "lng": 139.649334,
+    "category": "cafe_kissaten",
+    "neighborhood": "Kōenjiminami",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "12:00-20:00",
+      "tue": "12:00-20:00",
+      "wed": "12:00-20:00",
+      "thu": "12:00-20:00",
+      "fri": "12:00-20:00",
+      "sat": "12:00-20:00",
+      "sun": "12:00-20:00"
+    },
+    "typicalDurationMin": 45,
+    "tags": [
+      "cafe",
+      "bar",
+      "coffee shop",
+      "food store",
+      "japanese curry restaurant"
+    ],
+    "shortDescription": "",
+    "source": "places_api",
+    "categoryFrom": "name",
+    "userRatingCount": 207,
+    "photo": {
+      "name": "places/ChIJFddtAmjzGGAROgC21itpzhA/photos/Aa-ngMYX5n37_yNr4PYob00wD_gVFFLLk-B2FxRDpAZjreEUqYyF_zsqwQFppWFfZh_WKQLJDNtyc3jMaqm8upJiu2l6lHYXpgqWs-V7pLjjU2iG5EG95iBUVhNa7JQJKG4rs2WT3asybn3N2u67dzxo2L5f_bkg3mm92igRyNkItBI2JfnNH4luOJp1UqTvy7Ar1JhDF_KbFTf1xhrz9iu1lCbdwr1DU9UA0FaiwKcL-wEQP8dYZ96u8WO_9BfSbqmnDqNg-J4a11N9nqCw3NqiBoMmkB73C4o8dtnddHZfD4eSUzTQ9nC4R8MVFTxOTP0EtyErKMxSVzJ83xcNsEI9-Uexcz4Yxim0iOjluIJCmL0XOSi1qaP_vHKNYpFnhfi_7VSU5PXRzSvKTko4DGAuE6dbPmFI7zph-FjWBOVi5nsJ7A",
+      "attribution": {
+        "name": "taka kwk",
+        "uri": "https://maps.google.com/maps/contrib/114042471414575333369"
+      }
+    },
+    "foundFor": [
+      "bookstores",
+      "kissaten",
+      "Showa",
+      "independent"
+    ]
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "suiteVersion": "core-eval-1.0",
+  "id": "H4",
+  "title": "Direct State edit",
+  "smoke": false,
+  "setup": {
+    "trip": "createTokyoTrip()",
+    "edit": "Convenience: medium -> high",
+    "probe": "add Considering 'Day 2 dinner: ramen'"
+  },
+  "checks": [
+    "classification",
+    "one_receipt",
+    "any_state_change_is_reframe",
+    "priority_effect",
+    "explained",
+    "no_immediate_rearrange",
+    "preview_if_plan_changes",
+    "probe_preview",
+    "atomic",
+    "minimal"
+  ],
+  "implementation": "eval/scenarios/collaboration.ts"
+}

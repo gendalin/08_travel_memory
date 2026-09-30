@@ -1,0 +1,22 @@
+{
+  "suiteVersion": "core-eval-1.0",
+  "id": "M3",
+  "title": "Candidate Memory lifecycle",
+  "smoke": false,
+  "setup": {
+    "trip": "tests/scenarios/tokyoTrip.ts createTokyoTrip()",
+    "profile": "bundled memories seeded with autoActivate",
+    "chat": "I never enjoy crowded tourist spots."
+  },
+  "checks": [
+    "candidate_created",
+    "current_trip_state_proposal",
+    "provenance_to_turn",
+    "independent_storage",
+    "not_auto_active",
+    "snapshot_immutable",
+    "reframe_rules",
+    "no_scope_creep"
+  ],
+  "implementation": "eval/scenarios/memory.ts"
+}

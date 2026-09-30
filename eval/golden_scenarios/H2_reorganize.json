@@ -1,0 +1,24 @@
+{
+  "suiteVersion": "core-eval-1.0",
+  "id": "H2",
+  "title": "Reorganize",
+  "smoke": false,
+  "setup": {
+    "trip": "createTokyoTrip()",
+    "chat": "It's going to rain after 3pm on Day 3."
+  },
+  "checks": [
+    "classification",
+    "state_unchanged",
+    "receipt",
+    "valid",
+    "cutoff_met",
+    "indoor_kept",
+    "impact_code",
+    "impact_complete",
+    "pending_no_mutation",
+    "atomic",
+    "scoped_to_day"
+  ],
+  "implementation": "eval/scenarios/collaboration.ts"
+}

@@ -1,0 +1,212 @@
+[
+  {
+    "text": "Repeatedly drawn to sushi — 18 items (9 saved screenshots, 5 saved places, 4 photos)",
+    "kind": "preference",
+    "subject": {
+      "facet": "category",
+      "value": "sushi"
+    },
+    "polarity": 1,
+    "strength": 1,
+    "confidence": 0.86,
+    "scope": {
+      "ratePerDay": 0.4
+    },
+    "provenance": {
+      "type": "category_trend:sushi",
+      "sourceRefs": [
+        "ev_004",
+        "ev_005",
+        "ev_017",
+        "ev_028",
+        "ev_034",
+        "ev_035",
+        "ev_036",
+        "ev_037",
+        "ev_038",
+        "ev_048",
+        "ev_050",
+        "ev_051",
+        "ev_052",
+        "ev_053",
+        "ev_054",
+        "ev_055",
+        "ev_059",
+        "ev_071"
+      ]
+    },
+    "id": "mem_001",
+    "status": "candidate"
+  },
+  {
+    "text": "Repeatedly drawn to izakaya — 10 items (7 saved screenshots, 3 photos)",
+    "kind": "preference",
+    "subject": {
+      "facet": "category",
+      "value": "izakaya"
+    },
+    "polarity": 1,
+    "strength": 0.5,
+    "confidence": 0.68,
+    "scope": {
+      "ratePerDay": 0.4
+    },
+    "provenance": {
+      "type": "category_trend:izakaya",
+      "sourceRefs": [
+        "ev_015",
+        "ev_024",
+        "ev_026",
+        "ev_056",
+        "ev_057",
+        "ev_062",
+        "ev_063",
+        "ev_070",
+        "ev_072",
+        "ev_073"
+      ]
+    },
+    "id": "mem_002",
+    "status": "candidate"
+  },
+  {
+    "text": "Repeatedly drawn to market / grocery — 6 items (3 photos, 3 saved screenshots)",
+    "kind": "preference",
+    "subject": {
+      "facet": "category",
+      "value": "grocery_market"
+    },
+    "polarity": 1,
+    "strength": 0.32,
+    "confidence": 0.53,
+    "scope": {
+      "ratePerDay": 0.4
+    },
+    "provenance": {
+      "type": "category_trend:grocery_market",
+      "sourceRefs": [
+        "ev_003",
+        "ev_007",
+        "ev_025",
+        "ev_058",
+        "ev_064",
+        "ev_074"
+      ]
+    },
+    "id": "mem_003",
+    "status": "candidate"
+  },
+  {
+    "text": "Repeatedly drawn to discount / variety store — 3 items (2 photos, 1 saved place)",
+    "kind": "preference",
+    "subject": {
+      "facet": "category",
+      "value": "discount_variety"
+    },
+    "polarity": 1,
+    "strength": 0.16,
+    "confidence": 0.52,
+    "scope": {
+      "ratePerDay": 0.2
+    },
+    "provenance": {
+      "type": "category_trend:discount_variety",
+      "sourceRefs": [
+        "ev_008",
+        "ev_013",
+        "ev_045"
+      ]
+    },
+    "id": "mem_004",
+    "status": "candidate"
+  },
+  {
+    "text": "Repeatedly drawn to ramen — 3 items (3 photos)",
+    "kind": "preference",
+    "subject": {
+      "facet": "category",
+      "value": "ramen"
+    },
+    "polarity": 1,
+    "strength": 0.16,
+    "confidence": 0.51,
+    "scope": {
+      "ratePerDay": 0.2
+    },
+    "provenance": {
+      "type": "category_trend:ramen",
+      "sourceRefs": [
+        "ev_011",
+        "ev_014",
+        "ev_029"
+      ]
+    },
+    "id": "mem_005",
+    "status": "candidate"
+  },
+  {
+    "text": "Ranges across the city within a day — median 5.6 km between the furthest points of a day",
+    "kind": "pattern",
+    "subject": {
+      "facet": "day_span_metres",
+      "value": 5578
+    },
+    "polarity": 1,
+    "strength": 0.33,
+    "confidence": 0.38,
+    "provenance": {
+      "type": "photo_gps",
+      "sourceRefs": [
+        "ev_003",
+        "ev_004",
+        "ev_005",
+        "ev_006",
+        "ev_007",
+        "ev_008",
+        "ev_009",
+        "ev_010",
+        "ev_001",
+        "ev_011",
+        "ev_012",
+        "ev_013",
+        "ev_014",
+        "ev_015",
+        "ev_016",
+        "ev_017",
+        "ev_018",
+        "ev_019",
+        "ev_024",
+        "ev_025",
+        "ev_026",
+        "ev_027",
+        "ev_030",
+        "ev_031",
+        "ev_032",
+        "ev_033"
+      ]
+    },
+    "id": "mem_006",
+    "status": "candidate"
+  },
+  {
+    "text": "Moves at an unhurried pace — around 3 distinct stops on a typical day",
+    "kind": "pattern",
+    "subject": {
+      "facet": "stops_per_day",
+      "value": 3
+    },
+    "polarity": 1,
+    "strength": 0.67,
+    "confidence": 0.53,
+    "provenance": {
+      "type": "photo_gps",
+      "sourceRefs": [
+        "ev_003",
+        "ev_024",
+        "ev_030"
+      ]
+    },
+    "id": "mem_007",
+    "status": "candidate"
+  }
+]

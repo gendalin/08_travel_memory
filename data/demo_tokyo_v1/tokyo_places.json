@@ -1,0 +1,856 @@
+[
+  {
+    "placeId": "kuramae_base",
+    "name": "Kuramae",
+    "category": "accommodation",
+    "neighborhood": "Kuramae",
+    "typicalDurationMin": 0,
+    "tags": [
+      "base",
+      "hours-authored"
+    ],
+    "shortDescription": "Base lodging for the trip.",
+    "source": "manual_demo",
+    "openingHours": {
+      "mon": "00:00-23:59",
+      "tue": "00:00-23:59",
+      "wed": "00:00-23:59",
+      "thu": "00:00-23:59",
+      "fri": "00:00-23:59",
+      "sat": "00:00-23:59",
+      "sun": "00:00-23:59"
+    },
+    "lat": 35.703164,
+    "lng": 139.790828
+  },
+  {
+    "placeId": "sensoji",
+    "name": "Sensō-ji",
+    "category": "temple_shrine",
+    "neighborhood": "Asakusa",
+    "typicalDurationMin": 60,
+    "tags": [
+      "temple",
+      "landmark",
+      "hours-authored"
+    ],
+    "shortDescription": "Tokyo’s oldest temple, busiest early and late.",
+    "source": "manual_demo",
+    "priceLevel": 0,
+    "openingHours": {
+      "mon": "06:00-17:00",
+      "tue": "06:00-17:00",
+      "wed": "06:00-17:00",
+      "thu": "06:00-17:00",
+      "fri": "06:00-17:00",
+      "sat": "06:00-17:00",
+      "sun": "06:00-17:00"
+    },
+    "lat": 35.714765,
+    "lng": 139.796655
+  },
+  {
+    "placeId": "kotobuki_yu",
+    "name": "Kotobuki Yu",
+    "category": "onsen_sento",
+    "neighborhood": "Kuramae",
+    "typicalDurationMin": 60,
+    "tags": [
+      "sento",
+      "quiet"
+    ],
+    "shortDescription": "Neighbourhood bathhouse a short walk from Kuramae.",
+    "source": "map_source",
+    "priceLevel": 1,
+    "openingHours": {
+      "mon": "11:00-23:59",
+      "tue": "11:00-23:59",
+      "wed": "11:00-23:59",
+      "thu": "11:00-23:59",
+      "fri": "11:00-23:59",
+      "sat": "11:00-23:59",
+      "sun": "11:00-23:59"
+    },
+    "lat": 35.712193,
+    "lng": 139.782697
+  },
+  {
+    "placeId": "kiyosumi_teien",
+    "name": "Kiyosumi Gardens",
+    "category": "park_garden",
+    "neighborhood": "Kiyosumi",
+    "typicalDurationMin": 60,
+    "tags": [
+      "garden",
+      "walkable"
+    ],
+    "shortDescription": "Strolling garden with stepping stones over the pond.",
+    "source": "manual_demo",
+    "priceLevel": 1,
+    "openingHours": {
+      "mon": "09:00-17:00",
+      "tue": "09:00-17:00",
+      "wed": "09:00-17:00",
+      "thu": "09:00-17:00",
+      "fri": "09:00-17:00",
+      "sat": "09:00-17:00",
+      "sun": "09:00-17:00"
+    },
+    "lat": 35.680902,
+    "lng": 139.797265
+  },
+  {
+    "placeId": "blue_bottle_kiyosumi",
+    "name": "Blue Bottle Coffee - Kiyosumi-Shirakawa Flagship Cafe",
+    "category": "cafe_kissaten",
+    "neighborhood": "Kiyosumi",
+    "typicalDurationMin": 45,
+    "tags": [
+      "coffee"
+    ],
+    "shortDescription": "Warehouse-turned-roastery cafe.",
+    "source": "manual_demo",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "08:00-19:00",
+      "tue": "08:00-19:00",
+      "wed": "08:00-19:00",
+      "thu": "08:00-19:00",
+      "fri": "08:00-19:00",
+      "sat": "08:00-19:00",
+      "sun": "08:00-19:00"
+    },
+    "lat": 35.677756,
+    "lng": 139.800589
+  },
+  {
+    "placeId": "ramen_nakiryu",
+    "name": "Sosakumen Kobo Nakiryu",
+    "category": "ramen",
+    "neighborhood": "Otsuka",
+    "typicalDurationMin": 45,
+    "tags": [
+      "ramen",
+      "tantanmen"
+    ],
+    "shortDescription": "Tantanmen specialist; queues form before opening.",
+    "source": "manual_demo",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "11:00-15:30",
+      "tue": "11:00-15:30",
+      "wed": "11:00-15:30",
+      "thu": "11:00-15:30",
+      "fri": "11:00-15:30",
+      "sat": "11:00-15:30",
+      "sun": "closed"
+    },
+    "lat": 35.728676,
+    "lng": 139.730343
+  },
+  {
+    "placeId": "ramen_fuunji",
+    "name": "Fuunji Shinjuku",
+    "category": "ramen",
+    "neighborhood": "Shinjuku",
+    "typicalDurationMin": 45,
+    "tags": [
+      "ramen",
+      "tsukemen"
+    ],
+    "shortDescription": "Tsukemen with a dense chicken-and-fish broth.",
+    "source": "manual_demo",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "11:00-15:00,17:00-21:00",
+      "tue": "11:00-15:00,17:00-21:00",
+      "wed": "11:00-15:00,17:00-21:00",
+      "thu": "11:00-15:00,17:00-21:00",
+      "fri": "11:00-15:00,17:00-21:00",
+      "sat": "11:00-15:00,17:00-21:00",
+      "sun": "11:00-15:00,17:00-21:00"
+    },
+    "lat": 35.686834,
+    "lng": 139.696639
+  },
+  {
+    "placeId": "ramen_afuri",
+    "name": "AFURI Ebisu",
+    "category": "ramen",
+    "neighborhood": "Ebisu",
+    "typicalDurationMin": 40,
+    "tags": [
+      "ramen",
+      "yuzu",
+      "light"
+    ],
+    "shortDescription": "Yuzu-shio ramen, lighter than most.",
+    "source": "manual_demo",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "11:00-23:59",
+      "tue": "11:00-23:59",
+      "wed": "11:00-23:59",
+      "thu": "11:00-23:59",
+      "fri": "11:00-23:59",
+      "sat": "11:00-23:59",
+      "sun": "11:00-23:59"
+    },
+    "lat": 35.648302,
+    "lng": 139.710881
+  },
+  {
+    "placeId": "ramen_rokurinsha",
+    "name": "Rokurinsha Tokyo Ramen Street",
+    "category": "ramen",
+    "neighborhood": "Tokyo Station",
+    "typicalDurationMin": 40,
+    "tags": [
+      "ramen",
+      "tsukemen"
+    ],
+    "shortDescription": "Tsukemen inside Tokyo Station’s Ramen Street.",
+    "source": "manual_demo",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "07:30-09:45,10:00-23:00",
+      "tue": "07:30-09:45,10:00-23:00",
+      "wed": "07:30-09:45,10:00-23:00",
+      "thu": "07:30-09:45,10:00-23:00",
+      "fri": "07:30-09:45,10:00-23:00",
+      "sat": "07:30-09:45,10:00-23:00",
+      "sun": "07:30-09:45,10:00-23:00"
+    },
+    "lat": 35.680052,
+    "lng": 139.767846
+  },
+  {
+    "placeId": "ramen_ichiran_shibuya",
+    "name": "ICHIRAN Shibuya",
+    "category": "ramen",
+    "neighborhood": "Shibuya",
+    "typicalDurationMin": 40,
+    "tags": [
+      "ramen",
+      "tonkotsu",
+      "solo booths"
+    ],
+    "shortDescription": "Tonkotsu in single-seat booths, open late.",
+    "source": "manual_demo",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "closed",
+      "tue": "closed",
+      "wed": "closed",
+      "thu": "closed",
+      "fri": "closed",
+      "sat": "closed",
+      "sun": "00:00-23:59"
+    },
+    "lat": 35.661119,
+    "lng": 139.700985
+  },
+  {
+    "placeId": "sushi_sawada",
+    "name": "Sawada",
+    "category": "sushi",
+    "neighborhood": "Ginza",
+    "typicalDurationMin": 90,
+    "tags": [
+      "sushi",
+      "counter",
+      "reservation"
+    ],
+    "shortDescription": "Small Ginza counter; reservation only.",
+    "source": "map_source",
+    "priceLevel": 4,
+    "openingHours": {
+      "mon": "closed",
+      "tue": "12:00-14:00,18:00-20:30",
+      "wed": "12:00-14:00,18:00-20:30",
+      "thu": "12:00-14:00,18:00-20:30",
+      "fri": "12:00-14:00,18:00-20:30",
+      "sat": "12:00-14:00,17:00-19:30",
+      "sun": "12:00-14:00"
+    },
+    "lat": 35.670463,
+    "lng": 139.765244
+  },
+  {
+    "placeId": "sushi_hakkoku",
+    "name": "Hakkoku",
+    "category": "sushi",
+    "neighborhood": "Ginza",
+    "typicalDurationMin": 105,
+    "tags": [
+      "sushi",
+      "counter",
+      "edomae"
+    ],
+    "shortDescription": "Edomae counter known for its rice.",
+    "source": "map_source",
+    "priceLevel": 4,
+    "openingHours": {
+      "mon": "17:00-23:00",
+      "tue": "17:00-23:00",
+      "wed": "17:00-23:00",
+      "thu": "17:00-23:00",
+      "fri": "17:00-23:00",
+      "sat": "12:00-14:00,17:00-23:00",
+      "sun": "closed"
+    },
+    "lat": 35.670447,
+    "lng": 139.76271
+  },
+  {
+    "placeId": "sushi_ishiyama",
+    "name": "Sushi Ishiyama",
+    "category": "sushi",
+    "neighborhood": "Ningyocho",
+    "typicalDurationMin": 90,
+    "tags": [
+      "sushi",
+      "counter"
+    ],
+    "shortDescription": "Quiet counter away from the Ginza crowds.",
+    "source": "map_source",
+    "priceLevel": 4,
+    "openingHours": {
+      "mon": "closed",
+      "tue": "12:00-14:00,18:00-22:00",
+      "wed": "12:00-14:00,18:00-22:00",
+      "thu": "12:00-14:00,18:00-22:00",
+      "fri": "12:00-14:00,18:00-22:00",
+      "sat": "12:00-14:00,18:00-22:00",
+      "sun": "closed"
+    },
+    "lat": 35.67312,
+    "lng": 139.765523
+  },
+  {
+    "placeId": "sushi_korin",
+    "name": "KOURIN",
+    "category": "sushi",
+    "neighborhood": "Shibuya",
+    "typicalDurationMin": 75,
+    "tags": [
+      "sushi",
+      "uni"
+    ],
+    "shortDescription": "Kamiyama-cho basement counter.",
+    "source": "screenshot",
+    "priceLevel": 4,
+    "openingHours": {
+      "mon": "15:00-22:00",
+      "tue": "15:00-22:00",
+      "wed": "15:00-22:00",
+      "thu": "15:00-22:00",
+      "fri": "15:00-22:00",
+      "sat": "15:00-22:00",
+      "sun": "15:00-22:00"
+    },
+    "lat": 35.663011,
+    "lng": 139.694651
+  },
+  {
+    "placeId": "sushi_tanimoto",
+    "name": "Tanimoto Kagurazaka",
+    "category": "sushi",
+    "neighborhood": "Kagurazaka",
+    "typicalDurationMin": 90,
+    "tags": [
+      "sushi",
+      "counter"
+    ],
+    "shortDescription": "Kagurazaka counter from the user’s saved list.",
+    "source": "map_source",
+    "priceLevel": 4,
+    "openingHours": {
+      "mon": "09:00-17:00,17:30-23:30",
+      "tue": "17:30-23:30",
+      "wed": "12:00-14:30,17:30-23:30",
+      "thu": "17:30-23:30",
+      "fri": "17:30-23:30",
+      "sat": "12:00-14:30,17:30-22:30",
+      "sun": "09:00-17:00"
+    },
+    "lat": 35.702242,
+    "lng": 139.741046
+  },
+  {
+    "placeId": "sushi_nishiazabu_noguchi",
+    "name": "Nishiazabu Noguchi",
+    "category": "sushi",
+    "neighborhood": "Nishiazabu",
+    "typicalDurationMin": 90,
+    "tags": [
+      "sushi",
+      "counter"
+    ],
+    "shortDescription": "Nishiazabu counter from the user’s saved list.",
+    "source": "map_source",
+    "priceLevel": 4,
+    "openingHours": {
+      "mon": "18:00-22:00",
+      "tue": "18:00-22:00",
+      "wed": "18:00-22:00",
+      "thu": "18:00-22:00",
+      "fri": "18:00-22:00",
+      "sat": "18:00-22:00",
+      "sun": "18:00-22:00"
+    },
+    "lat": 35.661409,
+    "lng": 139.724231
+  },
+  {
+    "placeId": "sushi_ginza_inaba",
+    "name": "Ginza Inaba",
+    "category": "sushi",
+    "neighborhood": "Ginza",
+    "typicalDurationMin": 90,
+    "tags": [
+      "sushi"
+    ],
+    "shortDescription": "Ginza sushi counter.",
+    "source": "map_source",
+    "priceLevel": 4,
+    "openingHours": {
+      "mon": "10:30-12:00,18:00-22:00",
+      "tue": "10:30-12:00,18:00-22:00",
+      "wed": "10:30-12:00,18:00-22:00",
+      "thu": "10:30-12:00,18:00-22:00",
+      "fri": "10:30-12:00,18:00-22:00",
+      "sat": "09:00-12:00,18:00-22:00",
+      "sun": "closed"
+    },
+    "lat": 35.66769,
+    "lng": 139.76309
+  },
+  {
+    "placeId": "yakitori_morimoto",
+    "name": "Yakitori Morimoto",
+    "category": "izakaya",
+    "neighborhood": "Ebisu",
+    "typicalDurationMin": 90,
+    "tags": [
+      "yakitori",
+      "counter",
+      "hours-authored"
+    ],
+    "shortDescription": "Charcoal yakitori counter.",
+    "source": "screenshot",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "17:00-23:00",
+      "tue": "17:00-23:00",
+      "wed": "17:00-23:00",
+      "thu": "17:00-23:00",
+      "fri": "17:00-23:00",
+      "sat": "17:00-23:00",
+      "sun": "closed"
+    },
+    "lat": 35.646383,
+    "lng": 139.702659
+  },
+  {
+    "placeId": "yakiniku_yoin",
+    "name": "Yakiniku Yoin Ebisu",
+    "category": "yakiniku_grill",
+    "neighborhood": "Ebisu",
+    "typicalDurationMin": 100,
+    "tags": [
+      "yakiniku"
+    ],
+    "shortDescription": "Ebisu grill house.",
+    "source": "map_source",
+    "priceLevel": 4,
+    "openingHours": {
+      "mon": "17:00-23:59",
+      "tue": "17:00-23:59",
+      "wed": "17:00-23:59",
+      "thu": "17:00-23:59",
+      "fri": "17:00-23:59",
+      "sat": "17:00-23:59",
+      "sun": "17:00-23:59"
+    },
+    "lat": 35.647357,
+    "lng": 139.70847
+  },
+  {
+    "placeId": "izakaya_shin_hinomoto",
+    "name": "Andy's Shin Hinomoto",
+    "category": "izakaya",
+    "neighborhood": "Yurakucho",
+    "typicalDurationMin": 90,
+    "tags": [
+      "izakaya",
+      "under the tracks"
+    ],
+    "shortDescription": "Izakaya under the Yurakucho railway arches.",
+    "source": "manual_demo",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "17:00-23:30",
+      "tue": "17:00-23:30",
+      "wed": "17:00-23:30",
+      "thu": "17:00-23:30",
+      "fri": "17:00-23:30",
+      "sat": "17:00-23:30",
+      "sun": "closed"
+    },
+    "lat": 35.674189,
+    "lng": 139.761871
+  },
+  {
+    "placeId": "tsukiji_outer",
+    "name": "Fish Market Tsukiji Outer Market",
+    "category": "grocery_market",
+    "neighborhood": "Tsukiji",
+    "typicalDurationMin": 75,
+    "tags": [
+      "market",
+      "morning",
+      "hours-authored"
+    ],
+    "shortDescription": "Morning market lanes; most stalls shut by early afternoon.",
+    "source": "manual_demo",
+    "priceLevel": 1,
+    "openingHours": {
+      "mon": "05:00-14:00",
+      "tue": "05:00-14:00",
+      "wed": "05:00-14:00",
+      "thu": "05:00-14:00",
+      "fri": "05:00-14:00",
+      "sat": "05:00-14:00",
+      "sun": "closed"
+    },
+    "lat": 35.66477,
+    "lng": 139.770252
+  },
+  {
+    "placeId": "ameyoko",
+    "name": "Ameyoko market",
+    "category": "grocery_market",
+    "neighborhood": "Ueno",
+    "typicalDurationMin": 60,
+    "tags": [
+      "market",
+      "street",
+      "hours-authored"
+    ],
+    "shortDescription": "Dense market street under the Yamanote tracks.",
+    "source": "manual_demo",
+    "priceLevel": 1,
+    "openingHours": {
+      "mon": "10:00-20:00",
+      "tue": "10:00-20:00",
+      "wed": "10:00-20:00",
+      "thu": "10:00-20:00",
+      "fri": "10:00-20:00",
+      "sat": "10:00-20:00",
+      "sun": "10:00-20:00"
+    },
+    "lat": 35.710068,
+    "lng": 139.774601
+  },
+  {
+    "placeId": "akomeya_kagurazaka",
+    "name": "AKOMEYA TOKYO in la kagū",
+    "category": "grocery_market",
+    "neighborhood": "Kagurazaka",
+    "typicalDurationMin": 45,
+    "tags": [
+      "rice",
+      "kitchen",
+      "select shop"
+    ],
+    "shortDescription": "Rice and kitchen goods in a converted warehouse.",
+    "source": "map_source",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "11:00-20:00",
+      "tue": "11:00-20:00",
+      "wed": "11:00-20:00",
+      "thu": "11:00-20:00",
+      "fri": "11:00-20:00",
+      "sat": "11:00-20:00",
+      "sun": "11:00-20:00"
+    },
+    "lat": 35.703589,
+    "lng": 139.733206
+  },
+  {
+    "placeId": "dover_street_market",
+    "name": "Dover Street Market Ginza",
+    "category": "fashion_vintage",
+    "neighborhood": "Ginza",
+    "typicalDurationMin": 60,
+    "tags": [
+      "fashion",
+      "design"
+    ],
+    "shortDescription": "Seven floors of fashion as installation.",
+    "source": "screenshot",
+    "priceLevel": 4,
+    "openingHours": {
+      "mon": "11:00-20:00",
+      "tue": "11:00-20:00",
+      "wed": "11:00-20:00",
+      "thu": "11:00-20:00",
+      "fri": "11:00-20:00",
+      "sat": "11:00-20:00",
+      "sun": "11:00-20:00"
+    },
+    "lat": 35.670432,
+    "lng": 139.763143
+  },
+  {
+    "placeId": "donki_ueno",
+    "name": "Don Quijote Okachimachi",
+    "category": "discount_variety",
+    "neighborhood": "Ueno",
+    "typicalDurationMin": 45,
+    "tags": [
+      "variety",
+      "late"
+    ],
+    "shortDescription": "Late-opening variety store.",
+    "source": "map_source",
+    "priceLevel": 1,
+    "openingHours": {
+      "mon": "09:00-23:59",
+      "tue": "09:00-23:59",
+      "wed": "09:00-23:59",
+      "thu": "09:00-23:59",
+      "fri": "09:00-23:59",
+      "sat": "09:00-23:59",
+      "sun": "09:00-23:59"
+    },
+    "lat": 35.708131,
+    "lng": 139.774493
+  },
+  {
+    "placeId": "tsutaya_daikanyama",
+    "name": "Tsutaya Books Daikanyama",
+    "category": "bookstore",
+    "neighborhood": "Daikanyama",
+    "typicalDurationMin": 60,
+    "tags": [
+      "books",
+      "design"
+    ],
+    "shortDescription": "Bookshop complex with a long magazine aisle.",
+    "source": "manual_demo",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "09:00-22:00",
+      "tue": "09:00-22:00",
+      "wed": "09:00-22:00",
+      "thu": "09:00-22:00",
+      "fri": "09:00-22:00",
+      "sat": "09:00-22:00",
+      "sun": "09:00-22:00"
+    },
+    "lat": 35.648887,
+    "lng": 139.699789
+  },
+  {
+    "placeId": "nezu_museum",
+    "name": "Nezu Museum",
+    "category": "museum_gallery",
+    "neighborhood": "Aoyama",
+    "typicalDurationMin": 90,
+    "tags": [
+      "museum",
+      "garden",
+      "architecture"
+    ],
+    "shortDescription": "Kuma-designed museum with a hillside garden.",
+    "source": "manual_demo",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "closed",
+      "tue": "10:00-17:00",
+      "wed": "10:00-17:00",
+      "thu": "10:00-17:00",
+      "fri": "10:00-17:00",
+      "sat": "10:00-17:00",
+      "sun": "10:00-17:00"
+    },
+    "lat": 35.662257,
+    "lng": 139.717094
+  },
+  {
+    "placeId": "design_sight_2121",
+    "name": "21_21 Design Sight",
+    "category": "museum_gallery",
+    "neighborhood": "Roppongi",
+    "typicalDurationMin": 75,
+    "tags": [
+      "design",
+      "exhibition"
+    ],
+    "shortDescription": "Ando-designed gallery, one exhibition at a time.",
+    "source": "manual_demo",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "10:00-19:00",
+      "tue": "closed",
+      "wed": "10:00-19:00",
+      "thu": "10:00-19:00",
+      "fri": "10:00-19:00",
+      "sat": "10:00-19:00",
+      "sun": "10:00-19:00"
+    },
+    "lat": 35.667525,
+    "lng": 139.730521
+  },
+  {
+    "placeId": "tokyo_national_museum",
+    "name": "Tokyo National Museum",
+    "category": "museum_gallery",
+    "neighborhood": "Ueno",
+    "typicalDurationMin": 120,
+    "tags": [
+      "museum"
+    ],
+    "shortDescription": "The main national collection, in Ueno Park.",
+    "source": "manual_demo",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "closed",
+      "tue": "09:30-17:00",
+      "wed": "09:30-17:00",
+      "thu": "09:30-17:00",
+      "fri": "09:30-20:00",
+      "sat": "09:30-20:00",
+      "sun": "09:30-17:00"
+    },
+    "lat": 35.718835,
+    "lng": 139.776522
+  },
+  {
+    "placeId": "enoura_observatory",
+    "name": "Enoura Observatory",
+    "category": "museum_gallery",
+    "neighborhood": "Odawara (day trip)",
+    "typicalDurationMin": 180,
+    "tags": [
+      "architecture",
+      "sea",
+      "day trip"
+    ],
+    "shortDescription": "Sugimoto’s sea-facing complex; a full day out of Tokyo.",
+    "source": "map_source",
+    "priceLevel": 3,
+    "openingHours": {
+      "mon": "10:00-13:00,13:30-16:30",
+      "tue": "closed",
+      "wed": "closed",
+      "thu": "10:00-13:00,13:30-16:30",
+      "fri": "10:00-13:00,13:30-16:30",
+      "sat": "10:00-13:00,13:30-16:30",
+      "sun": "10:00-13:00,13:30-16:30"
+    },
+    "lat": 35.188164,
+    "lng": 139.134959
+  },
+  {
+    "placeId": "ueno_park",
+    "name": "Ueno Park",
+    "category": "park_garden",
+    "neighborhood": "Ueno",
+    "typicalDurationMin": 60,
+    "tags": [
+      "park"
+    ],
+    "shortDescription": "Wide park connecting the Ueno museums.",
+    "source": "manual_demo",
+    "priceLevel": 0,
+    "openingHours": {
+      "mon": "05:00-23:00",
+      "tue": "05:00-23:00",
+      "wed": "05:00-23:00",
+      "thu": "05:00-23:00",
+      "fri": "05:00-23:00",
+      "sat": "05:00-23:00",
+      "sun": "05:00-23:00"
+    },
+    "lat": 35.714756,
+    "lng": 139.773431
+  },
+  {
+    "placeId": "hamarikyu",
+    "name": "Hamarikyu Gardens",
+    "category": "park_garden",
+    "neighborhood": "Shiodome",
+    "typicalDurationMin": 75,
+    "tags": [
+      "garden",
+      "tea house"
+    ],
+    "shortDescription": "Tidal garden with a tea house on the water.",
+    "source": "manual_demo",
+    "priceLevel": 1,
+    "openingHours": {
+      "mon": "09:00-17:00",
+      "tue": "09:00-17:00",
+      "wed": "09:00-17:00",
+      "thu": "09:00-17:00",
+      "fri": "09:00-17:00",
+      "sat": "09:00-17:00",
+      "sun": "09:00-17:00"
+    },
+    "lat": 35.659656,
+    "lng": 139.763409
+  },
+  {
+    "placeId": "konparu_yu",
+    "name": "Konparu-Yu",
+    "category": "onsen_sento",
+    "neighborhood": "Ginza",
+    "typicalDurationMin": 60,
+    "tags": [
+      "sento"
+    ],
+    "shortDescription": "Small Ginza bathhouse tucked behind the main streets.",
+    "source": "map_source",
+    "priceLevel": 1,
+    "openingHours": {
+      "mon": "14:00-22:00",
+      "tue": "14:00-22:00",
+      "wed": "14:00-22:00",
+      "thu": "14:00-22:00",
+      "fri": "14:00-22:00",
+      "sat": "14:00-20:00",
+      "sun": "closed"
+    },
+    "lat": 35.668639,
+    "lng": 139.761469
+  },
+  {
+    "placeId": "koffee_mameya",
+    "name": "KOFFEE MAMEYA",
+    "category": "cafe_kissaten",
+    "neighborhood": "Omotesando",
+    "typicalDurationMin": 40,
+    "tags": [
+      "coffee",
+      "counter"
+    ],
+    "shortDescription": "Counter-only coffee bar; beans chosen by conversation.",
+    "source": "manual_demo",
+    "priceLevel": 2,
+    "openingHours": {
+      "mon": "10:00-18:00",
+      "tue": "10:00-18:00",
+      "wed": "10:00-18:00",
+      "thu": "10:00-18:00",
+      "fri": "10:00-18:00",
+      "sat": "10:00-18:00",
+      "sun": "10:00-18:00"
+    },
+    "lat": 35.668368,
+    "lng": 139.710888
+  }
+]

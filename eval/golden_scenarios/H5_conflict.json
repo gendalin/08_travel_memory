@@ -1,0 +1,27 @@
+{
+  "suiteVersion": "core-eval-1.0",
+  "id": "H5",
+  "title": "Conflict",
+  "smoke": true,
+  "setup": {
+    "catalogue": "demo_tokyo_v1 with nezu_museum thu=closed (Day 4 = 2026-10-08)",
+    "considering": "Must visit Nezu Museum on Day 4.",
+    "paths": [
+      "create (Stage B)",
+      "State edit",
+      "control: Nezu closed all trip days"
+    ]
+  },
+  "checks": [
+    "tag_keeps_day",
+    "conflict_returned",
+    "not_silently_dropped",
+    "control_conflict_works",
+    "concrete_reason",
+    "resolution_options",
+    "invalid_never_shown",
+    "active_untouched",
+    "no_side_changes"
+  ],
+  "implementation": "eval/scenarios/collaboration.ts"
+}

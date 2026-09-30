@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+
+# Raw personal sources
+source_inputs/tokyo_raw/photos/*
+source_inputs/tokyo_raw/screenshots/*
+
+# Keep directory structure
+!source_inputs/tokyo_raw/photos/.gitkeep
+!source_inputs/tokyo_raw/screenshots/.gitkeep
+
+# Pre-existing raw drop (source/photos, source/screenshot) — personal files not
+# yet moved into source_inputs/tokyo_raw/
+source/
+
+# Map links: tracked by default. If the saved-place URLs should not live in the
+# repository, uncomment the next line and keep map_links.example.csv as the
+# tracked template.
+# source_inputs/tokyo_raw/maps/map_links.csv
+
+# Secrets — API keys live here, never in source. See .env.example.
+.env
+.env.local
+
+# Note: data/demo_tokyo_v1/ is intentionally NOT ignored. The normalized bundle
+# is committed; coordinates in it are rounded (see EVIDENCE_COORD_DECIMALS).
+
+# Local preprocessing cache
+.cache/
+tmp/
+
+# OS
+.DS_Store
+
+# Static review build
+dist-demo/
+research-out/
+
+# Build and test output — regenerated, not source
+dist/
+test-results/
+playwright-report/

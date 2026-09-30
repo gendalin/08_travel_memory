@@ -1,0 +1,310 @@
+{
+  "ChIJ7RsWzB6MGGARi3xBv7bkl_M": {
+    "shortDescription": "Shrine in Sotokanda known for its festivals, archives, and anime connections.",
+    "poiBrief": {
+      "overview": "Kanda Myoujin is a shrine in Sotokanda, Chiyoda, with a long history and a large parish area covering parts of central Tokyo. It holds the Kanda Festival every two years and preserves historical materials such as ukiyo-e, picture scrolls, old documents, and old photographs in an online museum. The shrine is also associated with anime settings and related collaborations.",
+      "atmosphere": [],
+      "knownFor": [
+        "Kanda Festival",
+        "online museum archives",
+        "ukiyo-e",
+        "picture scrolls",
+        "old documents",
+        "old photographs"
+      ],
+      "goodFor": [
+        "worship",
+        "learning",
+        "exhibition_viewing",
+        "slow_walk"
+      ],
+      "decisionSignals": {
+        "cultural": [
+          "shinto",
+          "anime_manga",
+          "local_community"
+        ],
+        "experience": [
+          "worship",
+          "learning",
+          "exhibition_viewing",
+          "slow_walk"
+        ],
+        "setting": [
+          "historic_building"
+        ],
+        "mainstreamness": "high"
+      },
+      "descriptionSources": [
+        {
+          "url": "http://www.kandamyoujin.or.jp/",
+          "type": "official_website",
+          "title": "Home｜江戸総鎮守 神田明神"
+        },
+        {
+          "url": "https://www.gotokyo.org/en/spot/1771/index.html",
+          "type": "official_tourism",
+          "title": "Kanda Shrine (Love Live!, etc.) | The Official Tokyo Travel Guide, GO TOKYO"
+        },
+        {
+          "url": "https://www.japan.travel/en/spot/1701/",
+          "type": "official_tourism",
+          "title": "神田明神 | Travel Japan - 日本觀光局（官方網站）"
+        }
+      ],
+      "descriptionConfidence": "high"
+    }
+  },
+  "ChIJ8UvpbOCPGGARiHO0jyfGqvU": {
+    "shortDescription": "Kuramae kissaten serving self-roasted coffee and seasonal desserts.",
+    "poiBrief": {
+      "overview": "Kissa Hangetsu is a cafe kissaten in Kuramae that was originally hidden on an upper floor of another shop and later relocated and reopened. It uses coffee beans roasted at the neighboring Hanganetsu Roasting Lab, and its espresso drinks can be made with selected beans. Desserts include seasonal fruit cream puffs, rare cheesecake, and Victoria cake.",
+      "atmosphere": [
+        "chic",
+        "simple"
+      ],
+      "knownFor": [
+        "self-roasted coffee beans",
+        "espresso drinks with selectable beans",
+        "seasonal fruit cream puffs",
+        "rare cheesecake",
+        "Victoria cake"
+      ],
+      "goodFor": [
+        "coffee",
+        "dessert",
+        "slow browsing"
+      ],
+      "decisionSignals": {
+        "cultural": [
+          "coffee_culture",
+          "independent_business"
+        ],
+        "experience": [
+          "coffee",
+          "dessert"
+        ],
+        "setting": [
+          "small_scale",
+          "backstreet"
+        ],
+        "mainstreamness": "medium"
+      },
+      "descriptionSources": [
+        {
+          "url": "http://www.fromafar-tokyo.com/kissahangetsu",
+          "type": "official_website",
+          "title": "KISSA HANGETSU &mdash; light source co. ltd"
+        },
+        {
+          "url": "https://cityspride.com/place/3685",
+          "type": "other_trusted",
+          "title": "喫茶半月の口コミ | 蔵前 - TRIPROUD"
+        },
+        {
+          "url": "https://irohameguri.jp/food/hangetsu-2024/",
+          "type": "other_trusted",
+          "title": "蔵前｜シックな大人カフェ「喫茶 半月」で季節のシューとレアチーズケーキを堪能 - いろはめぐり"
+        }
+      ],
+      "descriptionConfidence": "medium"
+    }
+  },
+  "ChIJhZDFAbeOGGARu8fAZDHw3zM": {
+    "shortDescription": "Design gift shop in Kuramae selling selected homeware and gifts.",
+    "poiBrief": {
+      "overview": "KONCENT is a design gift shop operated by H Concept. It presents original brands, products developed with companies and producers, and selected items chosen from its own perspective. The shop also has a coffee stand mentioned in editorial coverage, and it is described as a base for connecting makers and users in Kuramae.",
+      "atmosphere": [],
+      "knownFor": [
+        "design gifts",
+        "original brands such as +d and h tag",
+        "selected homeware",
+        "products developed with companies and producers",
+        "coffee stand"
+      ],
+      "goodFor": [
+        "browsing",
+        "shopping",
+        "coffee"
+      ],
+      "decisionSignals": {
+        "cultural": [
+          "design",
+          "independent_business",
+          "local_community"
+        ],
+        "experience": [
+          "browsing",
+          "shopping",
+          "coffee"
+        ],
+        "setting": [
+          "small_scale",
+          "backstreet"
+        ],
+        "mainstreamness": "low"
+      },
+      "descriptionSources": [
+        {
+          "url": "https://koncent.jp/",
+          "type": "official_website",
+          "title": "KONCENT Web shop｜アッシュコンセプト公式ショップ |"
+        },
+        {
+          "url": "https://www.timeout.com/tokyo/shopping/koncent",
+          "type": "editorial",
+          "title": "Koncent | Shopping in Asakusa, Tokyo"
+        },
+        {
+          "url": "https://h-concept.jp/koncent",
+          "type": "other_trusted",
+          "title": "KONCENT | h concept"
+        }
+      ],
+      "descriptionConfidence": "medium"
+    }
+  },
+  "ChIJkX42vLeOGGARszgelkFQv9g": {
+    "shortDescription": "Used bookstore dealing in history, classics, hobbies, and subculture.",
+    "poiBrief": {
+      "overview": "Okuramae Shobō is a bookstore that handles a broad range of used books. Its stated categories include history, classical texts, hobbies, subculture, and general used books. The shop’s site also notes that inquiries are welcome for books in other fields, and it provides shipping by mail or parcel services.",
+      "atmosphere": [],
+      "knownFor": [
+        "history",
+        "classical texts",
+        "hobbies",
+        "subculture",
+        "general used books"
+      ],
+      "goodFor": [
+        "browsing used books",
+        "finding books across many fields",
+        "asking about specific book categories"
+      ],
+      "decisionSignals": {
+        "cultural": [
+          "literary",
+          "independent_business"
+        ],
+        "experience": [
+          "browsing",
+          "shopping"
+        ],
+        "setting": [],
+        "mainstreamness": "low"
+      },
+      "descriptionSources": [
+        {
+          "url": "http://www.mmjp.or.jp/Okuramae-Shobou/",
+          "type": "official_website",
+          "title": "�󑐌䑠�O���[�z�[���y�[�W"
+        },
+        {
+          "url": "https://www.kosho.or.jp/abouts/?id=12070130",
+          "type": "other_trusted",
+          "title": "日本の古本屋 / 浅草御蔵前書房について"
+        }
+      ],
+      "descriptionConfidence": "medium"
+    }
+  },
+  "ChIJL0kSfg2MGGARKv5KX53ZZ2Y": {
+    "shortDescription": "Japan’s first national art museum, showing modern and contemporary Japanese art.",
+    "poiBrief": {
+      "overview": "The National Museum of Modern Art, Tokyo is Japan’s first national art museum. It holds nearly 14,000 works of modern and contemporary art, including national Important Cultural Properties by artists such as Yokoyama Taikan and Kishida Ryusei. Exhibitions are shown thematically, and the museum presents the flow of Japanese art from the end of the 19th century to the present.",
+      "atmosphere": [
+        "spacious"
+      ],
+      "knownFor": [
+        "nearly 14,000 works of modern and contemporary art",
+        "national Important Cultural Properties",
+        "Japanese art from the end of the 19th century to the present",
+        "A Room with a View lounge",
+        "views of the Imperial Palace and Marunouchi buildings"
+      ],
+      "goodFor": [
+        "exhibition viewing",
+        "learning",
+        "viewpoint"
+      ],
+      "decisionSignals": {
+        "cultural": [
+          "modern_art",
+          "contemporary_art"
+        ],
+        "experience": [
+          "exhibition_viewing",
+          "learning",
+          "viewpoint"
+        ],
+        "setting": [
+          "spacious",
+          "in_a_complex"
+        ],
+        "mainstreamness": "high"
+      },
+      "descriptionSources": [
+        {
+          "url": "https://www.artmuseums.go.jp/en/museums/momat",
+          "type": "institutional",
+          "title": "The National Museum of Modern Art, Tokyo ｜ Independent Administrative Institution National Museum of Art"
+        }
+      ],
+      "descriptionConfidence": "high"
+    }
+  },
+  "ChIJV4H0Nn-LGGAR2g7_9Kourf4": {
+    "shortDescription": "Design museum in Tokyo Midtown with architecture by Tadao Ando.",
+    "poiBrief": {
+      "overview": "21_21 DESIGN SIGHT is a design-focused museum and research center in Tokyo Midtown, led by directors Issey Miyake, Taku Satoh, and Naoto Fukasawa. It presents exhibitions and other programs that look at everyday things and events from a design perspective. The building was designed by Tadao Ando, and the museum also includes a gallery shop and original goods.",
+      "atmosphere": [],
+      "knownFor": [
+        "design- and architecture-themed exhibitions",
+        "Tadao Ando architecture",
+        "gallery shop",
+        "original goods",
+        "lectures and workshops"
+      ],
+      "goodFor": [
+        "exhibition viewing",
+        "learning",
+        "browsing"
+      ],
+      "decisionSignals": {
+        "cultural": [
+          "design",
+          "architecture"
+        ],
+        "experience": [
+          "exhibition_viewing",
+          "learning",
+          "browsing",
+          "workshop"
+        ],
+        "setting": [
+          "in_a_complex",
+          "modern_building"
+        ],
+        "mainstreamness": "medium"
+      },
+      "descriptionSources": [
+        {
+          "url": "http://www.2121designsight.jp/",
+          "type": "official_website",
+          "title": "21_21 DESIGN SIGHT"
+        },
+        {
+          "url": "https://www.gotokyo.org/en/spot/64/index.html",
+          "type": "official_tourism",
+          "title": "21_21 DESIGN SIGHT | The Official Tokyo Travel Guide, GO TOKYO"
+        },
+        {
+          "url": "https://www.japan.travel/en/spot/1739/",
+          "type": "official_tourism",
+          "title": "21_21 DESIGN SIGHT美術館 | Travel Japan - 日本觀光局（官方網站）"
+        }
+      ],
+      "descriptionConfidence": "high"
+    }
+  }
+}

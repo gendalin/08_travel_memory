@@ -1,0 +1,30 @@
+{
+  "trip": {
+    "name": "Tokyo Slow Week",
+    "days": 5,
+    "baseLodging": "Kuramae"
+  },
+  "events": [
+    {
+      "id": "evt_closed_restaurant",
+      "day": 2,
+      "text": "The ramen place on Day 2 is closed today.",
+      "placeId": "ramen_rokurinsha",
+      "alternativePlaceIds": [
+        "ramen_nakiryu",
+        "ramen_afuri",
+        "ramen_fuunji"
+      ]
+    },
+    {
+      "id": "evt_rain",
+      "day": 2,
+      "text": "It's going to rain all day on Day 2."
+    },
+    {
+      "id": "evt_tired",
+      "day": 3,
+      "text": "I feel tired. Fewer spots."
+    }
+  ]
+}

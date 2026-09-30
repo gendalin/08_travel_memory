@@ -1,0 +1,113 @@
+{
+  "queries": [
+    {
+      "text": "architecture design near Kuramae, Tokyo",
+      "area": null
+    },
+    {
+      "text": "bar cocktail near Kuramae, Tokyo",
+      "area": null
+    },
+    {
+      "text": "exhibition event near Kuramae, Tokyo",
+      "area": null
+    },
+    {
+      "text": "izakaya near Kuramae, Tokyo",
+      "area": null
+    },
+    {
+      "text": "museum gallery near Kuramae, Tokyo",
+      "area": null
+    },
+    {
+      "text": "park garden near Kuramae, Tokyo",
+      "area": null
+    },
+    {
+      "text": "temple shrine near Kuramae, Tokyo",
+      "area": null
+    },
+    {
+      "text": "viewpoint scenic near Kuramae, Tokyo",
+      "area": null
+    },
+    {
+      "text": "yakiniku grill near Kuramae, Tokyo",
+      "area": null
+    },
+    {
+      "text": "bakery sweets near Kuramae, Tokyo",
+      "area": null
+    },
+    {
+      "text": "bookstore near Kuramae, Tokyo",
+      "area": null
+    },
+    {
+      "text": "cafe kissaten near Kuramae, Tokyo",
+      "area": null
+    },
+    {
+      "text": "fashion vintage near Kuramae, Tokyo",
+      "area": null
+    },
+    {
+      "text": "lifestyle homeware near Kuramae, Tokyo",
+      "area": null
+    },
+    {
+      "text": "ramen near Kuramae, Tokyo",
+      "area": null
+    },
+    {
+      "text": "soba udon near Kuramae, Tokyo",
+      "area": null
+    },
+    {
+      "text": "sushi near Kuramae, Tokyo",
+      "area": null
+    },
+    {
+      "text": "teishoku near Kuramae, Tokyo",
+      "area": null
+    },
+    {
+      "text": "tempura tonkatsu near Kuramae, Tokyo",
+      "area": null
+    },
+    {
+      "text": "Jimbocho bookstore",
+      "area": "Jimbocho"
+    },
+    {
+      "text": "Jimbocho cafe kissaten",
+      "area": "Jimbocho"
+    },
+    {
+      "text": "Koenji bookstore",
+      "area": "Koenji"
+    },
+    {
+      "text": "Koenji cafe kissaten",
+      "area": "Koenji"
+    }
+  ],
+  "calls": 0,
+  "fromCache": 23,
+  "returned": 96,
+  "usable": 77,
+  "rejected": {
+    "not_a_destination": 10,
+    "no_opening_hours": 7
+  },
+  "emptySearches": [
+    "architecture design near Kuramae, Tokyo"
+  ],
+  "lodging": {
+    "lat": 35.702128,
+    "lng": 139.792049,
+    "matchedAddress": "Kuramae, Taito City",
+    "cached": true
+  }
+}

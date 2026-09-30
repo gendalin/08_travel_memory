@@ -1,0 +1,111 @@
+/**
+ * Design tokens (Gate 6, task 3).
+ *
+ * One source of truth for type, space, colour, radius, elevation and motion.
+ * Components reference tokens only — no raw hex, no magic pixel values — so
+ * "consistent visual hierarchy" is enforced by the stylesheet rather than by
+ * remembering to match.
+ *
+ * The scale is mobile-first at 390px and deliberately short: a long scale is
+ * how interfaces drift.
+ */
+
+:root {
+  /* --- type ------------------------------------------------------------- */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
+
+  --text-display: 26px;   /* screen title */
+  --text-title: 19px;     /* sheet title */
+  --text-heading: 17px;   /* card heading */
+  --text-body: 15px;      /* default */
+  --text-sub: 14px;       /* secondary prose */
+  --text-meta: 13px;      /* metadata */
+  --text-micro: 11px;     /* eyebrow, uppercase labels */
+
+  --leading-tight: 1.25;
+  --leading-body: 1.5;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --tracking-tight: -0.02em;
+  --tracking-eyebrow: 0.06em;
+
+  /* --- space: a 4px base, used for every gap, pad and margin ------------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* --- colour ------------------------------------------------------------ */
+  --bg: #f6f5f3;
+  --surface: #ffffff;
+  --surface-sunken: #f0eeea;
+  --ink: #16150f;
+  --ink-soft: #6b6862;
+  --ink-faint: #9a968e;
+  --line: #e3e0da;
+  --line-strong: #cfcbc3;
+
+  /* POI pins: one red disc, white ring, white numeral, everywhere. */
+  --poi: #bd271a;
+  --poi-stroke: #ffffff;
+  --poi-ink: #ffffff;
+
+  --accent: #1f6f5c;
+  --accent-soft: #eaf4f0;
+  --accent-ink: #ffffff;
+
+  --danger: #8a1f1f;
+  --danger-soft: #fdecec;
+  --danger-line: #f2c9c9;
+
+  --warn: #8a5a1b;
+  --warn-soft: #fdf7ec;
+  --warn-line: #efdfc2;
+
+  /* Diff colours, drawn from the UI drafts: removed reads red, added green. */
+  --diff-remove: #fbe3e3;
+  --diff-add: #e1f2e5;
+
+  /* --- shape ------------------------------------------------------------- */
+  --radius-chip: 999px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-sheet: 24px;
+
+  /* --- elevation --------------------------------------------------------- */
+  --shadow-float: 0 2px 10px rgba(22, 21, 15, 0.12);
+  --shadow-sheet: 0 -8px 32px rgba(22, 21, 15, 0.16);
+  /* The Index does not slide in over the trip; the trip slides off it as a
+     card, and this is the card's edge. */
+  --shadow-card: -12px 0 36px rgba(22, 21, 15, 0.24);
+
+  /* --- interaction -------------------------------------------------------- */
+  --touch: 44px;                 /* §14.5 minimum target */
+  --focus-ring: 2px solid var(--accent);
+  --focus-offset: 2px;
+  --motion-fast: 120ms;
+  --motion-sheet: 220ms;
+  --ease: cubic-bezier(0.32, 0.72, 0, 1);
+
+  /* --- layout ------------------------------------------------------------- */
+  --app-max: 430px;
+  --composer-height: 68px;
+
+  font-family: var(--font-sans);
+}
+
+/* Respect the system setting rather than animating regardless (§14.5). */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fast: 0ms;
+    --motion-sheet: 0ms;
+  }
+}

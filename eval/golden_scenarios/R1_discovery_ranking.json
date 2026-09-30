@@ -1,0 +1,35 @@
+{
+  "suiteVersion": "core-eval-1.0",
+  "id": "R1",
+  "title": "Recommendation discovery + ranking",
+  "smoke": true,
+  "setup": {
+    "catalogue": "demo_retrieved_v1 (+kuramae_base)",
+    "intent": [
+      "Showa-era literary and cultural atmosphere",
+      "slow neighborhood exploration",
+      "old bookstores",
+      "kissaten",
+      "small independent cultural places"
+    ],
+    "memory": "none",
+    "rubric": "literary_showa_v1"
+  },
+  "checks": [
+    "category_plausible",
+    "valid_plan",
+    "registry",
+    "recall",
+    "recall_areas",
+    "top10",
+    "final_relevance",
+    "term_match",
+    "slow_pace",
+    "audit",
+    "reasons_cite_intent",
+    "expansion",
+    "bookstore_searched",
+    "area_stage"
+  ],
+  "implementation": "eval/scenarios/recommendation.ts"
+}

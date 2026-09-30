@@ -1,0 +1,942 @@
+[
+  {
+    "id": "ev_001",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/FullSizeRender_VSCO 3.JPG",
+    "observedAt": "2026-01-29T11:55:09",
+    "location": {
+      "lat": 35.764,
+      "lng": 139.8395
+    },
+    "summary": "Elephant-shaped slide in an open playground",
+    "category": "park_garden",
+    "categoryConfidence": 0.64,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_002",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_4998.JPG",
+    "observedAt": null,
+    "location": null,
+    "summary": "Museum entrance sign and outdoor posters",
+    "category": "museum_gallery",
+    "categoryConfidence": 0.98,
+    "categorySource": "vision",
+    "placeName": "東京都美術館"
+  },
+  {
+    "id": "ev_003",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_8112.JPG",
+    "observedAt": "2026-01-29T07:57:24",
+    "location": {
+      "lat": 35.6436,
+      "lng": 139.7811
+    },
+    "summary": "Shelves of packaged Japanese snack ingredients",
+    "category": "grocery_market",
+    "categoryConfidence": 0.93,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_004",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_8114.JPG",
+    "observedAt": "2026-01-29T08:36:05",
+    "location": {
+      "lat": 35.6446,
+      "lng": 139.7827
+    },
+    "summary": "Sushi counter with display case",
+    "category": "sushi",
+    "categoryConfidence": 0.98,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_005",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_8115.JPG",
+    "observedAt": "2026-01-29T08:50:46",
+    "location": {
+      "lat": 35.6445,
+      "lng": 139.7827
+    },
+    "summary": "Sushi counter with chefs preparing food",
+    "category": "sushi",
+    "categoryConfidence": 0.99,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_006",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_8127.JPG",
+    "observedAt": "2026-01-29T10:47:28",
+    "location": {
+      "lat": 35.7657,
+      "lng": 139.8493
+    },
+    "summary": "Covered shopping street entrance",
+    "category": "street_neighborhood",
+    "categoryConfidence": 0.98,
+    "categorySource": "vision",
+    "placeName": "仲町商店会"
+  },
+  {
+    "id": "ev_007",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_8129_VSCO.JPG",
+    "observedAt": "2026-01-29T10:51:01",
+    "location": {
+      "lat": 35.765,
+      "lng": 139.8486
+    },
+    "summary": "Fruit and produce stall at a market",
+    "category": "grocery_market",
+    "categoryConfidence": 0.98,
+    "categorySource": "vision",
+    "placeName": "やおさだ"
+  },
+  {
+    "id": "ev_008",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_8130_VSCO.JPG",
+    "observedAt": "2026-01-29T10:54:27",
+    "location": {
+      "lat": 35.7643,
+      "lng": 139.8488
+    },
+    "summary": "Storefront with Japanese product displays and mascots",
+    "category": "discount_variety",
+    "categoryConfidence": 0.84,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_009",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_8131.JPG",
+    "observedAt": "2026-01-29T10:55:11",
+    "location": {
+      "lat": 35.7641,
+      "lng": 139.8488
+    },
+    "summary": "Bronze statue on a neighborhood sidewalk",
+    "category": "street_neighborhood",
+    "categoryConfidence": 0.92,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_010",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_8138_VSCO.JPG",
+    "observedAt": "2026-01-29T11:45:21",
+    "location": {
+      "lat": 35.7637,
+      "lng": 139.8399
+    },
+    "summary": "Bookstore interior with neon sign and book stacks",
+    "category": "bookstore",
+    "categoryConfidence": 0.98,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_011",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_8162.JPG",
+    "observedAt": "2026-01-29T14:41:21",
+    "location": {
+      "lat": 35.665,
+      "lng": 139.7317
+    },
+    "summary": "Bowl of ramen with egg and seaweed",
+    "category": "ramen",
+    "categoryConfidence": 0.99,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_012",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_8165_VSCO.JPG",
+    "observedAt": "2026-01-29T16:20:26",
+    "location": {
+      "lat": 35.6681,
+      "lng": 139.7587
+    },
+    "summary": "Japanese sweets displayed in a bakery case",
+    "category": "bakery_sweets",
+    "categoryConfidence": 0.93,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_013",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_8178_VSCO.JPG",
+    "observedAt": "2026-01-29T19:56:32",
+    "location": {
+      "lat": 35.6661,
+      "lng": 139.7551
+    },
+    "summary": "Capsule toy vending machine with prize tickets",
+    "category": "discount_variety",
+    "categoryConfidence": 0.92,
+    "categorySource": "vision",
+    "placeName": "Jcoin"
+  },
+  {
+    "id": "ev_014",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_8181.JPG",
+    "observedAt": "2026-01-29T20:32:13",
+    "location": {
+      "lat": 35.6662,
+      "lng": 139.7553
+    },
+    "summary": "A bowl of ramen with sliced pork and scallions",
+    "category": "ramen",
+    "categoryConfidence": 0.98,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_015",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_8182.JPG",
+    "observedAt": "2026-01-29T20:41:15",
+    "location": {
+      "lat": 35.6662,
+      "lng": 139.7554
+    },
+    "summary": "Paper lantern with Japanese restaurant signage",
+    "category": "izakaya",
+    "categoryConfidence": 0.9,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_016",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_8183.JPG",
+    "observedAt": "2026-01-29T20:50:24",
+    "location": {
+      "lat": 35.6681,
+      "lng": 139.7582
+    },
+    "summary": "Japanese sweet fish-shaped pastry menu",
+    "category": "bakery_sweets",
+    "categoryConfidence": 0.99,
+    "categorySource": "vision",
+    "placeName": "たいやき 神田達磨 銀座"
+  },
+  {
+    "id": "ev_017",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_8188.JPG",
+    "observedAt": "2026-01-29T21:34:19",
+    "location": {
+      "lat": 35.7056,
+      "lng": 139.8138
+    },
+    "summary": "Nighttime sushi restaurant exterior",
+    "category": "sushi",
+    "categoryConfidence": 0.98,
+    "categorySource": "vision",
+    "placeName": "菊寿司"
+  },
+  {
+    "id": "ev_018",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_8195.JPG",
+    "observedAt": "2026-01-29T23:19:26",
+    "location": {
+      "lat": 35.6483,
+      "lng": 139.7449
+    },
+    "summary": "Night street with illuminated Tokyo Tower",
+    "category": "street_neighborhood",
+    "categoryConfidence": 0.98,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_019",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_8196_VSCO.JPG",
+    "observedAt": "2026-01-29T23:20:03",
+    "location": {
+      "lat": 35.6484,
+      "lng": 139.7448
+    },
+    "summary": "Night street with illuminated tower",
+    "category": "street_neighborhood",
+    "categoryConfidence": 0.96,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_020",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_9470.JPG",
+    "observedAt": "2026-03-06T18:32:59",
+    "location": {
+      "lat": 35.6612,
+      "lng": 139.7009
+    },
+    "summary": "Pasela Resorts karaoke and party venue entrance",
+    "category": "accommodation",
+    "categoryConfidence": 0.95,
+    "categorySource": "vision",
+    "placeName": "PASLA / PASELA RESORTS"
+  },
+  {
+    "id": "ev_021",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_9471.JPG",
+    "observedAt": "2026-03-06T18:42:52",
+    "location": {
+      "lat": 35.6607,
+      "lng": 139.7007
+    },
+    "summary": "Night street at a busy shopping intersection",
+    "category": "street_neighborhood",
+    "categoryConfidence": 0.97,
+    "categorySource": "vision",
+    "placeName": "MODI"
+  },
+  {
+    "id": "ev_022",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_9480.JPG",
+    "observedAt": "2026-03-06T22:22:38",
+    "location": {
+      "lat": 35.6596,
+      "lng": 139.7008
+    },
+    "summary": "Nighttime city street with subway entrance and billboards",
+    "category": "street_neighborhood",
+    "categoryConfidence": 0.91,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_023",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_9481.JPG",
+    "observedAt": "2026-03-06T23:28:10",
+    "location": {
+      "lat": 35.6599,
+      "lng": 139.7014
+    },
+    "summary": "Indoor shop entrance with people",
+    "category": "unclassified",
+    "categoryConfidence": 0.44,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_024",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_9582.JPG",
+    "observedAt": "2026-03-07T15:44:39",
+    "location": {
+      "lat": 35.7297,
+      "lng": 139.7162
+    },
+    "summary": "Casual Japanese pub with beer toasts",
+    "category": "izakaya",
+    "categoryConfidence": 0.95,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_025",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_9598.JPG",
+    "observedAt": "2026-03-07T20:39:31",
+    "location": {
+      "lat": 35.7795,
+      "lng": 139.7206
+    },
+    "summary": "Oyster display with Japanese origin labels",
+    "category": "grocery_market",
+    "categoryConfidence": 0.88,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_026",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_9601.JPG",
+    "observedAt": "2026-03-07T20:45:26",
+    "location": {
+      "lat": 35.7797,
+      "lng": 139.7212
+    },
+    "summary": "Narrow covered alley with Japanese drinking stalls",
+    "category": "izakaya",
+    "categoryConfidence": 0.94,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_027",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_9614.JPG",
+    "observedAt": "2026-03-07T23:12:25",
+    "location": {
+      "lat": 35.7369,
+      "lng": 139.7485
+    },
+    "summary": "Night street with shops and train crossing",
+    "category": "street_neighborhood",
+    "categoryConfidence": 0.95,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_028",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_9666.JPG",
+    "observedAt": "2026-03-08T21:21:18",
+    "location": {
+      "lat": 35.6696,
+      "lng": 139.7593
+    },
+    "summary": "Nigiri sushi on a black plate",
+    "category": "sushi",
+    "categoryConfidence": 0.99,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_029",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_9679.JPG",
+    "observedAt": null,
+    "location": null,
+    "summary": "Table of ramen bowls at a street-side eatery",
+    "category": "ramen",
+    "categoryConfidence": 0.97,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_030",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_9718.JPG",
+    "observedAt": "2026-03-09T15:51:47",
+    "location": {
+      "lat": 35.7006,
+      "lng": 139.7431
+    },
+    "summary": "Urban street with Okinawa restaurant signage",
+    "category": "street_neighborhood",
+    "categoryConfidence": 0.88,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_031",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_9719.JPG",
+    "observedAt": "2026-03-09T15:59:53",
+    "location": {
+      "lat": 35.7016,
+      "lng": 139.7402
+    },
+    "summary": "Narrow urban street with shop signs and overhead wires",
+    "category": "street_neighborhood",
+    "categoryConfidence": 0.96,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_032",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_9720.JPG",
+    "observedAt": "2026-03-09T16:19:51",
+    "location": {
+      "lat": 35.707,
+      "lng": 139.7514
+    },
+    "summary": "Urban street by large stadium and roller coaster",
+    "category": "street_neighborhood",
+    "categoryConfidence": 0.89,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_033",
+    "kind": "photo",
+    "sourcePath": "source_inputs/tokyo_raw/photos/IMG_9727.JPG",
+    "observedAt": "2026-03-09T17:24:38",
+    "location": {
+      "lat": 35.7055,
+      "lng": 139.7531
+    },
+    "summary": "Baseball event banners under a glass roof",
+    "category": "exhibition_event",
+    "categoryConfidence": 0.96,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_034",
+    "kind": "saved_place",
+    "sourcePath": "source_inputs/tokyo_raw/maps/Tokyo.csv",
+    "sourceId": "tokyo_001",
+    "placeId": "0x60188be6f5d7cc35:0x72daba306bd91406",
+    "parentSourceId": "list_tokyo",
+    "placeName": "Sawada",
+    "summary": "Sawada — Sushi restaurant in Tokyo",
+    "category": "sushi",
+    "categoryConfidence": 0.91,
+    "categorySource": "llm_name"
+  },
+  {
+    "id": "ev_035",
+    "kind": "saved_place",
+    "sourcePath": "source_inputs/tokyo_raw/maps/Tokyo.csv",
+    "sourceId": "tokyo_002",
+    "placeId": "0x60188be60240803d:0x9bd3a0a67f42034f",
+    "parentSourceId": "list_tokyo",
+    "placeName": "Hakkoku",
+    "summary": "Hakkoku — Sushi restaurant in Ginza",
+    "category": "sushi",
+    "categoryConfidence": 0.95,
+    "categorySource": "llm_name"
+  },
+  {
+    "id": "ev_036",
+    "kind": "saved_place",
+    "sourcePath": "source_inputs/tokyo_raw/maps/Tokyo.csv",
+    "sourceId": "tokyo_003",
+    "placeId": "0x60188d5dbd532c2f:0x4267fbe8d8fed937",
+    "parentSourceId": "list_tokyo",
+    "placeName": "Kizaki",
+    "summary": "Kizaki — Likely sushi restaurant",
+    "category": "sushi",
+    "categoryConfidence": 0.73,
+    "categorySource": "llm_name"
+  },
+  {
+    "id": "ev_037",
+    "kind": "saved_place",
+    "sourcePath": "source_inputs/tokyo_raw/maps/Tokyo.csv",
+    "sourceId": "tokyo_004",
+    "placeId": "0x60188b1fc0d0ef8d:0x794094121d018ae9",
+    "parentSourceId": "list_tokyo",
+    "placeName": "Sushi Ishiyama",
+    "summary": "Sushi Ishiyama — Sushi restaurant",
+    "category": "sushi",
+    "categoryConfidence": 0.98,
+    "categorySource": "llm_name"
+  },
+  {
+    "id": "ev_038",
+    "kind": "saved_place",
+    "sourcePath": "source_inputs/tokyo_raw/maps/Tokyo.csv",
+    "sourceId": "tokyo_005",
+    "placeId": "0x60188b4f0ad4f6c9:0xe6cb608847f041b6",
+    "parentSourceId": "list_tokyo",
+    "placeName": "鮨 まつうら／Sushi Matsuura",
+    "summary": "鮨 まつうら／Sushi Matsuura — Sushi restaurant",
+    "category": "sushi",
+    "categoryConfidence": 0.98,
+    "categorySource": "llm_name"
+  },
+  {
+    "id": "ev_039",
+    "kind": "saved_place",
+    "sourcePath": "source_inputs/tokyo_raw/maps/Tokyo.csv",
+    "sourceId": "tokyo_006",
+    "placeId": "0x60188b18e949c5db:0x7527cd6c78c9a19",
+    "parentSourceId": "list_tokyo",
+    "placeName": "銀座 稲葉",
+    "summary": "銀座 稲葉 — Name not enough to identify",
+    "category": "unclassified",
+    "categoryConfidence": 0.22,
+    "categorySource": "llm_name"
+  },
+  {
+    "id": "ev_040",
+    "kind": "saved_place",
+    "sourcePath": "source_inputs/tokyo_raw/maps/Tokyo.csv",
+    "sourceId": "tokyo_007",
+    "placeId": "0x60188cf29325c149:0x8b1003ecab66ac81",
+    "parentSourceId": "list_tokyo",
+    "placeName": "多仁本 神楽坂／Tanimoto",
+    "summary": "多仁本 神楽坂／Tanimoto — Name not enough to identify",
+    "category": "unclassified",
+    "categoryConfidence": 0.24,
+    "categorySource": "llm_name"
+  },
+  {
+    "id": "ev_041",
+    "kind": "saved_place",
+    "sourcePath": "source_inputs/tokyo_raw/maps/Tokyo.csv",
+    "sourceId": "tokyo_008",
+    "placeId": "0x60188b107228159b:0x39e7456dd178a95c",
+    "parentSourceId": "list_tokyo",
+    "placeName": "西麻布 野口／Nishiazabu Noguchi",
+    "summary": "西麻布 野口／Nishiazabu Noguchi — Name not enough to identify",
+    "category": "unclassified",
+    "categoryConfidence": 0.29,
+    "categorySource": "llm_name"
+  },
+  {
+    "id": "ev_042",
+    "kind": "saved_place",
+    "sourcePath": "source_inputs/tokyo_raw/maps/Tokyo.csv",
+    "sourceId": "tokyo_009",
+    "placeId": "0x60188c563f42f5d9:0xc0c9fa7e92ef5a5",
+    "parentSourceId": "list_tokyo",
+    "placeName": "AKOMEYA TOKYO 神樂坂La kagu店",
+    "summary": "AKOMEYA TOKYO 神樂坂La kagu店 — Lifestyle and food goods store",
+    "category": "lifestyle_homeware",
+    "categoryConfidence": 0.96,
+    "categorySource": "llm_name"
+  },
+  {
+    "id": "ev_043",
+    "kind": "saved_place",
+    "sourcePath": "source_inputs/tokyo_raw/maps/Tokyo.csv",
+    "sourceId": "tokyo_010",
+    "placeId": "0x6019bb68ded284b3:0xd235503de908e439",
+    "parentSourceId": "list_tokyo",
+    "placeName": "江之浦測候所",
+    "summary": "江之浦測候所 — Scenic observatory and cultural site",
+    "category": "viewpoint_scenic",
+    "categoryConfidence": 0.93,
+    "categorySource": "llm_name"
+  },
+  {
+    "id": "ev_044",
+    "kind": "saved_place",
+    "sourcePath": "source_inputs/tokyo_raw/maps/Tokyo.csv",
+    "sourceId": "tokyo_011",
+    "placeId": "0x60188be8ed5ba33d:0xf4f8a55d5d63a22d",
+    "parentSourceId": "list_tokyo",
+    "placeName": "Konparu-Yu",
+    "summary": "Konparu-Yu — Public bathhouse",
+    "category": "onsen_sento",
+    "categoryConfidence": 0.88,
+    "categorySource": "llm_name"
+  },
+  {
+    "id": "ev_045",
+    "kind": "saved_place",
+    "sourcePath": "source_inputs/tokyo_raw/maps/Tokyo.csv",
+    "sourceId": "tokyo_012",
+    "placeId": "0x60188c204f897d9b:0x97b7f5013e874952",
+    "parentSourceId": "list_tokyo",
+    "placeName": "Don Quijote Ueno",
+    "summary": "Don Quijote Ueno — Discount variety store",
+    "category": "discount_variety",
+    "categoryConfidence": 0.99,
+    "categorySource": "llm_name"
+  },
+  {
+    "id": "ev_046",
+    "kind": "saved_place",
+    "sourcePath": "source_inputs/tokyo_raw/maps/Tokyo.csv",
+    "sourceId": "tokyo_013",
+    "placeId": "0x60188e9822404bfb:0x6f65f3c536670490",
+    "parentSourceId": "list_tokyo",
+    "placeName": "Kotobuki Yu",
+    "summary": "Kotobuki Yu — Bathhouse or sento",
+    "category": "onsen_sento",
+    "categoryConfidence": 0.91,
+    "categorySource": "llm_name"
+  },
+  {
+    "id": "ev_047",
+    "kind": "saved_place",
+    "sourcePath": "source_inputs/tokyo_raw/maps/Tokyo.csv",
+    "sourceId": "tokyo_014",
+    "placeId": "0x60188be7fe558ea7:0x1de24e5be026c141",
+    "parentSourceId": "list_tokyo",
+    "placeName": "Yakiniku Yoin Ebisu",
+    "summary": "Yakiniku Yoin Ebisu — Yakiniku grill restaurant",
+    "category": "yakiniku_grill",
+    "categoryConfidence": 0.97,
+    "categorySource": "llm_name"
+  },
+  {
+    "id": "ev_048",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_0968.PNG",
+    "observedAt": "2026-04-21T14:09:16",
+    "summary": "Uni sushi close-up with shop details",
+    "category": "sushi",
+    "categoryConfidence": 0.98,
+    "categorySource": "vision",
+    "placeName": "すし光琳"
+  },
+  {
+    "id": "ev_049",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_1197.PNG",
+    "observedAt": "2026-04-30T10:59:40",
+    "summary": "Close-up of thick noodles in a bowl",
+    "category": "soba_udon",
+    "categoryConfidence": 0.91,
+    "categorySource": "vision",
+    "placeName": "すし酒場 すぎ玉 新宿東口店"
+  },
+  {
+    "id": "ev_050",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_1210.PNG",
+    "observedAt": "2026-04-30T20:32:10",
+    "summary": "Sushi counter with Japanese menu text",
+    "category": "sushi",
+    "categoryConfidence": 0.98,
+    "categorySource": "vision",
+    "placeName": "いさ美寿司"
+  },
+  {
+    "id": "ev_051",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_4545.PNG",
+    "observedAt": "2025-10-26T03:34:44",
+    "summary": "Sushi counter with chef preparing fish",
+    "category": "sushi",
+    "categoryConfidence": 0.92,
+    "categorySource": "vision",
+    "placeName": "魚まみれ眞吉 宮益坂店"
+  },
+  {
+    "id": "ev_052",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_4711.PNG",
+    "observedAt": "2026-07-20T01:57:38",
+    "summary": "Sushi platter at a sushi restaurant",
+    "category": "sushi",
+    "categoryConfidence": 0.99,
+    "categorySource": "vision",
+    "placeName": "Dashi to Sushi Ochiru Ebisu"
+  },
+  {
+    "id": "ev_053",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_4855.PNG",
+    "observedAt": "2025-11-08T01:22:41",
+    "summary": "Oyster dish with sushi-style toppings",
+    "category": "sushi",
+    "categoryConfidence": 0.92,
+    "categorySource": "vision",
+    "placeName": "あつ盛"
+  },
+  {
+    "id": "ev_054",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_5061.PNG",
+    "observedAt": "2026-07-27T23:03:00",
+    "summary": "Assorted sashimi platter on a restaurant table",
+    "category": "sushi",
+    "categoryConfidence": 0.97,
+    "categorySource": "vision",
+    "placeName": "Wataruga Byun"
+  },
+  {
+    "id": "ev_055",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_5559.PNG",
+    "observedAt": "2025-11-22T04:12:51",
+    "summary": "Sushi roll close-up with store information overlay",
+    "category": "sushi",
+    "categoryConfidence": 0.98,
+    "categorySource": "vision",
+    "placeName": "すし専門ストア かど平 新橋店"
+  },
+  {
+    "id": "ev_056",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_5579.PNG",
+    "observedAt": "2025-11-22T17:47:10",
+    "summary": "Seafood dish in a Japanese pub post",
+    "category": "izakaya",
+    "categoryConfidence": 0.93,
+    "categorySource": "vision",
+    "placeName": "moto_pt_98"
+  },
+  {
+    "id": "ev_057",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_5581.PNG",
+    "observedAt": "2025-11-22T18:42:19",
+    "summary": "Oyster rice bowl at a Japanese eatery",
+    "category": "izakaya",
+    "categoryConfidence": 0.81,
+    "categorySource": "vision",
+    "placeName": "玉善"
+  },
+  {
+    "id": "ev_058",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_5605.PNG",
+    "observedAt": "2026-08-15T03:31:47",
+    "summary": "Seafood at a wholesale market shop",
+    "category": "grocery_market",
+    "categoryConfidence": 0.82,
+    "categorySource": "vision",
+    "placeName": "Nakasei Direct Wholesale Tsurubochi"
+  },
+  {
+    "id": "ev_059",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_5738.PNG",
+    "observedAt": "2026-08-19T03:37:41",
+    "summary": "Small sushi plates with toppings",
+    "category": "sushi",
+    "categoryConfidence": 0.96,
+    "categorySource": "vision",
+    "placeName": "Uo Shu Shibuya Sakuragaoka store"
+  },
+  {
+    "id": "ev_060",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_6169.PNG",
+    "observedAt": "2025-12-09T15:10:49",
+    "summary": "Drink-focused bar scene with Japanese restaurant recommendations",
+    "category": "bar_cocktail",
+    "categoryConfidence": 0.86,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_061",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_6929.PNG",
+    "observedAt": "2025-12-29T04:29:04",
+    "summary": "Narrow alley with restaurant signs at night",
+    "category": "street_neighborhood",
+    "categoryConfidence": 0.97,
+    "categorySource": "vision",
+    "placeName": "寿司勝"
+  },
+  {
+    "id": "ev_062",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_7028.PNG",
+    "observedAt": "2025-12-30T16:22:24",
+    "summary": "Steamed dumpling dish at a casual restaurant",
+    "category": "izakaya",
+    "categoryConfidence": 0.92,
+    "categorySource": "vision",
+    "placeName": "東京グルメ"
+  },
+  {
+    "id": "ev_063",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_7135.PNG",
+    "observedAt": "2026-01-01T15:44:15",
+    "summary": "Cozy Japanese izakaya interior with counter seating",
+    "category": "izakaya",
+    "categoryConfidence": 0.96,
+    "categorySource": "vision",
+    "placeName": "ともぴ / 東京酒場"
+  },
+  {
+    "id": "ev_064",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_7160.PNG",
+    "observedAt": "2026-01-02T12:11:50",
+    "summary": "Seafood market stall with large tuna cut",
+    "category": "grocery_market",
+    "categoryConfidence": 0.84,
+    "categorySource": "vision",
+    "placeName": "木場場外市場 まぐろ祭 木場場"
+  },
+  {
+    "id": "ev_065",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_7517.PNG",
+    "observedAt": "2026-01-11T09:39:49",
+    "summary": "Antique market stalls with event text overlay",
+    "category": "exhibition_event",
+    "categoryConfidence": 0.96,
+    "categorySource": "vision"
+  },
+  {
+    "id": "ev_066",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_7806.PNG",
+    "observedAt": "2026-01-20T15:42:34",
+    "summary": "Homeware shop interior with ceramics and tableware",
+    "category": "lifestyle_homeware",
+    "categoryConfidence": 0.97,
+    "categorySource": "vision",
+    "placeName": "Tool Shop Nobori"
+  },
+  {
+    "id": "ev_067",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_7807.PNG",
+    "observedAt": "2026-01-20T15:42:51",
+    "summary": "Dover Street Market Ginza storefront in Tokyo",
+    "category": "street_neighborhood",
+    "categoryConfidence": 0.98,
+    "categorySource": "vision",
+    "placeName": "Dover Street Market Ginza"
+  },
+  {
+    "id": "ev_068",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_7808.PNG",
+    "observedAt": "2026-01-20T15:43:09",
+    "summary": "Clothing store interior with racks and shelves",
+    "category": "fashion_vintage",
+    "categoryConfidence": 0.96,
+    "categorySource": "vision",
+    "placeName": "coverchord"
+  },
+  {
+    "id": "ev_069",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_7809.PNG",
+    "observedAt": "2026-01-20T15:43:24",
+    "summary": "Fashion showroom storefront in Tokyo",
+    "category": "fashion_vintage",
+    "categoryConfidence": 0.86,
+    "categorySource": "vision",
+    "placeName": "STUDIOUS TOKYO"
+  },
+  {
+    "id": "ev_070",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_7906.PNG",
+    "observedAt": "2026-01-23T20:27:36",
+    "summary": "Nighttime Japanese pub storefront with queue",
+    "category": "izakaya",
+    "categoryConfidence": 0.98,
+    "categorySource": "vision",
+    "placeName": "ともぴ / 東京酒場"
+  },
+  {
+    "id": "ev_071",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_8170.PNG",
+    "observedAt": "2026-01-29T16:55:08",
+    "summary": "Sushi rolls with storefront details overlay",
+    "category": "sushi",
+    "categoryConfidence": 0.98,
+    "categorySource": "vision",
+    "placeName": "すし専門ストア かど平 新橋店"
+  },
+  {
+    "id": "ev_072",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_8333.PNG",
+    "observedAt": "2026-02-03T02:18:08",
+    "summary": "Grilled skewered dish at an izakaya",
+    "category": "izakaya",
+    "categoryConfidence": 0.91,
+    "categorySource": "vision",
+    "placeName": "焼き鳥 森本"
+  },
+  {
+    "id": "ev_073",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_8382.PNG",
+    "observedAt": "2026-02-04T12:07:22",
+    "summary": "Grilled liver skewers at a Japanese pub",
+    "category": "izakaya",
+    "categoryConfidence": 0.91,
+    "categorySource": "vision",
+    "placeName": "渋谷 森本"
+  },
+  {
+    "id": "ev_074",
+    "kind": "screenshot",
+    "sourcePath": "source_inputs/tokyo_raw/screenshots/IMG_9653.PNG",
+    "observedAt": "2025-07-11T17:49:39",
+    "summary": "Grilled fish over charcoal with Chinese text overlay",
+    "category": "grocery_market",
+    "categoryConfidence": 0.44,
+    "categorySource": "vision"
+  }
+]

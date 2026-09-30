@@ -1,0 +1,34 @@
+{
+  "suiteVersion": "core-eval-1.0",
+  "id": "M1",
+  "title": "Memory influences recommendation",
+  "smoke": true,
+  "setup": {
+    "catalogue": "demo_retrieved_v1 (+kuramae_base)",
+    "memory": "Prefers independent bookstores and literary neighborhoods. -> preference category=bookstore, strength 0.8, explicit_statement",
+    "intent": [
+      "Explore Tokyo slowly, with Showa-era cultural atmosphere."
+    ],
+    "considering": [
+      "No taxis."
+    ],
+    "variants": [
+      "memory on vs off",
+      "same pair with pace memory mem_007 (3 stops/day)"
+    ]
+  },
+  "checks": [
+    "ranking_changes",
+    "memory_supported_poi",
+    "memory_supported_at_own_pace",
+    "final_relevance",
+    "memory_refs",
+    "no_fake_rationale",
+    "provenance_truthful",
+    "not_hard_constraint",
+    "claim_bound",
+    "scoped_change",
+    "no_taxis_represented"
+  ],
+  "implementation": "eval/scenarios/memory.ts"
+}

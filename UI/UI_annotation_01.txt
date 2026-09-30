@@ -1,0 +1,74 @@
+
+uidraft02_01 
+
+全局分 Plan/State : Plan主要呈現地圖和推薦地點POI (依據source和開啟new trip後的輸入), 底部有對話框和Itinerary按鈕.左上角有index按鈕
+
+
+
+uidraft02_02
+
+
+這是在plan模式,點擊對話框後出現的sheet.點擊右上x 關閉.
+
+
+
+uidraft02_03
+
+
+這是state模式的頁面,有關於這個trip的 intent,considering, priorities. Intent和considering 由使用者在第一次add new trip時新增的內容拆解為每個獨立item (Intent約4-6, Considering約8-10). Intent,Comsidering可以直接inline editing. Priorities 的每個item 右側可以調整item的優先權重:low/medium/High 
+
+
+uidraft02_04
+
+這個頁面顯示Intent, Considering 的每個item能夠在被點擊後進行 in-line editing
+
+
+
+uidraft02_05
+
+點擊預設plan模式頁面左上方 index button後出現這個頁面: 左上主要action為 add new trip,點擊後可增加新的trip : 命名/intent/considering. Trip部分會列出所有建立的trip.左下方的profile點擊後會呈現 
+uidraft02_06頁面內容.
+
+
+uidraft02_06
+
+此頁面為profile : 包含兩塊:依據source中的照片/map收藏link 以及在trip 對話過程中累積的偏好與記憶: confidence 0.8以上的,成為 "current memory about you". Confidence 0.6-0.8, 成為前面待確認,"your profile, preference..."這一塊.待確認區塊點擊try dots後有 "delete","move to memory"兩個選項, "Current Memory about you" 中有"Delete"選項, 所有items都可以直結點擊進行 in-line editing.  
+
+
+
+uidraft02_07
+
+
+點擊"Itenerary"button後會出現的頁面: 上方地圖出現預設第一天的POI和路線,sheet包含trip name, Day1-Day N 可滑動的options, 點擊某一天後, 下方會出現具有時間軸的地點縮圖/title ("CN tower")/descrition ("Here is the intro of the place, no more 
+than 15 words. Hope this help.")和推薦理由("“Here is the reason why I recommend to you”") 地圖上的POI和介紹是呼應,互動的.
+長按(或滑鼠右鍵) "Day1", "Day2"....的天數按鈕,能夠選擇看到頁面uidraft02_08的推薦理由
+
+
+
+uidraft02_08
+
+這個頁面呈現長按(或滑鼠右鍵) "Day1", "Day2"....的天數按鈕後,彈出sheet會呈現agent推薦當天安排的原因,包含"why today?"以及在intent, pace,cost上的考量
+
+
+
+uidraft02_09
+
+
+此頁面顯示長按(或滑鼠右鍵)某一個POI後出現的其他推薦選項,sheet彈出, 對應地圖上每個延伸的POI,包含縮圖,title (Miso), description (Here is the intro of the 
+place, no more than 15 words. Hope this help.) 和推薦理由 ("“Here is the reason why I recommend  to you”")
+
+
+uidraft02_10
+
+
+此頁面呈現在 plan mode, 用chat和agent溝通後, agent reframe 的情況, 列出更改的原則, 預期的影響, 最後會生成一個 preview new proposed plan,點擊後內容如 uidraft02_11
+
+
+uidraft02_11
+
+此頁面顯示和agent 對話中,agent進行reframe, 連帶影響的行程以 state diff方式呈現,此頁面讓使用者確認改動的部分並且確認後產生新的行程在plan mode (如果有更好的方式可以建議我)
+
+
+uidraft02_12
+
+此頁面顯示使用者和agent在plan mode, chat過程中,agent進行reorganizing, 因為改動範圍較小, 將直接把變動前和後的option列出對比.使用者可以點擊確認

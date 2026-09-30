@@ -1,0 +1,27 @@
+{
+  "suiteVersion": "core-eval-1.0",
+  "id": "H1",
+  "title": "Replace",
+  "smoke": true,
+  "setup": {
+    "trip": "createTokyoTrip()",
+    "chat": "The ramen place on Day N is closed today. (N = day holding ramen_rokurinsha)"
+  },
+  "checks": [
+    "classification",
+    "state_diff_empty",
+    "one_item",
+    "receipt_confirm",
+    "receipt_reject",
+    "registry",
+    "replacement_fits",
+    "replacement_same_kind",
+    "rationale",
+    "pending_no_mutation",
+    "atomic",
+    "no_other_changes",
+    "route_cost",
+    "impact_scope"
+  ],
+  "implementation": "eval/scenarios/collaboration.ts"
+}

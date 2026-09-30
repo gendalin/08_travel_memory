@@ -1,0 +1,1299 @@
+{
+  "runId": "20260930_2149_src-d3333d1",
+  "scenario": "R1",
+  "input_signals": {
+    "intent": [
+      "Showa-era literary and cultural atmosphere",
+      "slow neighborhood exploration",
+      "old bookstores",
+      "kissaten",
+      "small independent cultural places"
+    ],
+    "considering": [],
+    "stateTerms": [
+      "showa",
+      "literary",
+      "cultural",
+      "atmosphere",
+      "slow",
+      "neighborhood",
+      "exploration",
+      "bookstores",
+      "kissaten",
+      "small",
+      "independent",
+      "places"
+    ],
+    "memories": [],
+    "categoryPreferences": [],
+    "priorityWeights": {
+      "convenience": 1,
+      "cost": 1,
+      "novelty": 1
+    },
+    "pace": 5,
+    "roles": [
+      "main_destination",
+      "lunch",
+      "extension_2",
+      "dinner",
+      "nightcap"
+    ]
+  },
+  "semantic_expansion": {
+    "searches": [
+      {
+        "category": "bar_cocktail",
+        "textQuery": "bar cocktail near Kuramae, Tokyo",
+        "retrieve": 6
+      },
+      {
+        "category": "izakaya",
+        "textQuery": "izakaya near Kuramae, Tokyo",
+        "retrieve": 6
+      },
+      {
+        "category": "yakiniku_grill",
+        "textQuery": "yakiniku grill near Kuramae, Tokyo",
+        "retrieve": 6
+      },
+      {
+        "category": "architecture_design",
+        "textQuery": "architecture design near Kuramae, Tokyo",
+        "retrieve": 3
+      },
+      {
+        "category": "bakery_sweets",
+        "textQuery": "bakery sweets near Kuramae, Tokyo",
+        "retrieve": 3
+      },
+      {
+        "category": "bookstore",
+        "textQuery": "bookstore near Kuramae, Tokyo",
+        "retrieve": 3
+      },
+      {
+        "category": "cafe_kissaten",
+        "textQuery": "cafe kissaten near Kuramae, Tokyo",
+        "retrieve": 3
+      },
+      {
+        "category": "exhibition_event",
+        "textQuery": "exhibition event near Kuramae, Tokyo",
+        "retrieve": 3
+      },
+      {
+        "category": "fashion_vintage",
+        "textQuery": "fashion vintage near Kuramae, Tokyo",
+        "retrieve": 3
+      },
+      {
+        "category": "lifestyle_homeware",
+        "textQuery": "lifestyle homeware near Kuramae, Tokyo",
+        "retrieve": 3
+      },
+      {
+        "category": "museum_gallery",
+        "textQuery": "museum gallery near Kuramae, Tokyo",
+        "retrieve": 3
+      },
+      {
+        "category": "park_garden",
+        "textQuery": "park garden near Kuramae, Tokyo",
+        "retrieve": 3
+      },
+      {
+        "category": "ramen",
+        "textQuery": "ramen near Kuramae, Tokyo",
+        "retrieve": 3
+      },
+      {
+        "category": "soba_udon",
+        "textQuery": "soba udon near Kuramae, Tokyo",
+        "retrieve": 3
+      },
+      {
+        "category": "sushi",
+        "textQuery": "sushi near Kuramae, Tokyo",
+        "retrieve": 3
+      },
+      {
+        "category": "teishoku",
+        "textQuery": "teishoku near Kuramae, Tokyo",
+        "retrieve": 3
+      },
+      {
+        "category": "temple_shrine",
+        "textQuery": "temple shrine near Kuramae, Tokyo",
+        "retrieve": 3
+      },
+      {
+        "category": "tempura_tonkatsu",
+        "textQuery": "tempura tonkatsu near Kuramae, Tokyo",
+        "retrieve": 3
+      },
+      {
+        "category": "viewpoint_scenic",
+        "textQuery": "viewpoint scenic near Kuramae, Tokyo",
+        "retrieve": 3
+      },
+      {
+        "category": "bookstore",
+        "textQuery": "Jimbocho bookstore",
+        "retrieve": 3
+      },
+      {
+        "category": "cafe_kissaten",
+        "textQuery": "Jimbocho cafe kissaten",
+        "retrieve": 3
+      },
+      {
+        "category": "bookstore",
+        "textQuery": "Koenji bookstore",
+        "retrieve": 3
+      },
+      {
+        "category": "cafe_kissaten",
+        "textQuery": "Koenji cafe kissaten",
+        "retrieve": 3
+      }
+    ],
+    "stateTermsReachingAnyQuery": [
+      "showa",
+      "literary",
+      "slow",
+      "bookstores",
+      "kissaten",
+      "independent"
+    ],
+    "stateTermsLost": [
+      "cultural",
+      "atmosphere",
+      "neighborhood",
+      "exploration",
+      "small",
+      "places"
+    ],
+    "radiusMetres": null
+  },
+  "area_candidates": {
+    "stageExists": true,
+    "chosenAreas": [
+      "Jimbocho",
+      "Koenji"
+    ],
+    "areaSearches": [
+      "Jimbocho bookstore",
+      "Jimbocho cafe kissaten",
+      "Koenji bookstore",
+      "Koenji cafe kissaten"
+    ],
+    "note": "Area searches are issued at live retrieval; the pool below is the frozen demo_retrieved_v1 set, retrieved before this stage existed.",
+    "neighborhoodsInPool": {
+      "Asakusa": 8,
+      "Kuramae": 22,
+      "Asakusabashi": 4,
+      "Midori": 1,
+      "Nishiasakusa": 2,
+      "Komagata": 2,
+      "Torigoe": 3,
+      "Yanagibashi": 2,
+      "Kotobuki": 3,
+      "Kaminarimon": 5,
+      "Misuji": 1,
+      "Hanakawado": 1,
+      "Yokoami": 1,
+      "Honjo": 1,
+      "Higashinihonbashi": 1,
+      "Kanda Jinbōchō": 5,
+      "Kōenjikita": 4,
+      "Umezato": 1,
+      "Kōenjiminami": 1
+    }
+  },
+  "poi_candidates": {
+    "poolSize": 68,
+    "byCategory": {
+      "bar_cocktail": 6,
+      "izakaya": 7,
+      "yakiniku_grill": 6,
+      "bakery_sweets": 3,
+      "bookstore": 9,
+      "cafe_kissaten": 9,
+      "fashion_vintage": 3,
+      "grocery_market": 1,
+      "lifestyle_homeware": 1,
+      "museum_gallery": 1,
+      "park_garden": 3,
+      "ramen": 3,
+      "soba_udon": 3,
+      "sushi": 3,
+      "teishoku": 3,
+      "temple_shrine": 3,
+      "tempura_tonkatsu": 2,
+      "viewpoint_scenic": 2
+    }
+  },
+  "hard_filters": [
+    {
+      "role": "main_destination",
+      "categoryGate": "9/68 pass",
+      "closedAtRoleStart": 6,
+      "closedSample": [
+        "無相ギャラリー（MUSOU Gallery）",
+        "Seika Park",
+        "Kuramae Shrine"
+      ]
+    },
+    {
+      "role": "lunch",
+      "categoryGate": "23/68 pass",
+      "closedAtRoleStart": 3,
+      "closedSample": [
+        "Kissaten Cisz",
+        "Sushi Nohachi",
+        "Kissako"
+      ]
+    },
+    {
+      "role": "extension_2",
+      "categoryGate": "41/68 pass",
+      "closedAtRoleStart": 19,
+      "closedSample": [
+        "Living Room Asakusa Cocktail Bar",
+        "Bar Boushu 蔵前 & Hotel Villa Kuramae（バー ボウシュ & ホテル ヴィラ クラマエ) Whisky & Wine & Cocktail",
+        "The Bridge Bar & Lounge"
+      ]
+    },
+    {
+      "role": "dinner",
+      "categoryGate": "27/68 pass",
+      "closedAtRoleStart": 2,
+      "closedSample": [
+        "Yakiniku BEAST Kuramae",
+        "Tencha"
+      ]
+    },
+    {
+      "role": "nightcap",
+      "categoryGate": "19/68 pass",
+      "closedAtRoleStart": 4,
+      "closedSample": [
+        "The Bridge Bar & Lounge",
+        "Stage",
+        "Yakiniku BEAST Kuramae"
+      ]
+    }
+  ],
+  "scoring": {
+    "top10": [
+      {
+        "rank": 1,
+        "placeId": "ChIJkX42vLeOGGARszgelkFQv9g",
+        "name": "Okuramae Shobō",
+        "category": "bookstore",
+        "neighborhood": "Kuramae",
+        "total": 0.58,
+        "components": {
+          "stateMatch": 0.7,
+          "memoryMatch": 0,
+          "convenience": 0.939,
+          "cost": null,
+          "novelty": 0.567,
+          "routeFit": 0.959
+        },
+        "contributions": {
+          "stateMatch": 1.4,
+          "memoryMatch": 0,
+          "convenience": 0.939,
+          "cost": 0,
+          "novelty": 0.567,
+          "routeFit": 0.719
+        }
+      },
+      {
+        "rank": 2,
+        "placeId": "ChIJWQSdSLaOGGARk7qGNVyECxI",
+        "name": "Kuramae Park",
+        "category": "park_garden",
+        "neighborhood": "Kuramae",
+        "total": 0.576,
+        "components": {
+          "stateMatch": 0.7,
+          "memoryMatch": 0,
+          "convenience": 0.954,
+          "cost": null,
+          "novelty": 0.516,
+          "routeFit": 0.969
+        },
+        "contributions": {
+          "stateMatch": 1.4,
+          "memoryMatch": 0,
+          "convenience": 0.954,
+          "cost": 0,
+          "novelty": 0.516,
+          "routeFit": 0.727
+        }
+      },
+      {
+        "rank": 3,
+        "placeId": "ChIJF0jdhWePGGARWvQ3EcWrIVY",
+        "name": "自由丁/JIYUCHO",
+        "category": "bookstore",
+        "neighborhood": "Kuramae",
+        "total": 0.569,
+        "components": {
+          "stateMatch": 0.7,
+          "memoryMatch": 0,
+          "convenience": 0.907,
+          "cost": null,
+          "novelty": 0.548,
+          "routeFit": 0.936
+        },
+        "contributions": {
+          "stateMatch": 1.4,
+          "memoryMatch": 0,
+          "convenience": 0.907,
+          "cost": 0,
+          "novelty": 0.548,
+          "routeFit": 0.702
+        }
+      },
+      {
+        "rank": 4,
+        "placeId": "ChIJ3RqD4zSPGGARkgV-WNO_sYA",
+        "name": "Tōmei Bookstore",
+        "category": "bookstore",
+        "neighborhood": "Kotobuki",
+        "total": 0.545,
+        "components": {
+          "stateMatch": 0.7,
+          "memoryMatch": 0,
+          "convenience": 0.834,
+          "cost": null,
+          "novelty": 0.508,
+          "routeFit": 0.883
+        },
+        "contributions": {
+          "stateMatch": 1.4,
+          "memoryMatch": 0,
+          "convenience": 0.834,
+          "cost": 0,
+          "novelty": 0.508,
+          "routeFit": 0.662
+        }
+      },
+      {
+        "rank": 5,
+        "placeId": "ChIJ8UvpbOCPGGARiHO0jyfGqvU",
+        "name": "Kissa Hangetsu",
+        "category": "cafe_kissaten",
+        "neighborhood": "Kuramae",
+        "total": 0.538,
+        "components": {
+          "stateMatch": 0.7,
+          "memoryMatch": 0,
+          "convenience": 0.951,
+          "cost": 0.5,
+          "novelty": 0.324,
+          "routeFit": 0.967
+        },
+        "contributions": {
+          "stateMatch": 1.4,
+          "memoryMatch": 0,
+          "convenience": 0.951,
+          "cost": 0.5,
+          "novelty": 0.324,
+          "routeFit": 0.725
+        }
+      },
+      {
+        "rank": 6,
+        "placeId": "ChIJq6pWibeOGGARpfMbbmRwQjo",
+        "name": "COFFEE NOVA",
+        "category": "cafe_kissaten",
+        "neighborhood": "Kuramae",
+        "total": 0.525,
+        "components": {
+          "stateMatch": 0.7,
+          "memoryMatch": 0,
+          "convenience": 0.894,
+          "cost": 0.5,
+          "novelty": 0.317,
+          "routeFit": 0.927
+        },
+        "contributions": {
+          "stateMatch": 1.4,
+          "memoryMatch": 0,
+          "convenience": 0.894,
+          "cost": 0.5,
+          "novelty": 0.317,
+          "routeFit": 0.695
+        }
+      },
+      {
+        "rank": 7,
+        "placeId": "ChIJJxQPXQCPGGAR_Fe2FsIkE1c",
+        "name": "無相ギャラリー（MUSOU Gallery）",
+        "category": "museum_gallery",
+        "neighborhood": "Kuramae",
+        "total": 0.523,
+        "components": {
+          "stateMatch": 0.4,
+          "memoryMatch": 0,
+          "convenience": 0.913,
+          "cost": null,
+          "novelty": 0.849,
+          "routeFit": 0.94
+        },
+        "contributions": {
+          "stateMatch": 0.8,
+          "memoryMatch": 0,
+          "convenience": 0.913,
+          "cost": 0,
+          "novelty": 0.849,
+          "routeFit": 0.705
+        }
+      },
+      {
+        "rank": 8,
+        "placeId": "ChIJnSJkkreOGGARyDX_3LuR2MI",
+        "name": "Kuramae Shrine",
+        "category": "temple_shrine",
+        "neighborhood": "Kuramae",
+        "total": 0.517,
+        "components": {
+          "stateMatch": 0.7,
+          "memoryMatch": 0,
+          "convenience": 0.904,
+          "cost": null,
+          "novelty": 0.227,
+          "routeFit": 0.934
+        },
+        "contributions": {
+          "stateMatch": 1.4,
+          "memoryMatch": 0,
+          "convenience": 0.904,
+          "cost": 0,
+          "novelty": 0.227,
+          "routeFit": 0.701
+        }
+      },
+      {
+        "rank": 9,
+        "placeId": "ChIJPYYShTSPGGARGU9DV-iab5s",
+        "name": "Ends Vintage Clothing",
+        "category": "fashion_vintage",
+        "neighborhood": "Kuramae",
+        "total": 0.505,
+        "components": {
+          "stateMatch": 0.4,
+          "memoryMatch": 0,
+          "convenience": 0.881,
+          "cost": null,
+          "novelty": 0.789,
+          "routeFit": 0.917
+        },
+        "contributions": {
+          "stateMatch": 0.8,
+          "memoryMatch": 0,
+          "convenience": 0.881,
+          "cost": 0,
+          "novelty": 0.789,
+          "routeFit": 0.688
+        }
+      },
+      {
+        "rank": 10,
+        "placeId": "ChIJReiuB1mPGGARZ52VKFL4hgw",
+        "name": "Black Ribbit",
+        "category": "fashion_vintage",
+        "neighborhood": "Kuramae",
+        "total": 0.499,
+        "components": {
+          "stateMatch": 0.4,
+          "memoryMatch": 0,
+          "convenience": 0.917,
+          "cost": null,
+          "novelty": 0.692,
+          "routeFit": 0.943
+        },
+        "contributions": {
+          "stateMatch": 0.8,
+          "memoryMatch": 0,
+          "convenience": 0.917,
+          "cost": 0,
+          "novelty": 0.692,
+          "routeFit": 0.708
+        }
+      }
+    ]
+  },
+  "diversity": {
+    "categoryCounts": {
+      "park_garden": 2,
+      "cafe_kissaten": 3,
+      "bookstore": 3,
+      "teishoku": 1,
+      "izakaya": 4,
+      "viewpoint_scenic": 1,
+      "tempura_tonkatsu": 1,
+      "bar_cocktail": 2,
+      "bakery_sweets": 1,
+      "soba_udon": 1,
+      "sushi": 1,
+      "museum_gallery": 1,
+      "ramen": 1,
+      "yakiniku_grill": 1
+    },
+    "neighborhoodCounts": {
+      "Kuramae": 14,
+      "Komagata": 1,
+      "Kaminarimon": 2,
+      "Hanakawado": 1,
+      "Asakusa": 1,
+      "Yokoami": 1,
+      "Nishiasakusa": 1,
+      "Kotobuki": 1,
+      "Asakusabashi": 1
+    },
+    "interventions": [
+      {
+        "itemId": "item_d1_extension_2",
+        "winner": "Kumazawa Book Store",
+        "withoutRule": "無相ギャラリー（MUSOU Gallery）"
+      },
+      {
+        "itemId": "item_d1_dinner",
+        "winner": "Takao",
+        "withoutRule": "Nishihara Soba"
+      },
+      {
+        "itemId": "item_d1_nightcap",
+        "winner": "Living Room Asakusa Cocktail Bar",
+        "withoutRule": "スパイス&創作酒場 MAD CHEFs 浅草蔵前店"
+      },
+      {
+        "itemId": "item_d2_dinner",
+        "winner": "Nishihara Soba",
+        "withoutRule": "スパイス&創作酒場 MAD CHEFs 浅草蔵前店"
+      },
+      {
+        "itemId": "item_d3_extension_2",
+        "winner": "無相ギャラリー（MUSOU Gallery）",
+        "withoutRule": "自由丁/JIYUCHO"
+      },
+      {
+        "itemId": "item_d4_lunch",
+        "winner": "Menya Jojo",
+        "withoutRule": "cafe chiso"
+      },
+      {
+        "itemId": "item_d4_dinner",
+        "winner": "Yakiniku BEAST Kuramae",
+        "withoutRule": "Yello"
+      },
+      {
+        "itemId": "item_d4_nightcap",
+        "winner": "Yello",
+        "withoutRule": "The Bridge Bar & Lounge"
+      }
+    ]
+  },
+  "route_time": {
+    "days": [
+      {
+        "dayIndex": 0,
+        "stops": 5,
+        "spanKm": 0.41,
+        "maxHopKm": 0.37,
+        "pathKm": 1.14,
+        "categories": [
+          "park_garden",
+          "cafe_kissaten",
+          "bookstore",
+          "teishoku",
+          "izakaya"
+        ],
+        "neighborhoods": [
+          "Kuramae",
+          "Kuramae",
+          "Kuramae",
+          "Kuramae",
+          "Komagata"
+        ]
+      },
+      {
+        "dayIndex": 1,
+        "stops": 5,
+        "spanKm": 1.21,
+        "maxHopKm": 1.17,
+        "pathKm": 5.74,
+        "categories": [
+          "viewpoint_scenic",
+          "cafe_kissaten",
+          "bookstore",
+          "tempura_tonkatsu",
+          "bar_cocktail"
+        ],
+        "neighborhoods": [
+          "Kaminarimon",
+          "Kuramae",
+          "Hanakawado",
+          "Kuramae",
+          "Asakusa"
+        ]
+      },
+      {
+        "dayIndex": 2,
+        "stops": 5,
+        "spanKm": 1.76,
+        "maxHopKm": 1.76,
+        "pathKm": 4.61,
+        "categories": [
+          "park_garden",
+          "cafe_kissaten",
+          "bakery_sweets",
+          "soba_udon",
+          "izakaya"
+        ],
+        "neighborhoods": [
+          "Yokoami",
+          "Nishiasakusa",
+          "Kuramae",
+          "Kaminarimon",
+          "Kotobuki"
+        ]
+      },
+      {
+        "dayIndex": 3,
+        "stops": 4,
+        "spanKm": 0.22,
+        "maxHopKm": 0.22,
+        "pathKm": 0.69,
+        "categories": [
+          "sushi",
+          "museum_gallery",
+          "izakaya",
+          "bar_cocktail"
+        ],
+        "neighborhoods": [
+          "Kuramae",
+          "Kuramae",
+          "Kuramae",
+          "Kuramae"
+        ]
+      },
+      {
+        "dayIndex": 4,
+        "stops": 4,
+        "spanKm": 0.56,
+        "maxHopKm": 0.36,
+        "pathKm": 1.22,
+        "categories": [
+          "ramen",
+          "bookstore",
+          "yakiniku_grill",
+          "izakaya"
+        ],
+        "neighborhoods": [
+          "Kuramae",
+          "Kuramae",
+          "Asakusabashi",
+          "Kuramae"
+        ]
+      }
+    ],
+    "validation": {
+      "valid": true,
+      "errors": []
+    },
+    "unfilled": [
+      {
+        "dayIndex": 3,
+        "role": "main_destination",
+        "because": "nothing_available"
+      },
+      {
+        "dayIndex": 4,
+        "role": "main_destination",
+        "because": "nothing_available"
+      }
+    ],
+    "tensions": []
+  },
+  "final_pois": [
+    {
+      "itemId": "item_d0_main_destination",
+      "day": 1,
+      "role": "main_destination",
+      "time": "10:00-11:00",
+      "placeId": "ChIJWQSdSLaOGGARk7qGNVyECxI",
+      "name": "Kuramae Park",
+      "category": "park_garden",
+      "placedBy": "ranking",
+      "reasons": [
+        "For “small independent cultural places”: its description mentions “small”.",
+        "A 1-minute walk from Kuramae.",
+        "Chosen over Asakusa Culture Tourist Center Observation Terrace, which is a weaker match for what you wrote."
+      ],
+      "memoryRefs": [],
+      "runnerUp": {
+        "placeId": "ChIJaRkFc1iPGGARyblzxFEFOeM",
+        "name": "Asakusa Culture Tourist Center Observation Terrace",
+        "score": 0.393,
+        "lostOn": "stateMatch"
+      }
+    },
+    {
+      "itemId": "item_d0_lunch",
+      "day": 1,
+      "role": "lunch",
+      "time": "12:45-13:30",
+      "placeId": "ChIJ8UvpbOCPGGARiHO0jyfGqvU",
+      "name": "Kissa Hangetsu",
+      "category": "cafe_kissaten",
+      "placedBy": "ranking",
+      "reasons": [
+        "For “kissaten”: it is a cafe or kissaten.",
+        "A 2-minute walk from Kuramae Park.",
+        "Chosen over COFFEE NOVA, which is farther from Kuramae Park."
+      ],
+      "memoryRefs": [],
+      "runnerUp": {
+        "placeId": "ChIJq6pWibeOGGARpfMbbmRwQjo",
+        "name": "COFFEE NOVA",
+        "score": 0.523,
+        "lostOn": "convenience"
+      }
+    },
+    {
+      "itemId": "item_d0_extension_2",
+      "day": 1,
+      "role": "extension_2",
+      "time": "14:00-15:00",
+      "placeId": "ChIJkX42vLeOGGARszgelkFQv9g",
+      "name": "Okuramae Shobō",
+      "category": "bookstore",
+      "placedBy": "ranking",
+      "reasons": [
+        "For “old bookstores”: it is a bookstore.",
+        "A 2-minute walk from Kuramae Park.",
+        "Chosen over COFFEE NOVA, which is better known."
+      ],
+      "memoryRefs": [],
+      "runnerUp": {
+        "placeId": "ChIJq6pWibeOGGARpfMbbmRwQjo",
+        "name": "COFFEE NOVA",
+        "score": 0.524,
+        "lostOn": "novelty"
+      }
+    },
+    {
+      "itemId": "item_d0_dinner",
+      "day": 1,
+      "role": "dinner",
+      "time": "18:00-19:00",
+      "placeId": "ChIJQ7omt7eOGGAR4g5ptG_ZvXw",
+      "name": "Yayoiken Kuramae",
+      "category": "teishoku",
+      "placedBy": "ranking",
+      "reasons": [
+        "A 2-minute walk from Kissa Hangetsu.",
+        "Keeps Day 1 close together.",
+        "Chosen over Kuramae Eishichi Sakaba, which is pricier."
+      ],
+      "memoryRefs": [],
+      "runnerUp": {
+        "placeId": "ChIJ3zGtHTqPGGARHWUaT80fqGA",
+        "name": "Kuramae Eishichi Sakaba",
+        "score": 0.485,
+        "lostOn": "cost"
+      }
+    },
+    {
+      "itemId": "item_d0_nightcap",
+      "day": 1,
+      "role": "nightcap",
+      "time": "21:00-22:30",
+      "placeId": "ChIJ3zGtHTqPGGARHWUaT80fqGA",
+      "name": "Kuramae Eishichi Sakaba",
+      "category": "izakaya",
+      "placedBy": "ranking",
+      "reasons": [
+        "A 3-minute walk from Okuramae Shobō.",
+        "Not a tourist fixture — 13 reviews.",
+        "Chosen over Bar Boushu 蔵前 & Hotel Villa Kuramae（バー ボウシュ & ホテル ヴィラ クラマエ) Whisky & Wine & Cocktail, which is better known."
+      ],
+      "memoryRefs": [],
+      "runnerUp": {
+        "placeId": "ChIJmx42NBuPGGARy2nxJRtD90Q",
+        "name": "Bar Boushu 蔵前 & Hotel Villa Kuramae（バー ボウシュ & ホテル ヴィラ クラマエ) Whisky & Wine & Cocktail",
+        "score": 0.475,
+        "lostOn": "novelty"
+      }
+    },
+    {
+      "itemId": "item_d1_main_destination",
+      "day": 2,
+      "role": "main_destination",
+      "time": "10:00-10:45",
+      "placeId": "ChIJaRkFc1iPGGARyblzxFEFOeM",
+      "name": "Asakusa Culture Tourist Center Observation Terrace",
+      "category": "viewpoint_scenic",
+      "placedBy": "ranking",
+      "reasons": [
+        "A 12-minute walk from Kuramae.",
+        "Chosen over Former Yasuda Garden, which is better known."
+      ],
+      "memoryRefs": [],
+      "runnerUp": {
+        "placeId": "ChIJZeLCusqOGGARuV76qbNiFkY",
+        "name": "Former Yasuda Garden",
+        "score": 0.379,
+        "lostOn": "novelty"
+      }
+    },
+    {
+      "itemId": "item_d1_lunch",
+      "day": 2,
+      "role": "lunch",
+      "time": "12:45-13:30",
+      "placeId": "ChIJq6pWibeOGGARpfMbbmRwQjo",
+      "name": "COFFEE NOVA",
+      "category": "cafe_kissaten",
+      "placedBy": "ranking",
+      "reasons": [
+        "For “kissaten”: it is a cafe or kissaten.",
+        "A 9-minute walk from Asakusa Culture Tourist Center Observation Terrace.",
+        "Chosen over Soba Udon Monju Asakusa Branch, which is a weaker match for what you wrote."
+      ],
+      "memoryRefs": [],
+      "runnerUp": {
+        "placeId": "ChIJXQN4ucaOGGARhxf9DhcXAZ0",
+        "name": "Soba Udon Monju Asakusa Branch",
+        "score": 0.469,
+        "lostOn": "stateMatch"
+      }
+    },
+    {
+      "itemId": "item_d1_extension_2",
+      "day": 2,
+      "role": "extension_2",
+      "time": "14:00-15:00",
+      "placeId": "ChIJA6ObqMaOGGARNzoD87obfJI",
+      "name": "Kumazawa Book Store",
+      "category": "bookstore",
+      "placedBy": "ranking",
+      "reasons": [
+        "For “old bookstores”: it is a bookstore.",
+        "A 3-minute walk from Asakusa Culture Tourist Center Observation Terrace.",
+        "Chosen over 無相ギャラリー（MUSOU Gallery）, which is a weaker match for what you wrote."
+      ],
+      "memoryRefs": [],
+      "runnerUp": {
+        "placeId": "ChIJJxQPXQCPGGAR_Fe2FsIkE1c",
+        "name": "無相ギャラリー（MUSOU Gallery）",
+        "score": 0.491,
+        "lostOn": "stateMatch"
+      }
+    },
+    {
+      "itemId": "item_d1_dinner",
+      "day": 2,
+      "role": "dinner",
+      "time": "18:00-19:15",
+      "placeId": "ChIJ-WPWJriOGGARUeetJ_JS6v0",
+      "name": "Takao",
+      "category": "tempura_tonkatsu",
+      "placedBy": "ranking",
+      "reasons": [
+        "A 1-minute walk from COFFEE NOVA.",
+        "Keeps Day 2 close together.",
+        "Chosen over スパイス&創作酒場 MAD CHEFs 浅草蔵前店, which is farther from COFFEE NOVA."
+      ],
+      "memoryRefs": [],
+      "runnerUp": {
+        "placeId": "ChIJ8y520gmPGGAR2CSeVSdo_Rs",
+        "name": "スパイス&創作酒場 MAD CHEFs 浅草蔵前店",
+        "score": 0.479,
+        "lostOn": "convenience"
+      }
+    },
+    {
+      "itemId": "item_d1_nightcap",
+      "day": 2,
+      "role": "nightcap",
+      "time": "21:00-22:15",
+      "placeId": "ChIJRVCX302PGGARyTajhNHlUmY",
+      "name": "Living Room Asakusa Cocktail Bar",
+      "category": "bar_cocktail",
+      "placedBy": "ranking",
+      "reasons": [
+        "A 1-minute walk from Kumazawa Book Store.",
+        "Keeps Day 2 close together.",
+        "Chosen over スパイス&創作酒場 MAD CHEFs 浅草蔵前店, which is farther from Kumazawa Book Store."
+      ],
+      "memoryRefs": [],
+      "runnerUp": {
+        "placeId": "ChIJ8y520gmPGGAR2CSeVSdo_Rs",
+        "name": "スパイス&創作酒場 MAD CHEFs 浅草蔵前店",
+        "score": 0.439,
+        "lostOn": "convenience"
+      }
+    },
+    {
+      "itemId": "item_d2_main_destination",
+      "day": 3,
+      "role": "main_destination",
+      "time": "10:00-11:00",
+      "placeId": "ChIJZeLCusqOGGARuV76qbNiFkY",
+      "name": "Former Yasuda Garden",
+      "category": "park_garden",
+      "placedBy": "ranking",
+      "reasons": [
+        "A 7-minute walk from Kuramae."
+      ],
+      "memoryRefs": [],
+      "runnerUp": null
+    },
+    {
+      "itemId": "item_d2_lunch",
+      "day": 3,
+      "role": "lunch",
+      "time": "12:45-13:30",
+      "placeId": "ChIJRz1ogZWOGGARdNMxRKTz8qY",
+      "name": "Kissaten Cisz",
+      "category": "cafe_kissaten",
+      "placedBy": "ranking",
+      "reasons": [
+        "For “kissaten”: it is a cafe or kissaten.",
+        "1.8 km from Former Yasuda Garden.",
+        "Chosen over Kanda Coffee, which is farther from Former Yasuda Garden."
+      ],
+      "memoryRefs": [],
+      "runnerUp": {
+        "placeId": "ChIJY0YY_hSMGGARn8jebiB_KKM",
+        "name": "Kanda Coffee",
+        "score": 0.439,
+        "lostOn": "convenience"
+      }
+    },
+    {
+      "itemId": "item_d2_extension_2",
+      "day": 3,
+      "role": "extension_2",
+      "time": "14:00-14:30",
+      "placeId": "ChIJGwEWybmOGGARgh4NvSxlOj0",
+      "name": "T's Bakery",
+      "category": "bakery_sweets",
+      "placedBy": "ranking",
+      "reasons": [
+        "Keeps Day 3 close together.",
+        "A 11-minute walk from Former Yasuda Garden.",
+        "Chosen over Howmore Living, which is pricier.",
+        "Keeps Day 3 to a walk rather than a trip across town, for “slow neighborhood exploration”."
+      ],
+      "memoryRefs": [],
+      "runnerUp": {
+        "placeId": "ChIJPXdpEdCPGGARx3P_0mzLSYI",
+        "name": "Howmore Living",
+        "score": 0.458,
+        "lostOn": "cost"
+      }
+    },
+    {
+      "itemId": "item_d2_dinner",
+      "day": 3,
+      "role": "dinner",
+      "time": "18:00-18:45",
+      "placeId": "ChIJn4HcNL-OGGAR9zpyaiTqbp4",
+      "name": "Nishihara Soba",
+      "category": "soba_udon",
+      "placedBy": "ranking",
+      "reasons": [
+        "A 5-minute walk from Kissaten Cisz.",
+        "Keeps Day 3 close together.",
+        "Chosen over スパイス&創作酒場 MAD CHEFs 浅草蔵前店, which is farther from Kissaten Cisz."
+      ],
+      "memoryRefs": [],
+      "runnerUp": {
+        "placeId": "ChIJ8y520gmPGGAR2CSeVSdo_Rs",
+        "name": "スパイス&創作酒場 MAD CHEFs 浅草蔵前店",
+        "score": 0.443,
+        "lostOn": "convenience"
+      }
+    },
+    {
+      "itemId": "item_d2_nightcap",
+      "day": 3,
+      "role": "nightcap",
+      "time": "21:00-22:30",
+      "placeId": "ChIJ8y520gmPGGAR2CSeVSdo_Rs",
+      "name": "スパイス&創作酒場 MAD CHEFs 浅草蔵前店",
+      "category": "izakaya",
+      "placedBy": "ranking",
+      "reasons": [
+        "A 2-minute walk from T's Bakery.",
+        "Keeps Day 3 close together.",
+        "Chosen over Bar Boushu 蔵前 & Hotel Villa Kuramae（バー ボウシュ & ホテル ヴィラ クラマエ) Whisky & Wine & Cocktail, which is further from the rest of the day."
+      ],
+      "memoryRefs": [],
+      "runnerUp": {
+        "placeId": "ChIJmx42NBuPGGARy2nxJRtD90Q",
+        "name": "Bar Boushu 蔵前 & Hotel Villa Kuramae（バー ボウシュ & ホテル ヴィラ クラマエ) Whisky & Wine & Cocktail",
+        "score": 0.475,
+        "lostOn": "routeFit"
+      }
+    },
+    {
+      "itemId": "item_d3_lunch",
+      "day": 4,
+      "role": "lunch",
+      "time": "12:45-13:45",
+      "placeId": "ChIJrbVk2baOGGARq3K1Twk44T4",
+      "name": "Sushi Kikumasa",
+      "category": "sushi",
+      "placedBy": "ranking",
+      "reasons": [
+        "A 2-minute walk from Kuramae.",
+        "Chosen over Menya Jojo, which is better known."
+      ],
+      "memoryRefs": [],
+      "runnerUp": {
+        "placeId": "ChIJUTFxChGPGGARNusZUl5P_4M",
+        "name": "Menya Jojo",
+        "score": 0.438,
+        "lostOn": "novelty"
+      }
+    },
+    {
+      "itemId": "item_d3_extension_2",
+      "day": 4,
+      "role": "extension_2",
+      "time": "14:00-15:00",
+      "placeId": "ChIJJxQPXQCPGGAR_Fe2FsIkE1c",
+      "name": "無相ギャラリー（MUSOU Gallery）",
+      "category": "museum_gallery",
+      "placedBy": "ranking",
+      "reasons": [
+        "A 1-minute walk from Okuman.",
+        "Not a tourist fixture — 3 reviews.",
+        "Chosen over 自由丁/JIYUCHO, which is better known."
+      ],
+      "memoryRefs": [],
+      "runnerUp": {
+        "placeId": "ChIJF0jdhWePGGARWvQ3EcWrIVY",
+        "name": "自由丁/JIYUCHO",
+        "score": 0.522,
+        "lostOn": "novelty"
+      }
+    },
+    {
+      "itemId": "item_d3_dinner",
+      "day": 4,
+      "role": "dinner",
+      "time": "18:00-19:45",
+      "placeId": "ChIJmwPWxbeOGGARR85ktv868QU",
+      "name": "Okuman",
+      "category": "izakaya",
+      "placedBy": "ranking",
+      "reasons": [
+        "A 1-minute walk from Sushi Kikumasa.",
+        "Keeps Day 4 close together.",
+        "Chosen over Yello, which is farther from Sushi Kikumasa."
+      ],
+      "memoryRefs": [],
+      "runnerUp": {
+        "placeId": "ChIJD4ces_WPGGARmvEnfnK45aM",
+        "name": "Yello",
+        "score": 0.441,
+        "lostOn": "convenience"
+      }
+    },
+    {
+      "itemId": "item_d3_nightcap",
+      "day": 4,
+      "role": "nightcap",
+      "time": "21:00-22:15",
+      "placeId": "ChIJmx42NBuPGGARy2nxJRtD90Q",
+      "name": "Bar Boushu 蔵前 & Hotel Villa Kuramae（バー ボウシュ & ホテル ヴィラ クラマエ) Whisky & Wine & Cocktail",
+      "category": "bar_cocktail",
+      "placedBy": "ranking",
+      "reasons": [
+        "A 1-minute walk from 無相ギャラリー（MUSOU Gallery）.",
+        "Keeps Day 4 close together.",
+        "Chosen over Stage, which is farther from 無相ギャラリー（MUSOU Gallery）."
+      ],
+      "memoryRefs": [],
+      "runnerUp": {
+        "placeId": "ChIJGW7xTZaPGGAR8a7GG5Bayx0",
+        "name": "Stage",
+        "score": 0.473,
+        "lostOn": "convenience"
+      }
+    },
+    {
+      "itemId": "item_d4_lunch",
+      "day": 5,
+      "role": "lunch",
+      "time": "12:45-13:30",
+      "placeId": "ChIJUTFxChGPGGARNusZUl5P_4M",
+      "name": "Menya Jojo",
+      "category": "ramen",
+      "placedBy": "ranking",
+      "reasons": [
+        "A 3-minute walk from Kuramae.",
+        "Chosen over Kanda Coffee, which is farther from Kuramae."
+      ],
+      "memoryRefs": [],
+      "runnerUp": {
+        "placeId": "ChIJY0YY_hSMGGARn8jebiB_KKM",
+        "name": "Kanda Coffee",
+        "score": 0.432,
+        "lostOn": "convenience"
+      }
+    },
+    {
+      "itemId": "item_d4_extension_2",
+      "day": 5,
+      "role": "extension_2",
+      "time": "14:00-15:00",
+      "placeId": "ChIJF0jdhWePGGARWvQ3EcWrIVY",
+      "name": "自由丁/JIYUCHO",
+      "category": "bookstore",
+      "placedBy": "ranking",
+      "reasons": [
+        "For “old bookstores”: it is a bookstore.",
+        "A 3-minute walk from Yakiniku BEAST Kuramae.",
+        "Chosen over Ends Vintage Clothing, which is a weaker match for what you wrote."
+      ],
+      "memoryRefs": [],
+      "runnerUp": {
+        "placeId": "ChIJPYYShTSPGGARGU9DV-iab5s",
+        "name": "Ends Vintage Clothing",
+        "score": 0.519,
+        "lostOn": "stateMatch"
+      }
+    },
+    {
+      "itemId": "item_d4_dinner",
+      "day": 5,
+      "role": "dinner",
+      "time": "18:00-19:45",
+      "placeId": "ChIJ3Sp3_oiPGGARFpojTes2U9w",
+      "name": "Yakiniku BEAST Kuramae",
+      "category": "yakiniku_grill",
+      "placedBy": "ranking",
+      "reasons": [
+        "A 7-minute walk from Menya Jojo.",
+        "Not a tourist fixture — 17 reviews.",
+        "Chosen over Ashi Teishoku & Diner, which is better known."
+      ],
+      "memoryRefs": [],
+      "runnerUp": {
+        "placeId": "ChIJYbeX0MeOGGARu4AHHNKxQSg",
+        "name": "Ashi Teishoku & Diner",
+        "score": 0.43,
+        "lostOn": "novelty"
+      }
+    },
+    {
+      "itemId": "item_d4_nightcap",
+      "day": 5,
+      "role": "nightcap",
+      "time": "21:00-22:30",
+      "placeId": "ChIJD4ces_WPGGARmvEnfnK45aM",
+      "name": "Yello",
+      "category": "izakaya",
+      "placedBy": "ranking",
+      "reasons": [
+        "A 1-minute walk from 自由丁/JIYUCHO.",
+        "Keeps Day 5 close together.",
+        "Chosen over Stage, which is farther from 自由丁/JIYUCHO."
+      ],
+      "memoryRefs": [],
+      "runnerUp": {
+        "placeId": "ChIJGW7xTZaPGGAR8a7GG5Bayx0",
+        "name": "Stage",
+        "score": 0.444,
+        "lostOn": "convenience"
+      }
+    }
+  ],
+  "audit": {
+    "selected": [
+      {
+        "placeId": "ChIJWQSdSLaOGGARk7qGNVyECxI",
+        "name": "Kuramae Park",
+        "slot": "Day 1 main_destination",
+        "neutralRank": 2,
+        "whyWon": {
+          "placedBy": "ranking",
+          "reasons": [
+            "For “small independent cultural places”: its description mentions “small”.",
+            "A 1-minute walk from Kuramae.",
+            "Chosen over Asakusa Culture Tourist Center Observation Terrace, which is a weaker match for what you wrote."
+          ],
+          "beat": "Asakusa Culture Tourist Center Observation Terrace (0.393), which lost most on stateMatch"
+        }
+      },
+      {
+        "placeId": "ChIJ8UvpbOCPGGARiHO0jyfGqvU",
+        "name": "Kissa Hangetsu",
+        "slot": "Day 1 lunch",
+        "neutralRank": 5,
+        "whyWon": {
+          "placedBy": "ranking",
+          "reasons": [
+            "For “kissaten”: it is a cafe or kissaten.",
+            "A 2-minute walk from Kuramae Park.",
+            "Chosen over COFFEE NOVA, which is farther from Kuramae Park."
+          ],
+          "beat": "COFFEE NOVA (0.523), which lost most on convenience"
+        }
+      },
+      {
+        "placeId": "ChIJkX42vLeOGGARszgelkFQv9g",
+        "name": "Okuramae Shobō",
+        "slot": "Day 1 extension_2",
+        "neutralRank": 1,
+        "whyWon": {
+          "placedBy": "ranking",
+          "reasons": [
+            "For “old bookstores”: it is a bookstore.",
+            "A 2-minute walk from Kuramae Park.",
+            "Chosen over COFFEE NOVA, which is better known."
+          ],
+          "beat": "COFFEE NOVA (0.524), which lost most on novelty"
+        }
+      }
+    ],
+    "rejected": [
+      {
+        "placeId": "ChIJ3RqD4zSPGGARkgV-WNO_sYA",
+        "name": "Tōmei Bookstore",
+        "category": "bookstore",
+        "neutralRank": 4,
+        "neutralScore": 0.545,
+        "whyLost": "RANKING/CONTEXT: eligible for extension_2 but never in a slot's top 6 once day geography, hours and used places applied"
+      },
+      {
+        "placeId": "ChIJnSJkkreOGGARyDX_3LuR2MI",
+        "name": "Kuramae Shrine",
+        "category": "temple_shrine",
+        "neutralRank": 8,
+        "neutralScore": 0.517,
+        "whyLost": "RANKING/CONTEXT: eligible for main_destination, extension_2 but never in a slot's top 6 once day geography, hours and used places applied"
+      },
+      {
+        "placeId": "ChIJPYYShTSPGGARGU9DV-iab5s",
+        "name": "Ends Vintage Clothing",
+        "category": "fashion_vintage",
+        "neutralRank": 9,
+        "neutralScore": 0.505,
+        "whyLost": "RANKING: runner-up for Day 1 extension_2, lost to Okuramae Shobō on stateMatch (0.5 vs winner)"
+      }
+    ]
+  }
+}

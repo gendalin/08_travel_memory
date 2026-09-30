@@ -1,0 +1,1415 @@
+/**
+ * The Next Trip — component layer (Gate 6).
+ *
+ * Every value here comes from tokens.css. The file is ordered by surface, and
+ * each surface uses the same primitives: one sheet grammar, one card, one
+ * control set, one focus treatment. Mobile-first at 390px.
+ */
+
+@import './tokens.css';
+
+/* --- reset + app shell ---------------------------------------------------- */
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  /* The app owns its own scrolling regions; the page itself never scrolls
+     sideways at any width. */
+  overflow-x: hidden;
+}
+
+/**
+ * The app is a phone-sized frame, centred, that clips its own overlays: every
+ * sheet and the Index are positioned against this box rather than the window,
+ * so nothing can land outside the screen on a desktop viewport.
+ */
+.app {
+  width: 100%;
+  max-width: var(--app-max);
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+/* The screen you were on. Opening the Index slides it aside as a card instead
+   of covering it — the move the Claude iOS app makes (draft 05). */
+.app-stage {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  background: var(--bg);
+  overflow: hidden;
+  transform-origin: center left;
+  transition:
+    transform var(--motion-sheet) var(--ease),
+    border-radius var(--motion-sheet) var(--ease),
+    box-shadow var(--motion-sheet) var(--ease);
+}
+.app[data-drawer='open'] .app-stage {
+  transform: translateX(78%) scale(0.94);
+  border-radius: 28px;
+  box-shadow: var(--shadow-card);
+}
+
+/* The veil belongs to the card, not to the screen: it travels and scales with
+   it, so what is behind the card — the Index, and the card's own shadow —
+   stays at full strength. */
+.app-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  background: rgba(246, 245, 243, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--motion-sheet) var(--ease);
+}
+.app[data-drawer='open'] .app-stage::after { opacity: 1; }
+
+/* Invisible, and the whole point: it lies over the card and takes the tap
+   that sends it back. The Index sits above it and stays fully live. */
+.stage-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+
+/* Present to assistive technology and to the DOM, absent to the eye. */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* One focus treatment everywhere (§14.5). */
+:where(button, input, textarea, a, [tabindex]):focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+  border-radius: var(--radius-sm);
+}
+
+/* --- typography ----------------------------------------------------------- */
+
+h1, h2, h3 { margin: 0; line-height: var(--leading-tight); letter-spacing: var(--tracking-tight); }
+
+.screen {
+  padding: var(--space-5) var(--space-5) 120px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.screen h1 { font-size: var(--text-display); margin: var(--space-2) 0 var(--space-1); }
+.screen .lede {
+  color: var(--ink-soft);
+  font-size: var(--text-sub);
+  margin: 0 0 var(--space-6);
+}
+
+.section-title {
+  font-size: var(--text-micro);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: var(--space-6) 0 var(--space-2);
+}
+
+/* --- controls -------------------------------------------------------------- */
+
+button { font: inherit; color: inherit; }
+
+.btn-primary,
+.btn-secondary,
+.btn-ghost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: var(--touch);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--text-body);
+  cursor: pointer;
+  transition: background var(--motion-fast) var(--ease), border-color var(--motion-fast) var(--ease);
+}
+
+/* One primary per decision surface (§14.3). */
+.btn-primary {
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  color: var(--accent-ink);
+  font-weight: var(--weight-semibold);
+  margin-bottom: var(--space-2);
+}
+.btn-primary:disabled { opacity: 0.45; cursor: default; }
+
+.btn-secondary {
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  font-weight: var(--weight-medium);
+  margin-bottom: var(--space-2);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  width: auto;
+  min-height: var(--touch);
+  font-size: var(--text-sub);
+}
+.btn-ghost.primary-ghost { border-color: var(--accent); color: var(--accent); font-weight: var(--weight-semibold); }
+
+.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--touch);
+  min-height: var(--touch);
+  border: 0;
+  background: transparent;
+  font-size: 22px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  border-radius: var(--radius-chip);
+}
+.icon-button:hover { background: var(--surface-sunken); }
+
+.icon-button.floating {
+  background: var(--surface);
+  box-shadow: var(--shadow-float);
+  color: var(--ink);
+}
+
+.link-button {
+  background: none;
+  border: 0;
+  color: var(--accent);
+  font-size: var(--text-body);
+  font-weight: var(--weight-semibold);
+  min-height: var(--touch);
+  padding: 0 var(--space-2);
+  cursor: pointer;
+}
+
+/* Segmented control — Plan / State (drafts 01, 03). */
+.segmented {
+  display: inline-flex;
+  background: var(--surface);
+  border-radius: var(--radius-chip);
+  padding: var(--space-1);
+  box-shadow: var(--shadow-float);
+}
+.segmented button {
+  border: 0;
+  background: transparent;
+  border-radius: var(--radius-chip);
+  padding: 0 var(--space-5);
+  min-height: 36px;
+  font-size: var(--text-body);
+  font-weight: var(--weight-medium);
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.segmented button[aria-selected='true'] {
+  background: var(--surface-sunken);
+  color: var(--ink);
+  font-weight: var(--weight-semibold);
+}
+
+/* Chips — state items, day tabs, alternatives count. */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-chip);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  font-size: var(--text-sub);
+  color: var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.chip[aria-selected='true'], .chip[aria-pressed='true'] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--surface);
+  font-weight: var(--weight-semibold);
+}
+
+/* Fields */
+.field { margin-bottom: var(--space-4); }
+.field label {
+  display: block;
+  font-size: var(--text-meta);
+  font-weight: var(--weight-semibold);
+  margin-bottom: var(--space-1);
+}
+.field input, .field textarea {
+  width: 100%;
+  min-height: var(--touch);
+  padding: var(--space-3);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  font: inherit;
+  color: inherit;
+}
+.field textarea { min-height: 84px; resize: vertical; }
+.field input[aria-invalid='true'], .field textarea[aria-invalid='true'] { border-color: #d98b8b; }
+.field-error { color: var(--danger); font-size: var(--text-meta); margin-top: var(--space-1); }
+
+.row { display: flex; gap: var(--space-3); }
+.row .field { flex: 1; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+/* --- app chrome: index button + Plan/State (draft 01) --------------------- */
+
+.app-chrome {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  right: var(--space-4);
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  pointer-events: none;
+}
+.app-chrome > * { pointer-events: auto; }
+.app-chrome .segmented { margin: 0 auto; }
+.app-chrome .spacer { min-width: var(--touch); }
+
+/* --- index: the same furniture as a full screen and as a drawer ----------- */
+
+.index-screen { display: flex; flex-direction: column; }
+/* The title stands alone now, so it carries the gap the lede used to. */
+.index-screen h1 { margin-bottom: var(--space-6); }
+.index-screen .drawer-foot { margin-top: auto; padding-top: var(--space-4); border-top: 1px solid var(--line); }
+
+.new-trip {
+  width: 100%;
+  background: var(--surface);
+  border: 0;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-float);
+  min-height: 56px;
+  font-size: var(--text-title);
+  font-weight: var(--weight-semibold);
+  padding: 0 var(--space-5);
+  text-align: left;
+  cursor: pointer;
+}
+
+.trip-list { list-style: none; padding: 0; margin: 0; }
+.trip-list li { margin-bottom: var(--space-2); }
+.trip-list button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: var(--surface-sunken);
+  border-radius: var(--radius-chip);
+  min-height: var(--touch);
+  padding: 0 var(--space-4);
+  font-size: var(--text-body);
+  cursor: pointer;
+}
+.trip-list button[aria-current='true'] { background: var(--ink); color: var(--surface); }
+
+.drawer-foot { padding-top: var(--space-4); }
+.profile-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  border: 0;
+  background: transparent;
+  min-height: var(--touch);
+  font-size: var(--text-heading);
+  text-align: left;
+  cursor: pointer;
+}
+.avatar {
+  flex: 0 0 auto;
+  width: 36px; height: 36px; border-radius: var(--radius-chip);
+  background: var(--ink-soft); color: var(--surface);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: var(--weight-bold);
+}
+
+/* --- index drawer (draft 05) ---------------------------------------------- */
+
+.drawer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 4;
+  /* Narrower than the card's 78% offset, so the card's shadow has ground to
+     fall on and the push reads as a card rather than a cut edge. */
+  width: 72%;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6) var(--space-4) var(--space-4);
+  transition: opacity var(--motion-sheet) var(--ease);
+}
+/* Held in the DOM for one transition after dismissal, so the card slides back
+   over an Index that is fading rather than one that vanished. */
+.app[data-drawer='closed'] .drawer { opacity: 0; }
+
+.drawer .drawer-foot { margin-top: auto; border-top: 1px solid var(--line); }
+
+/* --- map (draft 01) -------------------------------------------------------- */
+
+/* Leaflet's panes sit at z-index 400+. The map is the screen and everything
+   else floats over it, so the whole map is given its own stacking context —
+   without it the tiles paint over the chrome. */
+.map-wrap {
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
+  flex: 1;
+  min-height: 0;
+  background: #e8eae4;
+}
+.map-canvas { position: absolute; inset: 0; }
+.map-wrap .leaflet-container { font: inherit; background: #e8eae4; }
+.map-wrap .leaflet-control-attribution {
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: var(--radius-chip) 0 0 0;
+  padding: 0 var(--space-2);
+  font-size: 10px;
+  color: var(--ink-faint);
+}
+.map-wrap .leaflet-control-attribution a { color: var(--ink-soft); }
+
+/* One pin grammar: red disc, white ring, white numeral. */
+.poi-pin, .lodging-pin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.poi-pin .poi-dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-chip);
+  background: var(--poi);
+  border: 2px solid var(--poi-stroke);
+  color: var(--poi-ink);
+  font-size: var(--text-meta);
+  font-weight: var(--weight-semibold);
+  line-height: 1;
+  box-shadow: 0 1px 6px rgba(22, 21, 15, 0.3);
+  transition: width var(--motion-fast) var(--ease), height var(--motion-fast) var(--ease);
+}
+.poi-pin.is-selected .poi-dot {
+  width: 38px;
+  height: 38px;
+  font-size: var(--text-body);
+  box-shadow: 0 2px 12px rgba(189, 39, 26, 0.5);
+}
+/* Leaflet puts the marker in the tab order; it takes the app's one focus
+   treatment, drawn round the disc rather than round its hit area. */
+.poi-pin:focus-visible { outline: var(--focus-ring); outline-offset: -5px; border-radius: var(--radius-chip); }
+
+/* An alternative names itself on the map, so the number on the card and the
+   pin under the finger are visibly the same place (draft 09). */
+.poi-pin .poi-caption {
+  position: absolute;
+  top: 38px;
+  white-space: nowrap;
+  padding: 1px var(--space-2);
+  border-radius: var(--radius-chip);
+  background: rgba(255, 255, 255, 0.92);
+  font-size: var(--text-micro);
+  font-weight: var(--weight-semibold);
+  color: var(--ink);
+}
+
+.lodging-pin { cursor: default; }
+.lodging-pin .lodging-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-chip);
+  background: var(--ink-soft);
+  border: 2px solid var(--surface);
+  box-shadow: 0 1px 4px rgba(22, 21, 15, 0.25);
+}
+.lodging-pin .lodging-label {
+  margin-top: 2px;
+  white-space: nowrap;
+  font-size: var(--text-micro);
+  font-weight: var(--weight-semibold);
+  color: var(--ink-soft);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+/* --- plan screen ----------------------------------------------------------- */
+
+.plan-screen { display: flex; flex-direction: column; flex: 1; min-height: 0; position: relative; }
+
+.plan-caption {
+  position: absolute;
+  left: var(--space-4);
+  right: var(--space-4);
+  bottom: calc(var(--composer-height) + var(--space-5));
+  z-index: 16;
+  display: flex;
+  align-items: flex-end;
+  /* The trip's name is no longer parked over the pins; the way into the
+     itinerary is all that floats here. */
+  justify-content: flex-end;
+  gap: var(--space-3);
+  pointer-events: none;
+}
+.plan-caption > * { pointer-events: auto; }
+
+.fab {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--touch);
+  padding: 0 var(--space-4);
+  border: 0;
+  border-radius: var(--radius-chip);
+  background: var(--surface);
+  box-shadow: var(--shadow-float);
+  font-size: var(--text-sub);
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+}
+
+/* Pending work is announced in place, never by freezing the screen. */
+.pending-pill {
+  /* Under the chrome, not above the composer: the trip caption and the
+     Itinerary button already own the bottom of the map. */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(var(--touch) + var(--space-5) + var(--space-3));
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--ink);
+  color: var(--surface);
+  border-radius: var(--radius-chip);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-meta);
+  box-shadow: var(--shadow-float);
+  z-index: 16;
+  border: 0;
+  font-family: inherit;
+  cursor: default;
+}
+button.pending-pill { cursor: pointer; min-height: var(--touch); }
+.pending-pill .dot {
+  width: 6px; height: 6px; border-radius: 50%; background: currentColor;
+  animation: pulse 1s ease-in-out infinite;
+}
+@keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+/* --- composer -------------------------------------------------------------- */
+
+.composer {
+  position: sticky;
+  bottom: 0;
+  z-index: 18;
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  background: linear-gradient(to top, var(--bg) 62%, transparent);
+}
+.composer form { display: flex; gap: var(--space-2); }
+
+/* The collapsed form over the map: field-shaped, but a button. */
+.composer-launcher {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  width: 100%;
+  min-height: var(--touch);
+  padding: 0 var(--space-2) 0 var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-chip);
+  background: var(--surface);
+  box-shadow: var(--shadow-float);
+  cursor: pointer;
+  text-align: left;
+}
+.composer-launcher .placeholder { color: var(--ink-faint); font-size: var(--text-body); }
+.composer-launcher .send {
+  display: flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px;
+  border-radius: var(--radius-chip);
+  background: var(--ink-soft);
+  color: var(--surface);
+  font-size: 16px;
+}
+.composer input {
+  flex: 1;
+  min-height: var(--touch);
+  padding: 0 var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-chip);
+  background: var(--surface);
+  box-shadow: var(--shadow-float);
+  font: inherit;
+}
+.composer button[type='submit'] {
+  min-width: var(--touch);
+  min-height: var(--touch);
+  border: 0;
+  border-radius: var(--radius-chip);
+  background: var(--ink-soft);
+  color: var(--surface);
+  font-size: 18px;
+  cursor: pointer;
+}
+.composer button[type='submit']:disabled { opacity: 0.45; cursor: default; }
+
+/* --- sheets: one grammar for every sheet (Gate 6 task 4) ------------------ */
+
+.sheet-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(22, 21, 15, 0.28);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 20;
+}
+.sheet {
+  width: 100%;
+  max-width: var(--app-max);
+  max-height: 84vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--surface);
+  border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
+  box-shadow: var(--shadow-sheet);
+  padding: var(--space-3) var(--space-5) var(--space-6);
+  animation: sheet-up var(--motion-sheet) var(--ease);
+}
+@keyframes sheet-up { from { transform: translateY(6%); } to { transform: translateY(0); } }
+
+.sheet.tall { max-height: 88vh; }
+
+/* The itinerary rests over the map at one of three detents instead of
+   covering it (§5.3): at peek and half the map behind stays visible, live and
+   tappable, so there is no backdrop and nothing to dismiss before panning. */
+.detent-sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 19;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: none;
+  max-height: none;
+  padding: 0;
+  overflow: hidden;
+  animation: none;
+  transition: transform var(--motion-sheet) var(--ease);
+}
+/* While a finger is on it the sheet tracks the finger, not a curve. */
+.detent-sheet.is-dragging { transition: none; }
+
+.sheet-drag {
+  flex: 0 0 auto;
+  padding: 0 var(--space-5);
+  /* The browser must not claim the vertical gesture for scrolling. */
+  touch-action: none;
+  cursor: grab;
+}
+.sheet-drag:active { cursor: grabbing; }
+.sheet-grabber {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: grab;
+}
+.sheet-grabber::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 5px;
+  border-radius: var(--radius-chip);
+  background: var(--line-strong);
+}
+.detent-sheet .sheet-head { margin-bottom: var(--space-3); }
+
+.detent-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  padding: 0 var(--space-5) var(--space-6);
+}
+.detent-body .link-row { margin-top: var(--space-2); }
+/* A sheet that carries its own composer keeps it clear of the content. */
+.sheet.with-composer { padding-bottom: 0; }
+
+.sheet-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+.sheet-head h3 { font-size: var(--text-title); }
+.sheet-head .sub { color: var(--ink-soft); font-size: var(--text-meta); margin: var(--space-1) 0 0; }
+.sheet-close {
+  flex: 0 0 auto;
+  width: 34px; height: 34px;
+  border-radius: var(--radius-chip);
+  border: 0;
+  background: var(--surface-sunken);
+  color: var(--ink-soft);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* Kept for sheets that navigate in place rather than closing (§5.7). */
+.sheet-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+.sheet-nav .title { font-size: var(--text-body); font-weight: var(--weight-semibold); }
+
+.sheet h3 { font-size: var(--text-title); }
+.sheet .sub { color: var(--ink-soft); font-size: var(--text-meta); margin: 0 0 var(--space-3); }
+
+/* --- chat sheet (draft 02) -------------------------------------------------- */
+
+.chat-thread {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-bottom: var(--space-3);
+}
+.bubble {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  max-width: 86%;
+}
+.bubble.user { align-self: flex-end; background: var(--accent-soft); }
+.bubble.agent { align-self: flex-start; background: transparent; padding-left: 0; max-width: 100%; }
+
+.chat-empty { color: var(--ink-faint); font-size: var(--text-sub); padding: var(--space-4) 0; }
+
+/* --- state screen (drafts 03, 04) ------------------------------------------ */
+
+.state-screen { padding: 92px var(--space-5) 120px; flex: 1; }
+.state-screen h2 { font-size: var(--text-display); margin-bottom: var(--space-2); }
+
+.state-group { margin-bottom: var(--space-6); }
+.state-group > h3 {
+  font-size: var(--text-heading);
+  font-weight: var(--weight-bold);
+  margin-bottom: var(--space-3);
+}
+
+.state-chip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+.state-chip input {
+  flex: 1;
+  min-width: 0;
+  min-height: var(--touch);
+  padding: 0 var(--space-4);
+  border: 1px solid transparent;
+  border-radius: var(--radius-chip);
+  background: var(--surface-sunken);
+  font: inherit;
+  color: var(--ink);
+}
+/* Inline editing: the chip becomes a field on focus, nothing else moves. */
+.state-chip input:focus {
+  background: var(--surface);
+  border-color: var(--accent);
+  outline: none;
+}
+.state-chip input[aria-invalid='true'] { border-color: #d98b8b; background: var(--danger-soft); }
+.state-chip .remove {
+  flex: 0 0 auto;
+  width: var(--touch); height: var(--touch);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-chip);
+  background: var(--surface);
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.state-add {
+  min-height: var(--touch);
+  padding: 0 var(--space-4);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-chip);
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: var(--text-sub);
+  cursor: pointer;
+}
+
+/* Priority: three discrete stops, never a continuous bar — the product does
+   not expose numeric weights (§3.3). */
+.priority {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+}
+.priority-name {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--text-body);
+  text-transform: capitalize;
+}
+.weights {
+  display: inline-flex;
+  background: var(--surface-sunken);
+  border-radius: var(--radius-chip);
+  padding: 3px;
+  flex: 0 0 auto;
+}
+.weights button {
+  border: 0;
+  background: transparent;
+  border-radius: var(--radius-chip);
+  min-width: 52px;
+  min-height: 38px;
+  font-size: var(--text-meta);
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.weights button[aria-pressed='true'] {
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: var(--weight-semibold);
+}
+
+.state-actions { display: flex; gap: var(--space-2); margin-top: var(--space-6); }
+.state-actions .btn-primary, .state-actions .btn-secondary { margin-bottom: 0; }
+
+/* --- itinerary (draft 07) --------------------------------------------------- */
+
+.day-tabs { display: flex; gap: var(--space-2); overflow-x: auto; padding-bottom: var(--space-2); }
+.day-tabs::-webkit-scrollbar { display: none; }
+
+.timeline { list-style: none; margin: var(--space-4) 0 0; padding: 0; }
+.timeline li {
+  position: relative;
+  padding: 0 0 var(--space-5) var(--space-5);
+  border-left: 1px solid var(--line);
+  cursor: pointer;
+}
+.timeline li:last-child { border-left-color: transparent; padding-bottom: 0; }
+.timeline li::before {
+  content: '';
+  position: absolute;
+  left: -5px; top: 6px;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--line-strong);
+}
+.timeline li[aria-selected='true']::before { background: var(--accent); }
+.timeline li[aria-selected='true'] .name { color: var(--accent); }
+
+.timeline .time,
+.poi-detail .time {
+  font-variant-numeric: tabular-nums;
+  font-size: var(--text-meta);
+  color: var(--ink-soft);
+  display: block;
+}
+.timeline .thumb,
+.poi-detail .thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 104px;
+  margin: var(--space-2) 0;
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+  color: var(--ink-faint);
+  font-size: var(--text-display);
+  font-weight: var(--weight-bold);
+}
+.timeline .name { font-size: var(--text-heading); font-weight: var(--weight-bold); display: block; }
+.timeline .meta { font-size: var(--text-meta); color: var(--ink-soft); display: block; margin-top: 2px; }
+.timeline .desc { font-size: var(--text-sub); display: block; margin-top: var(--space-2); }
+.timeline .why {
+  font-size: var(--text-sub);
+  color: var(--ink-soft);
+  display: block;
+  margin-top: var(--space-2);
+  font-style: italic;
+}
+/* One paragraph; the reason that decided the stop is set heavier. */
+.reason-primary { font-weight: var(--weight-semibold); }
+.reason-secondary { font-weight: var(--weight-regular); }
+
+/* --- why this day (draft 08) ------------------------------------------------ */
+
+.why-day h4 {
+  margin: var(--space-5) 0 var(--space-2);
+  font-size: var(--text-heading);
+}
+.why-day p { margin: 0 0 var(--space-3); font-size: var(--text-body); line-height: var(--leading-body); }
+.why-day .eyebrow { color: var(--ink-faint); font-size: var(--text-sub); margin-bottom: var(--space-4); }
+.why-day dl { margin: 0; display: grid; grid-template-columns: 84px 1fr; gap: var(--space-2) var(--space-3); }
+.why-day dt { color: var(--ink-soft); font-size: var(--text-sub); }
+.why-day dd { margin: 0; font-size: var(--text-sub); }
+
+/* --- alternatives (draft 09) ------------------------------------------------ */
+
+.alternatives {
+  display: flex;
+  gap: var(--space-3);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  list-style: none;
+  margin: 0 calc(-1 * var(--space-5));
+  padding: var(--space-1) var(--space-5) var(--space-4);
+}
+.alternatives::-webkit-scrollbar { display: none; }
+.alternatives li { flex: 0 0 72%; scroll-snap-align: start; }
+.alternatives button {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  cursor: pointer;
+}
+.alternatives button:hover { border-color: var(--accent); }
+.alt-thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-sunken);
+  color: var(--ink-faint);
+  font-size: var(--text-display);
+  font-weight: var(--weight-bold);
+}
+.alt-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: var(--text-micro);
+  font-weight: var(--weight-bold);
+  margin-right: var(--space-2);
+}
+.alt-title { font-size: var(--text-heading); font-weight: var(--weight-bold); }
+.alt-desc { font-size: var(--text-sub); color: var(--ink-soft); }
+.alt-reason { font-size: var(--text-sub); font-style: italic; color: var(--ink-soft); }
+.alt-warn { font-size: var(--text-meta); color: var(--danger); }
+
+/* --- proposals (drafts 10, 12) ---------------------------------------------- */
+
+.proposal {
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  padding: var(--space-4);
+}
+.proposal[data-change-type='reframe'] { border-left-color: var(--warn); }
+.proposal h3 { font-size: var(--text-heading); margin-bottom: var(--space-3); }
+.proposal .why {
+  font-size: var(--text-sub);
+  color: var(--ink-soft);
+  margin: var(--space-3) 0;
+}
+.proposal .btn-ghost { margin-bottom: var(--space-3); }
+.proposal .btn-primary { margin-top: var(--space-2); }
+
+/* Before / After, side by side (draft 12). */
+.ba { display: flex; gap: var(--space-3); margin: var(--space-3) 0; }
+.ba .col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  background: var(--surface-sunken);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+}
+.ba .label {
+  font-size: var(--text-micro);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--ink-soft);
+}
+.ba .value { font-size: var(--text-body); font-weight: var(--weight-semibold); overflow-wrap: anywhere; }
+.ba .strike { text-decoration: line-through; color: var(--ink-soft); font-weight: var(--weight-regular); }
+
+.diff-list { list-style: none; margin: var(--space-3) 0; padding: 0; }
+
+/* How much of the trip a proposal touches, said before anything else. */
+/* Pick an event the search found: when, what, where — and where it was found. */
+.event-choice {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+  background: var(--surface);
+}
+.event-choice .title { font-weight: var(--weight-semibold); margin-bottom: var(--space-1); }
+.event-options { list-style: none; margin: var(--space-3) 0; padding: 0; display: grid; gap: var(--space-2); }
+.event-options button {
+  display: grid;
+  width: 100%;
+  text-align: left;
+  gap: 2px;
+  padding: var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  font: inherit;
+  color: var(--ink);
+}
+.event-options button:hover { border-color: var(--accent); }
+.event-when { font-size: var(--text-meta); color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.event-title { font-weight: var(--weight-semibold); }
+.event-where { font-size: var(--text-meta); color: var(--ink-faint); }
+
+.scope-line { font-size: var(--text-sub); color: var(--ink-soft); margin: calc(-1 * var(--space-2)) 0 var(--space-3); }
+
+/* A proposal change by change: what, why, and accept or keep the original. */
+.unit-list { list-style: none; margin: var(--space-3) 0; padding: 0; }
+.unit-list li {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--line);
+}
+.unit-list li:first-child { border-top: 0; }
+.unit-list li.declined .unit-summary { color: var(--ink-faint); text-decoration: line-through; }
+.unit-summary { font-size: var(--text-sub); font-weight: var(--weight-semibold); }
+.unit-reason { font-size: var(--text-meta); color: var(--ink-soft); }
+.unit-required { font-size: var(--text-meta); color: var(--accent); }
+.unit-choice { display: flex; gap: var(--space-2); margin-top: var(--space-1); }
+.unit-choice .chip { min-height: 32px; padding: 0 var(--space-3); font-size: var(--text-meta); }
+
+/* The stops the last change put in place. */
+.updated-badge {
+  display: inline-block;
+  margin-left: var(--space-2);
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-chip);
+  background: var(--accent);
+  color: var(--surface);
+  font-size: var(--text-micro);
+  font-weight: var(--weight-semibold);
+  vertical-align: middle;
+}
+.diff-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-size: var(--text-sub);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--line);
+}
+.diff-list li:last-child { border-bottom: 0; }
+.diff-list .day {
+  flex: 0 0 auto;
+  font-size: var(--text-micro);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  min-width: 46px;
+}
+.diff-list .was { color: var(--ink-soft); text-decoration: line-through; }
+.diff-list .now { font-weight: var(--weight-semibold); }
+.diff-list .arrow { color: var(--ink-soft); }
+.diff-list .note { font-size: var(--text-meta); color: var(--ink-soft); }
+.diff-list .times { white-space: nowrap; }
+.diff-list .swap { min-width: 0; }
+/* Draft 11's colour coding: what goes, what arrives. */
+.diff-list li[data-testid='diff-removed'] .was { background: var(--diff-remove); text-decoration: line-through; padding: 0 var(--space-1); border-radius: 4px; }
+.diff-list li[data-testid='diff-added'] .now { background: var(--diff-add); padding: 0 var(--space-1); border-radius: 4px; }
+
+.impact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+  font-size: var(--text-meta);
+  color: var(--ink-soft);
+  margin-bottom: var(--space-3);
+}
+
+/* --- receipts ---------------------------------------------------------------- */
+
+.receipts { list-style: none; padding: 0; margin: 0; }
+.receipts li {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  padding: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+.receipt-head {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  padding: 0;
+  min-height: var(--touch);
+  cursor: pointer;
+}
+.receipts .summary { font-size: var(--text-body); font-weight: var(--weight-semibold); }
+.receipts .detail {
+  font-size: var(--text-meta);
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+.receipt-detail {
+  margin-top: var(--space-3);
+  border-top: 1px solid var(--line);
+  padding-top: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* --- memory / profile (draft 06) --------------------------------------------- */
+
+.memories { list-style: none; padding: 0; margin: 0; }
+.memory {
+  position: relative;
+  background: var(--surface-sunken);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-2);
+}
+/* Rows that carry an overflow menu keep its corner clear. */
+.memory:has(.memory-menu-button) { padding-right: 56px; }
+.memory.active { background: var(--accent-soft); }
+.memory-text {
+  width: 100%;
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: var(--radius-sm);
+  font: inherit;
+  color: inherit;
+  padding: 2px var(--space-1);
+  resize: none;
+  overflow: hidden;
+}
+.memory-text:focus { background: var(--surface); border-color: var(--accent); outline: none; }
+.memory-meta { font-size: var(--text-meta); color: var(--ink-soft); margin-top: var(--space-1); padding-left: var(--space-1); }
+
+.memory-menu-button {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  width: var(--touch); height: var(--touch);
+  border: 0; background: transparent;
+  color: var(--ink-soft);
+  font-size: 18px; letter-spacing: 2px;
+  cursor: pointer;
+  border-radius: var(--radius-chip);
+}
+.memory-menu {
+  position: absolute;
+  top: calc(var(--touch) + var(--space-1));
+  right: var(--space-2);
+  z-index: 5;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-float);
+  padding: var(--space-1);
+  min-width: 168px;
+}
+.memory-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  min-height: var(--touch);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sub);
+  cursor: pointer;
+}
+.memory-menu button:hover { background: var(--surface-sunken); }
+.memory-menu button.danger { color: var(--danger); }
+
+.memory-cite {
+  display: flex;
+  gap: var(--space-2);
+  align-items: baseline;
+  font-size: var(--text-meta);
+  color: var(--accent);
+  margin-top: var(--space-2);
+}
+
+/* --- status: loading, error, conflict, pending ------------------------------ */
+
+.banner {
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-meta);
+  margin-bottom: var(--space-3);
+}
+.banner.error { background: var(--danger-soft); border: 1px solid var(--danger-line); color: var(--danger); }
+.banner.busy { background: var(--surface-sunken); border: 1px solid var(--line); color: var(--ink-soft); }
+
+.conflict-card {
+  background: var(--danger-soft);
+  border: 1px solid var(--danger-line);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+.conflict-card .title {
+  font-size: var(--text-sub);
+  font-weight: var(--weight-bold);
+  color: var(--danger);
+  margin-bottom: var(--space-1);
+}
+.conflict-card ul { margin: 0; padding-left: var(--space-5); }
+.conflict-card li { font-size: var(--text-meta); color: #6d2323; }
+.conflict-card .btn-ghost { margin-top: var(--space-3); background: var(--surface); }
+
+/* --- new trip (§3.6) --------------------------------------------------------- */
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--touch);
+  margin-bottom: var(--space-2);
+}
+.trip-summary { margin-bottom: var(--space-2); }
+.trip-summary .name { font-size: var(--text-display); font-weight: var(--weight-bold); margin: 0; }
+.trip-summary .meta { font-size: var(--text-meta); color: var(--ink-soft); margin-top: 2px; }
+
+.editable-row { display: flex; gap: var(--space-2); align-items: center; margin-bottom: var(--space-2); }
+.editable-row input {
+  flex: 1;
+  min-width: 0;
+  min-height: var(--touch);
+  padding: 0 var(--space-4);
+  border: 1px solid transparent;
+  border-radius: var(--radius-chip);
+  background: var(--surface-sunken);
+  font: inherit;
+}
+.editable-row input:focus { background: var(--surface); border-color: var(--accent); outline: none; }
+.editable-row button {
+  flex: 0 0 auto;
+  width: var(--touch); height: var(--touch);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-chip);
+  background: var(--surface);
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.disclosure {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--touch);
+  padding: 0 var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  font-size: var(--text-sub);
+  color: var(--ink-soft);
+  margin: var(--space-4) 0;
+}
+.disclosure.tappable { width: 100%; justify-content: space-between; text-align: left; cursor: pointer; }
+
+.cta-bar { position: sticky; bottom: 0; padding: var(--space-4) 0; background: var(--bg); }
+
+.proposed-priority {
+  background: var(--warn-soft);
+  border: 1px solid var(--warn-line);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-top: var(--space-3);
+}
+.proposed-priority p { margin: 0 0 var(--space-3); font-size: var(--text-sub); color: var(--warn); }
+.proposed-priority .actions { display: flex; gap: var(--space-2); }
+
+.trip-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  margin-bottom: var(--space-2);
+}
+.trip-name { font-size: var(--text-heading); font-weight: var(--weight-semibold); }
+.trip-meta { font-size: var(--text-meta); color: var(--ink-soft); }
+
+.link-row { display: flex; justify-content: flex-end; }
+
+/* --- responsive (Gate 6 task 8) ---------------------------------------------- */
+
+/* Below 390px the horizontal rhythm tightens rather than overflowing. */
+@media (max-width: 389px) {
+  :root { --space-5: 16px; --space-4: 14px; }
+  .segmented button { padding: 0 var(--space-4); }
+  .weights button { min-width: 44px; }
+  .alternatives li { flex-basis: 80%; }
+}
+
+/* Above the phone width the app stays a phone, centred — this is a mobile
+   product, and stretching it would invent a layout nobody designed. */
+@media (min-width: 431px) {
+  .app { box-shadow: var(--shadow-float); }
+}
+
+/* --- the prototype page: one phone screen, centred, nothing else ---------- */
+
+@media (min-width: 520px) and (min-height: 720px) {
+  body { background: #e5e2dc; }
+  #root { display: flex; align-items: center; justify-content: center; }
+  .app {
+    height: min(880px, calc(100% - 48px));
+    border-radius: 30px;
+    box-shadow: 0 18px 60px rgba(22, 21, 15, 0.22);
+  }
+}
+
+/* --- app-level notice: the degradation path (Gate 8) ----------------------- */
+.app-notice {
+  align-items: center;
+  display: flex;
+  gap: var(--space-2);
+  justify-content: space-between;
+  margin: var(--space-2) var(--space-3);
+  position: relative;
+  z-index: 40;
+}
+
+/* --- place photography ------------------------------------------------------ */
+/* The photo occupies exactly the box the monogram did, so a row is the same
+   height whether the place has a picture or not and the list does not reflow as
+   images arrive. */
+img.thumb {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  background: var(--surface-sunken);
+}
+
+/* Required wherever a Places photo is shown, so it sits with the photo and goes
+   when the photo does. */
+.photo-credit {
+  display: block;
+  margin: calc(-1 * var(--space-1)) 0 var(--space-2);
+  font-size: var(--text-meta);
+  color: var(--ink-faint);
+}
+
+/* A place nobody has photographed: a coloured card with a written initial, not a
+   grey rectangle. The hue comes from the place's own id, so it is stable and two
+   neighbouring stops of the same kind still look like two places. */
+/* Written as `.thumb.thumb-blank` to match the specificity of `.timeline .thumb`,
+   which sets the grey this replaces. A bare `.thumb-blank` loses to it, and the
+   letter ends up hand-written in the old grey — which looked like a bug. */
+.thumb.thumb-blank {
+  background: hsl(var(--thumb-hue, 40) 34% 88%);
+  color: hsl(var(--thumb-hue, 40) 42% 32%);
+  font-family: 'Bradley Hand', 'Marker Felt', 'Segoe Print', 'Segoe Script', 'Ink Free', cursive;
+  font-weight: var(--weight-bold);
+  /* Hand-written letters sit high in their box; nudge the optical centre back. */
+  line-height: 1;
+  padding-bottom: 0.08em;
+}
+.timeline .thumb.thumb-blank,
+.poi-detail .thumb.thumb-blank { font-size: 46px; }
+/* The stop on its own gets a larger picture than its row in the list. */
+.poi-detail .thumb { height: 160px; width: 100%; object-fit: cover; }
+
+/* About this place: the POI Brief, kept apart from "Why this place". */
+.poi-overview { font-size: var(--text-sub); line-height: var(--leading-body); margin: 0 0 var(--space-3); }
+.poi-facts { margin: 0 0 var(--space-3); }
+.poi-fact { display: grid; grid-template-columns: 5.5em 1fr; gap: var(--space-2); margin-bottom: var(--space-1); }
+.poi-fact dt { font-size: var(--text-meta); color: var(--ink-soft); font-weight: var(--weight-semibold); }
+.poi-fact dd { margin: 0; font-size: var(--text-sub); }
+.poi-sources { font-size: var(--text-meta); color: var(--ink-faint); margin: 0; overflow-wrap: anywhere; }
+.poi-sources a { color: var(--ink-soft); }
+
+/* Ways out of a Conflict (eval spec §13): another day, drop it, edit it. */
+.conflict-options { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-3); }
+.conflict-options .chip { min-height: 32px; padding: 0 var(--space-3); font-size: var(--text-meta); background: var(--surface); }
+
+/* An area day (areaDays.ts): the neighbourhood the day is spent in. */
+.day-area { margin: 0 0 var(--space-2); font-size: var(--text-meta); color: var(--text-secondary, inherit); font-weight: 600; }

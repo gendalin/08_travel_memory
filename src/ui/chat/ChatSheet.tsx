@@ -47,11 +47,8 @@ export function ChatSheet({
         aria-label="Chat"
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="sheet-head">
-          <div>
-            <h3>What changed?</h3>
-            <p className="sub">Tell me and I'll work out what it means for the trip.</p>
-          </div>
+        {/* No title or prompt text: the field and the keyboard say what to do. */}
+        <div className="sheet-head chat-head">
           <button className="sheet-close" aria-label="Close chat" data-testid="close-chat" onClick={onClose}>
             ✕
           </button>
@@ -63,11 +60,6 @@ export function ChatSheet({
         )}
 
         <div className="chat-thread" data-testid="chat-thread">
-          {entries.length === 0 && !proposal && (
-            <p className="chat-empty">
-              Nothing yet. Try “the ramen place on Day 2 is closed today”.
-            </p>
-          )}
           {entries.map((entry) => (
             <span key={entry.id} className={`bubble ${entry.from}`}>{entry.text}</span>
           ))}

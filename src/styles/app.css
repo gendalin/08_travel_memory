@@ -1438,3 +1438,6 @@ img.thumb {
 .sheet-backdrop { bottom: var(--keyboard-inset, 0px); }
 .sheet.tall { max-height: min(88vh, calc(100dvh - var(--keyboard-inset, 0px) - 24px)); }
 .composer input { font-size: 16px; }
+
+/* The chat has no title (2026-10-01): just the close button, at the right. */
+.sheet-head.chat-head { justify-content: flex-end; margin-bottom: 0; }
